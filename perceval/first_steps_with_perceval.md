@@ -159,7 +159,7 @@ Of course, differences will be longer for larger repositories.
 
 ## Using Perceval as a Python module
 
-But we know that Perceval is a Python library. So, let's use it as a Python library, from a Python script ([perceval_git_1.py](scripts/perceval_git_1.py)):
+But we know that Perceval is a Python library. So, let's use it as a Python library, from a Python script ([perceval_git_1.py](https://github.com/jgbarah/grimoirelab-training/blob/master/perceval/scripts/perceval_git_1.py)):
 
 ```python
 #! /usr/bin/env python3
