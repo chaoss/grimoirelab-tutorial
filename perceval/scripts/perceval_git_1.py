@@ -3,7 +3,7 @@
 import perceval.backends
 
 # url for the git repo to analyze
-repo_url = 'http://github.com/grimmoirelab/perceval.git'
+repo_url = 'http://github.com/grimoirelab/perceval.git'
 # directory for letting Perceval clone the git repo
 repo_dir = '/tmp/perceval.git'
 
