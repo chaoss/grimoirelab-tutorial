@@ -4,7 +4,7 @@ Now that we have Perceval insttalled, let's give it a try. For that, we will use
 
 ## Using Perceval as a program
 
-To begin with, let's use the `perceval` command that was installed with the Perceval Python module. This command is a Python script itself, which of course uses the Perceval module.
+To begin with, let's use the `perceval` command that we checked just a moment ago.
 
 ```bash
 (perceval) $ perceval git https://github.com/grimoirelab/perceval.git
