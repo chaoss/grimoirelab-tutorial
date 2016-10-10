@@ -1,6 +1,6 @@
 # Getting commits from a git repository
 
-Now that we have Perceval insttalled, let's give it a try. For that, we will use the very own git repository for the Perceval source code as the data source to retrieve (do you appreciate the nice recursion here?)
+Now that we have Perceval insttalled, let's give it a try. For that, we will use the git repository for the Perceval source code as the data source to retrieve (do you appreciate the nice recursion here?)
 
 ## Using Perceval as a program
 
