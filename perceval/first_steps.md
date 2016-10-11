@@ -182,7 +182,7 @@ for commit in repo.fetch():
 
 This code imports the `perceval.backends` module, and then produces an object of the `perceval.backends.git.Git` class. All classes of this kind include a method for fetching the items retrieved by the Perceval backend, as an iterator: `fetch()`. In the last two lines of the script, we iterate through that iterator, printing the hash for all commmits fetched. The output of the script is like:
 
-''`bash
+```bash
 (perceval) $ python3 perceval_git_1.py 
 ...
 26bad088db3df0701f095c7cd45f89e2d9948a7a
@@ -192,7 +192,7 @@ fdf511b0144cb7707cae1a6b8905e83004cf003b
 dd0aec7170367160766a1e155b37db5fa2ae61d9
 cedc42d8d897d1bf64e999b91fb9ce34464440c9
 d7bef8060648f96000a575b1c2af6bc63f9a0ad3
-'''
+```
 
 ## Summarizing
 
