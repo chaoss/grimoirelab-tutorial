@@ -156,6 +156,14 @@ To avoid having perceval exiting when the rate limit is exceeded, we can use the
 
 In the following calls, we will always use this option, so that perceval insists until the rate limit is reset.
 
+In the case you persevere and run perceval once and again, it is likely that you reach the rate limit for your IP address. In that case, the message you'll get will be similar to:
+
+```
+requests.exceptions.HTTPError: {'documentation_url': 'https://developer.github.com/v3/#rate-limiting', 'message': "API rate limit exceeded for 79.151.31.149. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)"}
+```
+
+As the message itself states, you can avoid this rate limit by using authentication.
+
 ## Retrieving from GitHub with authentication
 
 To avoid the problems with the unauthenticated access to the GitHub API, we can use the Perceval GitHub backend with authentication:
@@ -197,3 +205,61 @@ Whichever the authentication method, perceval produces, as it did for the git ba
 
 Of course, in this case, all items (issues and ñpull requests) will be written to `/tmp/perceval-github.output`.
 
+## Retrieving from a Python script
+
+As in the case of the git backend (and any other backend, for that matter) we can use a Python script to retrieve the data, instead of the `perceval` command. For example ([perceval_github_1.py](https://github.com/jgbarah/grimoirelab-training/blob/master/perceval/scripts/perceval_github_1.py)):
+
+```python
+#! /usr/bin/env python3
+
+import argparse
+
+import perceval.backends
+
+# Parse command line arguments
+parser = argparse.ArgumentParser(
+    description = "Simple parser for GitHub issues and pull requests"
+    )
+parser.add_argument("-t", "--token",
+                    help = "GitHub token")
+parser.add_argument("-r", "--repo",
+                    help = "GitHub repository, as 'owner/repo'")
+args = parser.parse_args()
+
+# Owner and repository names
+(owner, repo) = args.repo.split('/')
+
+# create a Git object, pointing to repo_url, using repo_dir for cloning
+repo = perceval.backends.github.GitHub(owner=owner, repository=repo,
+                                        backend_token=args.token)
+# fetch all issues/pull requests as an iteratoir, and iterate it printing
+# their number, and whether they are issues or pull requessts
+for item in repo.fetch():
+    if 'pull_request' in item['data']:
+        kind = 'Pull request'
+    else:
+        kind = 'Issue'
+    print(item['data']['number'], ':', kind)
+```
+
+This script accepts as arguments a token and a GitHub repository, in the format "owner/repo" (for example, "grimoirelab/perceval"). From the repository, it extracts the owner and the repository name to later instantiate an object of the `GitHub` class. As we did in the example for git, we get a `fetch` iterator for the object, and for each iterated item we print its kind (issue or pull request) and its number.
+
+To run this script, just run (of course, substituting "XXXXX" for your token):
+
+```bash
+(perceval) $ python3 perceval_github_1.py --repo grimoirelab/perceval -t XXXXX
+3 : Pull request
+5 : Pull request
+4 : Pull request
+2 : Pull request
+6 : Pull request
+8 : Issue
+7 : Pull request
+9 : Issue
+16 : Issue
+...
+```
+
+## Summarizing
+
+After learning the basics of Perceval, in this section we have learned to use the GitHub backend, and how to use authentication with it to benefit from an extended rate limit in the access to the GitHub API. Then, we have written a simple Python program to get issues and pull requests associated with a GitHub repository.
