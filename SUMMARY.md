@@ -5,4 +5,5 @@
    * [First steps](perceval/first_steps.md)
    * [GitHub](perceval/github.md)
 * [Producing Kibana dashboards with GrimoireELK](grimoireelk/producing_kibana_dashboards_with_grimoireelk.md)
+* Python scripting
 
