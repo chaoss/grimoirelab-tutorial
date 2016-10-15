@@ -6,4 +6,5 @@ GrimoireLab supports more than 20 different kinds of data sources, from git repo
 With the tools in the GrimoireLab toolset you can retrieve data, store it in databases, analyze it, and produce nice dashboards for interactively visualizing the resulting information.
 
 ![](eclipse.png)
-Example dashboard produced with GrimoireLab: the [Eclipsse Development Dashboard](http://eclipse.biterg.io)
+
+[Example dashboard produced with GrimoireLab: the [Eclipsse Development Dashboard](http://eclipse.biterg.io)]
