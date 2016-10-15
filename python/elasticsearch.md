@@ -4,7 +4,9 @@ The data produced by Perceval can be stored in persistent storage. For example, 
 
 ElasticSearch provides a REST API, which we will use to upload data, and later retrieve it. It works by marshalling data as JSON documents, using HTTP for communication with the ElasticSearch server, You can find details about the API in the [ElasticSearch Reference manual](https://www.elastic.co/guide/en/elasticsearch/reference/current/).
 
-Therefore, data in ElasticSearch can be managed with simple tools, such as [curl](https://curl.haxx.se/), or browser plugins, such as [Sense for Chrome](https://github.com/bleskes/sense). In fact, we will use `curl` occasionally, for checks and the like, later in this text. But the focus now is how to use Python scripts to access ElasticSearch. We could just use the combination of some Python HTTP module (such as [urllib](https://docs.python.org/3/library/urllib.html) or [Requests](http://docs.python-requests.org/en/master/)), and the [json](https://docs.python.org/3/library/json.html)  module. But instead of that, we will move one abstraction layer up, and will use the [elasticsearch](https://www.elastic.co/guide/en/elasticsearch/client/python-api/current/) module. It provides comfortable access to the primitives in the ElasticSearch REST API as convenient Python constructs. If you are interested, you could even more yet another layer up, and use the [elasticsearch-dsl](http://elasticsearch-dsl.readthedocs.io/en/latest/) module, which provides ORM-like constructs for accessing ElasticSearch from Python. But we're not covering it here.
+Therefore, data in ElasticSearch can be managed with simple tools, such as [curl](https://curl.haxx.se/), or browser plugins, such as [Sense for Chrome](https://github.com/bleskes/sense). In fact, we will use `curl` occasionally, for checks and the like, later in this text. But the focus now is how to use Python scripts to access ElasticSearch. We could just use the combination of some Python HTTP module (such as [urllib](https://docs.python.org/3/library/urllib.html) or [Requests](http://docs.python-requests.org/en/master/)), and the [json](https://docs.python.org/3/library/json.html)  module.
+
+Instead of that, we will move one abstraction layer up, and will use the [elasticsearch](https://www.elastic.co/guide/en/elasticsearch/client/python-api/current/) module. It provides comfortable access to the primitives in the ElasticSearch REST API as convenient Python constructs. If you are interested, you could even more yet another layer up, and use the [elasticsearch-dsl](http://elasticsearch-dsl.readthedocs.io/en/latest/) module, which provides ORM-like constructs for accessing ElasticSearch from Python. But we're not covering it here.
 
 So, let's start with the basics of using the `elasticsearch` module. To begin with, we will add the module to our virtual environment, using pip:
 
@@ -37,6 +39,10 @@ for commit in repo.fetch():
     # Upload the object to ElasticSearch
     es.index(index='commits', doc_type='summary', body=summary)
 ```
+
+This little script assumes that we're running a local instance of ElasticSearch, which is accessible via the default url: `http://localhost:9200/` (that is, port 9200 in the local machine). The script creates a new index called `commits`, which will contain the hash for every commit in the analyzed repository (in this case, the Perceval git repository).
+
+When running it, you'll see the objects with the hashes being printed in the screen, right before they are uploaded to ElasticSearch:
 
 ```bash
 (perceval) $ python perceval_elasticsearch_1.py 
