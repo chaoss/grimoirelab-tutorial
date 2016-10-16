@@ -54,10 +54,10 @@ When running it, you'll see the objects with the hashes being printed in the scr
 ...
 ```
 
-Once you run the script, the `commits` index is created in ElasticSearch. You can check its characteristics using `curl` (the `pretty` option is to obtain a human-readable JSON document as response:
+Once you run the script, the `commits` index is created in ElasticSearch. You can check its characteristics using `curl`. The `pretty` option is to obtain a human-readable JSON document as response. Notice that we don't need to run `curl` from the virtual environment:
 
 ```
-(perceval) $ curl -XGET http://localhost:9200/commits?pretty
+$ curl -XGET http://localhost:9200/commits?pretty
 {
   "commits" : {
     "aliases" : { },
@@ -91,7 +91,7 @@ Once you run the script, the `commits` index is created in ElasticSearch. You ca
 If you want to delete the index (for example, to run the script once again) you can just run `DELETE` on its url. For example, with `curl`:
 
 ```bash
-(perceval) $ curl -XDELETE http://localhost:9200/commits
+$ curl -XDELETE http://localhost:9200/commits
 {"acknowledged":true}
 ```
 
@@ -162,3 +162,130 @@ for commit in repo.fetch():
 print('\nCreated new index with commits.')
 ```
 
+After running it (deleting any previous `commits` index if needed), we have a new index with the intended information for all commits. We can see one of them querying the index using directly the ElasticSearch REST API with `curl`:
+
+```bash
+$ curl -XGET "http://localhost:9200/commits/_search/?size=1&pretty"
+{
+  "took" : 2,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 5,
+    "successful" : 5,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 407,
+    "max_score" : 1.0,
+    "hits" : [ {
+      "_index" : "commits",
+      "_type" : "summary",
+      "_id" : "AVfPp9Po5xUyv5saVPKU",
+      "_score" : 1.0,
+      "_source" : {
+        "hash" : "d1253dd9876bb76e938a861acaceaae95241b46d",
+        "commit" : "Santiago Dueñas <sduenas@bitergia.com>",
+        "author" : "Santiago Dueñas <sduenas@bitergia.com>",
+        "author_date" : "Wed Nov 18 10:59:52 2015 +0100",
+        "files_no" : 3,
+        "commit_date" : "Wed Nov 18 14:41:21 2015 +0100"
+      }
+    } ]
+  }
+}
+```
+
+Since we specified in the query we only wanted one document (`size=1`), we get a list of `hits` with a single document. But we can see also how there are a total of 407 documents (field `total` within field `hits`). For each document, we can see the information we have stored, which are the contents of `_source`.
+
+## Having dates as dates
+
+Every index in ElasticSearch has a 'mapping'. Mappings specify how the index is, for example in terms of data types. If we don't specify a mapping before uploading data to an index, ElasticSearch will infere the mapping from the data. Therefore, even when we created no mapping for it, we can have a look at the mapping for the recently created index:
+
+```bash
+(perceval) $ curl -XGET "http://localhost:9200/commits/_mapping?pretty"
+{
+  "commits" : {
+    "mappings" : {
+      "summary" : {
+        "properties" : {
+          "author" : {
+            "type" : "string"
+          },
+          "author_date" : {
+            "type" : "string"
+          },
+          "commit" : {
+            "type" : "string"
+          },
+          "commit_date" : {
+            "type" : "string"
+          },
+          "files_no" : {
+            "type" : "long"
+          },
+          "hash" : {
+            "type" : "string"
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+There is a mapping per document type in the index. In this case, we only have `summary` documents in the `commits` index (see the line `es.index()` in the script), so we only have one entry in the `mappings` object above. In it, we can see how each each field got a type: `string`for character strings, and `long` for numbers.
+
+But we know that `author_date` and `commit_date` are not really strings. Both should be recognized as dates. Let's improve our script so that both are dates (Python `datetime` objects) before they are uploaded to ElasticSearch (see all the details in  [perceval_elasticsearch_4.py](https://github.com/jgbarah/GrimoireLab-training/blob/master/python/scripts/perceval_elasticsearch_4.py))):
+
+```python
+import datetime
+...
+        'author_date': datetime.datetime.strptime(commit['data']['AuthorDate'],
+                                                "%a %b %d %H:%M:%S %Y %z"),
+...
+        'commit_date': datetime.datetime.strptime(commit['data']['CommitDate'],
+                                                "%a %b %d %H:%M:%S %Y %z"),
+...
+```
+
+Instead of using the character strings that we get from Perceval as values for those two fields, we first convert them to `datetime` objects. This is enough for the `elasticsearch` module to recognize as dates, and upload them as such. You can check the resulting mapping after running this new script:
+
+```
+$ curl -XGET "http://localhost:9200/commits/_mapping?pretty"
+{
+  "commits" : {
+    "mappings" : {
+      "summary" : {
+        "properties" : {
+          "author" : {
+            "type" : "string"
+          },
+          "author_date" : {
+            "type" : "date",
+            "format" : "strict_date_optional_time||epoch_millis"
+          },
+          "commit" : {
+            "type" : "string"
+          },
+          "commit_date" : {
+            "type" : "date",
+            "format" : "strict_date_optional_time||epoch_millis"
+          },
+          "files_no" : {
+            "type" : "long"
+          },
+          "hash" : {
+            "type" : "string"
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+So, now we have a more complete index for commits, and each of the fields in it have reasonable types in the ElasticSearch mapping.
+
+## Summary
+
+In this section you have learned the basics of storing data retrieved by Perceval in a ElasticSearch server. Although all the examples were performed with the git Peceval backend, the mechanics for using any other backed are exactly the same. Therefore, if you got everything up to here, you know how to upload any kind of data produced by Perceval to ElasticSearch.
