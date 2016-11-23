@@ -11,7 +11,7 @@ As in other cases, we can start by asking Perceval for some help:
 (perceval) $ perceval mbox --help
 ```
 
-From the banner it produces, we learn that the most simple usage is specifying the uri for the mailing list to analyze, and a directory with its archives. The uri is used mainly for annotation purposes, and can really be any string. The directory needs to be filled with files, each of them in mbox format. So, let's start by getting one archive:
+From the banner it produces, we learn that the most simple usage is specifying the uri for the mailing list to analyze, and a directory with its archives. The uri is used for annotation purposes, and can really be any string (although it should usually be a link to the mailing list webpage). The directory needs to be filled with files, each of them in mbox format. So, let's start by getting one archive:
 
 ```bash
 (perceval) $ mkdir archives
@@ -57,3 +57,24 @@ The above message show how the `archives` directory was parsed looking for mbox 
 ```
 
 We can see the usual structure of a Perceval JSON document, with some metainformation (such as `backend_name`), and all the content the corresponding message in the `data` field. The structure of that content is one field per header, with the same name the header has in the message. For the body of the message, the field `body` is used.
+
+If we have several mbox files in the directory, all of them will be analyzed at once. For example, we can add a new archive to the `archives` directory above, and run Perceval again:
+
+```bash
+(perceval) $ wget -P archives http://mail-archives.apache.org/mod_mbox/httpd-announce/201608.mbox
+(perceval) $ perceval mbox httpd-announce archives > perceval.log
+[2016-11-23 11:12:37,795] - Sir Perceval is on his quest.
+[2016-11-23 11:12:37,797] - Looking for messages from 'httpd-announce' on 'archives' since 1970-01-01 00:00:00+00:00
+[2016-11-23 11:12:37,814] - Done. 5/5 messages fetched; 0 ignored
+[2016-11-23 11:12:37,814] - Fetch process completed
+[2016-11-23 11:12:37,814] - Sir Perceval completed his quest.
+```
+
+Now, 5 messages were analyzed, since the new archive (for August 2016) contains just one, and we already had 4 in the first archive we downloaded (for July 2016).
+
+In this case, we can also see a small difference on the body of the messages. For the last one we obtain in perceval.log, we can see how the `body` field is a dictionary with a field named `html`. That's because the content is labeled in the original message as being in HTML format. Compare this to the first example above, where the `body` field contains a field named `plain`, because the content is in plan (unformatted) format.
+
+```
+        "body": {
+            "html": "<head >\n<STYLE>\n .headerTop { background-color:#FFCC66; 
+```
