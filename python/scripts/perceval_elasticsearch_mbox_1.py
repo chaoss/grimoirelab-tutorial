@@ -21,7 +21,6 @@
 ##   Jesus M. Gonzalez-Barahona <jgb@bitergia.com>
 ##
 
-import datetime
 import email.utils
 
 import perceval.backends
