@@ -11,5 +11,5 @@ mbox_dir = 'archives'
 # create a mbox object, using mbox_uri as label, mbox_dir as directory to scan
 repo = perceval.backends.mbox.MBox(uri=mbox_uri, dirpath=mbox_dir)
 # fetch all messages as an iteratoir, and print first 60 chars for each subject
-for commit in repo.fetch():
-    print(commit['data']['Subject'][0:59])
+for message in repo.fetch():
+    print(message['data']['Subject'][0:59])
