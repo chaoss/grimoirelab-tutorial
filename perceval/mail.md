@@ -99,8 +99,8 @@ mbox_dir = 'archives'
 # create a mbox object, using mbox_uri as label, mbox_dir as directory to scan
 repo = perceval.backends.mbox.MBox(uri=mbox_uri, dirpath=mbox_dir)
 # fetch all messages as an iteratoir, and iterate it printing each subject
-for commit in repo.fetch():
-    print(commit['data']['Subject'])
+for message in repo.fetch():
+    print(message['data']['Subject'])
 ```
 
 To run the script, just move to the parent of the `archives` directory, that has our mbox archives, and run:
