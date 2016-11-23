@@ -58,6 +58,8 @@ The above message show how the `archives` directory was parsed looking for mbox 
 
 We can see the usual structure of a Perceval JSON document, with some metainformation (such as `backend_name`), and all the content the corresponding message in the `data` field. The structure of that content is one field per header, with the same name the header has in the message. For the body of the message, the field `body` is used.
 
+#
+
 If we have several mbox files in the directory, all of them will be analyzed at once. For example, we can add a new archive to the `archives` directory above, and run Perceval again:
 
 ```bash
@@ -78,3 +80,42 @@ In this case, we can also see a small difference on the body of the messages. Fo
         "body": {
             "html": "<head >\n<STYLE>\n .headerTop { background-color:#FFCC66; 
 ```
+
+## Analyzing messages with Python
+
+As usual, we can use Perceval as a Python module for analyzing messages in mbox files. Using the same two archives we downloaded above, in the `archives` directory, we can for example show the subject for all messages (code below is in [perceval_mbox_1.py](https://github.com/jgbarah/grimoirelab-training/blob/master/perceval/scripts/perceval_mbox_1.py)):
+
+```python
+#! /usr/bin/env python3
+
+import perceval.backends
+
+# uri (label) for the mailing list to analyze
+mbox_uri = 'http://mail-archives.apache.org/mod_mbox/httpd-announce/'
+# directory for letting Perceval where mbox archives are
+# you need to have the archives to analyzed there before running the script
+mbox_dir = 'archives'
+
+# create a mbox object, using mbox_uri as label, mbox_dir as directory to scan
+repo = perceval.backends.mbox.MBox(uri=mbox_uri, dirpath=mbox_dir)
+# fetch all messages as an iteratoir, and iterate it printing each subject
+for commit in repo.fetch():
+    print(commit['data']['Subject'])
+```
+
+To run the script, just move to the parent of the `archives` directory, that has our mbox archives, and run:
+
+```bash
+(perceval) $ python3 perceval_mbox_1.py 
+[ANNOUNCE] Apache HTTP Server 2.4.23 Released
+CVE-2016-4979: HTTPD webserver - X509 Client certificate ba
+PC Prfoessional per Scuole e Enti Pubblici da 90 Euro
+Web Designing Services at Lowest Prices!!
+Vai in vacanza con l'iPhone e le Beats
+```
+
+Which shows us how some spam got into the Apache `httpd-announce` mailing list, by the way.
+
+## Summarizing
+
+We have learned to analyze mbox archives with Perceval, and we wrote a very simple Python program to do it. Fortunately, mbox is a very common format for email archives, and there are many tools to convert to it from other formats. That means that you can analyze many mailing lists archives out there.
