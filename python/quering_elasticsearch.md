@@ -65,7 +65,7 @@ For each of these documents, the data we uploaded is in the `_source` dictionary
 
 The next script goes a step beyond, by searching for specific items (documents) in the index. In this case, we will ask for items whose `from` property matches (includes) the string `Jim` (see file [perceval_elasticsearch_mbox_3.py](https://github.com/jgbarah/GrimoireLab-training/blob/master/python/scripts/perceval_elasticsearch_mbox_3.py)):
 
-```
+```python
 import elasticsearch
 
 es = elasticsearch.Elasticsearch(['http://localhost:9200/'])
