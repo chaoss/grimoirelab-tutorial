@@ -62,3 +62,21 @@ for message in es_result['hits']['hits']:
 The key is the line calling `es.search`, where we are querying EalisticSearch. Since we only specify the index, we will get the whole index as a result. In fact, we get a dictionary, whose `hits` field includes several interesting fields: `total` for the total number of documents retrieved, and `hits`, for a list of the documents retrieved.
 
 For each of these documents, the data we uploaded is in the `_source` dictionary: we only need to retrieve the needed data from there (in this case, `from` and `subject`).
+
+The next script goes a step beyond, by searching for specific items (documents) in the index. In this case, we will ask for items whose `from` property matches (includes) the string `Jim` (see file [perceval_elasticsearch_mbox_3.py](https://github.com/jgbarah/GrimoireLab-training/blob/master/python/scripts/perceval_elasticsearch_mbox_3.py)):
+
+```
+import elasticsearch
+
+es = elasticsearch.Elasticsearch(['http://localhost:9200/'])
+
+es_result = es.search(index="messages", doc_type='summary',
+                    body={"query": {"match": {"from": "Jim"}}})
+
+print("Found %d messages" % es_result['hits']['total'])
+for message in es_result['hits']['hits']:
+    print("Sender: %s\n    Subject: %s" %
+        (message['_source']['from'], message['_source']['subject']))
+```
+
+The difference is in the parameters for the `es.search` function, which now include an specific `doc_type` (`summary`,the one we used when uploading the items to ElasticSearch), and a `body`, which will be interpreted as a query.
