@@ -1,4 +1,4 @@
-# Quering ElasticSearch
+# Queriyng ElasticSearch
 
 
 In the previous section we learned how to store Perceval data in ElasticSearch. Let's learn now how to query it. For this, we're going to use data from mailing lists. First, let's upload some messages to a fresh ElasticSearch index using the Perceval mbox backend (script [perceval_elasticsearch_mbox_1.py](https://github.com/jgbarah/GrimoireLab-training/blob/master/python/scripts/perceval_elasticsearch_mbox_1.py)):
