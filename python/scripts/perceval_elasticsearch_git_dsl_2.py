@@ -30,6 +30,8 @@ es = elasticsearch.Elasticsearch(['http://localhost:9200/'])
 # Build a DSL Search object on the 'git' index, 'summary' documents type
 request = elasticsearch_dsl.Search(using=es, index='commits',
                                     doc_type='summary')
+# We need to request only some fields
+request = request.source(['hash', 'author_date', 'author'])
 
 # Run the Search, using the scan interface to get all resuls
 response = request.scan()
