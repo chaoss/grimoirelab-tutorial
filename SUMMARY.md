@@ -8,7 +8,8 @@
 * [Producing Kibana dashboards with GrimoireELK](grimoireelk/producing_kibana_dashboards_with_grimoireelk.md)
 * [Python scripting](python/scripting.md)
     * [Persistent storage in ElasticSearch](python/elasticsearch.md)
-    * [Quering ElasticSearch](python/quering_elasticsearch.md)
+    * [Querying ElasticSearch](python/quering_elasticsearch.md)
+    * [ElasticSearch DSL](python/elasticsearch-dsl.md)
 * [Tools and tips](tools-and-tips/intro.md)
     * [ElasticSearch](tools-and-tips/elasticsearch.md)
 
