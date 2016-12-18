@@ -27,7 +27,7 @@ import elasticsearch_dsl
 # ElasticSearch instance (url)
 es = elasticsearch.Elasticsearch(['http://localhost:9200/'])
 
-# Build a DSL Search object on the 'git' index, 'summary' documents type
+# Build a DSL Search object on the 'commits' index, 'summary' documents type
 request = elasticsearch_dsl.Search(using=es, index='commits',
                                     doc_type='summary')
 
