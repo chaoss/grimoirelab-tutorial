@@ -9,5 +9,6 @@
 * [Python scripting](python/scripting.md)
     * [Persistent storage in ElasticSearch](python/elasticsearch.md)
     * [Quering ElasticSearch](python/quering_elasticsearch.md)
-* [Tools and tips](tools-and-tips.md)
+* [Tools and tips](tools-and-tips/intro.md)
+    * [ElasticSearch](tools-and-tips/elasticsearch.md)
 
