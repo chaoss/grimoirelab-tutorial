@@ -22,6 +22,7 @@
 ##
 
 import argparse
+import json
 import logging
 import urllib3
 
@@ -31,7 +32,8 @@ import elasticsearch.helpers
 description = """Copy data between ElasticSearch instances and files.
 
 Example:
-    elastic_cp --from http://elasctic.instance.xxx --to dest_file.json
+    elastic_cp --src http://elasctic.instance.xxx --src_index index \
+        --dest dest_file.json
 
 """
 
@@ -161,6 +163,42 @@ class ESStore(Store):
         actions = self._to_actions(items)
         elasticsearch.helpers.bulk(self.es, actions)
 
+class FileStore(Store):
+    """Class to interact with a file.
+
+    """
+
+    def __init__(self, path):
+        """Constructor for file stores.
+
+        :param      path: file path
+
+        """
+
+        super().__init__()
+        self.path = path
+        print(self.path)
+
+    def read(self):
+        """Read from the constructor, maybe using a buffer (generator).
+
+        :return: Python genrator returning items read from the data store.
+
+        """
+
+        for item in open(self.path):
+            yield json.loads(item)
+
+    def write(self, items):
+        """Write items to ElasticSearch instance and index.
+
+        :param items: generator with items to write
+
+        """
+
+        with open(self.path, 'w') as f:
+            for item in items:
+                f.write(json.dumps(item) + '\n')
 
 def main():
     args = parse_args()
@@ -179,10 +217,14 @@ def main():
     if args.src.startswith('http://') or args.src.startswith('https://'):
         src = ESStore(instance=args.src, index=args.src_index,
                         verify_certs=args.verify_certs)
+    else:
+        src = FileStore(path=args.src)
 
     if args.dest.startswith('http://') or args.dest.startswith('https://'):
         dest = ESStore(instance=args.dest, index=args.dest_index,
                         verify_certs=args.verify_certs)
+    else:
+        dest = FileStore(path=args.dest)
 
     dest.write(src.read())
 
