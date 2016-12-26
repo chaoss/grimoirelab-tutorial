@@ -1,0 +1,151 @@
+/* Inspired by css Zen Garden submission 175 -
+  'Business Style', by Gunta Klavina, http://www.klavina.com/
+  http://www.csszengarden.com/175/
+*/
+
+body {
+  margin: 0;
+  padding: 0;
+  color: #333;
+  font: 12px Trebuchet MS, Lucida Sans Unicode, Arial, sans-serif;
+  background: #E2EBED;
+  text-align: center;
+}
+
+a {
+  color: #307082;
+}
+
+a:hover {
+  color: #D60808;
+}
+
+.page-wrapper {
+  margin: 0 auto;
+  width: 85%;
+  position: relative;
+  background: #fff;
+  padding: 0 .5em 0 .5em;
+  text-align: left;
+}
+
+header {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+}
+
+h1
+  {
+  height: 1.2em;
+  margin: 0;
+  font-size: 3em;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+h2 {
+  font-size: 1.8em;
+  margin: 0;
+}
+
+.summary {
+  font-size: .9em;
+  margin: 0;
+  width: 250px;
+  height: 1em;
+  padding: 85px 90px 0 30px;
+  font: 12px/150% Trebuchet MS;
+}
+
+.summary p {
+  margin-top: 1em;
+  width: 164px;
+/*  height: 6em; */
+  padding: 1em 90px 1em 1em;
+  font: 1.2em Trebuchet MS;
+}
+
+.summary p:first-child {
+  background: grey;
+  color: #fff;
+}
+.preamble {
+  margin: 0 20px 0 243px;
+}
+
+.preamble p {
+  line-height: 150%;
+  margin: 10px 0 10px 0;
+}
+
+.preamble h3 {
+  white-space: nowrap;
+  overflow: hidden;
+  width: 200px;
+  height: 24px;
+  margin: 40px 0 10px 0;
+}
+
+#events {
+  width: 80%;
+  height: 40em;
+  margin: 1em auto;
+  overflow: hidden;
+  background: white;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.event {
+  background: grey;
+}
+
+.event p {
+  margin-top: .2em;
+  margin-bottom: .2em;
+}
+
+.head {
+  background: white;
+  padding-left: 1em;
+  font-size: 1.2em;
+}
+.author, .message, .date {
+  padding-left: 2em;
+}
+
+.author, .date {
+  color: #fff;
+}
+
+.message {
+  background: silver;
+  padding-left: 3em;
+  padding-bottom: 1em;
+}
+.marquee {
+  margin: 0;
+  padding: 0 1em;
+  line-height: 1.4em;
+  font: 1em 'Segoe UI', Tahoma, Helvetica, Sans-Serif;
+}
+
+.marquee {
+  position: relative;
+  box-sizing: border-box;
+  animation-name: marquee;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.marquee:hover {
+    animation-play-state: paused;
+}
+
+/* Make it move! */
+@keyframes marquee {
+  0% { transform:translateY(20em); }
+  100% { transform:translateY(-100%); }
+}

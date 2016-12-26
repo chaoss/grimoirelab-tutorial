@@ -1,0 +1,53 @@
+/* Simple version */
+
+#events {
+    width: 60%;
+    height: 20em;
+    margin: 1em auto;
+    overflow: hidden;
+    background: white;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.event {
+  background: grey;
+}
+
+.event p {
+  margin-top: .2em;
+  margin-bottom: .2em;
+}
+
+.author, .message {
+  margin-left: 1em;
+}
+
+.message {
+  background: silver;
+}
+.marquee {
+  margin: 0;
+  padding: 0 1em;
+  line-height: 1.4em;
+  font: 1em 'Segoe UI', Tahoma, Helvetica, Sans-Serif;
+}
+
+.marquee {
+  position: relative;
+  box-sizing: border-box;
+  animation-name: marquee;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.marquee:hover {
+    animation-play-state: paused;
+}
+
+/* Make it move! */
+@keyframes marquee {
+  0% { transform:translateY(20em); }
+  100% { transform:translateY(-100%); }
+}
