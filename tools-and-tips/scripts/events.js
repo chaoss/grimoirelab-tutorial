@@ -39,8 +39,8 @@ function decorate_default (event) {
   return(text)
 }
 
-$(document).ready(function() {
-	$.getJSON("events.json", function(data) {
+function update () {
+  $.getJSON("events.json", function(data) {
     var events = '<div class="marquee">';
     for (var event = 0; event < data.length; event++) {
       var event_str = '<div class="event">';
@@ -56,4 +56,9 @@ $(document).ready(function() {
     $('#events').html(events);
     $('.marquee').css('animation-duration', 4*event + 's')
 	});
+}
+
+$(document).ready(function(){
+  update();
+  setInterval(update, 100000);
 });
