@@ -41,6 +41,7 @@ function decorate_default (event) {
 
 function update () {
   $.getJSON("events.json", function(data) {
+    console.log("Update");
     var events = '<div class="marquee">';
     for (var event = 0; event < data.length; event++) {
       var event_str = '<div class="event">';
@@ -59,6 +60,7 @@ function update () {
 }
 
 $(document).ready(function(){
+  $.ajaxSetup({cache: false});
   update();
   setInterval(update, 100000);
 });
