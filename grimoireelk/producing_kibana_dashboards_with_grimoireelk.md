@@ -105,6 +105,14 @@ This should produce the promised dashboard, in all its glory! Point your web bro
 
 ![](kibana-dashboard.png)
 
+`p2o.py` can be used to produce indexes for many other data sources. For example for GitHub issues and pull requests, the magic line is like this (of course, substitute XXX for your GitHub token):
+
+```bash
+$ p2o.py --enrich --index github_raw --index-enrich github \
+  -e http://localhost:9200 --no_inc --debug \
+  github --owner grimoirelab --repository perceval \
+  -t XXX --sleep-for-rate
+``` 
 
 ## Final remarks
 
