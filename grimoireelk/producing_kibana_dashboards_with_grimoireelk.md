@@ -1,17 +1,17 @@
 # Producing Kibana dashboards with GrimoireELK
 
-[GrimoireEKL](http://github.com/grimoirelab/GrimoireELK) is an interim system oriented to produce Kibana-based dashboards with Perceval and friends. It provides some scripts (mainly `p2o.py` and `kidash.py`) to retrieve data from repositories related to software development, and produce everything needed to have a nice Kibana-based dashboard for it.
+[GrimoireEKL](http://github.com/grimoirelab/GrimoireELK) is an interim system oriented to produce Kibana-based dashboards with Perceval and friends. It provides a Python module \(`grimoire_elk`\) with facilities for driving Perceval, enriching data, and uploading / downloading it to / from ElasticSearch. It includes as well some scripts \(mainly `p2o.py` and `kidash.py`\) to retrieve data from repositories related to software development, and produce everything needed to have a nice Kibana-based dashboard for it.
 
 In summary, `p2o.py`:
 
 * drives Perceval to retrieve data from repositories,
-* uploads the resulting data as raw indexes (collections of JSON documents) to ElasticSearch
-* enrichs those raw indexes (produce new data with fields suitable to be used by Kibana dashboards)
+* uploads the resulting data as raw indexes \(collections of JSON documents\) to ElasticSearch
+* enrichs those raw indexes \(produce new data with fields suitable to be used by Kibana dashboards\)
 * uploads that resulting data as enriched indexes to ElasticSearch
 
 In addition, `kidash.py`:
 
-* uploads dashboard definitions (including visualizations, searches and everything needed by them) to produce a Kibana dashboard
+* uploads dashboard definitions \(including visualizations, searches and everything needed by them\) to produce a Kibana dashboard
 
 In this chapter we will explore how to use these tools to produce complete Kibana-based dashboards.
 
@@ -19,37 +19,45 @@ In this chapter we will explore how to use these tools to produce complete Kiban
 
 To set up the complete environment to produce a Kibana-based dashboard based on GrimoireELK, you need to:
 
-* Install Perceval and GrimoireELK to retrieve the data from repositories, enrich it to produce the data needed by the dashboard, upload it to ElasticSearch, and produce the Kibana dashboards.
+* Install the`grimoire_elk`Python module, which will pull the `perceval`module and other dependencies with it. It includes the `p2o.py` script, as well.
+* Install the `kidash.py` Python script, to manage Kibana dashboards and visualizations.
 * Install ElasticSearch and Kibana instances, to store the data and serve the dashboard. Instead of installing your own instances of both, you can use services in the cloud, or already instances, of course.
 
 Let's see the details.
 
-### Installing Perceval and GrimoireELK
+### Installing grimoire\_elk and kidash.py
 
+Before installing `grimoire_elk` and `kidash.py`, consider creating a Python3 virtual environnment \(see details in First steps with Perceval\). In the following, we will assume that we're installing everything in a virtual environment called `grimoireelk`.
 
-Before installing Perceval and GrimoireELK, consider creating a Python3 virtual environnment (see details in First steps with Perceval). In the following, we will assume that we're installing everything in a virtual environment called `grimoireelk`.
-
-Installing Perceval is easy: just use pip, for installing from Pypi.
-
-```bash
-(grimoireelk) $ pip install perceval
-```
-
-For now, GrimoireELK has to be installed by cloning its git repository:
+Installing `grimoire_elk`is easy: just use pip, for installing from Pypi.
 
 ```bash
-(grimoireelk) $ git clone https://github.com/grimoirelab/grimoireelk.git
+(grimoireelk) $ pip install grimoire_elk
 ```
 
-This will create the grimoireelk directory, which we will use later.
+This will also install Perceval \(for retrieval of data from repositories\) and other dependencies in the virtual environment.
+
+For now, `kidash.py `has to be installed from the GrimoireELK git repository, either by directlry copying it, or by cloning the git repository llocally, and then using it from there. For copying it, just download the appriate url, for example by using curl:
+
+```bash
+$ curl -O https://raw.githubusercontent.com/grimoirelab/GrimoireELK/master/utils/kidash.py
+```
+
+For using the script from a clone of the repository, just clone it:
+
+```bash
+$ git clone https://github.com/grimoirelab/grimoireelk.git
+```
+
+This will create the `grimoireelk` directory, with the sources of `grimoire_elk` and other goodies, among them, `kidash.py` in the `utils` directory.
 
 ### Installing ElasticSearch and Kibana
 
 In case you decide to install ElasticSearch and Kibana yourself, instead of using them as a service, the process is not difficult.
 
-For ElasticSearch, you can follow its [installation instructions](https://www.elastic.co/guide/en/elasticsearch/reference/current/_installation.html). You will need to have a Java virtual machine installed (Oracle JDK version 1.8.x is recommended), The rest is simple: download the installation file from the [ElasticSearch downloads area](https://www.elastic.co/downloads/elasticsearch), and install it, for example by unzipping the zip installation file.
+For ElasticSearch, you can follow its [installation instructions](https://www.elastic.co/guide/en/elasticsearch/reference/current/_installation.html). You will need to have a Java virtual machine installed \(Oracle JDK version 1.8.x is recommended\), The rest is simple: download the installation file from the [ElasticSearch downloads area](https://www.elastic.co/downloads/elasticsearch), and install it, for example by unzipping the zip installation file.
 
-Assuming the installed ElasticSearch directory is `elasticsearch`, to lanuch it you will just run the appropriate command (no need to run this from the virtual environment):
+Assuming the installed ElasticSearch directory is `elasticsearch`, to lanuch it you will just run the appropriate command \(no need to run this from the virtual environment\):
 
 ```
 $ elasticsearch/bin/elasticsearch
@@ -75,20 +83,19 @@ Now, we´re ready to go.
 
 Now we can run `p2o.py` to create the indexes in ElasticSearch. We will create a the enriched index in one step. This index will contain the data used by the Kibana dashboard. As an example, we will produce an index for two git repositories: those of Perceval and GrimoireELK. We will use as index name `git_enrich`, and as ElasticSearch instance the one we have listening at `http://localhost:9200`:
 
-```
-(grimoireelk) $ cd GrimoireELK/utils
-(grimoireelk) $ python3 p2o.py --enrich --index git_raw --index-enrich git \
+```bash
+(grimoireelk) $ p2o.py --enrich --index git_raw --index-enrich git \
   -e http://localhost:9200 --no_inc --debug \
   git https://github.com/grimoirelab/perceval.git
-(grimoireelk) $ python3 p2o.py --enrich --index git_raw --index-enrich git \
+(grimoireelk) $ p2o.py --enrich --index git_raw --index-enrich git \
   -e http://localhost:9200 --no_inc --debug \
   git https://github.com/grimoirelab/GrimoireELK.git
 ```
 
 Now, we should have two new indexes in Kibana: `git_raw`, with the raw data as produced by Perceval, and `git`, with the enriched information, ready to be shown by a Kibana dashobard. You can check both by feeding the following urls to your web browser:
 
-* http://localhost:9200/git_raw?pretty=true
-* http://localhost:9200/git?pretty=true
+* [http://localhost:9200/git\_raw?pretty=true](http://localhost:9200/git_raw?pretty=true)
+* [http://localhost:9200/git?pretty=true](http://localhost:9200/git?pretty=true)
 
 In both cases, you will watch a JSON document with the description of the index.
 
@@ -101,24 +108,24 @@ Then, the only missing element is a Kibana dashboard with its visualizations. We
   --import /tmp/git-dashboard.json
 ```
 
-This should produce the promised dashboard, in all its glory! Point your web browser to [your Kibana instance](http://localhost:5601/), click on `Dashboard` in the top menu, and use the floppy icon (on the top right list of icons) to select the `Git` dashboard. Get some popcorn, now you should be able of playing with the dashboard.
+This should produce the promised dashboard, in all its glory! Point your web browser to [your Kibana instance](http://localhost:5601/), click on `Dashboard` in the top menu, and use the floppy icon \(on the top right list of icons\) to select the `Git` dashboard. Get some popcorn, now you should be able of playing with the dashboard.
 
 ![](kibana-dashboard.png)
 
-`p2o.py` can be used to produce indexes for many other data sources. For example for GitHub issues and pull requests, the magic line is like this (of course, substitute XXX for your GitHub token):
+`p2o.py` can be used to produce indexes for many other data sources. For example for GitHub issues and pull requests, the magic line is like this \(of course, substitute XXX for your GitHub token\):
 
 ```bash
 $ p2o.py --enrich --index github_raw --index-enrich github \
   -e http://localhost:9200 --no_inc --debug \
   github --owner grimoirelab --repository perceval \
   -t XXX --sleep-for-rate
-``` 
+```
 
 ## Final remarks
 
 In this chapter you have learned to produce a simple dashboard, using Perceval and GrimoireELK, with the data stored in ElaticSearch, and the dashboard itself in Kibana. It only has information for git repositories, but with a similar procedure, you can produce dashboards for other data sources.
 
-In case you want to try a dashboard for some other repositories, once you're done with this one, you can delete the indexes (both `git` and `git_raw`), and produce new indexes with `p2o.py`. For doing this, you can use `curl` and the ElasticsSearch REST HTTP API:
+In case you want to try a dashboard for some other repositories, once you're done with this one, you can delete the indexes \(both `git` and `git_raw`\), and produce new indexes with `p2o.py`. For doing this, you can use `curl` and the ElasticsSearch REST HTTP API:
 
 ```bash
 $ curl -XDELETE http://localhost:9200/git
@@ -126,3 +133,4 @@ $ curl -XDELETE http://localhost:9200/git_raw
 ```
 
 Using the Kibana interface it is simple to modify the dashboard, its visualizations, and produce new dashboards and visualizations. If you are interested, have a look at the [Kibana User Guide](https://www.elastic.co/guide/en/kibana/current/).
+
