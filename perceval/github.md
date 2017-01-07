@@ -1,6 +1,6 @@
 # Retrieving data from GitHub repositories
 
-[GitHub](http://github.com) is a popular service for hosting software development. It provides git repositories associated with issues (tickets) and pull requests (proposed patches). All this information is available via the [GitHub API](https://developer.github.com/). We will use Perceval GitHub backend to retrieve data from this API for issues and pull requests. For git repositories we can use the Perceval git backend, as we already introduced in the previous section.
+[GitHub](http://github.com) is a popular service for hosting software development. It provides git repositories associated with issues \(tickets\) and pull requests \(proposed patches\). All this information is available via the [GitHub API](https://developer.github.com/). We will use Perceval GitHub backend to retrieve data from this API for issues and pull requests. For git repositories we can use the Perceval git backend, as we already introduced in the previous section.
 
 ## Basic usage of the GitHub backend
 
@@ -17,10 +17,10 @@ In that help banner, we see three different ways of using it:
 * with a user and password
 * with a user token
 
-If you use the GitHub Perceval backend with no credentials, you'll have basic access to the GitHub API. The main difference with using authenticated use is the rate limit: a much more stringent rate limit (number of requests to the GitHub API) will be applied by GitHub. In any case, this basic access is very simple, since it requires no user, password or token. For example, for accessing tickets and pull requests in the Perceval repository:
+If you use the GitHub Perceval backend with no credentials, you'll have basic access to the GitHub API. The main difference with using authenticated use is the rate limit: a much more stringent rate limit \(number of requests to the GitHub API\) will be applied by GitHub. In any case, this basic access is very simple, since it requires no user, password or token. For example, for accessing tickets and pull requests in the Perceval repository:
 
 ```bash
-(perceval) $ perceval github --owner grimoirelab --repository perceval
+(perceval) $ perceval github grimoirelab perceval
 [2016-10-11 00:49:33,714] - Sir Perceval is on his quest.
 [2016-10-11 00:49:34,576] - Getting info for https://api.github.com/users/jgbarah
 {
@@ -130,7 +130,7 @@ If you use the GitHub Perceval backend with no credentials, you'll have basic ac
 }
 ```
 
-In the above perceval output, you can read one item obtained from the GitHub API. As in the case of git commits, the data obtained from GitHub is in the "data" field. In this case it is a pull request (notice the "pull_request" field in "data") but the list of items include both issues and pull requests, since the same GitHub API provides both. Perceval also annotates each reference to a GitHub user with the information for that user, which is properly obtained from the users API. Notice the message where GitHub informs about a request to that API for obtaining the data for user "jgbarah", in the second line of the output above:
+In the above perceval output, you can read one item obtained from the GitHub API. As in the case of git commits, the data obtained from GitHub is in the "data" field. In this case it is a pull request \(notice the "pull\_request" field in "data"\) but the list of items include both issues and pull requests, since the same GitHub API provides both. Perceval also annotates each reference to a GitHub user with the information for that user, which is properly obtained from the users API. Notice the message where GitHub informs about a request to that API for obtaining the data for user "jgbarah", in the second line of the output above:
 
 ```
 [2016-10-11 00:49:34,576] - Getting info for https://api.github.com/users/jgbarah
@@ -143,12 +143,12 @@ If during the retrieval of the data from the GitHub API, the API rate limit is e
 RuntimeError: GitHub rate limit exhausted. 3446 seconds for rate reset
 ```
 
-The number of seconds until the rate reset will depend on your mileage (but in general, the GitHub rate API for non-authenticated users is pretty low, 50 requests per hour).
+The number of seconds until the rate reset will depend on your mileage \(but in general, the GitHub rate API for non-authenticated users is pretty low, 50 requests per hour\).
 
 To avoid having perceval exiting when the rate limit is exceeded, we can use the `--sleep-for-rate` option. When this option is used, instead of exiting, when the rate timit is reached perceval will just sit silently, waiting unting new API requests are available:
 
 ```bash
-(perceval) $ perceval github --owner grimoirelab --repository perceval --sleep-for-rate
+(perceval) $ perceval github grimoirelab perceval --sleep-for-rate
 [2016-10-11 00:35:30,215] - Sir Perceval is on his quest.
 [2016-10-11 00:35:31,066] - Getting info for https://api.github.com/users/jgbarah
 [2016-10-11 00:35:31,066] - GitHub rate limit exhausted. Waiting 3066 secs for rate limit reset.
@@ -169,30 +169,30 @@ As the message itself states, you can avoid this rate limit by using authenticat
 To avoid the problems with the unauthenticated access to the GitHub API, we can use the Perceval GitHub backend with authentication:
 
 ```bash
-(perceval) $ perceval github --owner grimoirelab --repository perceval --sleep-for-rate \
+(perceval) $ perceval github grimoirelab perceval --sleep-for-rate \
     -u jgbarah -p XXX
 ```
 
-Instead of "jgbarah",use your own GitHub username, and instead of XXX your GitHub password. This will only work if you didn't set up [two factor authentication for GitHub](https://help.github.com/articles/about-two-factor-authentication/). If you did, you can still use the following method (which you can use as well if you didn't set up it).
+Instead of "jgbarah",use your own GitHub username, and instead of XXX your GitHub password. This will only work if you didn't set up [two factor authentication for GitHub](https://help.github.com/articles/about-two-factor-authentication/). If you did, you can still use the following method \(which you can use as well if you didn't set up it\).
 
 Alternatively, you can use GitHub user tokens as well:
 
 ```bash
-(perceval) $ perceval github --owner grimoirelab --repository perceval --sleep-for-rate \
+(perceval) $ perceval github grimoirelab perceval --sleep-for-rate \
     -t XXXXX
 ```
 
 Instead of "XXXXX" use your own GitHub token. You can obtain tokens via the GitHub web interface. Once you're authenticated with GitHub, follow the following process:
 
-* Click on "Settings" on your personal pop-up menu (usually obtained by clicking on your avatar, on the top right corner of the web page).
+* Click on "Settings" on your personal pop-up menu \(usually obtained by clicking on your avatar, on the top right corner of the web page\).
 * Once in "Settings", look for "Personal access tokens", in the "Developer settings" submenu, in the right menu.
-* Once in "Personal access tokens", click on "Generate new token" (top right).
-* Once in "New personal access token", select a name for your token ("token desription"), and select the scopes for it. If you're going to use it only with perceval, you don't really need permissions for any scope, so you don't need to select any.
+* Once in "Personal access tokens", click on "Generate new token" \(top right\).
+* Once in "New personal access token", select a name for your token \("token desription"\), and select the scopes for it. If you're going to use it only with perceval, you don't really need permissions for any scope, so you don't need to select any.
 
 Whichever the authentication method, perceval produces, as it did for the git backend, a JSON document for each item in stdout, and some messages in stderr. You can see both differentiated, for example, by redirecting stdout to a file:
 
 ```
-(perceval) $ perceval github --owner grimoirelab --repository perceval --sleep-for-rate \
+(perceval) $ perceval github grimoirelab perceval --sleep-for-rate \
     -t XXXXX > /tmp/perceval-github.output
 [2016-10-11 01:20:12,224] - Sir Perceval is on his quest.
 [2016-10-11 01:20:13,067] - Getting info for https://api.github.com/users/jgbarah
@@ -203,11 +203,11 @@ Whichever the authentication method, perceval produces, as it did for the git ba
 ...
 ```
 
-Of course, in this case, all items (issues and ñpull requests) will be written to `/tmp/perceval-github.output`.
+Of course, in this case, all items \(issues and ñpull requests\) will be written to `/tmp/perceval-github.output`.
 
 ## Retrieving from a Python script
 
-As in the case of the git backend (and any other backend, for that matter) we can use a Python script to retrieve the data, instead of the `perceval` command. For example ([perceval_github_1.py](https://github.com/jgbarah/grimoirelab-training/blob/master/perceval/scripts/perceval_github_1.py)):
+As in the case of the git backend \(and any other backend, for that matter\) we can use a Python script to retrieve the data, instead of the `perceval` command. For example \([perceval\_github\_1.py](https://github.com/jgbarah/grimoirelab-training/blob/master/perceval/scripts/perceval_github_1.py)\):
 
 ```python
 #! /usr/bin/env python3
@@ -242,9 +242,9 @@ for item in repo.fetch():
     print(item['data']['number'], ':', kind)
 ```
 
-This script accepts as arguments a token and a GitHub repository, in the format "owner/repo" (for example, "grimoirelab/perceval"). From the repository, it extracts the owner and the repository name to later instantiate an object of the `GitHub` class. As we did in the example for git, we get a `fetch` iterator for the object, and for each iterated item we print its kind (issue or pull request) and its number.
+This script accepts as arguments a token and a GitHub repository, in the format "owner/repo" \(for example, "grimoirelab/perceval"\). From the repository, it extracts the owner and the repository name to later instantiate an object of the `GitHub` class. As we did in the example for git, we get a `fetch` iterator for the object, and for each iterated item we print its kind \(issue or pull request\) and its number.
 
-To run this script, just run (of course, substituting "XXXXX" for your token):
+To run this script, just run \(of course, substituting "XXXXX" for your token\):
 
 ```bash
 (perceval) $ python3 perceval_github_1.py --repo grimoirelab/perceval -t XXXXX
@@ -263,3 +263,4 @@ To run this script, just run (of course, substituting "XXXXX" for your token):
 ## Summarizing
 
 After learning the basics of Perceval, in this section we have learned to use the GitHub backend, and how to use authentication with it to benefit from an extended rate limit in the access to the GitHub API. Then, we have written a simple Python program to get issues and pull requests associated with a GitHub repository.
+
