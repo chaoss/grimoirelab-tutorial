@@ -1,12 +1,12 @@
 # First steps with Perceval
 
-In this section, you will learn the basics of working with it.
+In this section, you will learn the basics of working with Perceval, including how to install it.
 
 ## Preparing a virtualenv
 
-I'm assuming you already have Python3 installed (Perceval is written for Python3). Let's start by creating a Python virtual environment, so that we have a cozy place to work. In the following, we will use [Python3's pyvenv](https://docs.python.org/3/library/venv.html#creating-virtual-environments) (available in Debian or Ubuntu as the `python3-venv` package). But using the more traditional [virtualenv](http://docs.python-guide.org/en/latest/dev/virtualenvs/) should be possible as well.
+I'm assuming you already have Python3 installed \(Perceval is written for Python3\). Let's start by creating a Python virtual environment, so that we have a cozy place to work. In the following, we will use [Python3's pyvenv](https://docs.python.org/3/library/venv.html#creating-virtual-environments) \(available in Debian or Ubuntu as the `python3-venv` package\). But using the more traditional [virtualenv](http://docs.python-guide.org/en/latest/dev/virtualenvs/) should be possible as well.
 
-First, let's create our new environment. I like my Python virtual environments under the `venvs` subdirectory in my home directory, and in this case I will call it `perceval` (see how original I am!):
+First, let's create our new environment. I like my Python virtual environments under the `venvs` subdirectory in my home directory, and in this case I will call it `perceval` \(see how original I am!\):
 
 ```bash
 $ pyvenv ~/venvs/perceval
@@ -14,14 +14,14 @@ $ pyvenv ~/venvs/perceval
 
 ## Installing Perceval
 
-Once created, you can  activate it (remember it will stay activated only in the shell where you actyvated it). Once activated, install Perceval, which will therefore be present only in your virtual environment. For installing Perceval, we will use pip, which will install it from the [Pypi archive](https://pypi.python.org/pypi).
+Once created, you can  activate it \(remember it will stay activated only in the shell where you actyvated it\). Once activated, install Perceval, which will therefore be present only in your virtual environment. For installing Perceval, we will use pip, which will install it from the [Pypi archive](https://pypi.python.org/pypi).
 
 ```bash
 $ source ~/venvs/perceval/bin/activate
 (perceval) $ pip3 install perceval
 ```
 
-This will install Perceval and its dependencies (other Python modules that are needed by Perceval to work). So, we're ready to see what it can do.
+This will install Perceval and its dependencies \(other Python modules that are needed by Perceval to work\). So, we're ready to see what it can do.
 
 ## Checking that it is installed
 
@@ -39,7 +39,7 @@ Assuming everything was fine, next thing is getting information about an specifi
 (perceval) $ perceval git --help
 ```
 
-Now that we have Perceval installed, let's give it a try. For that, we will use the git repository for the Perceval source code as the data source to retrieve (do you appreciate the nice recursion here?)
+Now that we have Perceval installed, let's give it a try. For that, we will use the git repository for the Perceval source code as the data source to retrieve \(do you appreciate the nice recursion here?\)
 
 ## Using Perceval as a program
 
@@ -117,7 +117,7 @@ To begin with, let's use the `perceval` command that we checked just a moment ag
 [2016-10-03 00:47:47,862] - Sir Perceval completed his quest.
 ```
 
-Your output will vary depending on the exact version of Perceval you have, and when you run it. But you will get something similar to this start (with the first commit in Perceval), followed by many more commits, and the final messages. In addition, by redirecting stdout you can notice that JSON documents are actually written to stdout, while progress messages are written in stderr. This makes it easy to get a file with all commits (one JSON document per commit), or to pipe them to some other command. For example:
+Your output will vary depending on the exact version of Perceval you have, and when you run it. But you will get something similar to this start \(with the first commit in Perceval\), followed by many more commits, and the final messages. In addition, by redirecting stdout you can notice that JSON documents are actually written to stdout, while progress messages are written in stderr. This makes it easy to get a file with all commits \(one JSON document per commit\), or to pipe them to some other command. For example:
 
 ```bash
 (perceval) $ perceval git https://github.com/grimoirelab/perceval.git > /tmp/perceval.test
@@ -141,9 +141,9 @@ One interesting detail of this behavior is that Perceval is clonning the git rep
 [2016-10-03 01:01:58,195] - Fetch process completed: 356 commits fetched
 [2016-10-03 01:01:58,195] - Sir Perceval completed his quest.
 
-real	0m2.991s
-user	0m0.544s
-sys	0m0.100s
+real    0m2.991s
+user    0m0.544s
+sys    0m0.100s
 
 (perceval) $ time perceval git https://github.com/grimoirelab/perceval.git \
   --git-path /tmp/perceval.git > /tmp/perceval.test
@@ -152,16 +152,16 @@ sys	0m0.100s
 [2016-10-03 01:02:01,323] - Fetch process completed: 356 commits fetched
 [2016-10-03 01:02:01,323] - Sir Perceval completed his quest.
 
-real	0m1.151s
-user	0m0.432s
-sys	0m0.032s
+real    0m1.151s
+user    0m0.432s
+sys    0m0.032s
 ```
 
 Of course, differences will be longer for larger repositories.
 
 ## Using Perceval as a Python module
 
-But we know that Perceval is a Python library. So, let's use it as a Python library, from a Python script ([perceval_git_1.py](https://github.com/jgbarah/grimoirelab-training/blob/master/perceval/scripts/perceval_git_1.py)):
+But we know that Perceval is a Python library. So, let's use it as a Python library, from a Python script \([perceval\_git\_1.py](https://github.com/jgbarah/grimoirelab-training/blob/master/perceval/scripts/perceval_git_1.py)\):
 
 ```python
 #! /usr/bin/env python3
