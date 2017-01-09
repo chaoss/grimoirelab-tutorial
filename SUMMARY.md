@@ -8,6 +8,8 @@
     * [Mail archives](perceval/mail.md)
     * [Summarizing](perceval/summarizing.md)
 * [Producing Kibana dashboards with GrimoireELK](grimoireelk/producing_kibana_dashboards_with_grimoireelk.md)
+    * [Installation](grimoireelk/installation.md)
+    * [A simple dashboard](grimoireelk/a-simple-dashboard.md)
 * [Python scripting](python/scripting.md)
     * [Persistent storage in ElasticSearch](python/elasticsearch.md)
     * [Querying ElasticSearch](python/quering_elasticsearch.md)
