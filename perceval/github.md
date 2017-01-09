@@ -260,7 +260,7 @@ To run this script, just run \(of course, substituting "XXXXX" for your token\):
 ...
 ```
 
-## Summarizing
 
-After learning the basics of Perceval, in this section we have learned to use the GitHub backend, and how to use authentication with it to benefit from an extended rate limit in the access to the GitHub API. Then, we have written a simple Python program to get issues and pull requests associated with a GitHub repository.
+
+
 

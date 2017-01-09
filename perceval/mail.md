@@ -4,21 +4,20 @@ Many software development projects use mailing lists as a mean for coordination.
 
 ## Parsing mbox archives
 
-
 As in other cases, we can start by asking Perceval for some help:
 
 ```
 (perceval) $ perceval mbox --help
 ```
 
-From the banner it produces, we learn that the most simple usage is specifying the uri for the mailing list to analyze, and a directory with its archives. The uri is used for annotation purposes, and can really be any string (although it should usually be a link to the mailing list webpage). The directory needs to be filled with files, each of them in mbox format. So, let's start by getting one archive:
+From the banner it produces, we learn that the most simple usage is specifying the uri for the mailing list to analyze, and a directory with its archives. The uri is used for annotation purposes, and can really be any string \(although it should usually be a link to the mailing list webpage\). The directory needs to be filled with files, each of them in mbox format. So, let's start by getting one archive:
 
 ```bash
 (perceval) $ mkdir archives
 (perceval) $ wget -P archives http://mail-archives.apache.org/mod_mbox/httpd-announce/201607.mbox
 ```
 
-These two lines (assuming we already have wget installed), will retrieve the archive corresponding to July 2016 of the mailing list `httpd-announce`, of the Apache project. The option `-P archives` to wget will ensure that the file is stored in the `archives` directory, which we created in the previous line.
+These two lines \(assuming we already have wget installed\), will retrieve the archive corresponding to July 2016 of the mailing list `httpd-announce`, of the Apache project. The option `-P archives` to wget will ensure that the file is stored in the `archives` directory, which we created in the previous line.
 
 Once we have the archive, we can analyze it:
 
@@ -56,9 +55,9 @@ The above message show how the `archives` directory was parsed looking for mbox 
 ...
 ```
 
-We can see the usual structure of a Perceval JSON document, with some metainformation (such as `backend_name`), and all the content the corresponding message in the `data` field. The structure of that content is one field per header, with the same name the header has in the message. For the body of the message, the field `body` is used.
+We can see the usual structure of a Perceval JSON document, with some metainformation \(such as `backend_name`\), and all the content the corresponding message in the `data` field. The structure of that content is one field per header, with the same name the header has in the message. For the body of the message, the field `body` is used.
 
-#
+\#
 
 If we have several mbox files in the directory, all of them will be analyzed at once. For example, we can add a new archive to the `archives` directory above, and run Perceval again:
 
@@ -72,18 +71,18 @@ If we have several mbox files in the directory, all of them will be analyzed at 
 [2016-11-23 11:12:37,814] - Sir Perceval completed his quest.
 ```
 
-Now, 5 messages were analyzed, since the new archive (for August 2016) contains just one, and we already had 4 in the first archive we downloaded (for July 2016).
+Now, 5 messages were analyzed, since the new archive \(for August 2016\) contains just one, and we already had 4 in the first archive we downloaded \(for July 2016\).
 
-In this case, we can also see a small difference on the body of the messages. For the last one we obtain in perceval.log, we can see how the `body` field is a dictionary with a field named `html`. That's because the content is labeled in the original message as being in HTML format. Compare this to the first example above, where the `body` field contains a field named `plain`, because the content is in plan (unformatted) format.
+In this case, we can also see a small difference on the body of the messages. For the last one we obtain in perceval.log, we can see how the `body` field is a dictionary with a field named `html`. That's because the content is labeled in the original message as being in HTML format. Compare this to the first example above, where the `body` field contains a field named `plain`, because the content is in plan \(unformatted\) format.
 
 ```
-        "body": {
-            "html": "<head >\n<STYLE>\n .headerTop { background-color:#FFCC66; 
+"body": {
+            "html": "<head >\n<STYLE>\n .headerTop { background-color:#FFCC66;
 ```
 
 ## Analyzing messages with Python
 
-As usual, we can use Perceval as a Python module for analyzing messages in mbox files. Using the same two archives we downloaded above, in the `archives` directory, we can for example show the subject for all messages (code below is in [perceval_mbox_1.py](https://github.com/jgbarah/grimoirelab-training/blob/master/perceval/scripts/perceval_mbox_1.py)):
+As usual, we can use Perceval as a Python module for analyzing messages in mbox files. Using the same two archives we downloaded above, in the `archives` directory, we can for example show the subject for all messages \(code below is in [perceval\_mbox\_1.py](https://github.com/jgbarah/grimoirelab-training/blob/master/perceval/scripts/perceval_mbox_1.py)\):
 
 ```python
 #! /usr/bin/env python3
@@ -116,6 +115,7 @@ Vai in vacanza con l'iPhone e le Beats
 
 Which shows us how some spam got into the Apache `httpd-announce` mailing list, by the way.
 
-## Summarizing
 
-We have learned to analyze mbox archives with Perceval, and we wrote a very simple Python program to do it. Fortunately, mbox is a very common format for email archives, and there are many tools to convert to it from other formats. That means that you can analyze many mailing lists archives out there.
+
+
+
