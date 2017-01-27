@@ -183,5 +183,5 @@ The script includes a simple parser that will read the repository url and the di
 To run it, just provide those two command line arguments: repository url and directory to clone:
 
 ```bash
-python3 perceval_git_counter.py https://github.com/grimoirelab/perceval.git /tmp/clonedir
+$ python3 perceval_git_counter.py https://github.com/grimoirelab/perceval.git /tmp/clonedir
 ```
