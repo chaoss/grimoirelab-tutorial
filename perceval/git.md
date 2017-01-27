@@ -127,15 +127,15 @@ But we know that Perceval is a Python library. So, let's use it as a Python libr
 ```python
 #! /usr/bin/env python3
 
-import perceval.backends
+from perceval.backends.core.git import Git
 
 # url for the git repo to analyze
-repo_url = 'http://github.com/grimmoirelab/perceval.git'
+repo_url = 'http://github.com/grimoirelab/perceval.git'
 # directory for letting Perceval clone the git repo
 repo_dir = '/tmp/perceval.git'
 
 # create a Git object, pointing to repo_url, using repo_dir for cloning
-repo = perceval.backends.git.Git(uri=repo_url, gitpath=repo_dir)
+repo = Git(uri=repo_url, gitpath=repo_dir)
 # fetch all commits as an iteratoir, and iterate it printing each hash
 for commit in repo.fetch():
     print(commit['data']['commit'])
@@ -155,7 +155,27 @@ cedc42d8d897d1bf64e999b91fb9ce34464440c9
 d7bef8060648f96000a575b1c2af6bc63f9a0ad3
 ```
 
+## An example: counting commits in a repository
 
+After the first example of using Perceval to get data from git repositories, we can write a slightly useful Python script: one that counts commits in a git repository. The complete script is described in the Tools and Tips chapter, and the code can be accessed as [perceval_git_counter.py](https://github.com/jgbarah/GrimoireLab-training/blob/master/tools-and-tips/scripts/perceval_git_counter.py). Its skeleton is as follows:
 
+```python
+import argparse
+from perceval.backends.core.git import Git
 
+parser = argparse.ArgumentParser(description = "Count commits in a git repo")
+parser.add_argument("repo", help = "Repository url")
+parser.add_argument("dir", help = "Directory for cloning the repository")
+parser.add_argument("--print", action='store_true', help = "Print hashes")
+args = parser.parse_args()
 
+repo = Git(uri=args.repo, gitpath=args.dir)
+count = 0
+for commit in repo.fetch():
+    if args.print:
+        print(commit['data']['commit'])
+    count += 1
+print("Number of commmits: %d." % count)
+```
+
+The script includes a simple parser that will read the repository url and the directory to clone it from the command line, and another one (optional) to print commit hashes. The last lines of the script are quite similar to the previous example: get all the commits from the generator provided by the Git class, count them, and print the total count.
