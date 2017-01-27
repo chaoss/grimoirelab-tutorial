@@ -87,7 +87,7 @@ As usual, we can use Perceval as a Python module for analyzing messages in mbox 
 ```python
 #! /usr/bin/env python3
 
-import perceval.backends
+from perceval.backends.core.mbox import MBox
 
 # uri (label) for the mailing list to analyze
 mbox_uri = 'http://mail-archives.apache.org/mod_mbox/httpd-announce/'
@@ -96,7 +96,7 @@ mbox_uri = 'http://mail-archives.apache.org/mod_mbox/httpd-announce/'
 mbox_dir = 'archives'
 
 # create a mbox object, using mbox_uri as label, mbox_dir as directory to scan
-repo = perceval.backends.mbox.MBox(uri=mbox_uri, dirpath=mbox_dir)
+repo = MBox(uri=mbox_uri, dirpath=mbox_dir)
 # fetch all messages as an iteratoir, and iterate it printing each subject
 for message in repo.fetch():
     print(message['data']['Subject'])
