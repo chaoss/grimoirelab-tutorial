@@ -179,3 +179,9 @@ print("Number of commmits: %d." % count)
 ```
 
 The script includes a simple parser that will read the repository url and the directory to clone it from the command line, and another one (optional) to print commit hashes. The last lines of the script are quite similar to the previous example: get all the commits from the generator provided by the Git class, count them, and print the total count.
+
+To run it, just provide those two command line arguments: repository url and directory to clone:
+
+```bash
+python3 perceval_git_counter.py https://github.com/grimoirelab/perceval.git /tmp/clonedir
+```
