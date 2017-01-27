@@ -1,7 +1,6 @@
 # Queriyng ElasticSearch
 
-
-In the previous section we learned how to store Perceval data in ElasticSearch. Let's learn now how to query it. For this, we're going to use data from mailing lists. First, let's upload some messages to a fresh ElasticSearch index using the Perceval mbox backend (script [perceval_elasticsearch_mbox_1.py](https://github.com/jgbarah/GrimoireLab-training/blob/master/python/scripts/perceval_elasticsearch_mbox_1.py)):
+In the previous section we learned how to store Perceval data in ElasticSearch. Let's learn now how to query it. For this, we're going to use data from mailing lists. First, let's upload some messages to a fresh ElasticSearch index using the Perceval mbox backend \(script [perceval\_elasticsearch\_mbox\_1.py](https://github.com/jgbarah/GrimoireLab-training/blob/master/python/scripts/perceval_elasticsearch_mbox_1.py)\):
 
 ```python
 import email.utils
@@ -42,7 +41,7 @@ for message in repo.fetch():
     es.index(index='messages', doc_type='summary', body=summary)
 ```
 
-And now, let's retrieve data from this recently created index. For example, we can get the sender and the subject for each stored message ([perceval_elasticsearch_mbox_2.py](https://github.com/jgbarah/GrimoireLab-training/blob/master/python/scripts/perceval_elasticsearch_mbox_2.py)):
+And now, let's retrieve data from this recently created index. For example, we can get the sender and the subject for each stored message \([perceval\_elasticsearch\_mbox\_2.py](https://github.com/jgbarah/GrimoireLab-training/blob/master/python/scripts/perceval_elasticsearch_mbox_2.py)\):
 
 ```python
 import elasticsearch
@@ -61,9 +60,9 @@ for message in es_result['hits']['hits']:
 
 The key is the line calling `es.search`, where we are querying EalisticSearch. Since we only specify the index, we will get the whole index as a result. In fact, we get a dictionary, whose `hits` field includes several interesting fields: `total` for the total number of documents retrieved, and `hits`, for a list of the documents retrieved.
 
-For each of these documents, the data we uploaded is in the `_source` dictionary: we only need to retrieve the needed data from there (in this case, `from` and `subject`).
+For each of these documents, the data we uploaded is in the `_source` dictionary: we only need to retrieve the needed data from there \(in this case, `from` and `subject`\).
 
-The next script goes a step beyond, by searching for specific items (documents) in the index. In this case, we will ask for items whose `from` property matches (includes) the string `Jim` (see file [perceval_elasticsearch_mbox_3.py](https://github.com/jgbarah/GrimoireLab-training/blob/master/python/scripts/perceval_elasticsearch_mbox_3.py)):
+The next script goes a step beyond, by searching for specific items \(documents\) in the index. In this case, we will ask for items whose `from` property matches \(includes\) the string `Jim` \(see file [perceval\_elasticsearch\_mbox\_3.py](https://github.com/jgbarah/GrimoireLab-training/blob/master/python/scripts/perceval_elasticsearch_mbox_3.py)\):
 
 ```python
 import elasticsearch
@@ -79,4 +78,5 @@ for message in es_result['hits']['hits']:
         (message['_source']['from'], message['_source']['subject']))
 ```
 
-The difference is in the parameters for the `es.search` function, which now include an specific `doc_type` (`summary`,the one we used when uploading the items to ElasticSearch), and a `body`, which will be interpreted as a query.
+The difference is in the parameters for the `es.search` function, which now include an specific `doc_type` \(`summary`,the one we used when uploading the items to ElasticSearch\), and a `body`, which will be interpreted as a query.
+
