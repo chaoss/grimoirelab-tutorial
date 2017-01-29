@@ -40,7 +40,7 @@ In both cases, you will watch a JSON document with the description of the index.
 Then, the only missing element is a Kibana dashboard with its visualizations. We can use `kidash.py` to upload to Kibana a dashboard definition that we have ready for you in the [git-dashboard.json JSON file](https://raw.githubusercontent.com/jgbarah/GrimoireLab-training/master/grimoireelk/dashboards/git-dashboard.json). Download it to your `/tmp` directory, and run the command:
 
 ```bash
-(grimoireelk) $ kidash.py --elastic_url-enrich http://locahost:9200 \
+(grimoireelk) $ kidash.py --elastic_url-enrich http://localhost:9200 \
   --import /tmp/git-dashboard.json
 ```
 
