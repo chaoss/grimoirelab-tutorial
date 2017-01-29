@@ -8,7 +8,7 @@ To set up the complete environment to produce a Kibana-based dashboard based on 
 
 Let's see the details.
 
-### Installing grimoire-elk and grimoire-kidash
+### <a name="grimoire-xxx"></a>Installing grimoire-elk and grimoire-kidash
 
 Before installing `grimoire-elk` and `grimoire-kidash`, consider creating a Python3 virtual environnment (see details in First steps with Perceval). In the following, we will assume that we're installing everything in a virtual environment called `grimoireelk`.
 
