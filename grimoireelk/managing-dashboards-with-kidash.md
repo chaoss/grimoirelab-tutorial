@@ -8,8 +8,21 @@ Kidash is a Python script, kidash.py. It can be installed, with all its dependen
 
 ### Saving dashboards
 
-If you happen to modify the dashboard, or any of its visualizations, you can save it to a file, using `kidash.py`, either for backup or for uploading to a different Kibana instance. For that, you can get it from the corresponding ElasticSearch instance for our Kibana:
+You can save a dashboard, with all its components, to a file, either for backup or for later uploading to a different Kibana instance. You will need access to the ElasticSearch instance that your Kibana is using, because kidash will be reading its `.kidash` index. Assuming that Kibana is in localhost, at port 9200, and that you want to backup the dashboard named "Git" to the file `/tmp/dashboard-git.json`, just run (from the virtual environment where you installed `grimoire-kidash`):
 
- ```
+
+```
 (grimoireelk) kidash.py -e http://localhost:9200 --dashboard "Git" --export /tmp/dashboard-git.json
- ``` 
+``` 
+
+You can learn the name of the dashboard by looking at its top left corner, or by noting the name you use when opening it in Kibana. If the name includes spaces, use "-" instead. For example, for a dashboard named "Git History", use the line:
+
+```
+(grimoireelk) kidash.py -e http://localhost:9200 --dashboard "Git-History" --export /tmp/dashboard-git.json
+``` 
+
+If you open the file created, you will see it is written in JSON format. In fact, it is a dictionary with one entry per kind of element (dashboards, visualizations, searches, index patterns). For each kind of element, you will find a list of the saved elements, as dictionaries with their characteristics. These are the same you can read in Kibana (only for dashboards, visualizations, and searches) in the "Management | Saved Objects" menu entry, if you edit one of the elements. kidash takes care of, given the name of the dashborad, find recursively the other elements needed to draw it.
+
+### Restoring dashboards
+
+We already restored a dashboard in the [section on creating a simple dashboard](a-simple-dashboardmd#uploading-dashboard).
