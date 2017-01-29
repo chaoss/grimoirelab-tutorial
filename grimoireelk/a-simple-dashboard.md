@@ -70,8 +70,3 @@ $ (grimoireelk) p2o.py --enrich --index github_raw --index-enrich github \
   -t XXX --sleep-for-rate
 ```
 
-If you happen to modify the dashboard, or any of its visualizations, you can save it to a file, using `kidash.py`, either for backup or for uploading to a different Kibana instance. For that, you can get it from the corresponding ElasticSearch instance for our Kibana:
-
- ```
-(grimoireelk) kidash.py -e http://localhost:9200 --dashboard "Git" --export /tmp/dashboard-git.json
- ``` 
