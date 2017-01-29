@@ -35,7 +35,7 @@ In both cases, you will watch a JSON document with the description of the index.
 
 ![](elasticsearch-index.png)
 
-### <a href="uploading-dashboard"></a>Uploading the dashboard configuration
+### <a name="uploading-dashboard"></a>Uploading the dashboard configuration
 
 Then, the only missing element is a Kibana dashboard with its visualizations. We can use `kidash.py` to upload to Kibana a dashboard definition that we have ready for you in the [git-dashboard.json JSON file](https://raw.githubusercontent.com/jgbarah/GrimoireLab-training/master/grimoireelk/dashboards/git-dashboard.json). Download it to your `/tmp` directory, and run the command:
 
