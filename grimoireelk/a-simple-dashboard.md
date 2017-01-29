@@ -39,7 +39,7 @@ In both cases, you will watch a JSON document with the description of the index.
 
 Then, the only missing element is a Kibana dashboard with its visualizations. We can use `kidash.py` to upload to Kibana a dashboard definition that we have ready for you in the [git-dashboard.json JSON file](https://raw.githubusercontent.com/jgbarah/GrimoireLab-training/master/grimoireelk/dashboards/git-dashboard.json). Download it to your `/tmp` directory, and run the command:
 
-```
+```bash
 (grimoireelk) $ kidash.py --elastic_url-enrich http://locahost:9200 \
   --import /tmp/git-dashboard.json
 ```
@@ -64,8 +64,14 @@ Using the Kibana interface it is simple to modify the dashboard, its visualizati
 `p2o.py` can be used to produce indexes for many other data sources. For example for GitHub issues and pull requests, the magic line is like this \(of course, substitute XXX for your GitHub token\):
 
 ```bash
-$ p2o.py --enrich --index github_raw --index-enrich github \
+$ (grimoireelk) p2o.py --enrich --index github_raw --index-enrich github \
   -e http://localhost:9200 --no_inc --debug \
   github --owner grimoirelab --repository perceval \
   -t XXX --sleep-for-rate
 ```
+
+If you happen to modify the dashboard, or any of its visualizations, you can save it to a file, using `kidash.py`, either for backup or for uploading to a different Kibana instance. For that, you can get it from the corresponding ElasticSearch instance for our Kibana:
+
+ ```
+(grimoireelk) kidash.py -e http://localhost:9200 --dashboard "Git" --export /tmp/dashboard-git.json
+ ``` 
