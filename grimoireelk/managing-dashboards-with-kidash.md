@@ -25,4 +25,4 @@ If you open the file created, you will see it is written in JSON format. In fact
 
 ### Restoring dashboards
 
-We already restored a dashboard in the [section on creating a simple dashboard](a-simple-dashboardmd#uploading-dashboard).
+We already restored a dashboard in the [section on creating a simple dashboard](a-simple-dashboard.md#uploading-dashboard).
