@@ -11,18 +11,34 @@ Kidash is a Python script, kidash.py. It can be installed, with all its dependen
 You can save a dashboard, with all its components, to a file, either for backup or for later uploading to a different Kibana instance. You will need access to the ElasticSearch instance that your Kibana is using, because kidash will be reading its `.kidash` index. Assuming that Kibana is in localhost, at port 9200, and that you want to backup the dashboard named "Git" to the file `/tmp/dashboard-git.json`, just run (from the virtual environment where you installed `grimoire-kidash`):
 
 
-```
+```bash
 (grimoireelk) kidash.py -e http://localhost:9200 --dashboard "Git" --export /tmp/dashboard-git.json
 ``` 
 
 You can learn the name of the dashboard by looking at its top left corner, or by noting the name you use when opening it in Kibana. If the name includes spaces, use "-" instead. For example, for a dashboard named "Git History", use the line:
 
-```
-(grimoireelk) kidash.py -e http://localhost:9200 --dashboard "Git-History" --export /tmp/dashboard-git.json
+```bash
+(grimoireelk) kidash.py -e http://localhost:9200 --dashboard "Git-History" \
+  --export /tmp/dashboard-git.json
 ``` 
 
 If you open the file created, you will see it is written in JSON format. In fact, it is a dictionary with one entry per kind of element (dashboards, visualizations, searches, index patterns). For each kind of element, you will find a list of the saved elements, as dictionaries with their characteristics. These are the same you can read in Kibana (only for dashboards, visualizations, and searches) in the "Management | Saved Objects" menu entry, if you edit one of the elements. kidash takes care of, given the name of the dashborad, find recursively the other elements needed to draw it.
 
 ### Restoring dashboards
 
-We already restored a dashboard in the [section on creating a simple dashboard](a-simple-dashboard.md#uploading-dashboard).
+We already restored a dashboard in the [section on creating a simple dashboard](a-simple-dashboard.md#uploading-dashboard). We can restore from any file created with kidash. Assuming we have that file as `/tmp/dashboard-git.json`, we need to know the link to the ElasticSearch REST interface (same as for backing up). The format is, for example, as follows:
+
+```bash
+(grimoireelk) $ kidash.py --elastic_url-enrich http://localhost:9200 \
+  --import /tmp/git-dashboard.json
+```
+
+This will restore all elements in the file, overwritting, if needed, elements with the same name in the corresponding Kibana instance (in fact, in the corresponding ElasticSearch `.kibana` index). Therefore, beware: restoring a JSON file with kidash may destroy your elements, because they may be overwritten by others in the file. Remember to backup before running the command.
+
+### Other options
+
+kidash has some more options. For a complete listing, use the `--help` argument:
+
+```bash
+(grimoireelk) $ kidash.py --help
+```
