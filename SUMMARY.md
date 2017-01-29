@@ -20,4 +20,5 @@
   * [ElasticSearch](tools-and-tips/elasticsearch.md)
   * [HTML5 app: latest activity](tools-and-tips/html5-app-latest-activity.md)
   * [Copying indexes](tools-and-tips/copying-indexes.md)
+* [Contributing](contributing.md)
 
