@@ -51,3 +51,6 @@ This should serve a Kibana instance in `http://localhost:5601`. Point your web b
 
 Now, we´re ready to go.
 
+### Alternative: install Kibiter instead of Kibana
+
+Instead of Kibana, you can install [Kibiter](https://github.com/grimoirelab/kibiter), the soft fork of Kibana maintained as a part of GriomoireLab. It includes some goodies, such as customization of titles for visualizations in dashboards, or menus for showing direct access to several dashboards. But if you don't need those good you can work with vanilla Kibana.
