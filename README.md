@@ -1,4 +1,5 @@
 # GrimoireLab-training
+
 [GrimoireLab](http://grimoirelab.github.io/) is free, open source software for software development analytics. It allows you to retrieve data from many kinds of systems with information related to software development, and produce analysis and visualizations with it.
 
 GrimoireLab supports more than 20 different kinds of data sources, from git reposiories or GitHub projects, to issue trackers such as Jira or Bugzilla, including messaging systems such as IRC, Slack or mailing lists, or other types of systems such as StackOverflow or Jenkins.
