@@ -1,6 +1,6 @@
 # Producing Kibana dashboards with GrimoireELK
 
-[GrimoireEKL](http://github.com/grimoirelab/GrimoireELK) is an interim system oriented to produce Kibana-based dashboards with Perceval and friends. It provides a Python module \(`grimoire_elk`\) with facilities for driving Perceval, enriching data, and uploading / downloading it to / from ElasticSearch. It includes as well some scripts \(mainly `p2o.py` and `kidash.py`\) to retrieve data from repositories related to software development, and produce everything needed to have a nice Kibana-based dashboard for it.
+[GrimoireELK](http://github.com/grimoirelab/GrimoireELK) is an interim system oriented to produce Kibana-based dashboards with Perceval and friends. It provides a Python module \(`grimoire_elk`\) with facilities for driving Perceval, enriching data, and uploading / downloading it to / from ElasticSearch. It includes as well some scripts \(mainly `p2o.py` and `kidash.py`\) to retrieve data from repositories related to software development, and produce everything needed to have a nice Kibana-based dashboard for it.
 
 In summary, `p2o.py`:
 
