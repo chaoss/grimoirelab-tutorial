@@ -15,6 +15,7 @@
   * [Persistent storage in ElasticSearch](python/elasticsearch.md)
   * [Querying ElasticSearch](python/quering_elasticsearch.md)
   * [ElasticSearch DSL](python/elasticsearch-dsl.md)
+  * [Querying GrimoireELK indexes](python/querying-grimoireelk-indexes.md)
 * [Tools and tips](tools-and-tips/intro.md)
   * [Perceval](tools-and-tips/perceval.md)
   * [ElasticSearch](tools-and-tips/elasticsearch.md)
