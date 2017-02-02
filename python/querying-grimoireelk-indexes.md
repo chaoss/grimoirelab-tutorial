@@ -4,3 +4,15 @@ As we discussed in section [A simple dashboard](../grimoireelk/a-simple-dashboar
 
 But when we have the data we need in them, they are easy to query, and the fact is that they can provide a good deal of quality information. Let's see how to query them using `elasticsearch_dsl`, using as an example the git enriched index. This is the one we produced for the the git Kibana dashboard in section [A simple dashboard](../grimoireelk/a-simple-dashboard.md).
 
+### Common code for all the examples
+
+Before we can query the index, we need to import some modules, and declare de ElasticSearch instance we're going to use:
+
+```
+from elasticsearch import Elasticsearch
+from elasticsearch_dsl import Search
+from datetime import datetime
+
+es = Elasticsearch(["http://127.0.0.1:9200"])
+```
+
