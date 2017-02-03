@@ -30,7 +30,7 @@ from elasticsearch import Elasticsearch
 from elasticsearch_dsl import Search
 
 
-es = Elasticsearch(["http://127.0.0.1:9200"])
+es = Elasticsearch(["http://localhost:9200"])
 index = 'git'
 
 # Counting total number of commits
