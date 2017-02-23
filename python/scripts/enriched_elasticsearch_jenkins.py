@@ -37,6 +37,9 @@ def parse_args ():
                         help = "ElasticSearch instance")
     parser.add_argument("--es_index", type=str, required=True,
                         help = "ElasticSearch index with Jenkins data")
+    parser.add_argument("--days", type=int, required=False,
+                        default=90,
+                        help = "ElasticSearch index with Jenkins data")
     parser.add_argument("--verify_certs", dest="verify_certs",
                         action="store_true",
                         help = "Verify ssl certificates")
@@ -58,7 +61,7 @@ def main():
     request = elasticsearch_dsl.Search(using=es,
                                         index=args.es_index)
     request = request.filter('range',
-                        build_date={'from': datetime.datetime.now() - datetime.timedelta(days=90)})
+                        build_date={'from': datetime.datetime.now() - datetime.timedelta(days=args.days)})
     request = request.sort('-build_date')
     response = request.scan()
 
