@@ -11,7 +11,7 @@ $ pyvenv ~/venv
 $ source ~/venv/bin/activate
 (venv) $ pip install elasticsearch
 (venv) $ pip install elasticsearch-dsl
-(venv) $ wget https://github.com/jgbarah/GrimoireLab-training/blob/master/tools-and-tips/scripts/enriched_elasticsearch_jenkins.py
+(venv) $ wget https://raw.githubusercontent.com/jgbarah/GrimoireLab-training/master/tools-and-tips/scripts/enriched_elasticsearch_jenkins.py
 (venv) $ python enriched_elasticsearch_jenkins.py --help
 ...
 ```
