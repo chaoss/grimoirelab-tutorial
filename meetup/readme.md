@@ -5,9 +5,13 @@ where people can share kwnoledge, experiences, learn new things, etc.
 
 The platform already includes some stats for group managers:
 
-But, how about trying [Grimoire Lab](http://grimoirelab.github.io) to get more *actionable* information? 
+![Meetup stats](meetup-stats.jpg)
+
 Meetup support has been recently added to [Perceval](http://github.com/grimoirelab/perceval), so let's see
-what it could be done with it.
+what it could be done with it. What about trying [Grimoire Lab](http://grimoirelab.github.io) to get more *actionable* information?
+
+![Basic Meetup metrics with Grimoire Lab](meetup-stats-by-grimoirelab.jpg)
+
 
 ## Installing Grimoire Lab
 
@@ -79,22 +83,32 @@ Field: event_url
 Custom Label: Meetings
 ```
 
-### Members table
+### Some tables
 
-### Meetings table
+Let's create a *members table* to see:
+
+
+Using similar techniques, we might create a *meetings table*:
+
+![Meetings table](meetings-table.jpg)
 
 ### RVSPs answers
 
-### Groups meetings
+RVSP might be "yes", "no" or you might be in a "waitlist".. Let's create a *pie chart* to show and allow filtering by response.
 
-### Active members evolution
+If you are tracking more than one Meetup group, you might need a pie chart or a table to allow filtering. Something like:
 
-### Meetings evolution
+![Groups pie chart](groups-pie-chart.jpg)
+
+### Evolutionary charts
+
+### Some *painless*
 
 ### Create the dashboard
 
 In Kibana `Dashboard` section, add the previous visualization to get something similar to this:
 
+![Basic Meetup metrics with Grimoire Lab](meetup-stats-by-grimoirelab.jpg)
 
 You can save it and play with it to drill down into details, like:
 
