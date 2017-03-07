@@ -23,7 +23,7 @@
 
 import email.utils
 
-import perceval.backends
+from perceval.backends.core.mbox import MBox
 import elasticsearch
 
 # uri (label) for the mailing list to analyze
@@ -42,7 +42,7 @@ except elasticsearch.exceptions.RequestError:
     exit()
 
 # create a mbox object, using mbox_uri as label, mbox_dir as directory to scan
-repo = perceval.backends.mbox.MBox(uri=mbox_uri, dirpath=mbox_dir)
+repo = MBox(uri=mbox_uri, dirpath=mbox_dir)
 
 # Fetch all commits as an iteratoir, and iterate it uploading to ElasticSearch
 print('Analyzing mbox archives...')
