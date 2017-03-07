@@ -19,7 +19,7 @@ So, let's start with the basics of using the `elasticsearch` module. To begin wi
 Now we can write some Python code to test it [perceval_elasticsearch_1.py](https://github.com/jgbarah/GrimoireLab-training/blob/master/python/scripts/perceval_elasticsearch_1.py):
 
 ```python
-import perceval.backends
+from perceval.backends.core.git import Git
 import elasticsearch
 
 # Url for the git repo to analyze
@@ -32,7 +32,7 @@ es = elasticsearch.Elasticsearch(['http://localhost:9200/'])
 # Create the 'commits' index in ElasticSearch
 es.indices.create('commits')
 # Create a Git object, pointing to repo_url, using repo_dir for cloning
-repo = perceval.backends.git.Git(uri=repo_url, gitpath=repo_dir)
+repo = Git(uri=repo_url, gitpath=repo_dir)
 # Fetch all commits as an iteratoir, and iterate it uploading to ElasticSearch
 for commit in repo.fetch():
     # Create the object (dictionary) to upload to ElasticSearch
