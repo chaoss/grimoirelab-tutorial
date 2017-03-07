@@ -21,7 +21,7 @@
 ##   Jesus M. Gonzalez-Barahona <jgb@bitergia.com>
 ##
 
-import perceval.backends
+from perceval.backends.core.git import Git
 import elasticsearch
 
 # Url for the git repo to analyze
@@ -39,7 +39,7 @@ except elasticsearch.exceptions.RequestError:
     es.indices.delete('commits')
     es.indices.create('commits')
 # Create a Git object, pointing to repo_url, using repo_dir for cloning
-repo = perceval.backends.git.Git(uri=repo_url, gitpath=repo_dir)
+repo = Git(uri=repo_url, gitpath=repo_dir)
 # Fetch all commits as an iteratoir, and iterate it uploading to ElasticSearch
 for commit in repo.fetch():
     # Create the object (dictionary) to upload to ElasticSearch

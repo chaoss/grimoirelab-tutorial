@@ -23,7 +23,7 @@
 
 import datetime
 
-import perceval.backends
+from perceval.backends.core.git import Git
 import elasticsearch
 
 # Url for the git repo to analyze
@@ -40,7 +40,7 @@ except elasticsearch.exceptions.RequestError:
     print('Index already exisits, remove it before running this script again.')
     exit()
 # Create a Git object, pointing to repo_url, using repo_dir for cloning
-repo = perceval.backends.git.Git(uri=repo_url, gitpath=repo_dir)
+repo = Git(uri=repo_url, gitpath=repo_dir)
 # Fetch all commits as an iteratoir, and iterate it uploading to ElasticSearch
 print('Analyzing git repo...')
 for commit in repo.fetch():
