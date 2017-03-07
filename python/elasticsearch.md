@@ -125,7 +125,7 @@ Be careful with this code: it will delete the specified index without doubting a
 Let's produce now a more complete ElasticSearch index for git metadata. For each commit, it will have fields for hash, author, committer, author date and committer date (see the complete example in [perceval_elasticsearch_3.py](https://github.com/jgbarah/GrimoireLab-training/blob/master/python/scripts/perceval_elasticsearch_3.py)):
 
 ```python
-import perceval.backends
+from perceval.backends.core.git import Git
 import elasticsearch
 
 # Url for the git repo to analyze
@@ -142,7 +142,7 @@ except elasticsearch.exceptions.RequestError:
     print('Index already exisits, remove it before running this script again.')
     exit()
 # Create a Git object, pointing to repo_url, using repo_dir for cloning
-repo = perceval.backends.git.Git(uri=repo_url, gitpath=repo_dir)
+repo = Git(uri=repo_url, gitpath=repo_dir)
 # Fetch all commits as an iteratoir, and iterate it uploading to ElasticSearch
 print('Analyzing git repo...')
 for commit in repo.fetch():
