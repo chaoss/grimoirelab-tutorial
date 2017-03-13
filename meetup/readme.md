@@ -15,8 +15,7 @@ what it could be done with it. What about trying [Grimoire Lab](http://grimoirel
 
 ## Installing Grimoire Lab
 
-There are several ways to start using Grimoire Lab, but let's start from one of the simplest ones, *pip packages* 
-and Python virtual environments. Assuming you have already Python 3.x installed:
+There are several ways to start using [Grimoire Lab](http://grimoirelab.github.io), but let's start from one of the simplest ones, *pip packages*  and Python virtual environments. Assuming you have already Python 3.x installed:
 
 ```bash
 $ pyvenv ~/venvs/grimoire
@@ -245,10 +244,12 @@ LocalDateTime meetup_day_date = LocalDateTime.ofInstant(Instant.ofEpochMilli(doc
 return meetup_day_date.getHour();
 ```
 
-Now we have the data. Let's create a visualization for it. Let's use the `Line chart` to draw a bubbles chart. To do it, we will use the following metrics:
+Now we have the data. Let's create a bubbles chart visualization for it by using the `Line chart`. To do it, we will use the following metrics:
 * In the y-axis, we will show the hour of the day
 * We will add `Dot-size` to represent number unique people RVSP'ed for that hour and day
 * In the x-asis, we will show the day of the week
+
+Let's define the chart parameters:
 
 ```
 Metrics
