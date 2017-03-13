@@ -5,12 +5,12 @@ where people can share kwnoledge, experiences, learn new things, etc.
 
 The platform already includes some stats for group managers:
 
-![Meetup stats](meetup-stats.jpg)
+![Meetup stats](meetup-figs/meetup-stats.jpg)
 
 Meetup support has been recently added to [Perceval](http://github.com/grimoirelab/perceval), so let's see
 what it could be done with it. What about trying [Grimoire Lab](http://grimoirelab.github.io) to get more *actionable* information?
 
-![Basic Meetup metrics with Grimoire Lab](meetup-stats-by-grimoirelab.jpg)
+![Basic Meetup metrics with Grimoire Lab](meetup-figs/meetup-stats-by-grimoirelab.jpg)
 
 
 ## Installing Grimoire Lab
@@ -64,7 +64,7 @@ several types of information from Meetup. To check RVSP related info we need to 
 Let's create some visualizations in the `Visualize` section of our Kibana. All of them will be done from 
 the saved search `Meetup RVSPs`.
 
-![Visualize section in Kibana](visualize-kibana.png)
+![Visualize section in Kibana](meetup-figs/visualize-kibana.png)
 
 ### Simple metrics
 
@@ -86,7 +86,7 @@ Custom Label: Meetings
 
 We save it as `Meetup metrics`.
 
-![Meetup basic metrics](kibana-metrics-viz.png)
+![Meetup basic metrics](meetup-figs/kibana-metrics-viz.png)
 
 ### Some tables
 
@@ -120,7 +120,7 @@ Field: grimoire_creation_date
 Custom Label: Last RVSP
 ```
 
-![Table metrics](kibana-table-viz-def-1.png)
+![Table metrics](meetup-figs/kibana-table-viz-def-1.png)
 
 Now, we need to split the table in rows. The first thing is to split by _members names_:
 
@@ -137,11 +137,11 @@ You could see that some people might have the same _name_, so they will be shown
 What about using that field to provide the link to user's profile?
 
 Save previous work as `Meetup Members`. Go to `Management / Index patterns` to see how the fields are defined:
-![Index patttern fields](index-pattern-fields.png)
+![Index patttern fields](meetup-figs/index-pattern-fields.png)
 
 Look for `member_id` field an edit it (clicking in the pencil button) to use _url_ as format:
 
-![Editing field to be an URL](url-field.png)
+![Editing field to be an URL](meetup-figs/url-field.png)
 
 Update the field and go back to your saved `Meetup Members`visualization, and split rows defining:
 
@@ -155,11 +155,11 @@ Custom Label: Profile
 
 Run it, and once you have it ready, save it.
 
-![Members table](members-table.png)
+![Members table](meetup-figs/members-table.png)
 
 Using similar techniques, we might create a *meetings table*:
 
-![Meetings table](meetings-table.jpg)
+![Meetings table](meetup-figs/meetings-table.jpg)
 
 ### RVSPs answers
 
@@ -180,11 +180,11 @@ Size: 5
 Custom Label: RVSP Answer
 ```
 
-![RVSPs answers pie chart](pie-chart-definition.png)
+![RVSPs answers pie chart](meetup-figs/pie-chart-definition.png)
 
 If you are tracking more than one Meetup group, you might need a pie chart or a table to allow filtering. Something like:
 
-![Groups pie chart](groups-pie-chart.jpg)
+![Groups pie chart](meetup-figs/groups-pie-chart.jpg)
 
 ### Evolutionary charts
 
@@ -206,11 +206,11 @@ Interval: Monthly
 Custom Label: Date (Month)
 ```
 
-![People RVSP'ing each month](bar-chart.png)
+![People RVSP'ing each month](meetup-figs/bar-chart.png)
 
 You could create a similar chart for meetings evolution, showing the number of unique meetings that people is RSVP'ing in each month.
 
-![Meetings evolution each month](meetings-evolution.png)
+![Meetings evolution each month](meetup-figs/meetings-evolution.png)
 
 ### Some *Painless*
 
@@ -277,13 +277,13 @@ Size: 500
 
 To get the bubbles alone, you need to go to chart options tab and _uncheck_ `Show Connecting Lines` option. You should see something like:
 
-![Bubbles chart](bubbles-chart.png)
+![Bubbles chart](meetup-figs/bubbles-chart.png)
 
 ### Create the dashboard
 
 In Kibana `Dashboard` section, add the previous saved visualizations to get something similar to this:
 
-![Basic Meetup metrics with Grimoire Lab](meetup-stats-by-grimoirelab.jpg)
+![Basic Meetup metrics with Grimoire Lab](meetup-figs/meetup-stats-by-grimoirelab.jpg)
 
 You can save it and play with it to drill down into details, like:
 
