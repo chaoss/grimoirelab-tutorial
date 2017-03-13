@@ -180,7 +180,8 @@ Order: Descending
 Size: 5
 Custom Label: RVSP Answer
 ```
-![RVSPs answer pie chart](pie-chart-definition.png)
+
+![RVSPs answers pie chart](pie-chart-definition.png)
 
 If you are tracking more than one Meetup group, you might need a pie chart or a table to allow filtering. Something like:
 
@@ -188,7 +189,33 @@ If you are tracking more than one Meetup group, you might need a pie chart or a 
 
 ### Evolutionary charts
 
+Evolutionary data can be printed using [Kibana Timelion](https://www.elastic.co/guide/en/kibana/current/timelion.html), but we will use a more simple approach by now.
+
+Let's use the `Vertical bar chart` visualization to show a people _RSVP'ing_ over time. Let's define it as:
+
+```
+Metric
+Aggregation: Unique Count
+Field: member_id
+Custom Label: RSVPs
+```
+```
+X-Axis
+Aggregation: Date Histogram
+Field: grimoire_creation_date
+Interval: Monthly
+Custom Label: Date (Month)
+```
+
+![People RVSP'ing each month](bar-chart.png)
+
+You could create a similar chart for meetings evolution, showing the number of unique meetings that people is RSVP'ing in each month.
+
+![Meetings evolution each month](meetings-evolution.png)
+
 ### Some *painless*
+
+In Kibana 5, Elastic has added a powerful scripting language to define new fields.
 
 ### Create the dashboard
 
