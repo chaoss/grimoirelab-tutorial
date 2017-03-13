@@ -213,13 +213,74 @@ You could create a similar chart for meetings evolution, showing the number of u
 
 ![Meetings evolution each month](meetings-evolution.png)
 
-### Some *painless*
+### Some *Painless*
 
-In Kibana 5, Elastic has added a powerful scripting language to define new fields.
+In Kibana 5, Elastic has added a powerful scripting language to define new fields called [Painless](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/modules-scripting-painless.html). Let's use it to see what are the top day of the week and time for meetings.
+
+We have a field called `meetup_time` that showns the time and date for the meeting. We could get the day of the week number by creating an scripted field called `painless_meetup_day_int`  in `Management / Index patterns` as follows:
+
+```
+Languaje: Painless
+Type: Number
+Format: default
+Popularity: 0
+Script:
+
+LocalDateTime meetup_day_date = LocalDateTime.ofInstant(Instant.ofEpochMilli(doc['meetup_time'].value), ZoneId.of('Z'));
+
+return meetup_day_date.getDayOfWeek().getValue();
+```
+
+We could create also `painless_meetup_hour` in `Management / Index patterns` as follows:
+
+```
+Languaje: Painless
+Type: Number
+Format: default
+Popularity: 0
+Script:
+
+LocalDateTime meetup_day_date = LocalDateTime.ofInstant(Instant.ofEpochMilli(doc['meetup_time'].value), ZoneId.of('Z'));
+
+return meetup_day_date.getHour();
+```
+
+Now we have the data. Let's create a visualization for it. Let's use the `Line chart` to draw a bubbles chart. To do it, we will use the following metrics:
+* In the y-axis, we will show the hour of the day
+* We will add `Dot-size` to represent number unique people RVSP'ed for that hour and day
+* In the x-asis, we will show the day of the week
+
+```
+Metrics
+Y-Axis: 
+Aggregation: Average
+Field: painless_meetup_hour
+Custom Label: Hour of the day
+Dot-size:
+Aggregation: Unique Count
+Field: member_id
+```
+```
+X-Axis
+Aggregation: Histogram
+Field: painless_meetup_day_int
+Interval: 1
+Custom Label: Day of the week
+Split Lines
+Sub-aggregation: Terms
+Field: painless_meetup_hour
+Order-By: metric:Hour of the day
+Order: Descending
+Size: 500
+```
+
+To get the bubbles alone, you need to go to chart options tab and _uncheck_ `Show Connecting Lines` option. You should see something like:
+
+![Bubbles chart](bubbles-chart.png)
 
 ### Create the dashboard
 
-In Kibana `Dashboard` section, add the previous visualization to get something similar to this:
+In Kibana `Dashboard` section, add the previous saved visualizations to get something similar to this:
 
 ![Basic Meetup metrics with Grimoire Lab](meetup-stats-by-grimoirelab.jpg)
 
@@ -229,3 +290,7 @@ You can save it and play with it to drill down into details, like:
 - Which groups are more active?
 - Where are meetups happening?
 - Who is saying 'No' most of the times to meetup calls?
+
+If you need more information about how Kibana works, people from Elastic provides very complete [documentation](https://www.elastic.co/guide/en/kibana/current/index.html).
+
+I hope you have found this document useful, and I'd love seeing more [GrimoireLab](http://grimoirelab.github.io) use cases with other data sources...
