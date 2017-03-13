@@ -180,7 +180,7 @@ Order: Descending
 Size: 5
 Custom Label: RVSP Answer
 ```
-![RVSPs answer pie chart](pie-chart.png)
+![RVSPs answer pie chart](pie-chart-definition.png)
 
 If you are tracking more than one Meetup group, you might need a pie chart or a table to allow filtering. Something like:
 
