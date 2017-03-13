@@ -295,3 +295,7 @@ You can save it and play with it to drill down into details, like:
 If you need more information about how Kibana works, people from Elastic provides very complete [documentation](https://www.elastic.co/guide/en/kibana/current/index.html).
 
 I hope you have found this document useful, and I'd love seeing more [GrimoireLab](http://grimoirelab.github.io) use cases with other data sources...
+
+# License
+
+Licensed under Creative Commons [Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/)
