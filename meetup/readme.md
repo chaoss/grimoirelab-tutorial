@@ -65,28 +65,98 @@ several types of information from Meetup. To check RVSP related info we need to 
 Let's create some visualizations in the `Visualize` section of our Kibana. All of them will be done from 
 the saved search `Meetup RVSPs`.
 
+![Visualize section in Kibana](visualize-kibana.png)
+
 ### Simple metrics
 
-Create a `Metric` visualization using to get active members (people who have *RVSP'ed*) and meetings. You would need:
+Create a `Metric` visualization to get active members (people who have *RVSP'ed*) and meetings.
 
-* To get active members:
+To get active members, use following parameters:
 ```
 Aggregation: Unique Count
 Field: member_id
 Custom Label: Active members
 ```
 
-* To get meeting, add metrics:
+To get number of meetings, add following metric definition:
 ```
 Aggregation: Unique Count
 Field: event_url
 Custom Label: Meetings
 ```
 
+We save it as `Meetup metrics`.
+
+![Meetup basic metrics](kibana-metrics-viz.png)
+
 ### Some tables
 
 Let's create a *members table* to see:
 
+* People names
+* Profile link
+* Number of meetings _RVSP'ed to_
+* First time they have _RVSP'ed_
+* Last time they have _RVSP'ed_
+
+By selecting _Data table_ visualization, we might start by do a _unique count_ of _events_url_ (each meeting has an unique URL) that will show the total number of meetings in the selected time frame.
+
+```
+Aggregation: Unique Count
+Field: event_url
+Custom Label: Meetings
+```
+
+We could add first time and last time by adding following metrics:
+
+```
+Aggregation: Min
+Field: grimoire_creation_date
+Custom Label: 1st RVSP
+```
+
+```
+Aggregation: Max
+Field: grimoire_creation_date
+Custom Label: Last RVSP
+```
+
+![Table metrics](kibana-table-viz-def-1.png)
+
+Now, we need to split the table in rows. The first thing is to split by _members names_:
+
+```
+Aggregation: Terms
+Field: member_name
+Orber: Descending
+Size: 5000
+Custom Label: Member
+```
+
+You could see that some people might have the same _name_, so they will be shown under the same `member_name` bucket. We need to split the rows again by an unique field. For example, `member_id`
+
+What about using that field to provide the link to user's profile?
+
+Save previous work as `Meetup Members`. Go to `Management / Index patterns` to see how the fields are defined:
+![Index patttern fields](index-pattern-fields.png)
+
+Look for `member_id` field an edit it (clicking in the pencil button) to use _url_ as format:
+
+![Editing field to be an URL](url-field.png)
+
+Update the field and go back to your saved `Meetup Members`visualization, and split rows defining:
+
+```
+Aggregation: Terms
+Field: member_id
+Orber: Descending
+Size: 500
+Custom Label: Profile
+```
+
+Run it, and once you have it ready, save it.
+
+![Members table](members-table.png)
 
 Using similar techniques, we might create a *meetings table*:
 
