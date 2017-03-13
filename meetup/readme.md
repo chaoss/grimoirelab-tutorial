@@ -164,7 +164,23 @@ Using similar techniques, we might create a *meetings table*:
 
 ### RVSPs answers
 
-RVSP might be "yes", "no" or you might be in a "waitlist".. Let's create a *pie chart* to show and allow filtering by response.
+RVSP might be "yes", "no" or you might be in a "waitlist".. Let's create a *pie chart* to show and allow filtering by response. Select `Pie chart` in the Visualize screen and define it by:
+
+```
+Slice size
+Aggregation: Count
+Custom Label: RSVPs
+```
+```
+Split slice
+Aggregation: Terms
+Field: rvsps_response
+Orber By: metrics:RVSPs
+Order: Descending
+Size: 5
+Custom Label: RVSP Answer
+```
+![RVSPs answer pie chart](pie-chart.png)
 
 If you are tracking more than one Meetup group, you might need a pie chart or a table to allow filtering. Something like:
 
