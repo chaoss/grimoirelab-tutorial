@@ -11,6 +11,7 @@
   * [Installation](grimoireelk/installation.md)
   * [A simple dashboard](grimoireelk/a-simple-dashboard.md)
   * [Managing dashboards with kidash](grimoireelk/managing-dashboards-with-kidash.md)
+  * [Complete dashboard for Meetup](grimoireelk/meetup_complete.md)
 * [Python scripting](python/scripting.md)
   * [Persistent storage in ElasticSearch](python/elasticsearch.md)
   * [Querying ElasticSearch](python/quering_elasticsearch.md)
