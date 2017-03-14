@@ -29,7 +29,7 @@ If the group has a sizable activity, the command will be retrieving data for a w
 
 You need to start by loading your (running) Kibana instance in your browser, by pointing it to  [http://localhost:5601](http://localhost:5601). In the Kibana interface, click on `Management`, and then select `Index patterns` and `Add new`. Specify `meetup` as the `Index name of pattern`, and use `grimoire_creation_date` as `Time-field name` (this means to use that field for the time selector).
 
-
+![](/grimoireelk/meetup-figs/kibana_index_pattern.png)
 
 Once the index pattern is built, proceed to the `Discovery` section in Kibana to see how data looks like. For example, to check for information related to RVSPs we can create a new search:
 
