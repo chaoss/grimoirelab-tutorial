@@ -1,62 +1,37 @@
-# Analyzing Meetup groups activity
+## Create a complete dashboard for Meetup
 
-[Meetup](http://meetup.com) is one of the platforms used by many communities (not only technical ones), to organize meetings 
-where people can share kwnoledge, experiences, learn new things, etc.
-
-The platform already includes some stats for group managers:
-
-![Meetup stats](meetup-figs/meetup-stats.jpg)
-
-Meetup support has been recently added to [Perceval](http://github.com/grimoirelab/perceval), so let's see
-what it could be done with it. What about trying [Grimoire Lab](http://grimoirelab.github.io) to get more *actionable* information?
+[Meetup](http://meetup.com) is one of the platforms used by many communities to organize meetings. It is popular among some development communities, and can be a good example of how to build a dashboard from scratch. The result that you'll get after going through this section will be similar to this screenshot:
 
 ![Basic Meetup metrics with Grimoire Lab](meetup-figs/meetup-stats-by-grimoirelab.jpg)
 
+As in the previous sections, we will assume that all the needed Python modules (in this case, grimoire-elk and dependencies), ElasticSearch, and Kibana are already installed.
 
-## Installing Grimoire Lab
+### Gathering Meetup groups data
 
-There are several ways to start using [Grimoire Lab](http://grimoirelab.github.io), but let's start from one of the simplest ones, *pip packages*  and Python virtual environments. Assuming you have already Python 3.x installed:
+To gather data about the Meetup group names to track, you need:
 
-```bash
-$ pyvenv ~/venvs/grimoire
-$ source ~/venvs/grimoire/bin/activate
-(grimoire) $ pip3 install perceval
-(grimoire) $ pip3 install grimoire-elk
-```
+* Meetup group(s) name(s) to track
+* Your [Meetup API key](https://secure.meetup.com/es-ES/meetup_api/key/)
 
-You would need to have access to an ElasticSearch (ES) and a Kibana instance. Assuming you have them running in your 
-computer/laptop under their *default* configuration, you would have ES listening in `http://localhost:9200` and Kibana
-in `http://localshot:5601`.
-
-It's time to start loading data to ES!
-
-## Gathering Meetup groups data
-
-To gather data you would need two things:
-
-* Meetup group/s name/s to track (`GROUPNAME`)
-* Your [Meetup API Key](https://secure.meetup.com/es-ES/meetup_api/key/): `KEY`
-
-Once you have them, for each `groupname` you execute:
+For each of the group names, you only need to run the following command, assuming the grupo name is `group_name` and the Meetup API key is `meetup_key`:
 
 ```bash
-(grimoire) $ p2o.py --enrich --index meetup_raw --index-enrich meetup \
--e http://localhost:9200 --no_inc --debug meetup GROUPNAME -t KEY --tag GROUPNAME
+(grimoireelk) $ p2o.py --enrich --index meetup_raw --index-enrich meetup \
+-e http://localhost:9200 --no_inc --debug meetup group_name -t meetup_key --tag group_name
 ```
 
-It will be loading data for a while. It produces:
+If the group has a sizable activity, the command will be retrieving data for a while, and uploading it to ElasticSearch, producing:
 
-* A *raw* ES index called `meetup_raw`
-* An *enriched* ES index called `meetup` (the one we will play with)
+* A raw index: `meetup_raw`
+* An enriched index, ready to be used from Kibana: `meetup`
 
-## Building a dashboard
+### Building a dashboard
 
-Let's open our Kibana instance at `http://localhost:5601`
+You need to start by loading your (running) Kibana instance in your browser, by pointing it to  [http://localhost:5601](http://localhost:5601). In the Kibana interface, click on `Management`, and then select `Index patterns` and `Add new`. Specify `meetup` as the `Index name of pattern`, and use `grimoire_creation_date` as `Time-field name` (this means to use that field for the time selector).
 
-We need to set up a new `Index pattern` from `meetup` using `grimoire_creation_date` as `Time-field name`.
 
-Once setted up, let's visit the `Discovery` section in Kibana to see how data looks like. We see that Perceval is tracking
-several types of information from Meetup. To check RVSP related info we need to create a search and store it.
+
+Once the index pattern is built, proceed to the `Discovery` section in Kibana to see how data looks like. For example, to check for information related to RVSPs we can create a new search:
 
 1. Search for `is_meetup_rvsp=1`
 2. Save it as `Meetup RVSPs`
@@ -292,10 +267,5 @@ You can save it and play with it to drill down into details, like:
 - Where are meetups happening?
 - Who is saying 'No' most of the times to meetup calls?
 
-If you need more information about how Kibana works, people from Elastic provides very complete [documentation](https://www.elastic.co/guide/en/kibana/current/index.html).
 
-I hope you have found this document useful, and I'd love seeing more [GrimoireLab](http://grimoirelab.github.io) use cases with other data sources...
 
-# License
-
-Licensed under Creative Commons [Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/)
