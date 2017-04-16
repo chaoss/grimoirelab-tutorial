@@ -1,6 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
+* [Before you start](before-you-start.md)
 * [Perceval](perceval/perceval.md)
   * [First steps](perceval/first_steps.md)
   * [Git](perceval/git.md)
