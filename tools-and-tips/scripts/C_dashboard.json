@@ -1,0 +1,21 @@
+[
+  {
+    "_id": "C_Git_Demo",
+    "_type": "dashboard",
+    "_source": {
+      "title": "C_Git_Demo",
+      "hits": 0,
+      "description": "",
+      "panelsJSON": "[{\"col\":1,\"id\":\"C_Git_Demo_Table\",\"panelIndex\":1,\"row\":11,\"size_x\":8,\"size_y\":4,\"title\":\"New Authors\",\"type\":\"visualization\"},{\"col\":3,\"id\":\"C_Git_Demo_TS\",\"panelIndex\":2,\"row\":1,\"size_x\":6,\"size_y\":2,\"title\":\"# New Authors\",\"type\":\"visualization\"},{\"col\":1,\"id\":\"C_Git_Demo_Metrics\",\"panelIndex\":3,\"row\":1,\"size_x\":2,\"size_y\":4,\"title\":\"Summary\",\"type\":\"visualization\"},{\"col\":9,\"id\":\"C_Git_Demo_Repos_Table\",\"panelIndex\":4,\"row\":10,\"size_x\":4,\"size_y\":7,\"title\":\"Repos by New Authors\",\"type\":\"visualization\"},{\"col\":9,\"id\":\"C_Git_Demo_Orgs_Pie\",\"panelIndex\":5,\"row\":1,\"size_x\":4,\"size_y\":3,\"title\":\"New Authors per Organization\",\"type\":\"visualization\"},{\"col\":9,\"id\":\"C_Git_Demo_Repos_Pie\",\"panelIndex\":6,\"row\":7,\"size_x\":4,\"size_y\":3,\"title\":\"New Authors per First Repo\",\"type\":\"visualization\"},{\"col\":1,\"id\":\"C_Git_Demo_Org_TS\",\"panelIndex\":7,\"row\":5,\"size_x\":8,\"size_y\":3,\"title\":\"# New Authors by Top Organizations\",\"type\":\"visualization\"},{\"col\":1,\"id\":\"C_Git_Demo_Project_TS\",\"panelIndex\":8,\"row\":8,\"size_x\":8,\"size_y\":3,\"title\":\"# New Authors by Top First Projects\",\"type\":\"visualization\"},{\"col\":9,\"id\":\"C_Git_Demo_Projects_Pie\",\"panelIndex\":9,\"row\":4,\"size_x\":4,\"size_y\":3,\"title\":\"New Authors per First Project\",\"type\":\"visualization\"},{\"col\":3,\"id\":\"C_Git_Demo_Last_TS\",\"panelIndex\":10,\"row\":3,\"size_x\":6,\"size_y\":2,\"title\":\"# Authors by Last Commit\",\"type\":\"visualization\"},{\"col\":1,\"id\":\"C_Git_Demo_Last_Table\",\"panelIndex\":11,\"row\":15,\"size_x\":8,\"size_y\":4,\"title\":\"Authors With No Activity During Last 6 Months\",\"type\":\"visualization\"}]",
+      "optionsJSON": "{\"darkTheme\":false}",
+      "uiStateJSON": "{\"P-1\":{\"title\":\"New Authors\"},\"P-10\":{\"title\":\"# Authors by Last Commit\"},\"P-11\":{\"title\":\"Authors With No Activity During Last 6 Months\"},\"P-2\":{\"title\":\"# New Authors\"},\"P-3\":{\"title\":\"Summary\"},\"P-4\":{\"title\":\"Repos by New Authors\"},\"P-5\":{\"spy\":{\"mode\":{\"fill\":false,\"name\":null}},\"title\":\"New Authors per Organization\"},\"P-6\":{\"spy\":{\"mode\":{\"fill\":false,\"name\":null}},\"title\":\"New Authors per First Repo\"},\"P-7\":{\"title\":\"# New Authors by Top Organizations\"},\"P-8\":{\"title\":\"# New Authors by Top First Projects\"},\"P-9\":{\"title\":\"New Authors per First Project\"}}",
+      "version": 1,
+      "timeRestore": true,
+      "timeTo": "now",
+      "timeFrom": "now-15y",
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}}}]}"
+      }
+    }
+  }
+]
