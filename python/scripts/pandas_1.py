@@ -29,17 +29,19 @@ from elasticsearch import Elasticsearch
 from elasticsearch_dsl import Search
 import pandas as pd
 
-es_url = 'http://localhost:9200'
-es_index = 'git'
-
-es = Elasticsearch(es_url, verify_certs=False)
+es = Elasticsearch('http://localhost:9200', verify_certs=False)
 
 # Buckets by author name, finding first commit for each of them
-s = Search(using=es, index=es_index)
+s = Search(using=es, index='git')
 s.aggs.bucket('by_authors', 'terms', field='author_name', size=10000) \
     .metric('first_commit', 'min', field='author_date')
 s = s.sort("author_date")
 result = s.execute()
+
+# Uncomment the following two lines to see the resutls obtained
+# from the query
+#from pprint import pprint
+#pprint(result.to_dict())
 
 # Get a dataframe with each author and their first commit
 buckets_result = result['aggregations']['by_authors']['buckets']
@@ -53,11 +55,17 @@ for bucket in buckets_result:
 authors = pd.DataFrame.from_records(buckets)
 authors.sort_values(by='first_commit', ascending=False, inplace=True)
 
+# Uncomment the following line (and the import of pprint, above)ç
+# to print the dataframe
+#pprint(authors)
+
 # Get number of new authors per month
 by_month = authors['first_commit'] \
     .groupby([authors.first_commit.dt.year,
             authors.first_commit.dt.month]) \
     .agg('count')
+
+#pprint(by_month)
 
 # Produce csv files
 print("Creating CSV for new authors per month.")
