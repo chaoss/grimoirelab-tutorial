@@ -148,7 +148,7 @@ class ESStore(Store):
                 '_index': self.index,
                 '_type': item['_type'],
                 '_id': item['_id'],
-                'doc': item['_source']
+                '_source': item['_source']
             }
             logging.debug("Actions: {}".format(to_write))
             yield to_write
