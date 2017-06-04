@@ -55,6 +55,8 @@ def parse_args ():
                         help = "Source index (for ElasticSearch as data source)")
     parser.add_argument("--dest_index", type=str,
                         help = "Sink index (for ElasticSearch as data sink)")
+    parser.add_argument("--match", type=str, nargs=2,
+                        help = "Consider only documents with field value (only for ElasticSearch)")
     parser.add_argument("--verify_certs", dest="verify_certs",
                         action="store_true",
                         help = "Verify ssl certificates")
@@ -83,15 +85,32 @@ class Store():
 
         self.still_items = True
 
-    def read(self):
-        """Read from the constructor, maybe using a buffer (generator).
+    def _produce_item(self, item):
+        """Produce an inem, based on the item read.
 
-        :return: Python genrator returning items read from the data store.
+        The returned object should be a dictionary, ready for
+        consumption.
+        Default: just return item.
 
         """
 
+        return item
+
+    def read(self):
+        """Read from the constructor, maybe using a buffer (generator).
+
+        :return: Python generator returning items read from the data store.
+
+        """
+
+        read = 0
         for item in self.reader:
-            yield item
+            read += 1
+            if (read % 1000) == 0:
+                print("Items read: {}".format(read),
+                        end='\r')
+            yield self._produce_item(item)
+        print()
 
     def write(self, items):
         """Write an item to the constructor (maybe buffering).
@@ -107,23 +126,37 @@ class ESStore(Store):
 
     """
 
-    def __init__(self, instance, index, create=False, verify_certs=True):
+    def __init__(self, instance, index, create=False,
+                verify_certs=True, match=None):
         """Constructor for ElasticSearch stores.
+
+        In case there is a dictionary for matching, it will be
+        of the form:
+            {"match" : {
+                field : value
+                }}
 
         :param      str instance: url of the ElasticSearch instance
         :param         str index: index in ElasticSearch
         :param       bool create: create index or not
         :param bool verify_certs: don't verify SSL certificate
+        :param             match: dictionary for matching
 
         """
 
         super().__init__()
         self.instance = instance
         self.index = index
-        print(self.instance)
+        if match:
+            self.query = {'query': match}
+        else:
+            self.query = None
+        print("ElasticSearch: " + self.instance)
         try:
-            self.es = elasticsearch.Elasticsearch([self.instance],
-                                                verify_certs=verify_certs)
+            self.es = elasticsearch.Elasticsearch(
+                [self.instance],
+                retry_on_timeout=True,
+                verify_certs=verify_certs)
         except elasticsearch.exceptions.ImproperlyConfigured as exception:
             if exception.args[0].startswith("Root certificates are missing"):
                 print("Error validating SSL certificate for {}.".format(self.instance))
@@ -133,7 +166,10 @@ class ESStore(Store):
                 raise
         if create:
             self.es.indices.create(self.index)
-        self.reader = elasticsearch.helpers.scan(client=self.es, index=self.index)
+        scan_args = {'client': self.es, 'index': self.index}
+        if self.query:
+            scan_args['query'] = self.query
+        self.reader = elasticsearch.helpers.scan(**scan_args)
 
     def _to_actions(self, items):
         """Generator which wraps items, preparing them as actions to be written.
@@ -177,17 +213,29 @@ class FileStore(Store):
 
         super().__init__()
         self.path = path
-        print(self.path)
+        self.reader = open(self.path)
+        print("File: " + self.path)
 
-    def read(self):
-        """Read from the constructor, maybe using a buffer (generator).
+    def _produce_item(self, item):
+        """Produce an inem, based on the item read.
 
-        :return: Python genrator returning items read from the data store.
+        The returned object should be a dictionary, ready for
+        consumption.
+        Default: just return item.
 
         """
 
-        for item in open(self.path):
-            yield json.loads(item)
+        return json.loads(item)
+
+#    def read(self):
+#        """Read from the constructor, maybe using a buffer (generator).
+
+#        :return: Python genrator returning items read from the data store.
+
+#        """
+
+#        for item in open(self.path):
+#            yield json.loads(item)
 
     def write(self, items):
         """Write items to ElasticSearch instance and index.
@@ -215,8 +263,17 @@ def main():
             logging.basicConfig(format=log_format, level=level)
 
     if args.src.startswith('http://') or args.src.startswith('https://'):
+        if args.match:
+            match = {"match" : {
+                args.match[0] : args.match[1]
+                }}
+            print("Filtering for {}={}".format(args.match[0],
+                                                args.match[1]))
+        else:
+            match = None
         src = ESStore(instance=args.src, index=args.src_index,
-                        verify_certs=args.verify_certs)
+                        verify_certs=args.verify_certs,
+                        match = match)
     else:
         src = FileStore(path=args.src)
 
