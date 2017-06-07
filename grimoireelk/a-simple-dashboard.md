@@ -13,7 +13,7 @@ Let's follow the process step by step for a simple dashboard showing information
 
 Let's run `p2o.py` to create the indexes in ElasticSearch. We will create both the raw and the enriched index in one step. The raw index will contain all information retrieved from the data source (git repositories in this case), as provided by Perceval. The enriched index will contain the data used by the Kibana dashboard.
 
-As an example, we produce indexes for two git repositories: those of Perceval and GrimoireELK. We will use `git_raw` as the name for the raw index, and `git` for the enriched one. We will store indexes in our ElasticSearch instance listening at `http://localhost:9200`. Each of the following commands will retrieve and enrigh data for one of the git repositories:
+As an example, we produce indexes for two git repositories: those of Perceval and GrimoireELK. We will use `git_raw` as the name for the raw index, and `git` for the enriched one. We will store indexes in our ElasticSearch instance listening at `http://localhost:9200`. Each of the following commands will retrieve and enrich data for one of the git repositories:
 
 ```bash
 (grimoireelk) $ p2o.py --enrich --index git_raw --index-enrich git \
@@ -26,7 +26,7 @@ As an example, we produce indexes for two git repositories: those of Perceval an
 ...
 ```
 
-These commands should have produced our two new indexes in ElasticSearch: `git_raw`, with the raw data as produced by Perceval, and `git`, with the enriched information, ready to be shown by a Kibana dashobard. You can check both by feeding the following urls to your web browser:
+These commands should have produced our two new indexes in ElasticSearch: `git_raw`, with the raw data as produced by Perceval, and `git`, with the enriched information, ready to be shown by a Kibana dashboard. You can check both by feeding the following urls to your web browser:
 
 * [http://localhost:9200/git\_raw?pretty=true](http://localhost:9200/git_raw?pretty=true)
 * [http://localhost:9200/git?pretty=true](http://localhost:9200/git?pretty=true)
@@ -50,7 +50,7 @@ This should produce the promised dashboard, in all its glory! Point your web bro
 
 ### Final remarks
 
-In this section you have learned to produce a simple dashboard, using Perceval and GrimoireELK, with the data stored in ElaticSearch, and the dashboard itself in Kibana. It only has information for git repositories, but with a similar procedure, you can produce dashboards for other data sources.
+In this section you have learned to produce a simple dashboard, using Perceval and GrimoireELK, with the data stored in ElasticSearch, and the dashboard itself in Kibana. It only has information for git repositories, but with a similar procedure, you can produce dashboards for other data sources.
 
 In case you want to try a dashboard for some other repositories, once you're done with this one, you can delete the indexes \(both `git` and `git_raw`\), and produce new indexes with `p2o.py`. For doing this, you can use `curl` and the ElasticsSearch REST HTTP API:
 
@@ -66,7 +66,7 @@ Using the Kibana interface it is simple to modify the dashboard, its visualizati
 ```bash
 $ (grimoireelk) p2o.py --enrich --index github_raw --index-enrich github \
   -e http://localhost:9200 --no_inc --debug \
-  github --owner grimoirelab --repository perceval \
+  github grimoirelab perceval \
   -t XXX --sleep-for-rate
 ```
 
