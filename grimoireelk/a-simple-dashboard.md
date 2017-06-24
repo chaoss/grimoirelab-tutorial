@@ -70,3 +70,12 @@ $ (grimoireelk) p2o.py --enrich --index github_raw --index-enrich github \
   -t XXX --sleep-for-rate
 ```
 
+In  this  case, you  can  use the [github-dashboard.json JSON file](https://raw.githubusercontent.com/jgbarah/GrimoireLab-training/master/grimoireelk/dashboards/github-dashboard.json). Download it to your `/tmp` directory, and run the command:
+
+```bash
+(grimoireelk) $ kidash.py --elastic_url-enrich http://localhost:9200 \
+  --import /tmp/github-dashboard.json
+```
+
+This should produce a nice new  `GitHub` dashboard in Kibana.
+
