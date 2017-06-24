@@ -24,6 +24,7 @@
 import argparse
 import json
 import logging
+import pprint
 import urllib3
 
 import elasticsearch
@@ -57,6 +58,12 @@ def parse_args ():
                         help = "Sink index (for ElasticSearch as data sink)")
     parser.add_argument("--match", type=str, nargs=2,
                         help = "Consider only documents with field value (only for ElasticSearch)")
+    parser.add_argument("--with_mapping", dest="with_mapping",
+                        action="store_true",
+                        help = "Get / set mapping (if available)")
+    parser.add_argument("--without_mapping", dest="with_mapping",
+                        action="store_false",
+                        help = "Don't get / set mapping (even if available)")
     parser.add_argument("--verify_certs", dest="verify_certs",
                         action="store_true",
                         help = "Verify ssl certificates")
@@ -99,18 +106,34 @@ class Store():
     def read(self):
         """Read from the constructor, maybe using a buffer (generator).
 
+        First item will be the mapping (None if no mapping,
+        or a dictionary with the mapping in a '_mapping' field)
+
         :return: Python generator returning items read from the data store.
 
         """
 
+        # Get the genertor
+        reader = self._get_reader()
         read = 0
-        for item in self.reader:
+        # Yield the mapping
+        if self.with_mapping:
+            mapping = self._get_mapping()
+            yield mapping
+        else:
+            item = next(reader)
+            if '_mapping' not in item:
+                # First element is not a mapping, yield
+                read = 1
+                yield self._produce_item(item)
+        # Iterate generator, yielding items
+        for item in reader:
             read += 1
             if (read % 1000) == 0:
                 print("Items read: {}".format(read),
                         end='\r')
             yield self._produce_item(item)
-        print()
+        print("Items read: {}".format(read))
 
     def write(self, items):
         """Write an item to the constructor (maybe buffering).
@@ -127,6 +150,7 @@ class ESStore(Store):
     """
 
     def __init__(self, instance, index, create=False,
+                with_mapping = False,
                 verify_certs=True, match=None):
         """Constructor for ElasticSearch stores.
 
@@ -138,7 +162,7 @@ class ESStore(Store):
 
         :param      str instance: url of the ElasticSearch instance
         :param         str index: index in ElasticSearch
-        :param       bool create: create index or not
+        :param bool with_mapping: get / set mapping or not
         :param bool verify_certs: don't verify SSL certificate
         :param             match: dictionary for matching
 
@@ -147,6 +171,7 @@ class ESStore(Store):
         super().__init__()
         self.instance = instance
         self.index = index
+        self.with_mapping = with_mapping
         if match:
             self.query = {'query': match}
         else:
@@ -164,12 +189,34 @@ class ESStore(Store):
                 exit()
             else:
                 raise
-        if create:
-            self.es.indices.create(self.index)
+
+    def _get_reader(self):
+        """Get a reader generator.
+
+        """
+
         scan_args = {'client': self.es, 'index': self.index}
         if self.query:
             scan_args['query'] = self.query
-        self.reader = elasticsearch.helpers.scan(**scan_args)
+        reader = elasticsearch.helpers.scan(**scan_args)
+        return reader
+
+    def _get_mapping(self):
+        """Returns mapping for the index.
+
+        """
+
+        mappings = self.es.indices.get_mapping(self.index)
+        if len(mappings) == 0:
+            print("Error: No mapping retrieved, aborting.")
+            exit()
+        elif len(mappings) > 1:
+            print("Warning: " \
+                + "More than one mapping retrieved, using one of them")
+        mapping = {'_mapping': list(mappings.values())[0]}
+        logging.info("Mapping retrieved:")
+        logging.info(pprint.pformat(mapping))
+        return mapping
 
     def _to_actions(self, items):
         """Generator which wraps items, preparing them as actions to be written.
@@ -196,6 +243,23 @@ class ESStore(Store):
 
         """
 
+        item = next(items)
+        if '_mapping' in item:
+            if self.with_mapping:
+                # Write mapping
+                logging.info("Creating index with mapping")
+                self.es.indices.create(index=self.index,
+                                        body=item['_mapping'])
+            else:
+                pass
+        else:
+            if self.with_mapping:
+                print("Error: no mapping to write")
+                exit()
+            else:
+                # Write normal item
+                actions = self._to_actions([item])
+                elasticsearch.helpers.bulk(self.es, actions)
         actions = self._to_actions(items)
         elasticsearch.helpers.bulk(self.es, actions)
 
@@ -204,20 +268,42 @@ class FileStore(Store):
 
     """
 
-    def __init__(self, path):
+    def __init__(self, path, with_mapping = False):
         """Constructor for file stores.
 
         :param      path: file path
+        :param bool with_mapping: get / set mapping or not
 
         """
 
         super().__init__()
         self.path = path
-        self.reader = open(self.path)
+        self.with_mapping = with_mapping
         print("File: " + self.path)
 
+    def _get_reader(self):
+        """Get a reader generator.
+
+        """
+
+        self.reader = open(self.path)
+        return self.reader
+
+    def _get_mapping(self):
+        """Returns mapping from the first element in the file.
+
+        """
+
+        mapping = json.loads(next(self.reader))
+        if '_mapping' not in mapping:
+            print("Error: no mapping to read")
+            exit()
+        logging.info("Mapping retrieved:")
+        logging.info(pprint.pformat(mapping))
+        return mapping
+
     def _produce_item(self, item):
-        """Produce an inem, based on the item read.
+        """Produce an item, based on the item read.
 
         The returned object should be a dictionary, ready for
         consumption.
@@ -227,24 +313,30 @@ class FileStore(Store):
 
         return json.loads(item)
 
-#    def read(self):
-#        """Read from the constructor, maybe using a buffer (generator).
 
-#        :return: Python genrator returning items read from the data store.
-
-#        """
-
-#        for item in open(self.path):
-#            yield json.loads(item)
-
-    def write(self, items):
-        """Write items to ElasticSearch instance and index.
+    def write(self, items, mapping=None):
+        """Write items to file.
 
         :param items: generator with items to write
 
         """
 
         with open(self.path, 'w') as f:
+            item = next(items)
+            if '_mapping' in item:
+                if self.with_mapping:
+                    # Write mapping
+                    f.write(json.dumps(item) + '\n')
+                else:
+                    pass
+            else:
+                if self.with_mapping:
+                    print("Error: no mapping to write")
+                    exit()
+                else:
+                    # Write normal item
+                    f.write(json.dumps(item) + '\n')
+            # Write the rest of items
             for item in items:
                 f.write(json.dumps(item) + '\n')
 
@@ -272,16 +364,20 @@ def main():
         else:
             match = None
         src = ESStore(instance=args.src, index=args.src_index,
+                        with_mapping = args.with_mapping,
                         verify_certs=args.verify_certs,
                         match = match)
     else:
-        src = FileStore(path=args.src)
-
-    if args.dest.startswith('http://') or args.dest.startswith('https://'):
+        src = FileStore(path=args.src,
+                        with_mapping = args.with_mapping)
+    if args.dest.startswith('http://') or \
+            args.dest.startswith('https://'):
         dest = ESStore(instance=args.dest, index=args.dest_index,
+                        with_mapping = args.with_mapping,
                         verify_certs=args.verify_certs)
     else:
-        dest = FileStore(path=args.dest)
+        dest = FileStore(path=args.dest,
+                        with_mapping = args.with_mapping)
 
     dest.write(src.read())
 
