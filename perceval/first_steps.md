@@ -4,17 +4,19 @@ Being a Python module, to use Perceval you will need to have Python installed in
 
 ## Preparing a virtualenv
 
-I'm assuming you already have Python3 installed \(Perceval is written for Python3\). Let's start by creating a Python virtual environment, so that we have a cozy place to work. In the following, we will use [Python3's pyvenv](https://docs.python.org/3/library/venv.html#creating-virtual-environments) \(available in Debian or Ubuntu as the `python3-venv` package\). But using the more traditional [virtualenv](http://docs.python-guide.org/en/latest/dev/virtualenvs/) should be possible as well.
+I'm assuming you already have Python3 installed \(Perceval is written for Python3\). Let's start by creating a Python virtual environment, so that we have a cozy place to work. In the following, we will use [Python3 venv module](https://docs.python.org/3/library/venv.html).
+
+> _Note:_ Instead of driving the `venv` module directly, you can also use [Python3 pyvenv](https://docs.python.org/3/library/venv.html#creating-virtual-environments) \(available in Debian or Ubuntu as the `python3-venv` package\). But using the more traditional [virtualenv](http://docs.python-guide.org/en/latest/dev/virtualenvs/) script should be possible as well.
 
 First, let's create our new environment. I like my Python virtual environments under the `venvs` subdirectory in my home directory, and in this case I will call it `perceval` \(see how original I am!\):
 
 ```bash
-$ pyvenv ~/venvs/perceval
+$ python3 -m venv ~/venvs/perceval
 ```
 
 Once the virtual environment is created, you can  activate it:
 
-```Bash
+```bash
 $ source ~/venvs/perceval/bin/activate
 (perceval) $
 ```
@@ -23,7 +25,7 @@ Now, any Python module you install in that shell will be installed under ~/venvs
 
 When you are done with a virtual environment, you can deactivate it until you need to activate it again. Deactivating is easy:
 
-```Bash
+```bash
 (perceval) $ deactivate
 $
 ```
@@ -61,4 +63,3 @@ Assuming everything was fine, next thing is getting information about an specifi
 If this shows a banner with information about how to use the Perceval git backend, we can assume that Perceval and all its dependencies were installed appropriately.
 
 Now that we have Perceval installed, let's give it a try. For that, in the following sections we will use it to retrieve information from some kinds of repositories. You're on your way to software development analysis!
-
