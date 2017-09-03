@@ -11,6 +11,7 @@
 * [Producing Kibana dashboards with GrimoireELK](grimoireelk/producing_kibana_dashboards_with_grimoireelk.md)
   * [Installation](grimoireelk/installation.md)
   * [A simple dashboard](grimoireelk/a-simple-dashboard.md)
+  * [A dashboard with SortingHat](grimoireelk/a-dashboard-with-sortinghat.md)
   * [Managing dashboards with kidash](grimoireelk/managing-dashboards-with-kidash.md)
   * [Complete dashboard for Meetup](grimoireelk/meetup_complete.md)
 * [Python scripting](python/scripting.md)
