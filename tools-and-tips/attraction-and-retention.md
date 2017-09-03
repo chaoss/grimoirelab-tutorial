@@ -35,3 +35,7 @@ Then create in Kibana the index pattern `git_demo`, based on the index you just 
 * `C_searches.json`
 
 And point Kibana to load the dashboard `C_Git_Demo`.
+
+## Final version of the script
+
+The final version of this script is [enriched_elasticsearch_newcomers.py](https://github.com/jgbarah/GrimoireLab-training/tree/master/tools-and-tips/scripts/enriched_elasticsearch_newcomers.py).
