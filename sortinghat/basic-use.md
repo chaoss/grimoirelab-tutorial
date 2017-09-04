@@ -4,7 +4,7 @@ Let's revisit the dashboard we produced with SortingHat support. We will add som
 
 ### Adding some more repositories
 
-To have a dashboard with some more complete data, let's add to the index we produced in [A dashboard with SortingHat](../grimoireelk/a-dashboard-with-sortinghat.md) four more repositories:
+To have a dashboard with some more complete data, let's add five more repositories to the index we produced in [A dashboard with SortingHat](../grimoireelk/a-dashboard-with-sortinghat.md):
 
 ```bash
 (sh) $ p2o.py --enrich --index git_raw --index-enrich git \
@@ -19,6 +19,11 @@ To have a dashboard with some more complete data, let's add to the index we prod
   -e http://localhost:9200 --no_inc --debug \
   --db-sortinghat shdb --db-user user --db-password XXX \
   git https://github.com/grimoirelab/mordred.git
+(sh) $ p2o.py --enrich --index git_raw --index-enrich git \
+  -e http://localhost:9200 --no_inc --debug \
+  --db-sortinghat shdb --db-user user --db-password XXX \
+  git https://github.com/grimoirelab/arthur.git
+
 (sh) $ p2o.py --enrich --index git_raw --index-enrich git \
   -e http://localhost:9200 --no_inc --debug \
   --db-sortinghat shdb --db-user user --db-password XXX \
