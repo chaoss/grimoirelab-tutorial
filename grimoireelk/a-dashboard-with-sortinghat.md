@@ -83,7 +83,7 @@ $ mysql -u user -pXXX -e 'SELECT * FROM identities;' shdb
 
 This will show all the identities found in the Perceval git repository.
 
-### Produce a Kibana dashboard
+### Producing a Kibana dashboard
 
 Let's produce now a Kibana dashboard for our enriched index (`git` in our ElasticSearch instance). I will start by installing `kidash`, to upload a JSON description of the dashboard, its visualizations, and everything needed:
 
