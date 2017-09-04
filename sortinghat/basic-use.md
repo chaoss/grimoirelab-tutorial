@@ -61,6 +61,8 @@ Let's summarize the aim of each table:
 * `domains_organizations`: email domains for organizations, used to infer affiliation relationships.
 * `matching_blacklist`: identities that should not be merged with others
 
+The `organizations`, `enrollments` and `domain_organziations` tables are empty, because for now, no information about organizations, nor relationship between persons and organizations, has been established. They will be filled when we later take care of that. By the way, this is the reason why in the dashboard up to know all persons appear as affiliated to `Unknown`, which is the label `p2o.py` uses for the organziation when no organization is found for a unique identifier.
+
 Now, let's visit the most important of those, exploring the data we have for them in our database.
 
 ### The identities and the uidentities tables
@@ -127,9 +129,37 @@ mysql -u user -pXXX -e 'SELECT * FROM identities;' shdb
 
 The profiles table includes the profiles for all unique identities: the data that is attached by default for each identity, and which can be used to show information about each person in the dashboard. It includes the following fields:
 
-* the  `uuid`
-* `name`
-* `email`
-* `is_bot`
-* `country_code`
+* the unique identifier for the profile, `uuid`
+* the name, `name`
+* the email address `email`
+* a boolean labeling the identity as a bot, `is_bot`
+* a country code, `country_code`
+
+For example, in our case:
+
+```bash
+mysql -u user -pXXX -e 'SELECT * FROM profiles;' shdb
+| uuid    | name                           | email                                | is_bot | country_code |
+| 0cac4ef | Quan Zhou                      | quan@bitergia.com                    |      0 | NULL         |
+| 0ef1c4a | Jesus M. Gonzalez-Barahona     | jgbarah@gmail.com                    |      0 | NULL         |
+| 11cc034 | quan                           | zhquan7@gmail.com                    |      0 | NULL         |
+| 35c0421 | Alberto Martín                 | alberto.martin@bitergia.com          |      0 | NULL         |
+| 37a8187 | Alberto Martín                 | albertinisg@users.noreply.github.com |      0 | NULL         |
+| 3ca4e85 | Daniel Izquierdo Cortazar      | dicortazar@gmail.com                 |      0 | NULL         |
+| 4fcec5a | dpose                          | dpose@sega.bitergia.net              |      0 | NULL         |
+| 5b358fc | dpose                          | dpose@bitergia.com                   |      0 | NULL         |
+| 692ad15 | Andre Klapper                  | a9016009@gmx.de                      |      0 | NULL         |
+| 6dcf98c | Daniel Izquierdo               | dizquierdo@bitergia.com              |      0 | NULL         |
+| 75fc28e | Santiago Dueñas                | sduenas@bitergia.com                 |      0 | NULL         |
+| 7ad0031 | Alvaro del Castillo            | acs@thelma.cloud                     |      0 | NULL         |
+| 8fac15f | alpgarcia                      | alpgarcia@gmail.com                  |      0 | NULL         |
+| 9aed245 | Alvaro del Castillo            | acs@bitergia.com                     |      0 | NULL         |
+...
+```
+
+All `is_bot` are 0 because that's the default value (false), and we have not specifically labeled any unique identifier as bot. All `country_code` are `NULL` because we have not identified countries in any way. For the rest of the fields, you may notice how SortingHat just used the infromation it had from the repo identities.
+
+When we unify repo identities (merging several into a single unique identity), we usually need to check the correspoonding entry in this table, for ensuring the profile information is correct.
+
+
 
