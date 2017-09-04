@@ -93,6 +93,8 @@ Let's produce now a Kibana dashboard for our enriched index (`git` in our Elasti
 
 Then, I use the JSON description of a dashboard for Git that includes visualizations for some fields generated from the SortingHat database: [git-sortinghat.json](https://raw.githubusercontent.com/grimoirelab/training/master/grimoireelk/dashboards/git-sortinghat.json).
 
+[git-sortinghat.json](/grimoireelk/dashboards/git-sortinghat.json)
+
 ```bash
 (sh) $ kidash.py --elastic_url-enrich http://localhost:9200 \
   --import /tmp/git-sortinghat.json
@@ -103,10 +105,8 @@ Then, I use the JSON description of a dashboard for Git that includes visualizat
 And I get a dashboard in all its glory:
 
 
+![](/grimoireelk/dashboard-git-sortinghat.png)
 
-
-
-Work in progress....
 
 
 
