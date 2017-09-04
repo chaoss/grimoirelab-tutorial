@@ -14,6 +14,8 @@
   * [A dashboard with SortingHat](grimoireelk/a-dashboard-with-sortinghat.md)
   * [Managing dashboards with kidash](grimoireelk/managing-dashboards-with-kidash.md)
   * [Complete dashboard for Meetup](grimoireelk/meetup_complete.md)
+* [SortingHat](sortinghat.md)
+  * [Basic use](sortinghat/basic-use.md)
 * [Python scripting](python/scripting.md)
   * [Persistent storage in ElasticSearch](python/elasticsearch.md)
   * [Querying ElasticSearch](python/quering_elasticsearch.md)
