@@ -19,6 +19,8 @@ In the previous section we saw a part of the `identities` table, which stores th
 | 8fac15f | alpgarcia                      | alpgarcia@gmail.com                  | NULL     | git    | 8fac15f |
 | 9aed245 | Alvaro del Castillo            | acs@bitergia.com                     | NULL     | git    | 9aed245 |
 
+### Merging identities
+
 It is obvious that there are some repo identities in it that correspond to the same person. In SortingHat, that means they should point to the same unique identity (`uuid`). But that is not the case, because in fact we have never told SortingHat they correspond to the same person. That operation is called "merging".
 
 For example, let's merge repo identity `4fcec5a` (dpose, dpose@sega.bitergia.net) with `5b358fc` (dpose, dpose@bitergia.com), which I know correspond to the same person:
@@ -54,4 +56,63 @@ Unique identity 35c0421704928bcbe3a0d9a4de1d79f9590ccaa9 merged on 37a8187909592
 Unique identity 7ad0031fa2db40a5149f54dfc2ec2a355e9443cd merged on 9aed245d9df109f8d00ca0e656121c3bdde46a2a
 ``` 
   
+### Showing information about a unique identity
+
+Now, we can check how SortingHat is storing information about these merged identities, but instead of querying directly the database, we can just use `sortinghat`:
+
+```bash
+(sh) $ sortinghat -u user -p XXX -d shdb show \
+  11cc0348b60711cdee515286e394c961388230ab
+unique identity 11cc0348b60711cdee515286e394c961388230ab
+
+Profile:
+    * Name: quan
+    * E-Mail: zhquan7@gmail.com
+    * Bot: No
+    * Country: -
+
+Identities:
+  0cac4ef12631d5b0ef2fa27ef09729b45d7a68c1	Quan Zhou	quan@bitergia.com	-	git
+  11cc0348b60711cdee515286e394c961388230ab	quan	zhquan7@gmail.com	-	git
+
+No enrollments
+```
+
+That is, we have two repo identities for this person, which we're identfying in the profile as `quan`, with email address `zhquan7@gmail.com`. Remember that the profile was already produced when each repo identity was added to the database, by creating a unique identity for it, and using the data in the repo identity for the profile.
+
+We merged the repo identity (Quan Zhou, quan@bitergia.com) on the unique identity that corresponded to (quan, zhquan7@gmail.com), which had as profile (quan, zhquan7@gmail.com) as well. Therefore, the unique identity after the merge conserves the old profile, in this case (quan, zhquan7@gmail.com). Should we have merged the other way around, we would have consderved (Quan Zhou, quan@bitergia.com) as the profile, which in this case seems more convenient. So, we have to be careful about how to merge, if we want to conserve the most interesting profiles.
+
+Unfortunately, we cannot redo the merge with the most convenient order:
+
+```bash
+(sh) $ sortinghat -u user -p XXX -d shdb merge \
+  11cc0348b60711cdee515286e394c961388230ab 0cac4ef12631d5b0ef2fa27ef09729b45d7a68c1 
+Error: 0cac4ef12631d5b0ef2fa27ef09729b45d7a68c1 not found in the registry
+```
+
+Why? Becauuse `0cac4ef` is no longer a valir unique identifier: we lost it when we merged the repo identity `0cac4ef`, which was the only one pointing to it. So, we cannot merge any repo identifier on it, since it no longer exists.
+
+Later on we will revisit this case, since there are stuff that can be done: breaking the unique identifier into two. But for now, let's use another approach to solve this problem.
+
+### Modifying profiles
+
+We can just modify the profile for the unique identity, thus changing the profile for a person:
+
+```bash
+(sh) $ sortinghat -u user -p XXX -d shdb profile \
+  --name "Quan Zhou" --email "quan@bitergia.com" \
+  11cc0348b60711cdee515286e394c961388230ab
+unique identity 11cc0348b60711cdee515286e394c961388230ab
+
+Profile:
+    * Name: Quan Zhou
+    * E-Mail: quan@bitergia.com
+    * Bot: No
+    * Country: -
+```
+
+This way we have the name and email address we want. Using `--country` we can also set a country for the person.
+
+
+
 
