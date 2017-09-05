@@ -127,5 +127,39 @@ All `is_bot` are 0 because that's the default value (false), and we have not spe
 
 When we unify repo identities (merging several into a single unique identity), we usually need to check the correspoonding entry in this table, for ensuring the profile information is correct.
 
+### Enrollments and organizations
+
+Up to now we have not used SortingHat to assign organizations to persons (unique identities). Therefore, `enrollments` and `organizations` tables are empty. But we can check their structure.
+
+```
+$ mysql -u user -pXXX -e 'DESCRIBE organizations;' shdb
++-------+--------------+------+-----+---------+----------------+
+| Field | Type         | Null | Key | Default | Extra          |
++-------+--------------+------+-----+---------+----------------+
+| id    | int(11)      | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(255) | NO   | UNI | NULL    |                |
++-------+--------------+------+-----+---------+----------------+
+
+``` 
+
+In this format, each row corresponds to the description of a field in the `organizations` table. We can see how simple lit is: just an identifier (for linking with other tables) and a name for each organization.
+
+`enrollments` table is a bit more complex:
+
+```
+$ mysql -u user -pXXX -e 'DESCRIBE enrollments;' shdb
++-----------------+--------------+------+-----+---------+----------------+
+| Field           | Type         | Null | Key | Default | Extra          |
++-----------------+--------------+------+-----+---------+----------------+
+| id              | int(11)      | NO   | PRI | NULL    | auto_increment |
+| start           | datetime     | NO   |     | NULL    |                |
+| end             | datetime     | NO   |     | NULL    |                |
+| uuid            | varchar(128) | NO   | MUL | NULL    |                |
+| organization_id | int(11)      | NO   | MUL | NULL    |                |
++-----------------+--------------+------+-----+---------+----------------+
+```
+
+This table stores the "periods of enrollment": relationships between persons (unique identities) and organizations, which happen during a certain period of time (from `start` to `end`). You can read each row in this table as "the person with this `uuid` worked for the organization `organization_id` during this period.
+
 
 
