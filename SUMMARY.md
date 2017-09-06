@@ -23,6 +23,7 @@
   * [ElasticSearch DSL](python/elasticsearch-dsl.md)
   * [Querying GrimoireELK indexes](python/querying-grimoireelk-indexes.md)
   * [Pandas for GrimoireLab indexes](python/pandas-for-grimoirelab-indexes.md)
+* [Cases: CHAOSS Health](cases-chaoss-health.md)
 * [Tools and tips](tools-and-tips/intro.md)
   * [Perceval](tools-and-tips/perceval.md)
   * [ElasticSearch](tools-and-tips/elasticsearch.md)
@@ -31,5 +32,4 @@
   * [CSV from Jenkins enriched index](tools-and-tips/csv-from-jenkins-enriched-index.md)
   * [Attraction & Retention](tools-and-tips/attraction-and-retention.md)
 * [Contributing](contributing.md)
-* [License](license.md)
 
