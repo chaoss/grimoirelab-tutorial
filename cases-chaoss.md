@@ -20,7 +20,7 @@ $ source gl/bin/activate
 (gl) $ pip install grimoire-elk grimoire-kidash
 ```
 
-Now, let's retrieve data for all the repositories to analyze (assuming ElasticSearch is local, available in its default port). We will use the following Python script, which will just run `p2o.py` for each repository to retrieve:
+Now, let's retrieve data for all the repositories to analyze (assuming ElasticSearch is local, available in its default port). We will use the following Python script, which will just run `p2o.py` for each repository to retrieve \([retrieve.py](/grimoirelab-training/cases-chaoss/scripts/retrieve.py)\):
 
 ```python
 #! !/usr/bin/env python3
