@@ -66,16 +66,16 @@ For example, for producing the index for the git repository for Perceval, run:
 ```bash
 (sh) $ p2o.py --enrich --index git_raw --index-enrich git \
   -e http://localhost:9200 --no_inc --debug \
-  --db-sortinghat shdb --db-user user --db-password XXX \
+  --db-host localhost --db-sortinghat shdb --db-user user --db-password XXX \
   git https://github.com/grimoirelab/perceval.git
 ...
-2017-09-04 01:14:22,267 Total items enriched 688 
-2017-09-04 01:14:22,267 Done git 
+2017-09-04 01:14:22,267 Total items enriched 688
+2017-09-04 01:14:22,267 Done git
 2017-09-04 01:14:22,268 Enrich backend completed
 2017-09-04 01:14:22,268 Finished in 0.08 min
 ```
 
-That means we have new `git_raw` and `git` indexes, but we also have a populated `shdb` database. If you want to check what's in it, you can again use `mysql`:
+That means we have new `git_raw` and `git` indexes, but we also have a populated `shdb` database (assuming we have MySQL running in `localhost`, that is the machine where the script is run). If you want to check what's in it, you can again use `mysql`:
 
 ```bash
 $ mysql -u user -pXXX -e 'SELECT * FROM identities;' shdb
@@ -104,14 +104,3 @@ And I get a dashboard in all its glory:
 
 
 ![](/grimoireelk/dashboard-git-sortinghat.png)
-
-
-
-
-
-
-
-
-
-
-

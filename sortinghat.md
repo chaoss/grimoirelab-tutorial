@@ -7,30 +7,26 @@ We will start by adding some more repositories to the index, to have some more c
 ```bash
 (sh) $ p2o.py --enrich --index git_raw --index-enrich git \
   -e http://localhost:9200 --no_inc --debug \
-  --db-sortinghat shdb --db-user user --db-password XXX \
+  --db-host localhost --db-sortinghat shdb --db-user user --db-password XXX \
   git https://github.com/grimoirelab/GrimoireELK.git
 (sh) $ p2o.py --enrich --index git_raw --index-enrich git \
   -e http://localhost:9200 --no_inc --debug \
-  --db-sortinghat shdb --db-user user --db-password XXX \
+  --db-host localhost --db-sortinghat shdb --db-user user --db-password XXX \
   git https://github.com/grimoirelab/panels.git
 (sh) $ p2o.py --enrich --index git_raw --index-enrich git \
   -e http://localhost:9200 --no_inc --debug \
-  --db-sortinghat shdb --db-user user --db-password XXX \
+  --db-host localhost --db-sortinghat shdb --db-user user --db-password XXX \
   git https://github.com/grimoirelab/mordred.git
 (sh) $ p2o.py --enrich --index git_raw --index-enrich git \
   -e http://localhost:9200 --no_inc --debug \
-  --db-sortinghat shdb --db-user user --db-password XXX \
+  --db-host localhost --db-sortinghat shdb --db-user user --db-password XXX \
   git https://github.com/grimoirelab/arthur.git
-
 (sh) $ p2o.py --enrich --index git_raw --index-enrich git \
   -e http://localhost:9200 --no_inc --debug \
-  --db-sortinghat shdb --db-user user --db-password XXX \
+  --db-host localhost --db-sortinghat shdb --db-user user --db-password XXX \
   git https://github.com/grimoirelab/training.git
 ```
 
 When we run `p2o.py` in all these cases, it uses Perceval to retrieve data from the corresponding git repositories, producing a raw index (`git_raw`). Based on it, `p2o.py` later produces the enriched index (`git`). Here is where SortingHat enters the game. Each new identity that `p2o.py` finds while enriching the raw index (in the case of git repositories, usually email addresses and names) is added to SortingHat. When looking in the SortingHat database we will see all these identities. Additionally, with the information stored in SortingHat, `p2o.py` produces some fields in the enriched index, such as the organziation or the name to show in the dashboard for each developer.
 
 Therefore, SortingHat controls how identities are matched to people, and people to organizations. It also controls how people are shown in the indexes. Let's see how.
-
-
-
