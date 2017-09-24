@@ -8,10 +8,9 @@ Let's build a simple HTML5 app showing the latest activity of a project or a set
 ### Get latest activity
 
 
-### Very simple HTML5 app
+### HTML5 app
 
 
-### Slightly nicer HTML5 app
+![](/tools-and-tips/html5_app.png)
 
-
-![](/tools-and-tips/html5_app_2.png)
+![](/tools-and-tips/html5_app_moving.gif)
