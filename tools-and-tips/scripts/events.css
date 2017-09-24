@@ -134,18 +134,4 @@ h2 {
 .marquee {
   position: relative;
   box-sizing: border-box;
-  animation-name: marquee;
-  animation-duration: 10s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-}
-
-.marquee:hover {
-    animation-play-state: paused;
-}
-
-/* Make it move! */
-@keyframes marquee {
-  0% { transform:translateY(20em); }
-  100% { transform:translateY(-100%); }
 }
