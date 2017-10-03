@@ -29,7 +29,7 @@ In case you decide to install ElasticSearch and Kibana yourself, instead of usin
 
 For ElasticSearch, you can follow its [installation instructions](https://www.elastic.co/guide/en/elasticsearch/reference/current/_installation.html). You will need to have a Java virtual machine installed \(Oracle JDK version 1.8.x is recommended\), The rest is simple: download the installation file from the [ElasticSearch downloads area](https://www.elastic.co/downloads/elasticsearch), and install it, for example by unzipping the zip installation file.
 
-Assuming the installed ElasticSearch directory is `elasticsearch`, to lanuch it you will just run the appropriate command \(no need to run this from the virtual environment\):
+Assuming the installed ElasticSearch directory is `elasticsearch`, to launch it you will just run the appropriate command \(no need to run this from the virtual environment\):
 
 ```
 $ elasticsearch/bin/elasticsearch
@@ -53,4 +53,4 @@ Now, we´re ready to go.
 
 ### Alternative: install Kibiter instead of Kibana
 
-Instead of Kibana, you can install [Kibiter](https://github.com/grimoirelab/kibiter), the soft fork of Kibana maintained as a part of GriomoireLab. It includes some goodies, such as customization of titles for visualizations in dashboards, or menus for showing direct access to several dashboards. But if you don't need those good you can work with vanilla Kibana.
+Instead of Kibana, you can install [Kibiter](https://github.com/grimoirelab/kibiter), the soft fork of Kibana maintained as a part of GrimoireLab. It includes some goodies, such as customization of titles for visualizations in dashboards, or menus for showing direct access to several dashboards. But if you don't need those goodies you can work with a vanilla Kibana.

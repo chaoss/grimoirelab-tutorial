@@ -6,7 +6,7 @@ But when we have the data we need in them, they are easy to query, and the fact 
 
 ### Common code for all the examples
 
-Before we can query the index, we need to import some modules, and declare de ElasticSearch instance we're going to use:
+Before we can query the index, we need to import some modules, and declare the ElasticSearch instance we are going to use:
 
 ```
 from datetime import datetime
