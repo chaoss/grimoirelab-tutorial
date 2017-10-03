@@ -31,7 +31,7 @@ These commands should have produced our two new indexes in ElasticSearch: `git_r
 * [http://localhost:9200/git\_raw?pretty=true](http://localhost:9200/git_raw?pretty=true)
 * [http://localhost:9200/git?pretty=true](http://localhost:9200/git?pretty=true)
 
-In both cases, you will watch a JSON document with the description of the index.
+In both cases, you will see a JSON document with the description of the index.
 
 ![](elasticsearch-index.png)
 
@@ -44,7 +44,7 @@ Then, the only missing element is a Kibana dashboard with its visualizations. We
   --import /tmp/git-dashboard.json
 ```
 
-This should produce the promised dashboard, in all its glory! Point your web browser to [your Kibana instance](http://localhost:5601/), click on `Dashboard` in the top menu, and use the floppy icon \(on the top right list of icons\) to select the `Git` dashboard. Get some popcorn, now you should be able of playing with the dashboard.
+This should produce the promised dashboard, in all its glory! Point your web browser to [your Kibana instance](http://localhost:5601/), click on `Dashboard` in the top menu, and use the floppy icon \(on the top right list of icons\) to select the `Git` dashboard. Get some popcorn, now you should be able to play with the dashboard.
 
 ![](kibana-dashboard.png)
 
