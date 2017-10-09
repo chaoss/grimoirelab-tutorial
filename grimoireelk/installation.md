@@ -25,7 +25,7 @@ This will also install Perceval (for retrieval of data from repositories) and ot
 
 ### Installing ElasticSearch and Kibana
 
-In case you decide to install ElasticSearch and Kibana yourself, instead of using them as a service, the process is not difficult. Please ensure you're installing at least version 5.1 ob both (as a rule, versions for Kibana and ElasticSearch should be the same if they are to work together).
+In case you decide to install ElasticSearch and Kibana yourself, instead of using them as a service, the process is not difficult. Please ensure you're installing at least version 5.1 of both of them (as a rule, versions for Kibana and ElasticSearch should be the same if they are to work together).
 
 For ElasticSearch, you can follow its [installation instructions](https://www.elastic.co/guide/en/elasticsearch/reference/current/_installation.html). You will need to have a Java virtual machine installed \(Oracle JDK version 1.8.x is recommended\), The rest is simple: download the installation file from the [ElasticSearch downloads area](https://www.elastic.co/downloads/elasticsearch), and install it, for example by unzipping the zip installation file.
 
@@ -50,6 +50,17 @@ This should serve a Kibana instance in `http://localhost:5601`. Point your web b
 ![Kibana welcome page](kibana_welcome.png)
 
 Now, we´re ready to go.
+
+### Installing ElasticSearch and Kibana from a Docker container
+
+Instead of following the installation instructions mentioned above, you can also install ElasticSearch and Kibana as a Docker container, by using pre-composed images. For example:
+
+```bash
+$ docker run -d -p 9200:9200 -p 5601:5601 nshou/elasticsearch-kibana
+```
+
+Then you can connect to Elasticsearch by localhost:9200 and its Kibana front-end by localhost:5601. See [details about these Docker images in DockerHub](https://hub.docker.com/r/nshou/elasticsearch-kibana/)
+
 
 ### Alternative: install Kibiter instead of Kibana
 
