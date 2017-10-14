@@ -33,5 +33,6 @@
   * [CSV from Jenkins enriched index](tools-and-tips/csv-from-jenkins-enriched-index.md)
   * [Attraction & Retention](tools-and-tips/attraction-and-retention.md)
 * [Internals](internals/intro.md)
+  * [Perceval backends](internals/perceval-backends.md)
 * [Contributing](contributing.md)
 

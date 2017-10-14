@@ -1,0 +1,101 @@
+# Perceval retrievers
+
+Perceval is the GrimoireLab component retrieving data from data sources, usually by interacting with service APIs or logs. A part of it is generic for all data sources, but most of its code is compose by retrievers. A retriever is a Perceval component specialized in retrieving data from a specific data source.
+
+## Structure of a retriever
+
+A Perceval retrieved is built with three components:
+
+* Client: interacts directly with the data source.
+* Backend: orchestrates the fetching process by using the Client.
+* CommandLine: defines the arguments to initialize and run the Backend from the command line.
+
+![](/assets/howto-perceval-backends.png)
+
+Backend and CommandLine extend the abstract classes in [backend.py](https://github.com/grimoirelab/perceval/blob/master/perceval/backend.py), thus they require the definition of several methods:
+
+* CommandLine:
+
+ * `setup_cmd_parser()` initializes the command parser for the backend.
+
+* Backend:
+
+ * `metadata_category(item)` defines the type of the fetched items (e.g., issue, topic, channel, etc.)
+ * `metadata_id(item)` identifies the unique ID of the fetched items (e.g., id of GitHub issues, commit sha for Git, etc.)
+ * `metadata_updated_on(item)` determines the update time of the fetched items (e.g., updated_at attribute of GitHub issues, committed date for Git, etc.)
+ * `has_resuming()` returns a boolean value whether the backend supports the resuming of the fetch process
+ * `has_caching()` returns a boolean value whether the backend supports caching items during the fetch process.
+ * `fetch(from_date)` contains the logic to perform the fetching process
+ * `fetch_from_cache()` contains the logic to perform the fetching process from cache
+
+All backends have their own unit tests and corresponding data, saved in the folder [/tests](https://github.com/grimoirelab/perceval/tree/master/tests) and [/tests/data](https://github.com/grimoirelab/perceval/tree/master/tests/data) respectively.
+Since most backends fetch data from HTTP APIs, their tests rely on HTTPretty (version==0.8.6), a mocking tool that simulates HTTP requests.
+
+## Tips
+
+### Implementation & conventions:
+
+* Components are usually implemented incrementally, starting with the `Client`, `Backend`, and `CommandLine` classes.
+* Client methods are named representing the information returned by the backend, using nouns instead of verbs. For example: `__issues(..)__` instead of `__get_issues(...)__`, `__user(...)__` instead of `__get_user(...)__`
+
+### Tests	
+
+* Tests are written together with the components, as soon as possible. 
+* Some tests are run on just a tiny subset of the data source, such as a small set of GitHub issues or commits in Git.
+* Stress tests are run too, such as working with a large GitHub/Git repository).
+
+### Caching
+
+The cache is filled with raw items (no JSON documents produced by the Backend), produced during the fetch process. Fetching data from cache is probably one of the most tricky activities  when implementing a backend. The complexity lays on the fact that the cache, basically a FIFO queue, stores items which are part of a nested tree structure. Thus, this structure has to be correctly retrieved when calling the `fetch_from_cache()` method.
+		
+A strategy to deal with such a complexity is to add markers before/after pushing the items to the cache. Examples of this strategy have been implemented for [GitHub](https://github.com/grimoirelab/perceval/blob/master/perceval/backends/core/github.py) and [Launchpad](https://github.com/grimoirelab/perceval/blob/master/perceval/backends/core/launchpad.py) backends. 
+
+The Python-like pseudocode below highlights the strategy for extracting issues, comments and their authors.
+
+```python
+def fetch():
+	...
+	raw_issues = client.fetch_issues()
+	push_cache_queue('{ISSUES}')
+	push_cache_queue(raw_issues)
+	
+	for issue in json.loads(raw_issues)
+		raw_comments = client.fetch_comments(issue)
+		push_cache_queue('{COMMENTS}')
+		push_cache_queue(raw_comments)
+		
+		for comment in json.loads(raw_comments)
+			raw_author = client.fetch_author(comment)
+			push_cache_queue('{AUTHOR}')
+			push_cache_queue(raw_author)
+			
+		push_cache_queue('{ISSUE-END}')
+	push_cache_queue('{}{}')
+	...
+```
+
+```python
+def fetch_from_cache():
+	...
+	raw_items = cache.retrieve()
+	raw_item = next(raw_items)
+	while raw_item != '{}{}'
+	
+		if raw_item == '{ISSUES}'
+			raw_issues = next(raw_items)
+			issues = json.loads(raw_issues)
+		
+			for issue in issues
+				raw_item = next(raw_items)
+				while raw_item != '{ISSUE-END}'
+					if raw_item == '{COMMENTS}'
+						raw_comments = next(raw_items)
+						comments = json.loads(raw_comments)
+						for comment in comments
+							tag_author = next(raw_items)
+							raw_author = next(raw_items)
+					
+					raw_item = next(raw_items)
+			raw_item = next(raw_items)	
+	...
+```
