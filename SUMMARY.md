@@ -35,4 +35,5 @@
 * [Internals](internals/intro.md)
   * [Perceval backends](internals/perceval-backends.md)
 * [Contributing](contributing.md)
+* [GrimoireLab architecture](grimoirelab/intro.md)
 
