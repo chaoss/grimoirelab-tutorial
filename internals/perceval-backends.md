@@ -12,11 +12,7 @@ A Perceval retrieved is built with three components:
 
 ![](/assets/howto-perceval-backends.png)
 
-Backend and CommandLine extend the abstract classes in [backend.py](https://github.com/grimoirelab/perceval/blob/master/perceval/backend.py), thus they require the definition of several methods:
-
-* CommandLine:
-
- * `setup_cmd_parser()` initializes the command parser for the backend.
+Backend and CommandLine extend the abstract classes in [backend.py](https://github.com/grimoirelab/perceval/blob/master/perceval/backend.py). They require the definition of several methods:
 
 * Backend:
 
@@ -28,10 +24,14 @@ Backend and CommandLine extend the abstract classes in [backend.py](https://gith
  * `fetch(from_date)` contains the logic to perform the fetching process
  * `fetch_from_cache()` contains the logic to perform the fetching process from cache
 
+* CommandLine:
+
+ * `setup_cmd_parser()` initializes the command parser for the backend.
+
 All backends have their own unit tests and corresponding data, saved in the folder [/tests](https://github.com/grimoirelab/perceval/tree/master/tests) and [/tests/data](https://github.com/grimoirelab/perceval/tree/master/tests/data) respectively.
 Since most backends fetch data from HTTP APIs, their tests rely on HTTPretty (version==0.8.6), a mocking tool that simulates HTTP requests.
 
-## Tips
+## Tips when implementing retrievers
 
 ### Implementation & conventions:
 
@@ -46,11 +46,11 @@ Since most backends fetch data from HTTP APIs, their tests rely on HTTPretty (ve
 
 ### Caching
 
-The cache is filled with raw items (no JSON documents produced by the Backend), produced during the fetch process. Fetching data from cache is probably one of the most tricky activities  when implementing a backend. The complexity lays on the fact that the cache, basically a FIFO queue, stores items which are part of a nested tree structure. Thus, this structure has to be correctly retrieved when calling the `fetch_from_cache()` method.
-		
-A strategy to deal with such a complexity is to add markers before/after pushing the items to the cache. Examples of this strategy have been implemented for [GitHub](https://github.com/grimoirelab/perceval/blob/master/perceval/backends/core/github.py) and [Launchpad](https://github.com/grimoirelab/perceval/blob/master/perceval/backends/core/launchpad.py) backends. 
+The cache is filled with raw items produced during the fetch process, not JSON documents produced by the Backend. Fetching data from cache is probably one of the most tricky activities  when implementing a backend. The complexity lays on the fact that the cache, basically a FIFO queue, stores items which in many cases have a nested tree structure. This happens because usually items of different kinds are retrieved from the data source. For example, for an issue tracking system, issues, comments and authors could be retrieved. This nested structure has to be correctly stored, and later retrieved when calling the `fetch_from_cache()` method.
+	
+A strategy to deal with such a complexity is to add markers before and after pushing items to the cache. Examples of this strategy have been implemented for [GitHub](https://github.com/grimoirelab/perceval/blob/master/perceval/backends/core/github.py) and [Launchpad](https://github.com/grimoirelab/perceval/blob/master/perceval/backends/core/launchpad.py) backends. 
 
-The Python-like pseudocode below highlights the strategy for extracting issues, comments and their authors.
+The Python-like pseudocode below shows this strategy for extracting issues, comments and their authors.
 
 ```python
 def fetch():
