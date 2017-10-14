@@ -32,6 +32,6 @@
   * [Copying indexes](tools-and-tips/copying-indexes.md)
   * [CSV from Jenkins enriched index](tools-and-tips/csv-from-jenkins-enriched-index.md)
   * [Attraction & Retention](tools-and-tips/attraction-and-retention.md)
-* [Contributing](contributing.md)
 * [Internals](internals/intro.md)
+* [Contributing](contributing.md)
 
