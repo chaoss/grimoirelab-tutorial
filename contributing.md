@@ -7,3 +7,5 @@ This training manual is built as a [Gitbook book](http://gitbook.com). All the t
 # Contributors
 
 * The example about producing a dashboard for Meetup was contributed by [Manrique López de la Fuente](https://twitter.com/jsmanrique) ([Bitergia](http://bitergia.com)) in March 2017.
+
+* The section on Perceval backend is based on a contribution by [Valerio Cosentino[(https://github.com/valeriocos)([Bitergia](http://bitergia.com)) in October 2017.

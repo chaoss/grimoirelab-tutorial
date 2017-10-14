@@ -40,9 +40,11 @@ Since most backends fetch data from HTTP APIs, their tests rely on HTTPretty (ve
 
 ### Tests	
 
+Testing is important to ensure that the Perceval retriever is working well:
+
 * Tests are written together with the components, as soon as possible. 
 * Some tests are run on just a tiny subset of the data source, such as a small set of GitHub issues or commits in Git.
-* Stress tests are run too, such as working with a large GitHub/Git repository).
+* Once the retriever is near complete, stress tests are run too, such as retrieving data from very large repositories.
 
 ### Caching
 
