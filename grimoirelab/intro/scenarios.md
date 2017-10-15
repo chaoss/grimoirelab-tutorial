@@ -8,4 +8,12 @@ In this case, we will use just Perceval, as a Python module, to retrieve informa
 
 ![](/grimoirelab/grimoirelab-fit-perceval-1.png)
 
-As can be seen in the figure above, data retrieved by Perceval is consumed by a Python script, which will produce the output needed. In this simple scenario, most of the components in GrimoireLab are not needed, and the setup is rather simple: just the Perceval Python module needs to be installed. This is the case explained in sections [Retriving git metadata](/training/perceval/git.md), [Retrieving data from GitHub repositories](/training/perceval/github.md) and [Mail archives](/training/perceval/mail.md)
+As shown in the figure above, data retrieved by Perceval is consumed by a Python script, which produces, for example, a summary of the data in the repository. In this simple scenario, most of the components in GrimoireLab are not needed, and the setup is rather simple: just the Perceval Python module needs to be installed. This is the case explained in sections [Retriving git metadata](/training/perceval/git.md), [Retrieving data from GitHub repositories](/training/perceval/github.md) and [Mail archives](/training/perceval/mail.md).
+
+### Perceval analyzing several data sources
+
+The scenario can be a bit more complex when we need to do a simple analysis of several data sources. We can still retrieve data with Perceval, which will be called from our script.
+
+![](/grimoirelab/grimoirelab-fit-perceval-n.png)
+
+In fact, for each of the data sources, several repositories can be retrieved and analyzed. Therefore, this scenario can in fact become very complex, with a lot of analytics being performed by the Python script.
