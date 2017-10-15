@@ -23,3 +23,4 @@ The main components of GrimoireLab are:
 * Reports. Production of PDF documents reporting on the main characteristics of a project.
 * Mordred. Manages the configuration of all the components needed to produce a dashboard, automating its production.
 
+![](/grimoirelab/grimoirelab-complete.png)
