@@ -4,6 +4,7 @@
 * [Before you start](before-you-start.md)
 * [GrimoireLab architecture](grimoirelab/intro.md)
   * [Components](grimoirelab/intro/components.md)
+  * [Scenarios](grimoirelab/intro/scenarios.md)
 * [Perceval](perceval/perceval.md)
   * [First steps](perceval/first_steps.md)
   * [Git](perceval/git.md)
