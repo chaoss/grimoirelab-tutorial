@@ -2,6 +2,7 @@
 
 * [Introduction](README.md)
 * [Before you start](before-you-start.md)
+* [GrimoireLab architecture](grimoirelab/intro.md)
 * [Perceval](perceval/perceval.md)
   * [First steps](perceval/first_steps.md)
   * [Git](perceval/git.md)
@@ -35,5 +36,4 @@
 * [Internals](internals/intro.md)
   * [Perceval backends](internals/perceval-backends.md)
 * [Contributing](contributing.md)
-* [GrimoireLab architecture](grimoirelab/intro.md)
 
