@@ -58,3 +58,20 @@ SortingHat is used by GrimoireELK. As a part of the enriching process, GrimoireE
 
 For doing its job, SortingHat runs several heuristics, but also reads identities files with trusted information in several formats. Those can be maintained by the projects themselves, or by a third party taking care of having accurate information about persons.
 
+As in the previous scenarios, data in enriched indexes can be consumed by scripts, which can now use the additional information about unique identites, affiliation, etc.
+
+### Kibiter: visualizing with dashboards
+
+Actionable dashboards are very useful for understanding what is happening in software development projects. They allow for filtering the data by many criteria, selecting time periods of interest, drilling down, tracking evolution over time, and visualizing the data in many different ways. All of that with a simple and intuitive user interfacec.
+
+The component in GrimoireLab providing this functionality is Kibiter, a soft fork of Kibana. It shows complete dashboards in a broswer, as an HTML5 application.
+
+![](/grimoirelab/grimoirelab-all-dashboard-noarthur-nomordred-nopanels-nosh.png)
+
+In this case, the enriched indexes are fed directly  to Kibiter. In it, those indexes are available for building visualizations and dashboards on top of it.
+
+Of course, this can be done, as shown above, not using SortingHat. But if SortingHat is used, unique identities, affiliations, etc. will also be available when designing visualizations and dashbords.
+
+![](/grimoirelab/grimoirelab-all-dashboard-noarthur-nomordred-nopanels.png)
+
+
