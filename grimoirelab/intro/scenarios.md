@@ -2,7 +2,7 @@
 
 GrimoireLab is modular not only in the sense that it is composed by modules, but also in the sense that modules can be use separately. To illustrate this, let's visit some different scenarios of how GrimoireLab can be used to analyze software development, from simpler ones, to some of the most complex.
 
-### Perceval analyzing a single data source
+### Perceval: analyzing a single data source
 
 In this case, we will use just Perceval, as a Python module, to retrieve information from one data source. For example, that can be a git repository, a GitHub project, or a mailing list.
 
@@ -10,7 +10,9 @@ In this case, we will use just Perceval, as a Python module, to retrieve informa
 
 As shown in the figure above, data retrieved by Perceval is consumed by a Python script, which produces, for example, a summary of the data in the repository. In this simple scenario, most of the components in GrimoireLab are not needed, and the setup is rather simple: just the Perceval Python module needs to be installed. This is the case explained in sections [Retriving git metadata](/training/perceval/git.md), [Retrieving data from GitHub repositories](/training/perceval/github.md) and [Mail archives](/training/perceval/mail.md).
 
-### Perceval analyzing several data sources
+It is important to notice that each data source (for example, git, Bugzilla or Gerrit) we may be interested in getting information from several repositories. Usually Perceval will be run once for each of those repositories. But since the process is exactly the same, and the involved components too, in this section we won't show in charts the many repositories that may compose a given data source.
+
+### Perceval: analyzing several data sources
 
 The scenario can be a bit more complex when we need to do a simple analysis of several data sources. We can still retrieve data with Perceval, which will be called from our script.
 
@@ -68,10 +70,53 @@ The component in GrimoireLab providing this functionality is Kibiter, a soft for
 
 ![](/grimoirelab/grimoirelab-all-dashboard-noarthur-nomordred-nopanels-nosh.png)
 
-In this case, the enriched indexes are fed directly  to Kibiter. In it, those indexes are available for building visualizations and dashboards on top of it.
+In this case, the enriched indexes are fed directly  to Kibiter. In it, they are available for building visualizations and dashboards on top of it. This scenario is considered in detail in [Creating a simple dashboard](/grimoireelk/a-simple-dashboard.md), which walks you through the specific steps needed to produce the dashboard from the datasources. The text describes how to use Kibana instead of Kibiter, but the process is basically the same.
 
 Of course, this can be done, as shown above, not using SortingHat. But if SortingHat is used, unique identities, affiliations, etc. will also be available when designing visualizations and dashbords.
 
 ![](/grimoirelab/grimoirelab-all-dashboard-noarthur-nomordred-nopanels.png)
 
+This scenario is covered in detail in [A dashboard with SortingHat](/grimoireelk/a-dashboard-with-sortinghat.md), using Kibana instead of Kibiter.
 
+### Panels: predefined dashboards
+
+Writting visualizations and panels with Kibiter (or Kibana, for that matter) is not difficult. But you need to learn how to do it, and in any case it is time-consuming. That's why GrimoireLab provides a component with predefined visualizations and dashboards for all teh supported data sources: Panels.
+
+![](/grimoirelab/grimoirelab-all-dashboard-noarthur-nomordred.png)
+
+Panels provides a collection of JSON files which define visualizations and dashboards. In Kibiter, any visualization or dashboard can be exported and imported as a JSON file, and that's exactly what this collection allows. So, if you don't want to start your dashboard from scratch, you can set up a "standard GrimoireLab dashboard" by just uploading the files in Panels with `kidash`, as shown in [Managing dashboards with kidash](/grimoireelk/managing-dashboards-with-kidash.md).
+
+These panels are already prepared to consider unique identities, affiliation data, and other goodies provided by SortingHat, so if yoy use them, be sure to have SortingHat in the toolchain.
+
+### Mordred: from a configuration to a dasshboard
+
+As can be seen from the pictures in the previous scenarios, setting up a complete dashboard involves several components, each of them with their own configurations, and with their own processes for interacting with the others. The time needed to master all the components, and the effort spent to correctly run them, is not neglectible. Here is where Mordred comes to the resque.
+
+![](/grimoirelab/grimoirelab-all-dashboard-noarthur.png)
+
+Mordred is a GrimoireLab component designed to read a configuration with all the data needed to produce a dashboard, and run all the other components so that the dashboard is actually produced.
+
+Using Mordred the production of a dashboard is just writting down its configuration (list of data sources and repositories, configuration for SortingHat, location of panels, etc.), and runnning it. Almost by magic, a new dashboard is born. And what is even more important: it is also capable of runnning all the tools incrementally, so that the dashboard remains updated, with fresh data from the data sources, automatically.
+
+### Arthur: orchestrating data retrieval.
+
+For a relatively small project, the data retrieval process, even in incremental updating mode, is straightforward. Start with the first repository from the first data source, use Perceval to retrieve new data from ir, do the same with the second repository, and so on untl all repositories for the first data source are visited. Then do the same with the second data source, etc. When all the data sources are visited, start over again.
+
+But in real large projects, this is not good enough. The time needed to cycle though repositories this way may be too long, and we need to paralelyze. In addition, not all data sources are the same, and maybe we want to run processes for data retrieval for some of the data sources in some specific virtual machines. Whatever the case, we need to orchstrate how different Perceval processes are retrieving data, so that the process is efficient and smooth.
+
+This is the work of Arthur. Arthur uses a Redis database to store data about retrieval jobs, and retrieved batches of items. It takes care of managing all active retrival jobs, and can cope with parallel and periodic jobs, which makes the system really powerful. Although in many setups Arthur is not needed, large, production environments usually benefit from it.
+
+Since GrimoireELK is designed to work both with Arthur and without it, the process of including it in the toolchain is transparent to other components
+
+![](/grimoirelab/grimoirelab-all-dashboard-noarthur.png)
+
+The above chart shows a full-fledged GrimoireLab setup for producing an industrial-grade production dashboard. Let's use it to review how all of the components interact:
+
+* Perceval retrieves data from the different repositories in the the data sources.
+* Arthur schedules retrieval jobs in parallel instances.
+* GrimoireELK produces the raw indexes, with all the data retrieved from the data sources.
+* GrimoireELK interacts with SortingHat, to inform it of new identities found, and to be informed about unique identities and related information.
+* With data from raw indexes and SortingHat, GrimoireELK produces enriched indexes, formatted for being visualized by Kibiter.
+* Preconfigured visualizations and dashboards from Panels are uploaded to Kibiter.
+* When a browser shows a dashboard, it uses Kibiter to visualize data coming from enriched indexes.
+* Mordred configures all the components for producing the dashboard, and ensures that the data available to Kibiter is updated continuously with any new data in the data sources.
