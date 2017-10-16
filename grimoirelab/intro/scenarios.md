@@ -48,7 +48,7 @@ The component that produces enriched indexes is GrimoireELK, using information i
 
 Scripts exploiting enriched indexes can be in any language, as was the case for raw indexes. They only need to be able of accessing ElasticSearch via its REST API.
 
-### Enriched indexes with Sorting Hat
+<a href="#enriched"></a>### Enriched indexes with Sorting Hat
 
 One of the most complex problems in analyzing information about how software developers work is identifying persons instead of just identities. When working in different systems, people use different identities. Or even in the same system: for example, they can use different email addresses when committing to git repositories. For dealing properly with the activity of persons, we need to merge these identities. Even for very simple metrics, such as how many people are collaborating in a git repository, you need to have those merged identities, or the metrics will be incorrect.
 
@@ -108,7 +108,7 @@ This is the work of Arthur. Arthur uses a Redis database to store data about ret
 
 Since GrimoireELK is designed to work both with Arthur and without it, the process of including it in the toolchain is transparent to other components
 
-![](/grimoirelab/grimoirelab-all-dashboard-noarthur.png)
+![](/grimoirelab/grimoirelab-all-dashboard.png)
 
 The above chart shows a full-fledged GrimoireLab setup for producing an industrial-grade production dashboard. Let's use it to review how all of the components interact:
 
@@ -120,3 +120,13 @@ The above chart shows a full-fledged GrimoireLab setup for producing an industri
 * Preconfigured visualizations and dashboards from Panels are uploaded to Kibiter.
 * When a browser shows a dashboard, it uses Kibiter to visualize data coming from enriched indexes.
 * Mordred configures all the components for producing the dashboard, and ensures that the data available to Kibiter is updated continuously with any new data in the data sources.
+
+### Standard reports
+
+In some cases, neither scripts nor dashboards are convenient for exploiting the rich information in the indexes. In some cases, what is needed is "static reports", usually in the form of PDF documents. This scenario is coverd by the Reports GrimoireLab component.
+
+![](/grimoirelab/grimoirelab-all-reports.png)
+
+The components involved to produce the enriched index are the same than for producing a dashboard. The differeence is Reports, a component that computes several metrics useful for a specific report on a project, and produces tables and charts for them. The result is a PDF document.
+
+It is no surprise that the scenario is quite similar to the one described in [Enriched indexes with SortingHat](#enriched), above: instead of a custom script, now we have those provided by Reports.
