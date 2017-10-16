@@ -46,3 +46,15 @@ The component that produces enriched indexes is GrimoireELK, using information i
 
 Scripts exploiting enriched indexes can be in any language, as was the case for raw indexes. They only need to be able of accessing ElasticSearch via its REST API.
 
+### Enriched indexes with Sorting Hat
+
+One of the most complex problems in analyzing information about how software developers work is identifying persons instead of just identities. When working in different systems, people use different identities. Or even in the same system: for example, they can use different email addresses when committing to git repositories. For dealing properly with the activity of persons, we need to merge these identities. Even for very simple metrics, such as how many people are collaborating in a git repository, you need to have those merged identities, or the metrics will be incorrect.
+
+In GrimoireLab, we have an specific component for dealing with identities: SortingHat. It uses an SQL database (MySQL, MariaDB) for storing all identities found in data sources, and how they relate to real persons. In addition, it also supports adding some attributes to persons, such as a their preferred name, or their affiliations (organizations for which they worked over time).
+
+![](/grimoirelab/grimoirelab-fit-grimoireelk-enrich-sh.png)
+
+SortingHat is used by GrimoireELK. As a part of the enriching process, GrimoireELK stores with SortingHat any new identity found in raw indexes (and therefore, in data sources). GrimoireELK also consults SortingHat for learning about persons whenever it needs to enrich data with identities. In these case, the enriched indexes include, for every item, unique identities for persons, and affiliation information.
+
+For doing its job, SortingHat runs several heuristics, but also reads identities files with trusted information in several formats. Those can be maintained by the projects themselves, or by a third party taking care of having accurate information about persons.
+
