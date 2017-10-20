@@ -39,4 +39,5 @@
   * [Perceval backends](internals/perceval-backends.md)
 * [Contributing](contributing.md)
 * [Mordred: orchestrating everything](mordred-orchestrating-everything.md)
+  * [Installation](mordred-orchestrating-everything/installation.md)
 
