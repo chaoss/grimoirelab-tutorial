@@ -65,14 +65,6 @@ panels = true
 [git]
 raw_index = git_test-raw
 enriched_index = git_test
-
-#[github]
-#raw_index = githubraw
-#enriched_index = github_enrich
-#api-token = 046c9fff2ac14d1bb360d593644693205d4fea18
-#sleep-for-rate = true
-#fetch-cache = true
-# from-date = 2016-01-01
 ```
 
 * Run Mordred, in an enviroment with the appropriate programs installed: git, MariaDB (or MySQL), ElasticSearch, and Kibitter:
