@@ -40,4 +40,5 @@
 * [Contributing](contributing.md)
 * [Mordred: orchestrating everything](mordred-orchestrating-everything.md)
   * [Installation](mordred-orchestrating-everything/installation.md)
+  * [A GrimoireLab dashboard in one step](mordred-orchestrating-everything/a-grimoirelab-dashboard-in-one-step.md)
 
