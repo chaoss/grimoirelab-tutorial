@@ -20,6 +20,9 @@
 * [SortingHat](sortinghat.md)
   * [Data structure](sortinghat/data-structure.md)
   * [Basic use](sortinghat/basic-use.md)
+* [Mordred: orchestrating everything](mordred-orchestrating-everything.md)
+  * [Installation](mordred-orchestrating-everything/installation.md)
+  * [A GrimoireLab dashboard in one step](mordred-orchestrating-everything/a-grimoirelab-dashboard-in-one-step.md)
 * [Python scripting](python/scripting.md)
   * [Persistent storage in ElasticSearch](python/elasticsearch.md)
   * [Querying ElasticSearch](python/quering_elasticsearch.md)
@@ -38,7 +41,4 @@
 * [Internals](internals/intro.md)
   * [Perceval backends](internals/perceval-backends.md)
 * [Contributing](contributing.md)
-* [Mordred: orchestrating everything](mordred-orchestrating-everything.md)
-  * [Installation](mordred-orchestrating-everything/installation.md)
-  * [A GrimoireLab dashboard in one step](mordred-orchestrating-everything/a-grimoirelab-dashboard-in-one-step.md)
 
