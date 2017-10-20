@@ -1,0 +1,3 @@
+# Mordred: orchestrating everything
+
+[Mordred](https://github.com/grimoirelab/mordred) is the GrimoireLab module in charge of orchestrating all the processes leading to produce a dashboard or a report. It runs Perceval, GrimoireELK, SortingHat, etc. to retrieve data from the data sources, produce the raw and enriched indexes in ElasticSearch, load predefined visualizations and panels to the dashboard, and all the stuff.

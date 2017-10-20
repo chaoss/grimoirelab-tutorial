@@ -38,4 +38,5 @@
 * [Internals](internals/intro.md)
   * [Perceval backends](internals/perceval-backends.md)
 * [Contributing](contributing.md)
+* [Mordred: orchestrating everything](mordred-orchestrating-everything.md)
 
