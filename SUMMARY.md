@@ -43,4 +43,5 @@
 * [Contributing](contributing.md)
 * [Reporting with Reports](reporting-with-reports.md)
   * [Installing](reporting-with-reports/installing.md)
+  * [Get your first report](reporting-with-reports/get-your-first-report.md)
 
