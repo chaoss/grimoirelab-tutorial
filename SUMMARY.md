@@ -20,6 +20,9 @@
 * [SortingHat](sortinghat.md)
   * [Data structure](sortinghat/data-structure.md)
   * [Basic use](sortinghat/basic-use.md)
+* [Reporting with Reports](reporting-with-reports.md)
+  * [Installing](reporting-with-reports/installing.md)
+  * [Get your first report](reporting-with-reports/get-your-first-report.md)
 * [Mordred: orchestrating everything](mordred-orchestrating-everything.md)
   * [Installation](mordred-orchestrating-everything/installation.md)
   * [A GrimoireLab dashboard in one step](mordred-orchestrating-everything/a-grimoirelab-dashboard-in-one-step.md)
@@ -41,7 +44,4 @@
 * [Internals](internals/intro.md)
   * [Perceval backends](internals/perceval-backends.md)
 * [Contributing](contributing.md)
-* [Reporting with Reports](reporting-with-reports.md)
-  * [Installing](reporting-with-reports/installing.md)
-  * [Get your first report](reporting-with-reports/get-your-first-report.md)
 
