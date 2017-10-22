@@ -42,4 +42,5 @@
   * [Perceval backends](internals/perceval-backends.md)
 * [Contributing](contributing.md)
 * [Reporting with Reports](reporting-with-reports.md)
+  * [Installing](reporting-with-reports/installing.md)
 
