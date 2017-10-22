@@ -41,4 +41,5 @@
 * [Internals](internals/intro.md)
   * [Perceval backends](internals/perceval-backends.md)
 * [Contributing](contributing.md)
+* [Reporting with Reports](reporting-with-reports.md)
 
