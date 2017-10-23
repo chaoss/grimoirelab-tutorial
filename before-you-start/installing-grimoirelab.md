@@ -4,7 +4,7 @@ Most of GrimoireLab are Python modules. The easiest way of installing them is us
 
 Although it is not needed, we recomend using [Python virtual environments](https://docs.python.org/3/tutorial/venv.html) for installing packages. Below, you can find a section on how to prepare vitual packages in Python3, and then how to install GrimoireLab modules in them. If you are not interested in virtual environments, and know what you are doing, you can skip that part. Only remember, in that case, that it is very likely that you will need to prefix with `sudo` any installation command, to install, as root, in the default location in your system, instead of in a virtual environment.
 
-## Preparing a virtualenv
+### Preparing a virtualenv
 
 I'm assuming you already have Python3 installed, as detailed in the [Supporting systems](/before-you-start/supporting-systems.md) section. Let's use it to create a Python virtual environment, so that we have a cozy place to work. For that we will use [Python3 venv module](https://docs.python.org/3/library/venv.html).
 
@@ -36,7 +36,23 @@ Remember that the virtual environment will stay activated only in the shell wher
 
 You can also have several different virtual environments, each with different sets of Python modules installed. You can use them for different projects, with different dependencies, for example. You just need to activate the one you need when you have to work in the corresponding project.
 
-## Installing Perceval
+### Installing Mordred and all GrimoireLab modules
+
+For installing all GrimoireLab modules, we only need to install, using `pip`, the packages that pull all the other GrimoireLab modules as dependencies. Currently, it is enough to install Mordred:
+
+```bash
+(grimoirelab) $ pip3 install grimoire-mordred
+```
+
+This should install it, and all its dependencies (which include all of the GrimoireLab modules). Once installed, check that everything is as it should:
+
+```bash
+$ mordred --help
+```
+
+In the following sections, we will explain how to install, separately, some of the GrimoireLab modules. Of course, they can be installed in separate virtual environments.
+
+### Installing Perceval
 
 In an activated virtual environment we will use `pip` to install the module from the [Pypi archive](https://pypi.python.org/pypi).
 
@@ -61,3 +77,23 @@ Assuming everything was fine, next thing is getting information about an specifi
 ```
 
 If this shows a banner with information about how to use the Perceval git backend, we can assume that Perceval and all its dependencies were installed appropriately.
+
+### Install GrimoireELK
+
+GrimoireELK can also be installed with `pip`. Again, we will install it in a virtual environment:
+
+```bash
+(grimoirelab) $ pip install grimoire-elk
+```
+
+This will pull the `perceval` module, and other dependencies needed, and will install the `grimoire_elk` Python module. It includes the `p2o.py` script, as well, which manages `grimoire_elk` from the command line, and will be fundamental for producing raw and enriched indexes.
+
+### Install Kidash
+
+Kidash is other package that can be installed with `pip`:
+
+```bash
+(grimoirelab) $ pip install grimoire-kidash
+```
+
+This will install the `grimoire-kidash` Python package, which includes the `kidash.py` Python script and all dependencies needed for it to work. This scripts will allow us to manage dashboards, visualizations, and other elements in Kibana. We will use it to upload dashboard definitions to produce our dashboard in Kibana.
