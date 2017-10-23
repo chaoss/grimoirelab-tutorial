@@ -1,4 +1,4 @@
-## Installing supporting systems
+## Supporting systems
 
 This section shows how to install the packages that support GrimoireLab. This has been tested in Debian GNU/Linux 9.0, for other systems your mileage may vary.
 
