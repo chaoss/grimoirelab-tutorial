@@ -4,9 +4,43 @@ This section shows how to install the packages that support GrimoireLab. This ha
 
 The packages to install are:
 
+* Python3: GrimoireLab is written in Python3, so you need to have it installed. At least Python 3.5 is recommended, but older versions could work.
+* Programas for retrieving data from data sources. In some cases, some programs will be needed when retrieving data, since GrimoireLab/Perceval will use them. The most common case is `git`, for the git GrimoireLab/Peerceval backend.
 * ElasticSearch: if you want to store raw or enriched GrimoireLab indexes (produced by GrimoireELK).
 * Kibana: if you want to visualize enriched indexes (produced by GrimoireELK). For example, because you want to browse GrimoireLab dashboards.
 * MariaDB: if you want to use SortingHat for identity management.
+
+### Installing Python3
+
+Python3 is a standard package in Debian, so it is easy to install:
+
+```
+% sudo apt-get install python3
+```
+
+Once installed, you can check the installed version:
+
+```
+% python3 --version
+```
+
+For installing some other Python modules, including GrimoireLab modules, you will need `pip` for Python3, which is also available in Debian:
+
+```
+% sudo apt-get install python3-pip
+```
+
+More information about installing Python3 in other platforms is available in [Properly installing Python](http://docs.python-guide.org/en/latest/starting/installation/).
+
+### Installing git
+
+If you are retrieving data from git repositories, you will need git installed. Pretty simple:
+
+```
+$ sudo apt-get install git-all
+```
+
+More information about installing git in other platforsm is available in [Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
 ### Installing ElasticSearch and Kibana
 
