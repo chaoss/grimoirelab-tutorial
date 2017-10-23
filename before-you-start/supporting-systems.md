@@ -14,20 +14,20 @@ The packages to install are:
 
 Python3 is a standard package in Debian, so it is easy to install:
 
-```
-% sudo apt-get install python3
+```bash
+$ sudo apt-get install python3
 ```
 
 Once installed, you can check the installed version:
 
-```
-% python3 --version
+```bash
+$ python3 --version
 ```
 
 For installing some other Python modules, including GrimoireLab modules, you will need `pip` for Python3, which is also available in Debian:
 
-```
-% sudo apt-get install python3-pip
+```bash
+$ sudo apt-get install python3-pip
 ```
 
 More information about installing Python3 in other platforms is available in [Properly installing Python](http://docs.python-guide.org/en/latest/starting/installation/).
@@ -36,7 +36,7 @@ More information about installing Python3 in other platforms is available in [Pr
 
 If you are retrieving data from git repositories, you will need git installed. Pretty simple:
 
-```
+```bash
 $ sudo apt-get install git-all
 ```
 
@@ -50,7 +50,7 @@ For ElasticSearch, you can follow its [installation instructions](https://www.el
 
 Assuming the installed ElasticSearch directory is `elasticsearch`, to launch it you will just run the appropriate command \(no need to run this from the virtual environment\):
 
-```
+```bash
 $ elasticsearch/bin/elasticsearch
 ```
 
@@ -60,7 +60,7 @@ For Kibana, you have [installation instructions](https://www.elastic.co/guide/en
 
 Assuming the installed Kibana directory is `kibana`, to launch it, again just run the appropriate command:
 
-```
+```bash
 $ kibana/bin/kibana
 ```
 
@@ -89,8 +89,8 @@ Instead of Kibana, you can install [Kibiter](https://github.com/grimoirelab/kibi
 
 If you are going to use SortingHat, you will need a database. Currently, MySQL-like databases are supported. In our case, we will use MariaDB. Installing it in Debian is easy:
 
-```
-sudo apt-get install mariadb-server
+```bash
+$ sudo apt-get install mariadb-server
 ```
 
 That's it, that's all.
