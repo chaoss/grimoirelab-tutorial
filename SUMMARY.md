@@ -1,14 +1,13 @@
 # Summary
 
 * [Introduction](README.md)
-* [Before you start](before-you-start.md)
+* [Before you start](before-you-start/intro.md)
   * [Supporting systems](before-you-start/supporting-systems.md)
   * [Installing GrimoireLab](before-you-start/installing-grimoirelab.md)
 * [GrimoireLab architecture](grimoirelab/intro.md)
   * [Components](grimoirelab/intro/components.md)
   * [Scenarios](grimoirelab/intro/scenarios.md)
-* [Perceval](perceval/perceval.md)
-  * [First steps](perceval/first_steps.md)
+* [Perceval](perceval/intro.md)
   * [Git](perceval/git.md)
   * [GitHub](perceval/github.md)
   * [Mail archives](perceval/mail.md)
