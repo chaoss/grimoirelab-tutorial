@@ -2,7 +2,7 @@
 
 * [Introduction](README.md)
 * [Before you start](before-you-start.md)
-  * [Installing supporting systems](before-you-start/installing-supporting-systems.md)
+  * [Supporting systems](before-you-start/supporting-systems.md)
 * [GrimoireLab architecture](grimoirelab/intro.md)
   * [Components](grimoirelab/intro/components.md)
   * [Scenarios](grimoirelab/intro/scenarios.md)
