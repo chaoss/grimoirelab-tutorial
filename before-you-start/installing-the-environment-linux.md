@@ -1,6 +1,12 @@
-## Installing the environment (Linux)
+## Installing supporting systems
 
-This section tells about how to install the packages that GrimoireLab uses in a Linux-based distribution. This has been tested in Debian 9.0, for other distributions your mileage may vary.
+This section shows how to install the packages that support GrimoireLab. This has been tested in Debian GNU/Linux 9.0, for other systems your mileage may vary.
+
+The packages to install are:
+
+* ElasticSearch: if you want to store raw or enriched GrimoireLab indexes (produced by GrimoireELK).
+* Kibana: if you want to visualize enriched indexes (produced by GrimoireELK). For example, because you want to browse GrimoireLab dashboards.
+* MariaDB: if you want to use SortingHat for identity management.
 
 ### Installing ElasticSearch and Kibana
 
@@ -44,3 +50,13 @@ Then you can connect to Elasticsearch by localhost:9200 and its Kibana front-end
 ### Alternative: install Kibiter instead of Kibana
 
 Instead of Kibana, you can install [Kibiter](https://github.com/grimoirelab/kibiter), the soft fork of Kibana maintained as a part of GrimoireLab. It includes some goodies, such as customization of titles for visualizations in dashboards, or menus for showing direct access to several dashboards. But if you don't need those goodies you can work with a vanilla Kibana.
+
+### Installing MariaDB
+
+If you are going to use SortingHat, you will need a database. Currently, MySQL-like databases are supported. In our case, we will use MariaDB. Installing it in Debian is easy:
+
+```
+sudo apt-get install mariadb-server
+```
+
+That's it, that's all.
