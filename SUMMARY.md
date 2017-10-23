@@ -21,7 +21,6 @@
   * [Data structure](sortinghat/data-structure.md)
   * [Basic use](sortinghat/basic-use.md)
 * [Reporting with Reports](reports/intro.md)
-  * [Installing](reports/installing.md)
   * [Get your first report](reports/get-your-first-report.md)
 * [Mordred: orchestrating everything](mordred/intro.md)
   * [A GrimoireLab dashboard in one step](mordred/a-grimoirelab-dashboard-in-one-step.md)
