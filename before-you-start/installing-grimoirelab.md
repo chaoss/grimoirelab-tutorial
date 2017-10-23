@@ -47,7 +47,7 @@ For installing all GrimoireLab modules, we only need to install, using `pip`, th
 This should install it, and all its dependencies (which include all of the GrimoireLab modules). Once installed, check that everything is as it should:
 
 ```bash
-$ mordred --help
+(grimoirelab) $ mordred --help
 ```
 
 In the following sections, we will explain how to install, separately, some of the GrimoireLab modules. Of course, they can be installed in separate virtual environments.
@@ -78,7 +78,7 @@ Assuming everything was fine, next thing is getting information about an specifi
 
 If this shows a banner with information about how to use the Perceval git backend, we can assume that Perceval and all its dependencies were installed appropriately.
 
-### Install GrimoireELK
+### Installing GrimoireELK
 
 GrimoireELK can also be installed with `pip`. Again, we will install it in a virtual environment:
 
@@ -88,7 +88,7 @@ GrimoireELK can also be installed with `pip`. Again, we will install it in a vir
 
 This will pull the `perceval` module, and other dependencies needed, and will install the `grimoire_elk` Python module. It includes the `p2o.py` script, as well, which manages `grimoire_elk` from the command line, and will be fundamental for producing raw and enriched indexes.
 
-### Install Kidash
+### Installing Kidash
 
 Kidash is other package that can be installed with `pip`:
 
@@ -97,3 +97,26 @@ Kidash is other package that can be installed with `pip`:
 ```
 
 This will install the `grimoire-kidash` Python package, which includes the `kidash.py` Python script and all dependencies needed for it to work. This scripts will allow us to manage dashboards, visualizations, and other elements in Kibana. We will use it to upload dashboard definitions to produce our dashboard in Kibana.
+
+### Installing SortingHat
+
+SortingHat can also be installed with `pip`:
+
+```bash
+(grimoirelab) $ pip install sortinghat
+```
+
+
+### Installing Reports
+
+Installation of Reports is easy as well: just pip install the grimoire-reports Python package. In your virtual environment of choice, run:
+
+```bash
+(grimoirelab) $ pip install grimoire-reports
+```
+
+This should install it, and all its dependencies. Once installed, check that everything is as it should:
+
+```bash
+(grimoirelab) $ report --help
+```

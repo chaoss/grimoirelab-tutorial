@@ -13,7 +13,7 @@ In addition, `kidash.py`:
 
 * uploads dashboard definitions (including visualizations, searches and everything needed by them) to produce a Kibana dashboard
 
-In this chapter we will explore how to use these tools to produce complete Kibana-based dashboards.
+In this chapter we will explore how to use these tools to produce complete Kibana-based dashboards. Before following to the rest of the chapter, ensure that the GrimoireELK Python module is installed (see [Installing GrimoireLab](/before-you-start/installing-grimoirelab.md)).
 
 
 
