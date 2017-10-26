@@ -4,7 +4,7 @@ Mordred can produce a dashboard for a group of repositories in one step. It can 
 
 The process is as follows:
 
-* Prepare a configuration file for Mordred. We're calling it, in this case, `mordred-grimoirelab.cfg`:
+* Prepare a configuration file for Mordred. We're calling it, in this case, [mordred-grimoirelab.cfg](files/mordred-grimoirelab.cfg):
 
 ```
 [general]
@@ -46,6 +46,7 @@ load_orgs = false
 unify_method =
 # commonly: Unknown
 unaffiliated_group = Unknown
+affiliate = True
 autoprofile = [customer,git,github]
 matching = [email]
 sleep_for = 0
@@ -66,6 +67,21 @@ panels = true
 raw_index = git_test-raw
 enriched_index = git_test
 ```
+
+* Prepare a [projects.json](files/projects.json) file, with the list of repositories to analyze, organized in projects. A very small version of it, just for testing:
+
+```
+{
+    "grimoire": {
+        "git": [
+            "https://github.com/grimoirelab/perceval",
+            "https://github.com/grimoirelab/grimoireelk"
+        ]
+    }
+}
+```
+
+* Prepare a [menu.yaml](files/menu.yaml), with the menu for Kibiter (not needed if the data will be visualized with Kibana).
 
 * Run Mordred, in an enviroment with the appropriate programs installed: git, MariaDB (or MySQL), ElasticSearch, and Kibitter:
 
