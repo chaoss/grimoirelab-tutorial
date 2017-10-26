@@ -1,0 +1,8 @@
+{
+    "grimoire": {
+        "git": [
+            "https://github.com/grimoirelab/perceval",
+            "https://github.com/grimoirelab/grimoireelk"
+        ]
+    }
+}
