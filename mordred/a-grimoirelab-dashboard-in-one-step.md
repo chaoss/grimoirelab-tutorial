@@ -83,7 +83,13 @@ enriched_index = git_test
 
 * Prepare a [menu.yaml](files/menu.yaml), with the menu for Kibiter (not needed if the data will be visualized with Kibana).
 
-* Run Mordred, in an enviroment with the appropriate programs installed: git, MariaDB (or MySQL), ElasticSearch, and Kibitter:
+* Clone the [grimoirelab/panels](https://github.com/grimoirelab/panels) git repository, which has some pre-configured dashboards for Kibitter:
+
+```
+$ git clone https://github.com/grimoirelab/panels
+```
+
+* Run Mordred, in an enviroment with the appropriate programs installed: git, MariaDB (or MySQL), ElasticSearch, and Kibitter. The cloned `panels` repository should be a subdirectory, named `panels`, of the directory where the `mordred` command is run:
 
 ```
 mordred -c mordred-grimoirelab.cfg
