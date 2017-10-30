@@ -31,7 +31,7 @@ $ sudo apt-get install python3-pip
 $ sudo apt-get install python3-venv
 ```
 
-More information about installing Python3 in other platforms is available in [Properly installing Python](http://docs.python-guide.org/en/latest/starting/installation/).
+More information about installing Python3 in other platforms is available in [Properly installing Python](http://docs.python-guide.org/en/latest/starting/installation/). In addition, you can also check information on [how to install pip](https://pip.pypa.io/en/stable/installing/).
 
 ### Installing git
 
