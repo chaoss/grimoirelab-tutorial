@@ -24,10 +24,11 @@ Once installed, you can check the installed version:
 $ python3 --version
 ```
 
-For installing some other Python modules, including GrimoireLab modules, you will need `pip` for Python3, which is also available in Debian:
+For installing some other Python modules, including GrimoireLab modules, you will need `pip` for Python3. For using `venv` virtual environments, you will also need `ensurepip`. Both are available in Debian and derivatives as packages `python3-pip` and `python3-venv`:
 
 ```bash
 $ sudo apt-get install python3-pip
+$ sudo apt-get install python3-venv
 ```
 
 More information about installing Python3 in other platforms is available in [Properly installing Python](http://docs.python-guide.org/en/latest/starting/installation/).
