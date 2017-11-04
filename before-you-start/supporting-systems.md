@@ -61,6 +61,10 @@ This will launch ElasticSearch that will listen via its HTTP REST API at `http:/
 
 For installing Kibiter, grab the version you want from the [Kibiter releases at GitHub](https://github.com/grimoirelab/kibiter/releases). You will need the `.tar.gz` or `.zip` file (if available) for your version of choice. Then, follow the [Kibana installation instructions](https://www.elastic.co/guide/en/kibana/current/install.html) (see below for a summary of those instructions). Remember that you will need a version of ElasticSearch matching the version of Kibiter.
 
+Once you are done, point your browser to [http://localhost:5601](http://localhost:5601) (asuming Kibana was installed in your local machine, using the default port), and you'll get something like:
+
+![](/assets/Screenshot-2017-11-4 Bitergia Analytics.png)
+
 ### Installing Kibana
 
 You can install Kibana instead of Kibiter. Maybe you will lose some functionality, but still most of the dashboards will likely work. If this is your case, follow the [Kibana installation instructions](https://www.elastic.co/guide/en/kibana/current/setup.html). The process is similar to ElasticSearch: download the installation file from [Kibana dashboards area](https://www.elastic.co/downloads/kibana), and install it for example by unzipping the zip installation file.
