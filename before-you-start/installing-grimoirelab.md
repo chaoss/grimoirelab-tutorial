@@ -36,9 +36,21 @@ Remember that the virtual environment will stay activated only in the shell wher
 
 You can also have several different virtual environments, each with different sets of Python modules installed. You can use them for different projects, with different dependencies, for example. You just need to activate the one you need when you have to work in the corresponding project.
 
+### Installing tools in the virtual environment
+
+Depending on what you have installed in your system, it may be convenient to install some Python tools in it, and to upgrade some others. We recommend that you type, in your activated virtual ennvironment:
+
+```bash
+(grimoirelab) $ pip3 install --upgrade pip
+(grimoirelab) $ pip3 install --upgrade setuptools
+(grimoirelab) $ pip3 install --upgrade wheel 
+```
+
+This will increase the chances that you have no troubles later, when installing wheels (a kind of Python package, used for GrimoireLab modules and many of their dependencies).
+
 ### Installing Mordred and all GrimoireLab modules
 
-For installing all GrimoireLab modules, we only need to install, using `pip`, the packages that pull all the other GrimoireLab modules as dependencies. Currently, it is enough to install Mordred:
+For installing all GrimoireLab modules, we only need to install, using `pip3`, the packages that pull all the other GrimoireLab modules as dependencies. Currently, it is enough to install Mordred:
 
 ```bash
 (grimoirelab) $ pip3 install grimoire-mordred
