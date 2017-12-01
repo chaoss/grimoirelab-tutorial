@@ -4,6 +4,7 @@
 * [Before you start](before-you-start/intro.md)
   * [Supporting systems](before-you-start/supporting-systems.md)
   * [Installing GrimoireLab](before-you-start/installing-grimoirelab.md)
+  * [Deploying from DockerHub](before-you-start/deploying-from-dockerhub.md)
 * [GrimoireLab architecture](grimoirelab/intro.md)
   * [Components](grimoirelab/intro/components.md)
   * [Scenarios](grimoirelab/intro/scenarios.md)
