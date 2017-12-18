@@ -13,3 +13,7 @@ With the tools in the GrimoireLab toolset you can retrieve data, store it in dat
 [Example dashboard produced with GrimoireLab: the [Eclipse Development Dashboard](http://eclipse.biterg.io)]
 
 GrimoireLab is a [CHAOSS](http://chaoss.community) project.
+
+![](/assets/Chaoss_Logo_Pantone2.png)
+
+
