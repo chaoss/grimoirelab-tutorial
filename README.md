@@ -14,6 +14,6 @@ With the tools in the GrimoireLab toolset you can retrieve data, store it in dat
 
 GrimoireLab is a [CHAOSS](http://chaoss.community) project.
 
-![](/assets/Chaoss_Logo_Pantone2.png)
+![](/assets/Chaoss_Logo_Pantone1.png)
 
 
