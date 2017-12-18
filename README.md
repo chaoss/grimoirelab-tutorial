@@ -1,4 +1,4 @@
-# GrimoireLab Training Tutorial
+# GrimoireLab Tutorial
 
 [GrimoireLab](http://grimoirelab.github.io/) is free, open source software for software development analytics. It allows you to retrieve data from many kinds of systems with information related to software development, and produce analysis and visualizations with it.
 
