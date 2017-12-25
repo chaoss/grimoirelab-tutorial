@@ -2,6 +2,7 @@
 
 * [Introduction](README.md)
 * [Before you start](before-you-start/intro.md)
+  * [What is GrimoireLab](before-you-start/what-is-grimoirelab.md)
   * [Supporting systems](before-you-start/supporting-systems.md)
   * [Installing GrimoireLab](before-you-start/installing-grimoirelab.md)
   * [Deploying from DockerHub](before-you-start/deploying-from-dockerhub.md)
