@@ -4,7 +4,7 @@ GrimoireLab is a set of tools to retrieve, organize, analyze and visualize data 
 
 For GrimoireLab, any system that stores data that could be relevant for analyzing software development is a software development repositories.
 
-Let´s now visit the main functionalities provided by GrimoireLab.
+Let´s now visit the main functionalities provided by GrimoireLab. The chapter [GrimoireLab architecture](../grimoirelab/intro.md) shows how the different components in GrimoireLab are combined to provide these functionalities.
 
 ### Data retrieval
 
