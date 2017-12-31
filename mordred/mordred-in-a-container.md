@@ -1,8 +1,21 @@
 ## Mordred in a container
 
-[grimoirelab/installed](https://hub.docker.com/r/grimoirelab/installed/), available from DockerHub. It includes all GrimoireLab components, and after booting up, it runs Mordred by default. This image does not include Elasticsearch, Kibiter or MariaDB, but it assumes they are available in the host where it is run, in the standard ports.
+To produce a dashboard with Mordred, you can also use some containers, available from DockerHub, ready to work:
 
-Therefore, for running this `grimoirelab/installed` image, first set up the supporting systems in your host, as detailed in the [Supporting systems](supporting-systems.md) section. Then, ensure you have a recent version of `docker` installed (we´re testing with 17.x, see [Docker installation instructions](https://docs.docker.com/engine/installation/)). Finally, compose a Mordred configuration file with credentials and references the supporting system. For example:
+* [grimoirelab/installed](https://hub.docker.com/r/grimoirelab/installed/): includes all GrimoireLab components, and after booting up, it runs Mordred by default. This image does not include Elasticsearch, Kibiter or MariaDB: they shouldl be available in the host where it is run, in the standard ports.
+
+* [grimoirelab/full](https://hub.docker.com/r/grimoirelab/full). Includes GrimoireLab and runs Mordred, as `grimoirelab/installed` does, but also includes all services needed to produce a dashboard: Elasticsearch, MariaDB, and Kibiter.
+
+`grimoirelab/full` is the best option if you just want a painless experience of building a dashboard, and don't mind pulling a large docker image. `grimoirelab/installed` is smaller, and more suitable for using GrimoireLab if you already have Elasticsearch, MariaDB and Kibiter available in your host or somewhere else.
+
+For using these container images, ensure you have a recent version of `docker` installed, see [Docker installation instructions](https://docs.docker.com/engine/installation/)). The examples have been tested with 17.x in Debian GNU/Linux,
+
+### Running grimoirelab/full
+
+
+### Running grimoirelab/installed
+
+For running the `grimoirelab/installed` docker image, first set up the supporting systems in your host, as detailed in the [Supporting systems](before-you-start/supporting-systems.md) section.  Finally, compose a Mordred configuration file with credentials and references the supporting system. For example:
 
 ```
 [es_collection]
