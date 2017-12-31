@@ -1,6 +1,29 @@
 ## Deploying from DockerHub
 
-GrimoireLab is available as Docker container images. The image which is likely most useful for a start is [grimoirelab/installed](https://hub.docker.com/r/grimoirelab/installed/), available from DockerHub. It includes all GrimoireLab components, and after booting up, it runs Mordred by default. This image does not include Elasticsearch, Kibiter or MariaDB, but it assumes they are available in the host where it is run, in the standard ports.
+GrimoireLab is available as Docker container images. The image which is likely most useful for a start is [grimoirelab/full](https://hub.docker.com/r/grimoirelab/full), available from DockerHub. It includes all GrimoireLab components, along with the services needed to produce a fully functional GrimoireLab dashboard: Elasticsearch, MariaDB, and Kibiter. By default, the container produces a dashboard for the GrimoireLab project.
+
+To try it, you can just type (assuming you have a recent version of docker installed in your system):
+
+```bash
+$ docker run -p 127:0.0.1:5601:5601 \
+    -v $(pwd)/mordred-local.cfg:/mordred-local.cfg \
+    -t grimoirelab/full
+```
+
+`mordred-local.cfg` should have a GitHub API token, in  `mordred.cfg` format:
+
+```
+[github]
+api-token = XXX
+```
+
+This will pull the `grimoirelab/full` Docker container image from DockerHub
+(if it is not already in the local host), and will run it.
+Upon running it, the container will launch Elasticsearch, MariaDB, and Kibana,
+so they will be ready when the container launches Mordred to retrieve data from GrimoireLab project repositories, and finally produce a complete dashboard for it. Once produced, you can just point your browser to http://localhost:5601 and voila.
+
+
+[grimoirelab/installed](https://hub.docker.com/r/grimoirelab/installed/), available from DockerHub. It includes all GrimoireLab components, and after booting up, it runs Mordred by default. This image does not include Elasticsearch, Kibiter or MariaDB, but it assumes they are available in the host where it is run, in the standard ports.
 
 Therefore, for running this `grimoirelab/installed` image, first set up the supporting systems in your host, as detailed in the [Supporting systems](supporting-systems.md) section. Then, ensure you have a recent version of `docker` installed (we´re testing with 17.x, see [Docker installation instructions](https://docs.docker.com/engine/installation/)). Finally, compose a Mordred configuration file with credentials and references the supporting system. For example:
 
