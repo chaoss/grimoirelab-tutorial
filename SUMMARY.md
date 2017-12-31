@@ -26,6 +26,7 @@
   * [Get your first report](reports/get-your-first-report.md)
 * [Mordred: orchestrating everything](mordred/intro.md)
   * [A GrimoireLab dashboard in one step](mordred/a-grimoirelab-dashboard-in-one-step.md)
+  * [Mordred in a container](mordred/mordred-in-a-container.md)
 * [Python scripting](python/scripting.md)
   * [Persistent storage in ElasticSearch](python/elasticsearch.md)
   * [Querying ElasticSearch](python/quering_elasticsearch.md)
