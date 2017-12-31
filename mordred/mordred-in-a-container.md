@@ -56,6 +56,14 @@ $ docker run -p 127.0.0.1:9200:9200 -p 127.0.0.1:5601:5601 \
     -t grimoirelab/full
 ```
 
+You can also get a shell in the running container, and run arbitrary GrimoireLab commands (`container_id` is the identifier of the running container, that you can find out with `docker ps`, or by looking at the first line when running the container):
+
+```bash
+$ docker exec -it container_id env TERM=xterm /bin/bash
+```
+
+In the shell prompt you get, write any GrimoireLab command. And if you have mounted external files for the Mordred configuration, you can modify them, and run Mordred again, to change its behaviour.
+
 **Warning** When Mordred is done, the container stays forever (well, in fact for a long number of days), so that Kibana is still available to produce the dashboard for your browser. When you want to kill the container, it is not enough to just type `<CTRL> C`, sice that will only kill the shell, but the services on the background will stay. You will need to use `docker kill` to kill the container.
 
 
