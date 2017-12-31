@@ -26,4 +26,10 @@ The resulting dashboard will be available from Kibiter, and you can see it by po
 
 ![](/assets/dashboard-grimoirelab.png)
 
-The container allows for much more: you can configure the project you want to analyze, have access to the logging created while producing the dashboard, etc. And what is even more interesting: you can launch a shell in the container, and run GrimoireLab commands from it. Have a look at the section [Mordred in a container](../mordred/mordred-in-a-container.md), and to  [grimoirelab/docker/README.md](https://github.com/grimoirelab/grimoirelab/blob/master/docker/README.md) for more detailed instructions.
+What is even more interesting: you can get a shell in the container (after launching it), and run arbitrary GrimoireLab commands (`container_id` is the identifier of the running container, that you can find out with `docker ps`):
+
+```bash
+$ docker exec -it container_id env TERM=xterm /bin/bash
+```
+
+The container allows for much more: you can configure the project you want to analyze, have access to the logging created while producing the dashboard, etc.  Have a look at the section [Mordred in a container](../mordred/mordred-in-a-container.md), and to  [grimoirelab/docker/README.md](https://github.com/grimoirelab/grimoirelab/blob/master/docker/README.md) for more detailed instructions.
