@@ -64,9 +64,7 @@ $ docker exec -it container_id env TERM=xterm /bin/bash
 
 In the shell prompt, write any GrimoireLab command. And if you have mounted external files for the Mordred configuration, you can modify them, and run Mordred again, to change its behaviour.
 
-If you want to connect to the dashboard to issue your own commands,
-but don't want it to run Mordred by itsef, run the container
-setting `RUN_MORDRED` to `NO`:
+If you want to connect to the dashboard to issue your own commands, but don't want it to run Mordred by itsef, run the container setting `RUN_MORDRED` to `NO`:
 
 ```bash
 $ docker run -p 127.0.0.1:9200:9200 -p 127.0.0.1:5601:5601 \
