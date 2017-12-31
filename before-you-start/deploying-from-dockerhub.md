@@ -19,16 +19,13 @@ $ docker run -p 127:0.0.1:5601:5601 \
 api-token = XXX
 ```
 
-This will pull the `grimoirelab/full` Docker container image from DockerHub
-(if it is not already in the local host), and will run it.
-Upon running it, the container will launch Elasticsearch, MariaDB, and Kibana,
-so they will be ready when the container launches Mordred to retrieve data from GrimoireLab project repositories, and finally produce a complete dashboard for it.
+This will pull the `grimoirelab/full` Docker container image from DockerHub (if it is not already in the local host), and will run it. Upon running it, the container will launch Elasticsearch, MariaDB, and Kibana, so they will be ready when the container launches Mordred to retrieve data from GrimoireLab project repositories, and finally produce a complete dashboard for it.
 
 The resulting dashboard will be available from Kibiter, and you can see it by pointing your browser at http://localhost:5601 . Once you see the dashboard, click on "Overview". You will get something similar to:
 
 ![](/assets/dashboard-grimoirelab.png)
 
-What is even more interesting: you can get a shell in the container (after launching it), and run arbitrary GrimoireLab commands (`container_id` is the identifier of the running container, that you can find out with `docker ps`):
+What is even more interesting: you can get a shell in the container (after launching it), and run arbitrary GrimoireLab commands (`container_id` is the identifier of the running container, that you can find out with `docker ps`, or by looking at the first line when running the container):
 
 ```bash
 $ docker exec -it container_id env TERM=xterm /bin/bash
