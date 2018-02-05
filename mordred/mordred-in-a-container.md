@@ -16,11 +16,11 @@ To try it this container image, just run it as follows:
 
 ```bash
 $ docker run -p 127.0.0.1:5601:5601 \
-    -v $(pwd)/mordred-local.cfg:/mordred-local.cfg \
+    -v $(pwd)/credentials.cfg:/mordred-override.cfg \
     -t grimoirelab/full
 ```
 
-`mordred-local.cfg` should have a GitHub API token (see [Personal GitHub API tokens](https://github.com/blog/1509-personal-api-tokens)), in a `mordred.cfg`
+`credentials.cfg` should have a GitHub API token (see [Personal GitHub API tokens](https://github.com/blog/1509-personal-api-tokens)), in a `mordred.cfg`
 format:
 
 ```
@@ -32,15 +32,14 @@ This will pull the `grimoirelab/full` Docker container image from DockerHub (if 
 
 The `docker run` command line above exposed port 5601 in the container to be reachable from the host, as  `localhost:5601`. If you omit "127.0.0.1:", it will be reachable to any other machine reaching your host, so be careful: by default there is no access control in the Kibiter used by this container.
 
-That line used the `mordred-local.cfg` file for the configuration for Mordred. In fact, this will be the third configuration file in a chain for Mordred. The other two can be substituted at runtime for different
-configurations. The first one, `/mordred.cfg`, has the general configuration for producing a dashboard for the GrimoireLab project. It can be adapted to produce a dashboard for other projects. The second one, `/mordred-full.cfg`, has the configuration for reaching the services used by the container (ElasticSearch, MariaDB, Kibiter), and is likely that you don't need to change it except if you want to use some external service instead of those provided by the container.
+The command above uses the `/mordred-override.cfg` file for the configuration for Mordred. In fact, this is the fourth configuration file in a chain of configuration files for Mordred. The other three, whcih capture specifics parts of the configuration, can be substituted when launching the container. The first one, `/mordred-infra.cfg` has the configuration for finding the infrastructure needed to run (Elasticsearch, Kibiter, MariaDB, etc.), and is likely that you don't need to change it except if you want to use some external service instead of those provided by the container. Then, `/mordred-dashboard.cfg`, has the general configuration for producing a dashboard, with some tweeks that seem apprpriate for a demo dashboard. It can be adapted to produce the dashboard in on other ways. The third one, `/mordred-project.cfg`, has the configuration specific for the project to analyze (GrimoireLab itself, in this case).
 
 A slightly different command line is as follows:
 
 ```bash
 $ docker run -p 127.0.0.1:9200:9200 -p 127.0.0.1:5601:5601 \
     -v $(pwd)/logs:/logs \
-    -v $(pwd)/mordred-local-full-jgb.cfg:/mordred-local.cfg \
+    -v $(pwd)/credentials.cfg:/mordred-override.cfg \
     -t grimoirelab/full
 ```
 
@@ -51,7 +50,7 @@ By default, Elasticsearch will store indexes within the container image, which m
 ```bash
 $ docker run -p 127.0.0.1:9200:9200 -p 127.0.0.1:5601:5601 \
     -v $(pwd)/logs:/logs \
-    -v $(pwd)/mordred-local-full-jgb.cfg:/mordred-local.cfg \
+    -v $(pwd)/credentials.cfg:/mordred-override.cfg \
     -v $(pwd)/es-data:/var/lib/elasticsearch \
     -t grimoirelab/full
 ```
@@ -69,7 +68,7 @@ If you want to connect to the dashboard to issue your own commands, but don't wa
 ```bash
 $ docker run -p 127.0.0.1:9200:9200 -p 127.0.0.1:5601:5601 \
     -v $(pwd)/logs:/logs \
-    -v $(pwd)/mordred-local-full-jgb.cfg:/mordred-local.cfg \
+    -v $(pwd)/credentials.cfg:/mordred-override.cfg \
     -v $(pwd)/es-data:/var/lib/elasticsearch \
     -e RUN_MORDRED=NO \
     -t grimoirelab/full
@@ -115,11 +114,11 @@ Now, just run the container as:
 
 ```bash
 $ docker run --net="host" \
-  -v $(pwd)/mordred-local.cfg:/mordred-local.cfg \
+  -v $(pwd)/credentials.cfg:/mordred-override.cfg \
   grimoirelab/installed
 ```
 
-`mordred-local.cfg` is the name of the Mordred configuration file mentioned above.
+`credentials.cfg` is the name of the Mordred configuration file mentioned above.
 
 This will pull the image from [DockerHub](http://dockerhub.com), and run it allowing it to "see" the network ports of the host. This way, GrimoireLab tools running in the contaniner will be able of connecting to Elasticsearch to produce and consume indexes, and MariaDB or MySQQL to manage the SortingHat database.
 
