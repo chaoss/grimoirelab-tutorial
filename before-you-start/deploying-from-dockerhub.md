@@ -7,7 +7,7 @@ For using these container images, ensure you have a recent version of `docker` i
 To try `grimoirelab/full`, just type:
 
 ```bash
-$ docker run -p 127:0.0.1:5601:5601 \
+$ docker run -p 127.0.0.1:5601:5601 \
     -v $(pwd)/mordred-local.cfg:/mordred-local.cfg \
     -t grimoirelab/full
 ```
