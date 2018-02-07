@@ -8,11 +8,11 @@ To try `grimoirelab/full`, just type:
 
 ```bash
 $ docker run -p 127.0.0.1:5601:5601 \
-    -v $(pwd)/mordred-local.cfg:/mordred-local.cfg \
+    -v $(pwd)/credentials.cfg:/mordred-override.cfg \
     -t grimoirelab/full
 ```
 
-`mordred-local.cfg` should have a GitHub API token, in  `mordred.cfg` format:
+`credentials.cfg` should have a GitHub API token, in  `mordred.cfg` format:
 
 ```
 [github]
