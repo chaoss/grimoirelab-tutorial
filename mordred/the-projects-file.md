@@ -23,9 +23,34 @@ The projects file is a JSON file with the following structure:
 
 That is, in Python terms it is a dictionary of projects, where the key for each project is the project name (as we want it to appear in the dashboard), and the value is a dictionary with the data sources for that project.
 
-In turn the dictionary with data sources has as keys the Perceval identifiers for the data sources of interest for the project (for example "git", "github", "jira", etc.). Values is a list of repositories, also in the format expected by Perceval. See `perceval --help`, or the [main Perceval README](https://github.com/grimoirelab/perceval/blob/master/README.md) for a complete list of data sources supported, and their identifiers.
+In turn the dictionary with data sources has as keys the Perceval identifiers for the data sources of interest for the project (for example "git", "github", "jira", etc.). Values of that dictionary is a list of repositories, also in the format expected by Perceval. See `perceval --help`, or the [main Perceval README](https://github.com/grimoirelab/perceval/blob/master/README.md) for a complete list of data sources supported, and their identifiers. For convenience, this is a close-to-complete list:
 
-For example, this is an excerpt of the projects file for the CHAOSS dashboard:
+* askbot: Questions and answers from Askbot site
+* bugzilla: Bugzilla server
+* bugzillarest: Bugzilla server (>=5.0) using its REST API
+* confluence: Confluence server
+* discourse: Discourse site
+* gerrit: Gerrit server
+* git: Commits from Git
+* github: Issues and PRs from GitHub
+* gmane: Gmane messages (not working now)
+* hyperkitty: Messages from a HyperKitty archiver
+* jenkins: Builds data from a Jenkins server
+* jira: Issues data from JIRA issue tracker
+* mbox: Messages from MBox files
+* mediawiki: Pages and revisions from a MediaWiki site
+* meetup: Events from a Meetup group
+* nntp: Articles from a NNTP news group
+* phabricator: Tasks from a Phabricator site
+* pipermail: Messages from a Pipermail archiver
+* redmine: Issues data from a Redmine server
+* rss: Entries from a RSS feed server
+* slack: Messages from a Slack channel
+* stackexchange: Questions, answers and comments from StackExchange sites
+* supybot: Messages from Supybot log files
+* telegram: Messages from the Telegram server
+
+As an example, this is an excerpt of the projects file for the CHAOSS dashboard:
 
 ```
 {
