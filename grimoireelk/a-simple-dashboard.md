@@ -37,20 +37,20 @@ In both cases, you will see a JSON document with the description of the index.
 
 ### <a name="uploading-dashboard"></a>Uploading the dashboard configuration
 
-Then, the only missing element is a Kibana dashboard with its visualizations. We can use `kidash.py` to upload to Kibana a dashboard definition that we have ready for you in the [git-dashboard.json JSON file](/grimoireelk/dashboards/git-dashboard.json). Download it to your `/tmp` directory, and run the command:
+Then, the only missing element is a Kibana dashboard with its visualizations. We can use `kidash` to upload to Kibiter/Kibana a dashboard definition that we have ready for you in the [git-dashboard.json JSON file](/grimoireelk/dashboards/git-dashboard.json). Download it to your `/tmp` directory, and run the command:
 
 ```bash
-(grimoireelk) $ kidash.py --elastic_url-enrich http://localhost:9200 \
+(grimoireelk) $ kidash --elastic_url-enrich http://localhost:9200 \
   --import /tmp/git-dashboard.json
 ```
 
-This should produce the promised dashboard, in all its glory! Point your web browser to [your Kibana instance](http://localhost:5601/), click on `Dashboard` in the top menu, and use the floppy icon \(on the top right list of icons\) to select the `Git` dashboard. Get some popcorn, now you should be able to play with the dashboard.
+This should produce the promised dashboard, in all its glory! Point your web browser to [your Kibiter/Kibana instance](http://localhost:5601/), click on `Dashboard` in the top menu, and use the floppy icon \(on the top right list of icons\) to select the `Git` dashboard. Get some popcorn, now you should be able to play with the dashboard.
 
 ![](kibana-dashboard.png)
 
 ### Final remarks
 
-In this section you have learned to produce a simple dashboard, using Perceval and GrimoireELK, with the data stored in ElasticSearch, and the dashboard itself in Kibana. It only has information for git repositories, but with a similar procedure, you can produce dashboards for other data sources.
+In this section you have learned to produce a simple dashboard, using Perceval, ELK, and Kidash, with the data stored in ElasticSearch, and the dashboard itself in Kibana. It only has information for git repositories, but with a similar procedure, you can produce dashboards for other data sources.
 
 In case you want to try a dashboard for some other repositories, once you're done with this one, you can delete the indexes \(both `git` and `git_raw`\), and produce new indexes with `p2o.py`. For doing this, you can use `curl` and the ElasticsSearch REST HTTP API:
 
@@ -59,7 +59,7 @@ $ curl -XDELETE http://localhost:9200/git
 $ curl -XDELETE http://localhost:9200/git_raw
 ```
 
-Using the Kibana interface it is simple to modify the dashboard, its visualizations, and produce new dashboards and visualizations. If you are interested, have a look at the [Kibana User Guide](https://www.elastic.co/guide/en/kibana/current/).
+Using the Kibiter/Kibana interface it is simple to modify the dashboard, its visualizations, and produce new dashboards and visualizations. If you are interested, have a look at the [Kibana User Guide](https://www.elastic.co/guide/en/kibana/current/).
 
 `p2o.py` can be used to produce indexes for many other data sources. For example for GitHub issues and pull requests, the magic line is like this \(of course, substitute XXX for your GitHub token\):
 
@@ -73,7 +73,7 @@ $ (grimoireelk) p2o.py --enrich --index github_raw --index-enrich github \
 In  this  case, you  can  use the [github-dashboard.json JSON file](/grimoireelk/dashboards/github-dashboard.json). Download it to your `/tmp` directory, and run the command:
 
 ```bash
-(grimoireelk) $ kidash.py --elastic_url-enrich http://localhost:9200 \
+(grimoireelk) $ kidash --elastic_url-enrich http://localhost:9200 \
   --import /tmp/github-dashboard.json
 ```
 

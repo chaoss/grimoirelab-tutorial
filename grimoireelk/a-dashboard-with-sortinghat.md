@@ -88,13 +88,13 @@ This will show all the identities found in the Perceval git repository.
 Let's produce now a Kibana dashboard for our enriched index (`git` in our ElasticSearch instance). I will start by installing `kidash`, to upload a JSON description of the dashboard, its visualizations, and everything needed:
 
 ```bash
-(sh) $ pip install grimoire-kidash
+(sh) $ pip install kidash
 ```
 
 Then, I use the JSON description of a dashboard for Git that includes visualizations for some fields generated from the SortingHat database: [git-sortinghat.json](/grimoireelk/dashboards/git-sortinghat.json).
 
 ```bash
-(sh) $ kidash.py --elastic_url-enrich http://localhost:9200 \
+(sh) $ kidash --elastic_url-enrich http://localhost:9200 \
   --import /tmp/git-sortinghat.json
 ```
 
