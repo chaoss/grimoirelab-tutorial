@@ -109,10 +109,10 @@ This will pull the `perceval` module, and other dependencies needed, and will in
 Kidash is other package that can be installed with `pip`:
 
 ```bash
-(grimoirelab) $ pip install grimoire-kidash
+(grimoirelab) $ pip install kidash
 ```
 
-This will install the `grimoire-kidash` Python package, which includes the `kidash.py` Python script and all dependencies needed for it to work. This scripts will allow us to manage dashboards, visualizations, and other elements in Kibana. We will use it to upload dashboard definitions to produce our dashboard in Kibana.
+This will install the `kidash` Python package, which includes the `kidash` Python script and all dependencies needed for it to work. This scripts will allow us to manage dashboards, visualizations, and other elements in Kibana. We will use it to upload dashboard definitions to produce our dashboard in Kibana.
 
 ### Installing SortingHat
 
@@ -123,24 +123,24 @@ SortingHat can also be installed with `pip`:
 ```
 
 
-### Installing Reports
+### Installing Manuscripts
 
-Installation of Reports is easy as well: just pip install the grimoire-reports Python package. In your virtual environment of choice, run:
+Installation of Manuscripts is easy as well: just pip install the `manuscripts` Python package. In your virtual environment of choice, run:
 
 ```bash
-(grimoirelab) $ pip install grimoire-reports
+(grimoirelab) $ pip install manuscripts
 ```
 
 This should install it, and all its dependencies. Once installed, check that everything is as it should:
 
 ```bash
-(grimoirelab) $ report --help
+(grimoirelab) $ manuscript --help
 ```
 
 ### Installing from development repositories
 <a name="install-devel-repos"></a>
 
-Previous instructions are for installing the Python packages corresponding to the GrimoireLab coordinated releases. These packages are supposed to be stable and tested. But if you prefer to live in the edge, you can also install directly from development repositories. To easy this case, there is a little utility: [build_grimoirelab](https://github.com/grimoirelab/grimoirelab/blob/master/utils/build_grimoirelab).
+Previous instructions are for installing the Python packages corresponding to the GrimoireLab coordinated releases. These packages are supposed to be stable and tested. But if you prefer to live in the edge, you can also install directly from development repositories. To easy this case, there is a little utility: [build_grimoirelab](https://github.com/chaoss/grimoirelab/blob/master/utils/build_grimoirelab).
 
 > **Warning:** latest versions in development repositories may be instable, not play well with each other, or even not work at all. Use at your own risk.
 
@@ -160,7 +160,7 @@ $ source /tmp/ivenv/bin/activate
 (ivenv) $ mordred --help
 ```
 
-`build_grimoirelab` can also be used to create a virtual enviroment with a specific release of GrimoireLab installed. For that, download the release file (which specifies the versions of each tool) from the[releases directory](https://github.com/grimoirelab/grimoirelab/tree/master/releases) and run (assuming you downloaded the release file `elasticgirl.21` to the current directory):
+`build_grimoirelab` can also be used to create a virtual enviroment with a specific release of GrimoireLab installed. For that, download the release file (which specifies the versions of each tool) from the[releases directory](https://github.com/chaoss/grimoirelab/tree/master/releases) and run (assuming you downloaded the release file `elasticgirl.21` to the current directory):
 
 ```bash
 $ python3 build_grimoirelab --install --install_venv /tmp/ivenv --relfile elasticgirl.21
@@ -178,4 +178,4 @@ You can get a listing of all the options of `build_grimoirelab' by using its `--
 $ python3 build_grimoirelab --help
 ```
 
-There is some explanation about some of them in the [README for the utils directory](https://github.com/grimoirelab/grimoirelab/blob/master/utils/README.md).
+There is some explanation about some of them in the [README for the utils directory](https://github.com/chaoss/grimoirelab/blob/master/utils/README.md).
