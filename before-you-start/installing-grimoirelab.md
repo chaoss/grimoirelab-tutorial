@@ -134,7 +134,7 @@ Installation of Manuscripts is easy as well: just pip install the `manuscripts` 
 This should install it, and all its dependencies. Once installed, check that everything is as it should:
 
 ```bash
-(grimoirelab) $ manuscript --help
+(grimoirelab) $ manuscripts --help
 ```
 
 ### Installing from development repositories
