@@ -25,7 +25,7 @@
 
 import argparse
 from datetime import datetime
-from pprint import pprint
+import hashlib
 import urllib3
 
 from elasticsearch import Elasticsearch
@@ -129,17 +129,26 @@ def main():
         buckets = []
         for bucket_author in buckets_result:
             author = bucket_author['key']
+            first_all = None
+            last_all = None
+            buckets_author = []
             for bucket_repo in bucket_author['repos']['buckets']:
                 first_item = bucket_repo['first_item']['hits']['hits'][0]
-                first = first_item['sort'][0]/1000
-                last = bucket_repo['last_item']['value']/1000
+                first_date = first_item['sort'][0]/1000
+                first = datetime.utcfromtimestamp(first_date)
+                if first_all is None or first < first_all:
+                    first_all = first
+                last_date = bucket_repo['last_item']['value']/1000
+                last = datetime.utcfromtimestamp(last_date)
+                if last_all is None or last > last_all:
+                    last_all = last
                 contribs = bucket_repo['contribs']['value']
                 org_name = first_item['_source']['author_org_name']
                 project = first_item['_source']['project']
                 uuid = first_item['_source']['author_uuid']
-                buckets.append(
-                    {'first': datetime.utcfromtimestamp(first),
-                    'last': datetime.utcfromtimestamp(last),
+                buckets_author.append(
+                    {'first': first,
+                    'last': last,
                     'author_name': author,
                     'contribs': contribs,
                     'uuid': uuid,
@@ -147,6 +156,10 @@ def main():
                     'repo_name': bucket_repo['key'],
                     'project': project}
                 )
+            for bucket in buckets_author:
+                bucket['first_all'] = first_all
+                bucket['last_all'] = last_all
+                buckets.append(bucket)
         authors_repos = pd.DataFrame.from_records(buckets)
         authors_repos.sort_values(by='first', ascending=False,
                                 inplace=True)
@@ -158,7 +171,9 @@ def main():
 
     print("Creating CSV for first date for authors: " + new_file)
     authors.to_csv(new_file,
-                columns=['first', 'last', 'author_name', 'contribs', 'author_org_name', 'repo_name', 'project'],
+                columns=['first', 'last',
+                         'author_name', 'contribs', 'author_org_name',
+                         'repo_name', 'project'],
                 index=False)
 
     def mapping_es (es, es_index):
@@ -167,6 +182,8 @@ def main():
         mapping.field('author_name', String(index='not_analyzed'))
         mapping.field('first', Date())
         mapping.field('last', Date())
+        mapping.field('first_all', Date())
+        mapping.field('last_all', Date())
         mapping.field('contribs', 'integer')
         mapping.field('author_org_name', String(index='not_analyzed'))
         mapping.field('repo_name', String(index='not_analyzed'))
@@ -180,11 +197,13 @@ def main():
         es_type = 'items'
         actions = []
         for row in df[columns].to_dict(orient='records'):
+            id_src = row['uuid']+row['repo_name']
+            id = hashlib.sha1(id_src.encode('utf-8', errors='surrogateescape')).hexdigest()
             to_write = {
                 '_op_type': 'index',
                 '_index': es_index,
                 '_type': es_type,
-                '_id': row['uuid'],
+                '_id': id
             }
             to_write.update(row)
             actions.append(to_write)
@@ -195,9 +214,10 @@ def main():
         print("Bulk upload result (succesful / errors): ", result)
 
     mapping_es(es_out, es_index_out)
-    upload_es(es_out, es_index_out, authors,
-                ['first', 'last', 'author_name', 'uuid',
-                'contribs', 'author_org_name', 'repo_name', 'project'])
+    upload_es(es_out, es_index_out, authors_repos,
+                ['first', 'last', 'first_all', 'last_all',
+                 'author_name', 'uuid', 'contribs', 'author_org_name',
+                 'repo_name', 'project'])
 
 if __name__ == "__main__":
     main()
