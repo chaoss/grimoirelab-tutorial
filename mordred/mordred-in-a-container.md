@@ -55,6 +55,16 @@ $ docker run -p 127.0.0.1:9200:9200 -p 127.0.0.1:5601:5601 \
     -t grimoirelab/full
 ```
 
+The `grimoirelab/full` container, by default, produces a dashboard showing an analysis of the CHAOSS project. If you want to change the list of repositories to analyze, you need to create a `projects.json` file, and override with it the one that the container uses. For the format of that file, see the section [The projects file](/mordred/the-projects-file.md). The file to override is `/projects.json` in the container, so the command to run it could be (assuming the file was created as `projects.json` in the current directory):
+
+```bash
+$ docker run -p 127.0.0.1:9200:9200 -p 127.0.0.1:5601:5601 \
+    -v $(pwd)/logs:/logs \
+    -v $(pwd)/credentials.cfg:/mordred-override.cfg \
+    -v $(pwd)/projects.json:/projects.json \
+    -t grimoirelab/full
+```
+
 You can also get a shell in the running container, and run arbitrary GrimoireLab commands (`container_id` is the identifier of the running container, that you can find out with `docker ps`, or by looking at the first line when running the container):
 
 ```bash
