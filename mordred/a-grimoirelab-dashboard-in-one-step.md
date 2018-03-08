@@ -37,11 +37,11 @@ studies = true
 
 [sortinghat]
 host = localhost
-user = jgb
-password = XXX
+user = user_sh
+password = pass_sh
 database = grimoirelab_sh
 load_orgs = false
-#orgs_file = /home/bitergia/conf/orgs_file
+#orgs_file = orgs_file
 # see: sortinghat unify --help
 unify_method =
 # commonly: Unknown
@@ -68,6 +68,8 @@ raw_index = git_test-raw
 enriched_index = git_test
 ```
 
+In this file, you need to include the proper credentials where needed. At least, you should change `user_sh` and `pass_sh` to your credentials to the SortingHat (MariaDB or MySQL) database.
+
 * Prepare a [projects.json](files/projects.json) file, with the list of repositories to analyze, organized in projects. A very small version of it, just for testing:
 
 ```
@@ -80,6 +82,8 @@ enriched_index = git_test
     }
 }
 ```
+
+See a more complete information about this file in the [section on the projects file](/mordred/the-projects-file.md).
 
 * Prepare a [menu.yaml](files/menu.yaml), with the menu for Kibiter (not needed if the data will be visualized with Kibana).
 
