@@ -10,7 +10,7 @@ As data sources, we will use the main repositories the [GitHub GrimoireLab organ
 
 The process shown here is completely manual, to minimize configuration and understanding of GrimoireLab components. It could be further automated with the use of Mordred and Arthur, specially if the data is to be updated continuously, but for now we will skip that part. In a first try we won't use SortingHat for simplicity: we can do that later, making some of the metrics more accurate.
 
-The process will include the installation of the GrimoireLab tools needed, and will assume that Python3, MySQL/MariaDB, ElasticSearch and Kibana are already installed (see [Installation section](/grimoireelk/installation.md) for some hints on all of this.
+The process will include the installation of the GrimoireLab tools needed, and will assume that Python3, MySQL/MariaDB, ElasticSearch and Kibana are already installed (see [Installation section](/before-you-start/supporting-systems.md) for some hints on all of this.
 
 Let's start by installing GrimoireLab components:
 
