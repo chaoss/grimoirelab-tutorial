@@ -45,9 +45,9 @@ You can also have several different virtual environments, each with different se
 Depending on what you have installed in your system, it may be convenient to install some Python tools in it, and to upgrade some others. We recommend that you type, in your activated virtual ennvironment:
 
 ```bash
-(grimoirelab) $ pip3 install --upgrade pip
-(grimoirelab) $ pip3 install --upgrade setuptools
-(grimoirelab) $ pip3 install --upgrade wheel 
+(grimoirelab) $ pip install --upgrade pip
+(grimoirelab) $ pip install --upgrade setuptools
+(grimoirelab) $ pip install --upgrade wheel 
 ```
 
 This will increase the chances that you have no troubles later, when installing wheels (a kind of Python package, used for GrimoireLab modules and many of their dependencies).
@@ -57,7 +57,7 @@ This will increase the chances that you have no troubles later, when installing 
 For installing all GrimoireLab modules, we only need to install, using `pip3`, the packages that pull all the other GrimoireLab modules as dependencies. Currently, it is enough to install Mordred:
 
 ```bash
-(grimoirelab) $ pip3 install grimoire-mordred
+(grimoirelab) $ pip install grimoire-mordred
 ```
 
 This should install it, and all its dependencies (which include all of the GrimoireLab modules). Once installed, check that everything is as it should:
@@ -73,7 +73,7 @@ In the following sections, we will explain how to install, separately, some of t
 In an activated virtual environment we will use `pip` to install the module from the [Pypi archive](https://pypi.python.org/pypi).
 
 ```bash
-(grimoirelab) $ pip3 install perceval
+(grimoirelab) $ pip install perceval
 ```
 
 This will install Perceval and its dependencies \(other Python modules that are needed by Perceval to work\). So, we're ready to see what it can do.
