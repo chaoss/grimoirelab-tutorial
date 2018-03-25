@@ -1,6 +1,6 @@
 ## GrimoireLab scenarios
 
-GrimoireLab is modular not only in the sense that it is composed by modules, but also in the sense that modules can be use separately. To illustrate this, let's visit some different scenarios of how GrimoireLab can be used to analyze software development, from simpler ones, to some of the most complex.
+GrimoireLab is modular not only in the sense that it is composed of modules, but also in the sense that modules can be used separately. To illustrate this, let's visit some different scenarios of how GrimoireLab can be used to analyze software development, from simpler ones, to some of the most complex.
 
 ### Perceval: analyzing a single data source
 
@@ -8,7 +8,7 @@ In this case, we will use just Perceval, as a Python module, to retrieve informa
 
 ![](/grimoirelab/grimoirelab-fit-perceval-1.png)
 
-As shown in the figure above, data retrieved by Perceval is consumed by a Python script, which produces, for example, a summary of the data in the repository. In this simple scenario, most of the components in GrimoireLab are not needed, and the setup is rather simple: just the Perceval Python module needs to be installed. This is the case explained in sections [Retriving git metadata](/training/perceval/git.md), [Retrieving data from GitHub repositories](/training/perceval/github.md) and [Mail archives](/training/perceval/mail.md).
+As shown in the figure above, data retrieved by Perceval is consumed by a Python script, which produces, for example, a summary of the data in the repository. In this simple scenario, most of the components in GrimoireLab are not needed, and the setup is rather simple: just the Perceval Python module needs to be installed. This is the case explained in sections [Retrieving git metadata](/training/perceval/git.md), [Retrieving data from GitHub repositories](/training/perceval/github.md) and [Mail archives](/training/perceval/mail.md).
 
 It is important to notice that each data source (for example, git, Bugzilla or Gerrit) we may be interested in getting information from several repositories. Usually Perceval will be run once for each of those repositories. But since the process is exactly the same, and the involved components too, in this section we won't show in charts the many repositories that may compose a given data source.
 
@@ -22,7 +22,7 @@ In fact, for each of the data sources, several repositories can be retrieved and
 
 ### Producing raw indexes
 
-The above scenario is affected by a problem: every time you want to re-run the Python script, Perceval nees to access the data sources once again. This may be a problem if the data retrieval process is long, error-prone, or stresses too much the infrastructure where the data resides.
+The above scenario is affected by a problem: every time you want to re-run the Python script, Perceval needs to access the data sources once again. This may be a problem if the data retrieval process is long, error-prone, or stresses too much the infrastructure where the data resides.
 
 To avoid these problems, GrimoireLab allows for an scenario where data sources are retrieved only once: store all the retrieved data in ElasticSearch indexes. This is one of the functionalities provided by GrimoireELK: run Perceval to access data, and store it in one raw index per data source.
 
@@ -34,13 +34,13 @@ The main drawback of this approach is that the next time we run the script, mayb
 
 This means that we can use this scenario to retrieve data once, and do reproducible analysis on the ElasticSearch indexes, or to retrieve it incrementally, having up-to-date indexes. But still, the analysis will be much faster than retrieving all the data again from its origins, and will stress much less the original infrastructure.
 
-Scripts programmmed to exploit raw indexes in ElasticSearch don't need to be written in Python. Since they only need to access ElasticSearch, almost any language can be used, as long as it can access ElasticSearch REST API. In fact, many languages are supported by specific modules to access ElasticSearch.
+Scripts programmed to exploit raw indexes in ElasticSearch don't need to be written in Python. Since they only need to access ElasticSearch, almost any language can be used, as long as it can access ElasticSearch REST API. In fact, many languages are supported by specific modules to access ElasticSearch.
 
 ### Producing enriched indexes
 
 Raw indexes include all the information in the original data sources. Because of that, they are good for any analysis that needs all that information. But that also causes raw indexes to be massive, and complex: they follow the data structure provided by the API of the original data source. In many cases, that structure can be cumbersome, or too complex: many analysis only need a summary of it. For example, when analyzing tickets in an issue tracking systems, in many case you just want some parameters for each of the tickets: when it was open, who opened it, when it was closed, maybe the summary...
 
-For this kind of analysis, GrimoireLab provides the enriched indexes. They are in fact intended to be consumed by Kibiter, but they may be useful for many other purposes. Enriched indexes are usually flat, in the sense that they don't nest data: each item is just a collection of fields. Each item corresponds usually to a high level element of the data source: tickets, commits, messages, etc. These features of enriched indexes make them appropriate not only for visualziation with Kibiter, but also for analysis. The scenario is as follows:
+For this kind of analysis, GrimoireLab provides the enriched indexes. They are in fact intended to be consumed by Kibiter, but they may be useful for many other purposes. Enriched indexes are usually flat, in the sense that they don't nest data: each item is just a collection of fields. Each item corresponds usually to a high level element of the data source: tickets, commits, messages, etc. These features of enriched indexes make them appropriate not only for visualization with Kibiter, but also for analysis. The scenario is as follows:
 
 ![](/grimoirelab/grimoirelab-fit-grimoireelk-enrich.png)
 
@@ -52,7 +52,7 @@ Scripts exploiting enriched indexes can be in any language, as was the case for 
 
 One of the most complex problems in analyzing information about how software developers work is identifying persons instead of just identities. When working in different systems, people use different identities. Or even in the same system: for example, they can use different email addresses when committing to git repositories. For dealing properly with the activity of persons, we need to merge these identities. Even for very simple metrics, such as how many people are collaborating in a git repository, you need to have those merged identities, or the metrics will be incorrect.
 
-In GrimoireLab, we have an specific component for dealing with identities: SortingHat. It uses an SQL database (MySQL, MariaDB) for storing all identities found in data sources, and how they relate to real persons. In addition, it also supports adding some attributes to persons, such as a their preferred name, or their affiliations (organizations for which they worked over time).
+In GrimoireLab, we have a specific component for dealing with identities: SortingHat. It uses an SQL database (MySQL, MariaDB) for storing all identities found in data sources, and how they relate to real persons. In addition, it also supports adding some attributes to persons, such as their preferred name, or their affiliations (organizations for which they worked over time).
 
 ![](/grimoirelab/grimoirelab-fit-grimoireelk-enrich-sh.png)
 
@@ -60,19 +60,19 @@ SortingHat is used by GrimoireELK. As a part of the enriching process, GrimoireE
 
 For doing its job, SortingHat runs several heuristics, but also reads identities files with trusted information in several formats. Those can be maintained by the projects themselves, or by a third party taking care of having accurate information about persons.
 
-As in the previous scenarios, data in enriched indexes can be consumed by scripts, which can now use the additional information about unique identites, affiliation, etc.
+As in the previous scenarios, data in enriched indexes can be consumed by scripts, which can now use the additional information about unique identities, affiliation, etc.
 
 ### Kibiter: visualizing with dashboards
 
-Actionable dashboards are very useful for understanding what is happening in software development projects. They allow for filtering the data by many criteria, selecting time periods of interest, drilling down, tracking evolution over time, and visualizing the data in many different ways. All of that with a simple and intuitive user interfacec.
+Actionable dashboards are very useful for understanding what is happening in software development projects. They allow for filtering the data by many criteria, selecting time periods of interest, drilling down, tracking evolution over time, and visualizing the data in many different ways. All of that with a simple and intuitive user interface.
 
-The component in GrimoireLab providing this functionality is Kibiter, a soft fork of Kibana. It shows complete dashboards in a broswer, as an HTML5 application.
+The component in GrimoireLab providing this functionality is Kibiter, a soft fork of Kibana. It shows complete dashboards in a browser, as an HTML5 application.
 
 ![](/grimoirelab/grimoirelab-all-dashboard-noarthur-nomordred-nopanels-nosh.png)
 
 In this case, the enriched indexes are fed directly  to Kibiter. In it, they are available for building visualizations and dashboards on top of it. This scenario is considered in detail in [Creating a simple dashboard](/grimoireelk/a-simple-dashboard.md), which walks you through the specific steps needed to produce the dashboard from the datasources. The text describes how to use Kibana instead of Kibiter, but the process is basically the same.
 
-Of course, this can be done, as shown above, not using SortingHat. But if SortingHat is used, unique identities, affiliations, etc. will also be available when designing visualizations and dashbords.
+Of course, this can be done, as shown above, not using SortingHat. But if SortingHat is used, unique identities, affiliations, etc. will also be available when designing visualizations and dashboards.
 
 ![](/grimoirelab/grimoirelab-all-dashboard-noarthur-nomordred-nopanels.png)
 
@@ -80,31 +80,31 @@ This scenario is covered in detail in [A dashboard with SortingHat](/grimoireelk
 
 ### Panels: predefined dashboards
 
-Writting visualizations and panels with Kibiter (or Kibana, for that matter) is not difficult. But you need to learn how to do it, and in any case it is time-consuming. That's why GrimoireLab provides a component with predefined visualizations and dashboards for all teh supported data sources: Panels.
+Writing visualizations and panels with Kibiter (or Kibana, for that matter) is not difficult. But you need to learn how to do it, and in any case it is time-consuming. That's why GrimoireLab provides a component with predefined visualizations and dashboards for all the supported data sources: Panels.
 
 ![](/grimoirelab/grimoirelab-all-dashboard-noarthur-nomordred.png)
 
-Panels provides a collection of JSON files which define visualizations and dashboards. In Kibiter, any visualization or dashboard can be exported and imported as a JSON file, and that's exactly what this collection allows. So, if you don't want to start your dashboard from scratch, you can set up a "standard GrimoireLab dashboard" by just uploading the files in Panels with `kidash`, as shown in [Managing dashboards with kidash](/grimoireelk/managing-dashboards-with-kidash.md).
+Panels provide a collection of JSON files which define visualizations and dashboards. In Kibiter, any visualization or dashboard can be exported and imported as a JSON file, and that's exactly what this collection allows. So, if you don't want to start your dashboard from scratch, you can set up a "standard GrimoireLab dashboard" by just uploading the files in Panels with `kidash`, as shown in [Managing dashboards with kidash](/grimoireelk/managing-dashboards-with-kidash.md).
 
-These panels are already prepared to consider unique identities, affiliation data, and other goodies provided by SortingHat, so if yoy use them, be sure to have SortingHat in the toolchain.
+These panels are already prepared to consider unique identities, affiliation data, and other goodies provided by SortingHat, so if you use them, be sure to have SortingHat in the toolchain.
 
 ### Mordred: from a configuration to a dasshboard
 
-As can be seen from the pictures in the previous scenarios, setting up a complete dashboard involves several components, each of them with their own configurations, and with their own processes for interacting with the others. The time needed to master all the components, and the effort spent to correctly run them, is not neglectible. Here is where Mordred comes to the resque.
+As can be seen from the pictures in the previous scenarios, setting up a complete dashboard involves several components, each of them with their own configurations, and with their own processes for interacting with the others. The time needed to master all the components, and the effort spent to correctly run them, is not neglectable. Here is where Mordred comes to the rescue.
 
 ![](/grimoirelab/grimoirelab-all-dashboard-noarthur.png)
 
 Mordred is a GrimoireLab component designed to read a configuration with all the data needed to produce a dashboard, and run all the other components so that the dashboard is actually produced.
 
-Using Mordred the production of a dashboard is just writting down its configuration (list of data sources and repositories, configuration for SortingHat, location of panels, etc.), and runnning it. Almost by magic, a new dashboard is born. And what is even more important: it is also capable of runnning all the tools incrementally, so that the dashboard remains updated, with fresh data from the data sources, automatically.
+Using Mordred the production of a dashboard is just writing down its configuration (list of data sources and repositories, configuration for SortingHat, location of panels, etc.), and running it. Almost by magic, a new dashboard is born. And what is even more important: it is also capable of running all the tools incrementally, so that the dashboard remains updated, with fresh data from the data sources, automatically.
 
 ### Arthur: orchestrating data retrieval.
 
-For a relatively small project, the data retrieval process, even in incremental updating mode, is straightforward. Start with the first repository from the first data source, use Perceval to retrieve new data from ir, do the same with the second repository, and so on untl all repositories for the first data source are visited. Then do the same with the second data source, etc. When all the data sources are visited, start over again.
+For a relatively small project, the data retrieval process, even in incremental updating mode, is straightforward. Start with the first repository from the first data source, use Perceval to retrieve new data from it, do the same with the second repository, and so on until all repositories for the first data source are visited. Then do the same with the second data source, etc. When all the data sources are visited, start over again.
 
-But in real large projects, this is not good enough. The time needed to cycle though repositories this way may be too long, and we need to paralelyze. In addition, not all data sources are the same, and maybe we want to run processes for data retrieval for some of the data sources in some specific virtual machines. Whatever the case, we need to orchstrate how different Perceval processes are retrieving data, so that the process is efficient and smooth.
+But in real large projects, this is not good enough. The time needed to cycle through repositories this way may be too long, and we need to parallelize. In addition, not all data sources are the same, and maybe we want to run processes for data retrieval for some of the data sources in some specific virtual machines. Whatever the case, we need to orchestrate how different Perceval processes are retrieving data, so that the process is efficient and smooth.
 
-This is the work of Arthur. Arthur uses a Redis database to store data about retrieval jobs, and retrieved batches of items. It takes care of managing all active retrival jobs, and can cope with parallel and periodic jobs, which makes the system really powerful. Although in many setups Arthur is not needed, large, production environments usually benefit from it.
+This is the work of Arthur. Arthur uses a Redis database to store data about retrieval jobs, and retrieved batches of items. It takes care of managing all active retrieval jobs, and can cope with parallel and periodic jobs, which makes the system really powerful. Although in many setups Arthur is not needed, large, production environments usually benefit from it.
 
 Since GrimoireELK is designed to work both with Arthur and without it, the process of including it in the toolchain is transparent to other components
 
@@ -112,7 +112,7 @@ Since GrimoireELK is designed to work both with Arthur and without it, the proce
 
 The above chart shows a full-fledged GrimoireLab setup for producing an industrial-grade production dashboard. Let's use it to review how all of the components interact:
 
-* Perceval retrieves data from the different repositories in the the data sources.
+* Perceval retrieves data from the different repositories in the data sources.
 * Arthur schedules retrieval jobs in parallel instances.
 * GrimoireELK produces the raw indexes, with all the data retrieved from the data sources.
 * GrimoireELK interacts with SortingHat, to inform it of new identities found, and to be informed about unique identities and related information.
@@ -123,10 +123,10 @@ The above chart shows a full-fledged GrimoireLab setup for producing an industri
 
 ### Standard reports
 
-In some cases, neither scripts nor dashboards are convenient for exploiting the rich information in the indexes. In some cases, what is needed is "static reports", usually in the form of PDF documents. This scenario is coverd by the Reports GrimoireLab component.
+In some cases, neither scripts nor dashboards are convenient for exploiting the rich information in the indexes. In some cases, what is needed is "static reports", usually in the form of PDF documents. This scenario is covered by the Reports GrimoireLab component.
 
 ![](/grimoirelab/grimoirelab-all-reports.png)
 
-The components involved to produce the enriched index are the same than for producing a dashboard. The differeence is Reports, a component that computes several metrics useful for a specific report on a project, and produces tables and charts for them. The result is a PDF document.
+The components involved to produce the enriched index are the same than for producing a dashboard. The difference is Reports, a component that computes several metrics useful for a specific report on a project, and produces tables and charts for them. The result is a PDF document.
 
 It is no surprise that the scenario is quite similar to the one described in [Enriched indexes with SortingHat](#enriched), above: instead of a custom script, now we have those provided by Reports.
