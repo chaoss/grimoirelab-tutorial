@@ -37,7 +37,7 @@ In both cases, you will see a JSON document with the description of the index.
 
 ### <a name="uploading-dashboard"></a>Uploading the dashboard configuration
 
-Then, the only missing element is a Kibana dashboard with its visualizations. We can use `kidash` to upload to Kibiter/Kibana a dashboard definition that we have ready for you in the [git-dashboard.json JSON file](https://grimoirelab.gitbooks.io/tutorial/content/grimoireelk/dashboards/github-dashboard.json). Download it to your `/tmp` directory, and run the command:
+Then, the only missing element is a Kibana dashboard with its visualizations. We can use `kidash` to upload to Kibiter/Kibana a dashboard definition that we have ready for you in the [git-dashboard.json JSON file](/grimoireelk/dashboards/git-dashboard.json). Download it to your `/tmp` directory (Note: Please use 'Save Link as' option for downloading), and run the command:
 
 ```bash
 (grimoireelk) $ kidash --elastic_url-enrich http://localhost:9200 \
@@ -70,7 +70,7 @@ $ (grimoireelk) p2o.py --enrich --index github_raw --index-enrich github \
   -t XXX --sleep-for-rate
 ```
 
-In  this  case, you  can  use the [github-dashboard.json JSON file](https://grimoirelab.gitbooks.io/tutorial/content/grimoireelk/dashboards/github-dashboard.json). Download it to your `/tmp` directory, and run the command:
+In  this  case, you  can  use the [github-dashboard.json JSON file](/grimoireelk/dashboards/github-dashboard.json). Download it to your `/tmp` directory (Note: Please use 'Save Link as' option for downloading), and run the command:
 
 ```bash
 (grimoireelk) $ kidash --elastic_url-enrich http://localhost:9200 \
