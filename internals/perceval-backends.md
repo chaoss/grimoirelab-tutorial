@@ -1,10 +1,10 @@
 # Perceval retrievers
 
-Perceval is the GrimoireLab component retrieving data from data sources, usually by interacting with service APIs or logs. A part of it is generic for all data sources, but most of its code is compose by retrievers. A retriever is a Perceval component specialized in retrieving data from a specific data source.
+Perceval is the GrimoireLab component retrieving data from data sources, usually by interacting with service APIs or logs. A part of it is generic for all data sources, but most of its code is composed by retrievers. A retriever is a Perceval component specialized in retrieving data from a specific data source.
 
 ## Structure of a retriever
 
-A Perceval retrieved is built with three components:
+A Perceval retriever is built with three components:
 
 * Client: interacts directly with the data source.
 * Backend: orchestrates the fetching process by using the Client.
@@ -17,7 +17,7 @@ Backend and CommandLine extend the abstract classes in [backend.py](https://gith
 * Backend:
 
  * `metadata_category(item)` defines the type of the fetched items (e.g., issue, topic, channel, etc.)
- * `metadata_id(item)` identifies the unique ID of the fetched items (e.g., id of GitHub issues, commit sha for Git, etc.)
+ * `metadata_id(item)` identifies the unique ID of the fetched items (e.g., id of GitHub issues, commit SHA for Git, etc.)
  * `metadata_updated_on(item)` determines the update time of the fetched items (e.g., updated_at attribute of GitHub issues, committed date for Git, etc.)
  * `has_resuming()` returns a boolean value whether the backend supports the resuming of the fetch process
  * `has_caching()` returns a boolean value whether the backend supports caching items during the fetch process.
@@ -31,7 +31,7 @@ Backend and CommandLine extend the abstract classes in [backend.py](https://gith
 All backends have their own unit tests and corresponding data, saved in the folder [/tests](https://github.com/grimoirelab/perceval/tree/master/tests) and [/tests/data](https://github.com/grimoirelab/perceval/tree/master/tests/data) respectively.
 Since most backends fetch data from HTTP APIs, their tests rely on HTTPretty (version==0.8.6), a mocking tool that simulates HTTP requests.
 
-## Tips when implementing retrievers
+## Tips for implementing retrievers
 
 ### Implementation & conventions:
 
