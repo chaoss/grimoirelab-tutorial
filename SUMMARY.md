@@ -13,6 +13,7 @@
   * [Git](perceval/git.md)
   * [GitHub](perceval/github.md)
   * [Mail archives](perceval/mail.md)
+  * [Gerrit](perceval/gerrit.md)
   * [Summarizing](perceval/summarizing.md)
 * [Producing Kibana dashboards with GrimoireELK](grimoireelk/intro.md)
   * [A simple dashboard](grimoireelk/a-simple-dashboard.md)
@@ -46,3 +47,4 @@
 * [Internals](internals/intro.md)
   * [Perceval backends](internals/perceval-backends.md)
 * [Contributing](contributing.md)
+
