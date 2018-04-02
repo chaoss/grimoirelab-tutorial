@@ -16,7 +16,7 @@ To try it this container image, just run it as follows:
 
 ```bash
 $ docker run -p 127.0.0.1:5601:5601 \
-    -v $(pwd)/credentials.cfg:/mordred-override.cfg \
+    -v $(pwd)/credentials.cfg:/override.cfg \
     -t grimoirelab/full
 ```
 
@@ -32,14 +32,14 @@ This will pull the `grimoirelab/full` Docker container image from DockerHub (if 
 
 The `docker run` command line above exposed port 5601 in the container to be reachable from the host, as  `localhost:5601`. If you omit "127.0.0.1:", it will be reachable to any other machine reaching your host, so be careful: by default there is no access control in the Kibiter used by this container.
 
-The command above uses the `/mordred-override.cfg` file for the configuration for Mordred. In fact, this is the fourth configuration file in a chain of configuration files for Mordred. The other three, whcih capture specifics parts of the configuration, can be substituted when launching the container. The first one, `/mordred-infra.cfg` has the configuration for finding the infrastructure needed to run (Elasticsearch, Kibiter, MariaDB, etc.), and is likely that you don't need to change it except if you want to use some external service instead of those provided by the container. Then, `/mordred-dashboard.cfg`, has the general configuration for producing a dashboard, with some tweeks that seem apprpriate for a demo dashboard. It can be adapted to produce the dashboard in on other ways. The third one, `/mordred-project.cfg`, has the configuration specific for the project to analyze (GrimoireLab itself, in this case).
+The command above uses the `/override.cfg` file for the configuration for Mordred. In fact, this is the fourth configuration file in a chain of configuration files for Mordred. The other three, whcih capture specifics parts of the configuration, can be substituted when launching the container. The first one, `/infra.cfg` has the configuration for finding the infrastructure needed to run (Elasticsearch, Kibiter, MariaDB, etc.), and is likely that you don't need to change it except if you want to use some external service instead of those provided by the container. Then, `/dashboard.cfg`, has the general configuration for producing a dashboard, with some tweeks that seem apprpriate for a demo dashboard. It can be adapted to produce the dashboard in on other ways. The third one, `/project.cfg`, has the configuration specific for the project to analyze (GrimoireLab itself, in this case).
 
 A slightly different command line is as follows:
 
 ```bash
 $ docker run -p 127.0.0.1:9200:9200 -p 127.0.0.1:5601:5601 \
     -v $(pwd)/logs:/logs \
-    -v $(pwd)/credentials.cfg:/mordred-override.cfg \
+    -v $(pwd)/credentials.cfg:/override.cfg \
     -t grimoirelab/full
 ```
 
@@ -50,7 +50,7 @@ By default, Elasticsearch will store indexes within the container image, which m
 ```bash
 $ docker run -p 127.0.0.1:9200:9200 -p 127.0.0.1:5601:5601 \
     -v $(pwd)/logs:/logs \
-    -v $(pwd)/credentials.cfg:/mordred-override.cfg \
+    -v $(pwd)/credentials.cfg:/override.cfg \
     -v $(pwd)/es-data:/var/lib/elasticsearch \
     -t grimoirelab/full
 ```
@@ -60,7 +60,7 @@ The `grimoirelab/full` container, by default, produces a dashboard showing an an
 ```bash
 $ docker run -p 127.0.0.1:9200:9200 -p 127.0.0.1:5601:5601 \
     -v $(pwd)/logs:/logs \
-    -v $(pwd)/credentials.cfg:/mordred-override.cfg \
+    -v $(pwd)/credentials.cfg:/override.cfg \
     -v $(pwd)/projects.json:/projects.json \
     -t grimoirelab/full
 ```
@@ -78,7 +78,7 @@ If you want to connect to the dashboard to issue your own commands, but don't wa
 ```bash
 $ docker run -p 127.0.0.1:9200:9200 -p 127.0.0.1:5601:5601 \
     -v $(pwd)/logs:/logs \
-    -v $(pwd)/credentials.cfg:/mordred-override.cfg \
+    -v $(pwd)/credentials.cfg:/override.cfg \
     -v $(pwd)/es-data:/var/lib/elasticsearch \
     -e RUN_MORDRED=NO \
     -t grimoirelab/full
@@ -111,7 +111,7 @@ password = XXX
 database = grimoirelab_sh
 
 [github]
-api-token = a98aaef1910d8bf4d875c681e030eed09e409d46
+api-token = XXX
 ```
 
 The first lines specify how to access Elasticsearch (the link to its REST API, and credentials) for managing both raw (`es_collection`) and enriched (`es_enrichment`) indexes. The values in this example are the default ones if you just install Elasticsearch as explained in the Supporting Systems section.
@@ -124,7 +124,7 @@ Now, just run the container as:
 
 ```bash
 $ docker run --net="host" \
-  -v $(pwd)/credentials.cfg:/mordred-override.cfg \
+  -v $(pwd)/credentials.cfg:/override.cfg \
   grimoirelab/installed
 ```
 
