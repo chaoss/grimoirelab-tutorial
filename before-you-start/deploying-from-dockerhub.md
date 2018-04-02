@@ -8,7 +8,7 @@ To try `grimoirelab/full`, just type:
 
 ```bash
 $ docker run -p 127.0.0.1:5601:5601 \
-    -v $(pwd)/credentials.cfg:/mordred-override.cfg \
+    -v $(pwd)/credentials.cfg:/override.cfg \
     -t grimoirelab/full
 ```
 
@@ -35,7 +35,7 @@ If you're running the container on Windows through Docker Quickstart Terminal an
 
 ```bash
 $ docker run -p x.x.x.x:5601:5601 \
-    -v $(pwd)/credentials.cfg:/mordred-override.cfg \
+    -v $(pwd)/credentials.cfg:/override.cfg \
     -t grimoirelab/full
 ```
 but replace the x'ed out IP address with the IP address of your VM that you got from `ifconfig`. If all goes well, once you see the docker command line print out "Elasticsearch Aliased: Created!", you should be able to go to 127.0.0.1:5601 on your host machine web browser and be able to access the GrimoireLab dashboard.
