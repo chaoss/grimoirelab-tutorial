@@ -1,6 +1,10 @@
-## Getting Gerrit reviews
+# Getting Gerrit reviews
 
-We can use Perceval to retrieve reviews in a [Gerrit](https://www.gerritcodereview.com/) instance. As usual, we can start by asking Perceval for some help:
+We can use Perceval to retrieve reviews in a [Gerrit](https://www.gerritcodereview.com/) instance. Gerrit is a popular system for supporting code review. Developers can upload patches (proposal for changes to the source code) to it. After upload, Gerrit takes care of running testing tools, and allows developers to comment and review patches. As a result of the reviewing process, new versions of the changes can be requested, which will be later uploaded, and follow the same process until they are accepted by reviewers, or abandoned.
+
+## Retrieving from Gerrit with the Perceval command
+
+As usual, we can start by asking Perceval for some help, now using the gerrit backend:
 
 ```bash
 (perceval) $ perceval gerrit --help
@@ -17,10 +21,10 @@ usage: perceval [-h] [--category CATEGORY] [--tag TAG] [--from-date FROM_DATE]
 
 From the banner it produces, we learn that the most simple usage is specifying the url for the Gerrit instance, and the user to access it. The Perceval backend uses the Gerrit ssh interface, and thus to use it, ssh access to Gerrit is needed. In most projects, this is granted with not too much trouble, since it is needed to contribute patches. Look for instructions on how to configure ssh for Gerrit, for the specific project to mine. The actual mechanism usually involves signing in to the Gerrit web interface, and then uploading a ssh public key using the "Settings" option in the Gerrit web interface. As an example, see the [instructions on how to get ssh access to the OPNFV Gerrit instance](https://gerrit.opnfv.org/gerrit/Documentation/user-upload.html#ssh).
 
-Once you have access to the Gerrit ssh interface, you only need to specify its url (in fact, the name of the host letting Gerrit ssh access), and the user with granted access. For example, for OPNFV, these would be:
+Once you have access to the Gerrit ssh interface, you only need to specify its url (in fact, the name of the host letting Gerrit ssh access), and the user with granted access. Be sure to retrieve reviews only since some recent date, to avoid a unnecesary load on the Gerrit instance. For example, for OPNFV, you can type:
 
 ```bash
-$ perceval gerrit --user username gerrit.opnfv.org
+$ perceval gerrit --user username gerrit.opnfv.org --from-date "2018-03-01"
 ```
 
 If everything works as intended, the result will be similar to:
@@ -63,3 +67,11 @@ X11 forwarding request failed on channel 0
 As you can see, reviews are obtained by default in batches of 500. You can control this with `--max-reviews`.
 
 If the ssh interface to Gerrit is not in the default port (29418), you can specify it with `--ssh-port`.
+
+## Retrieving with Python
+
+As usual, the Perceval backend for Gerrit can be used from Python. See the following example (also available as :
+
+```
+
+```
