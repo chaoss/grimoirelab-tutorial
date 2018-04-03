@@ -70,8 +70,27 @@ If the ssh interface to Gerrit is not in the default port (29418), you can speci
 
 ## Retrieving with Python
 
-As usual, the Perceval backend for Gerrit can be used from Python. See the following example (also available as :
+As expected, the Perceval backend for Gerrit can be used from Python. See the following example (also available as ([perceval_gerrit_1.py](/perceval/scripts/perceval_gerrit_1.py)):
 
+```python
+#! /usr/bin/env python3
+
+from datetime import datetime, timedelta
+from perceval.backends.core.gerrit import Gerrit
+
+# hostname of the Gerrit instance
+hostname = 'gerrit.opnfv.org'
+# user for sshing to the Gerrit instance
+user = 'user'
+# retrieve only reviews changed since one day ago
+from_date = datetime.now() - timedelta(days=1)
+# create a Gerrit object, pointing to hostname, using user for ssh access
+repo = Gerrit(url=hostname, user=user)
+
+# fetch all reviews as an iterator, and iterate it printing each review id
+for review in repo.fetch(from_date=from_date):
+    print(review['data']['number'])
 ```
 
-```
+This will retrieve all reviews that had any change during the last day, and print their id:
+
