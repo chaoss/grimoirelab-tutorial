@@ -94,3 +94,37 @@ for review in repo.fetch(from_date=from_date):
 
 This will retrieve all reviews that had any change during the last day, and print their id:
 
+## A more complete example
+
+See below a more complete example of exploiting the data retrieved from Gerrit (also available as ([perceval_gerrit_2.py](/perceval/scripts/perceval_gerrit_2.py)):
+
+```
+#! /usr/bin/env python3
+
+import datetime
+from perceval.backends.core.gerrit import Gerrit
+
+# hostname of the Gerrit instance
+hostname = 'gerrit.opnfv.org'
+# user for sshing to the Gerrit instance
+user = 'user'
+# retrieve only reviews changed since this date
+from_date = datetime.datetime.now() - datetime.timedelta(days=1)
+# create a Gerrit object, pointing to hostname, using user for ssh access
+repo = Gerrit(url=hostname, user=user)
+
+# fetch all reviews as an iterator, and iterate it printing each review id
+for review in repo.fetch(from_date=from_date):
+    print("Review:", review['data']['number'], review['data']['url'], end='')
+    print(review['data']['status'], review['data']['open'])
+    print("  Patchsets:")
+    for patch in review['data']['patchSets']:
+        print("    ", patch['number'], "Draft:", patch['isDraft'], patch['kind'])
+    print("  Comments:")
+    for comment in review['data']['comments']:
+        print("    Comment:")
+        for line in comment['message'].splitlines():
+            print("      ", line)
+```
+
+In this case, we still retrieve all reviews with some change during the last day, but now we print some more data. For each review, its number and url will be printed, plus the ids of their patchsets (the different versions of the change being uploaded), and all the commments (from reviewers, from the testing system, etc.).
