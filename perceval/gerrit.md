@@ -98,7 +98,7 @@ This will retrieve all reviews that had any change during the last day, and prin
 
 See below a more complete example of exploiting the data retrieved from Gerrit (also available as ([perceval_gerrit_2.py](/perceval/scripts/perceval_gerrit_2.py)):
 
-```
+```python
 #! /usr/bin/env python3
 
 import datetime
