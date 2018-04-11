@@ -1,0 +1,26 @@
+<footer>
+            <div class="row">
+
+                <div class="col-lg-4 footer">
+
+              {% if site.github_editme_path %}
+
+              <a target="_blank" href="https://github.com/{{site.github_editme_path}}{{page.folder}}{% if page.url == "/" or page.url contains "index.html" %}README.md{% else %}{{page.url | remove: ".html" | append: ".md"}}{% endif %}" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+
+              {% endif %}
+
+              {% if site.gitlab_editme_path %}
+
+              <a target="_blank" href="https://github.com/{{site.gitlab_editme_path}}{% unless page.url contains "index.html" %}pages/{% endunless %}{{page.folder}}{{page.url | remove: ".html" | append: ".md"}}" class="btn btn-default githubEditButton" role="button"><i class="fa fa-gitlab fa-lg"></i> Edit me</a>
+
+              {% endif %}
+                </div>
+
+                <div class="col-lg-8 footer">
+               &copy;{{ site.time | date: "%Y"  }} {{site.company_name}}. All rights reserved. <br />
+               Jekyll theme heavily based on the <a href="https://github.com/tomjoht/documentation-theme-jekyll">Jekyll Documentation Theme</a> <br >
+{% if page.last_updated %}<span>Page last updated:</span> {{page.last_updated}}<br/>{% endif %} Site last generated: {{ site.time | date: "%b %-d, %Y"  }} <br />
+<p><img src="{{ "{{site.baseurl}}/{{site.logo}}" }}" height="40" alt="Site logo"/></p>
+                </div>
+            </div>
+</footer>
