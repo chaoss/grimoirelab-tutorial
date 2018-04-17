@@ -2,7 +2,7 @@
 
 [GrimoireLab](http://grimoirelab.github.io/) is free, open source software for software development analytics. It allows you to retrieve data from many kinds of systems with information related to software development, and produce analysis and visualizations with it.
 
-![](/assets/wizard-y.svg)
+![](assets/wizard-y.svg)
 
 GrimoireLab supports more than 20 different kinds of data sources, from git reposiories or GitHub projects, to issue trackers such as Jira or Bugzilla, including messaging systems such as IRC, Slack or mailing lists, or other types of systems such as StackOverflow or Jenkins.
 
@@ -14,6 +14,4 @@ With the tools in the GrimoireLab toolset you can retrieve data, store it in dat
 
 GrimoireLab is a [CHAOSS](http://chaoss.community) project.
 
-![](/assets/Chaoss_Logo_Pantone1.png)
-
-
+![](assets/Chaoss_Logo_Pantone1.png)

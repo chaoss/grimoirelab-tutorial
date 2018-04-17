@@ -1,0 +1,22 @@
+## Topnav single links
+## if you want to list an external url, use external_url instead of url. the theme will apply a different link base.
+topnav:
+- title: Topnav
+  items:
+    - title: CHAOSS
+      external_url: https://chaoss.community
+
+#Topnav dropdowns
+topnav_dropdowns:
+- title: Topnav dropdowns
+  folders:
+    - title: GrimoireLab
+      folderitems:
+        - title: Website
+          external_url: http://chaoss.github.io/grimoirelab
+        - title: GitHub Landing Repo
+          external_url: https://github.com/chaoss/grimoirelab
+        - title: Mailing List
+          external_url: https://lists.linuxfoundation.org/mailman/listinfo/grimoirelab-discussions
+        - title: IRC Channel
+          external_url: https://webchat.freenode.net/?channels=grimoirelab

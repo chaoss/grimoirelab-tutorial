@@ -6,7 +6,7 @@ GrimoireLab is modular not only in the sense that it is composed of modules, but
 
 In this case, we will use just Perceval, as a Python module, to retrieve information from one data source. For example, that can be a git repository, a GitHub project, or a mailing list.
 
-![](/grimoirelab/grimoirelab-fit-perceval-1.png)
+![](grimoirelab-fit-perceval-1.png)
 
 As shown in the figure above, data retrieved by Perceval is consumed by a Python script, which produces, for example, a summary of the data in the repository. In this simple scenario, most of the components in GrimoireLab are not needed, and the setup is rather simple: just the Perceval Python module needs to be installed. This is the case explained in sections [Retrieving git metadata](/training/perceval/git.md), [Retrieving data from GitHub repositories](/training/perceval/github.md) and [Mail archives](/training/perceval/mail.md).
 
@@ -16,7 +16,7 @@ It is important to notice that each data source (for example, git, Bugzilla or G
 
 The scenario can be a bit more complex when we need to do a simple analysis of several data sources. We can still retrieve data with Perceval, which will be called from our script.
 
-![](/grimoirelab/grimoirelab-fit-perceval-n.png)
+![](grimoirelab-fit-perceval-n.png)
 
 In fact, for each of the data sources, several repositories can be retrieved and analyzed. Therefore, this scenario can in fact become very complex, with a lot of analytics being performed by the Python script.
 
@@ -26,7 +26,7 @@ The above scenario is affected by a problem: every time you want to re-run the P
 
 To avoid these problems, GrimoireLab allows for an scenario where data sources are retrieved only once: store all the retrieved data in ElasticSearch indexes. This is one of the functionalities provided by GrimoireELK: run Perceval to access data, and store it in one raw index per data source.
 
-![](/grimoirelab/grimoirelab-fit-grimoireelk-raw.png)
+![](grimoirelab-fit-grimoireelk-raw.png)
 
 Now, the script just queries the ElasticSearch raw indexes, producing the same information that would be obtained if getting once and again the data from the original data sources. But once the data was retrieved, the script will be much faster, since it just queries the database instead of retrieving data from its origins. In addition, results are reproducible, as long as the indexes don't change. And of course, the infrastructure providing the data sources are not stressed because of our repeated analysis.
 
@@ -42,7 +42,7 @@ Raw indexes include all the information in the original data sources. Because of
 
 For this kind of analysis, GrimoireLab provides the enriched indexes. They are in fact intended to be consumed by Kibiter, but they may be useful for many other purposes. Enriched indexes are usually flat, in the sense that they don't nest data: each item is just a collection of fields. Each item corresponds usually to a high level element of the data source: tickets, commits, messages, etc. These features of enriched indexes make them appropriate not only for visualization with Kibiter, but also for analysis. The scenario is as follows:
 
-![](/grimoirelab/grimoirelab-fit-grimoireelk-enrich.png)
+![](grimoirelab-fit-grimoireelk-enrich.png)
 
 The component that produces enriched indexes is GrimoireELK, using information in the corresponding raw indexes. As with the raw indexes, GrimoireELK knows how to update information incrementally, if needed, based on the incremental capabilities of Perceval.
 
@@ -54,7 +54,7 @@ One of the most complex problems in analyzing information about how software dev
 
 In GrimoireLab, we have a specific component for dealing with identities: SortingHat. It uses an SQL database (MySQL, MariaDB) for storing all identities found in data sources, and how they relate to real persons. In addition, it also supports adding some attributes to persons, such as their preferred name, or their affiliations (organizations for which they worked over time).
 
-![](/grimoirelab/grimoirelab-fit-grimoireelk-enrich-sh.png)
+![](grimoirelab-fit-grimoireelk-enrich-sh.png)
 
 SortingHat is used by GrimoireELK. As a part of the enriching process, GrimoireELK stores with SortingHat any new identity found in raw indexes (and therefore, in data sources). GrimoireELK also consults SortingHat for learning about persons whenever it needs to enrich data with identities. In these case, the enriched indexes include, for every item, unique identities for persons, and affiliation information.
 
@@ -68,13 +68,13 @@ Actionable dashboards are very useful for understanding what is happening in sof
 
 The component in GrimoireLab providing this functionality is Kibiter, a soft fork of Kibana. It shows complete dashboards in a browser, as an HTML5 application.
 
-![](/grimoirelab/grimoirelab-all-dashboard-noarthur-nomordred-nopanels-nosh.png)
+![](grimoirelab-all-dashboard-noarthur-nomordred-nopanels-nosh.png)
 
 In this case, the enriched indexes are fed directly  to Kibiter. In it, they are available for building visualizations and dashboards on top of it. This scenario is considered in detail in [Creating a simple dashboard](/grimoireelk/a-simple-dashboard.md), which walks you through the specific steps needed to produce the dashboard from the datasources. The text describes how to use Kibana instead of Kibiter, but the process is basically the same.
 
 Of course, this can be done, as shown above, not using SortingHat. But if SortingHat is used, unique identities, affiliations, etc. will also be available when designing visualizations and dashboards.
 
-![](/grimoirelab/grimoirelab-all-dashboard-noarthur-nomordred-nopanels.png)
+![](grimoirelab-all-dashboard-noarthur-nomordred-nopanels.png)
 
 This scenario is covered in detail in [A dashboard with SortingHat](/grimoireelk/a-dashboard-with-sortinghat.md), using Kibana instead of Kibiter.
 
@@ -82,7 +82,7 @@ This scenario is covered in detail in [A dashboard with SortingHat](/grimoireelk
 
 Writing visualizations and panels with Kibiter (or Kibana, for that matter) is not difficult. But you need to learn how to do it, and in any case it is time-consuming. That's why GrimoireLab provides a component with predefined visualizations and dashboards for all the supported data sources: Panels.
 
-![](/grimoirelab/grimoirelab-all-dashboard-noarthur-nomordred.png)
+![](grimoirelab-all-dashboard-noarthur-nomordred.png)
 
 Panels provide a collection of JSON files which define visualizations and dashboards. In Kibiter, any visualization or dashboard can be exported and imported as a JSON file, and that's exactly what this collection allows. So, if you don't want to start your dashboard from scratch, you can set up a "standard GrimoireLab dashboard" by just uploading the files in Panels with `kidash`, as shown in [Managing dashboards with kidash](/grimoireelk/managing-dashboards-with-kidash.md).
 
@@ -92,7 +92,7 @@ These panels are already prepared to consider unique identities, affiliation dat
 
 As can be seen from the pictures in the previous scenarios, setting up a complete dashboard involves several components, each of them with their own configurations, and with their own processes for interacting with the others. The time needed to master all the components, and the effort spent to correctly run them, is not neglectable. Here is where Mordred comes to the rescue.
 
-![](/grimoirelab/grimoirelab-all-dashboard-noarthur.png)
+![](grimoirelab-all-dashboard-noarthur.png)
 
 Mordred is a GrimoireLab component designed to read a configuration with all the data needed to produce a dashboard, and run all the other components so that the dashboard is actually produced.
 
@@ -108,7 +108,7 @@ This is the work of Arthur. Arthur uses a Redis database to store data about ret
 
 Since GrimoireELK is designed to work both with Arthur and without it, the process of including it in the toolchain is transparent to other components
 
-![](/grimoirelab/grimoirelab-all-dashboard.png)
+![](grimoirelab-all-dashboard.png)
 
 The above chart shows a full-fledged GrimoireLab setup for producing an industrial-grade production dashboard. Let's use it to review how all of the components interact:
 
@@ -125,7 +125,7 @@ The above chart shows a full-fledged GrimoireLab setup for producing an industri
 
 In some cases, neither scripts nor dashboards are convenient for exploiting the rich information in the indexes. In some cases, what is needed is "static reports", usually in the form of PDF documents. This scenario is covered by the Reports GrimoireLab component.
 
-![](/grimoirelab/grimoirelab-all-reports.png)
+![](grimoirelab-all-reports.png)
 
 The components involved to produce the enriched index are the same than for producing a dashboard. The difference is Reports, a component that computes several metrics useful for a specific report on a project, and produces tables and charts for them. The result is a PDF document.
 
