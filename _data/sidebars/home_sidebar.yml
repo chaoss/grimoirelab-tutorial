@@ -241,3 +241,7 @@ entries:
     - title: Contributing
       url: /contributing.html
       output: web
+
+    - title: License
+      url: /LICENSE.html
+      output: web
