@@ -47,7 +47,7 @@ This little script assumes that we're running a local instance of ElasticSearch,
 When running it, you'll see the objects with the hashes being printed in the screen, right before they are uploaded to ElasticSearch:
 
 ```bash
-(perceval) $ python perceval_elasticsearch_1.py 
+(perceval) $ python perceval_elasticsearch_1.py
 {'hash': 'dc78c254e464ff334892e0448a23e4cfbfc637a3'}
 {'hash': '57bc204822832a6c23ac7883e5392f4da6f4ca37'}
 {'hash': '2355d18310d8e15c8e5d44f688d757df33b0e4be'}
@@ -106,7 +106,11 @@ elasticsearch.exceptions.RequestError: TransportError(400, 'index_already_exists
 
 The exception is due to the `es.indices.create` line in the script, which fails because the index already exists.
 
-If you want to avoid that problem, by deleting the index if the creation fails (and re-creating it again), you can just modify that line in the script with the folliwing code (see the complete example in [perceval_elasticsearch_2.py](https://github.com/jgbarah/GrimoireLab-training/blob/master/python/scripts/perceval_elasticsearch_2.py)):
+If you want to avoid that problem, by deleting the index if the creation fails
+(and re-creating it again),
+you can just modify that line in the script with the folliwing code
+(see the complete example in
+[perceval_elasticsearch_2.py](scripts/perceval_elasticsearch_2.py)):
 
 ```python
 # Create the 'commits' index in ElasticSearch
@@ -118,7 +122,11 @@ except elasticsearch.exceptions.RequestError:
     es.indices.create('commits')
 ```
 
-Be careful with this code: it will delete the specified index without doubting about it a single second.
+Be careful with this code: it will delete the specified index without doubting
+about it a single second.
+
+You can check out the [cleanup.py](scripts/cleanup.py)
+which deletes a list of indices, and then checks that they were actually deleted.
 
 ## A more complete index for git metadata
 
