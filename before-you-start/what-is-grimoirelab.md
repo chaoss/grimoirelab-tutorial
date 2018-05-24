@@ -54,7 +54,7 @@ This way, analysis performed on enriched indexes with the right information comi
 
 Enriched indexes in GrimoireLab are designed to be visualizaed and analyzed. They can in principle be fed to any tool that can link to ElasticSearch indexes, and of course custom code can also be produced for the analysis. But GrimoireLab already provides some components to easy this task:
 
-* Kibiter, a soft fork of Kibana, or Kibana itself, can be used to visualize data in actionable dasbhaords. Kibana is the standard dashboarding system for ElasticSearch, and Kibiter offers some small, but useful added functionality to it. Both can be used directly with enriched indexes. Building visualizations and dashboards with them is easy.
+* Kibiter, a soft fork of Kibana, or Kibana itself, can be used to visualize data in actionable dashboards. Kibana is the standard dashboarding system for ElasticSearch, and Kibiter offers some small, but useful added functionality to it. Both can be used directly with enriched indexes. Building visualizations and dashboards with them is easy.
 
 * Sigils is a set of visualizations and dashboards that can be used to produce default dashboards for the enriched indexes. They are loaded in Kibiter or Kibana with Kidash, also a GrimoireLab tool, and provide the means for actionable inspection, drill down and filtering of many facets of the data in the analyzed repositories.
 
