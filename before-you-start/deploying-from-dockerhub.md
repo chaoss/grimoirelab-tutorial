@@ -41,3 +41,12 @@ $ docker run -p x.x.x.x:5601:5601 \
 but replace the x'ed out IP address with the IP address of your VM that you got from `ifconfig`. If all goes well, once you see the docker command line print out "Elasticsearch Aliased: Created!", you should be able to go to 127.0.0.1:5601 on your host machine web browser and be able to access the GrimoireLab dashboard.
 
 The container allows for much more: you can configure the project you want to analyze, have access to the logging created while producing the dashboard, etc. And there are some more ready-to-use container images that could be useful to you. Have a look at the section [Mordred in a container](../mordred/mordred-in-a-container.md) to learn about how to produce dashboards in different ways, and run arbitrary GrimoireLab code, from these containers. More details about the docker images produced by the GrimoireLab projects are available in the [docker/README.md file in the grimoirelab GitHub repository](https://github.com/chaoss/grimoirelab/blob/master/docker/README.md).
+
+## Note for Windows users
+
+If you happen to run the container in Windows, remember that you should use backslash instead of slash for the paths related to Windows. That means that paths internal to the container will still include slashes, but those that refer to files or directories in the host machine will include backslashes, and maybe disk unit identifiers. For example:
+
+```
+$ docker run -p 127.0.0.1:5601:5601 -v D:\test\credentials.cfg:/override.cfg \
+  -v D:\test\projects.json:/projects.json -t grimoirelab/full
+```
