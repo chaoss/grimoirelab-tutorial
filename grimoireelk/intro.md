@@ -11,7 +11,7 @@ In summary, `p2o.py`:
 
 In addition, `kidash`, available in the Python package of the same name, can upload dashboard definitions (including visualizations, searches and everything needed by them) to produce a Kibiter/Kibana dashboards.
 
-In this chapter we will explore how to use these tools to produce complete Kibiter/Kibana-based dashboards. Before following to the rest of the chapter, ensure that both `grimoire-elk` and `kidash` Python packages are installed (see [Installing GrimoireLab](/before-you-start/installing-grimoirelab.md)).
+In this chapter we will explore how to use these tools to produce complete Kibiter/Kibana-based dashboards. Before following to the rest of the chapter, ensure that both `grimoire-elk` and `kidash` Python packages are installed (see [Installing GrimoireLab](https://chaoss.github.io/grimoirelab-tutorial/before-you-start/installing-grimoirelab.html)).
 
 
 
