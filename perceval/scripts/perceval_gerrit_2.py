@@ -11,7 +11,7 @@ user = 'jgbarah'
 # retrieve only reviews changed since this date
 from_date = datetime.datetime.now() - datetime.timedelta(days=1)
 # create a Gerrit object, pointing to hostname, using user for ssh access
-repo = Gerrit(url=hostname, user=user)
+repo = Gerrit(hostname=hostname, user=user)
 
 # fetch all reviews as an iterator, and iterate it printing each review id
 for review in repo.fetch(from_date=from_date):
