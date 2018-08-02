@@ -1,8 +1,8 @@
-## ElasticSearch
+## Elasticsearch
 
-Some tips to work with ElaticSearch using its REST interface.
+Some tips to work with Elaticsearch using its REST interface.
 
-In the examples below, let's assume that the url of the ElasticSearch instance is `https://elasticurl`. Remember that the full format for these urls, when they are protected by simple HTTP authentication (user and password), and are accessible through a non-root resource, is something like:
+In the examples below, let's assume that the url of the Elasticsearch instance is `https://elasticurl`. Remember that the full format for these urls, when they are protected by simple HTTP authentication (user and password), and are accessible through a non-root resource, is something like:
 
 ```
 https://user:passwd@host:port/resource
@@ -10,7 +10,7 @@ https://user:passwd@host:port/resource
 
 ### Working with indexes
 
-To list all indexex stored by ElasticSearch:
+To list all indexex stored by Elasticsearch:
 
 ```
 $ curl -XGET 'https://elasticurl/_cat/indices?v'
@@ -20,7 +20,7 @@ This returns for each index, its name, status (`open` comes to mean 'usable'), n
 
 ### Working with aliases
 
-ElasticSearch index aliases allow to work with a collection of indexes as if it were just a single index, or with a single index under a different name. In the following, we were refer as 'base indexes' to the real indexes for which we will create aliases. Find [more information about working with aliases in the ElasticSearch manual](https://www.elastic.co/guide/en/elasticsearch/guide/current/index-aliases.html).
+Elasticsearch index aliases allow to work with a collection of indexes as if it were just a single index, or with a single index under a different name. In the following, we were refer as 'base indexes' to the real indexes for which we will create aliases. Find [more information about working with aliases in the Elasticsearch manual](https://www.elastic.co/guide/en/elasticsearch/guide/current/index-aliases.html).
 
 To list the base indexes corresponding to an index alias (assume the index alias is `alias_index`):
 
