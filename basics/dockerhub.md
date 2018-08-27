@@ -23,7 +23,7 @@ This will pull the `grimoirelab/full` Docker container image from DockerHub (if 
 
 The resulting dashboard will be available from Kibiter, and you can see it by pointing your browser at http://localhost:5601 . Once you see the dashboard, click on "Overview". You will get something similar to:
 
-![](/assets/dashboard-grimoirelab.png)
+![](figs/dashboard-grimoirelab.png)
 
 What is even more interesting: you can get a shell in the container (after launching it), and run arbitrary GrimoireLab commands (`container_id` is the identifier of the running container, that you can find out with `docker ps`, or by looking at the first line when running the container):
 

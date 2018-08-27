@@ -59,7 +59,8 @@ If you are retrieving data from git repositories, you will need git installed. P
 $ sudo apt-get install git-all
 ```
 
-More information about installing git in other platforsm is available in [Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+More information about installing git in other platforms is available in
+[Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
 ### Installing ElasticSearch
 
@@ -95,7 +96,7 @@ $ kibana/bin/kibana
 
 This should serve a Kibana instance in `http://localhost:5601`. Point your web browser to that url, and you´ll see the Kibana welcome page.
 
-![Kibana welcome page](kibana_welcome.png)
+![Kibana welcome page](figs/kibana_welcome.png)
 
 Now, we´re ready to go.
 

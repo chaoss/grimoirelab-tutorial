@@ -124,7 +124,7 @@ In this file, you need to include the proper credentials where needed. At least,
 }
 ```
 
-See a more complete information about this file in the [section on the projects file](/mordred/the-projects-file.md).
+See a more complete information about this file in the [section on the projects file](projects.md).
 
 * Prepare a [menu.yaml](files/menu.yaml), with the menu for Kibiter (not needed if the data will be visualized with Kibana).
 

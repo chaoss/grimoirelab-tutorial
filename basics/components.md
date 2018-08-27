@@ -21,7 +21,7 @@ The main components of GrimoireLab are:
 * Manuscritps. Production of PDF documents reporting on the main characteristics of a project.
 * Mordred. Manages the configuration of all the components needed to produce a dashboard, automating its production.
 
-![](grimoirelab-all-complete.png)
+![](figs/grimoirelab-all-complete.png)
 
 In the figure above, GrimoireLab components are represented in the pale green box. Bold arrows show the main data flow: from data sources to Perceval (which retrieves them), to Arthur (which schedules retrieval batches and stores results in Reddis), to GrimoireELK (which stores retrieved items as raw indexes, and then uses them to produce enriched indexes, both in ElasticSearch), to Reports (to produce specialized reports) or Kibiter (to visualize in actionable dashboards).
 
