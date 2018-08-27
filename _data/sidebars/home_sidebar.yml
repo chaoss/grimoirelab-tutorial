@@ -54,11 +54,11 @@ entries:
           url: /perceval/intro.html
           output: web
 
-        - title: Git
+        - title: Retrieving git metadata
           url: /perceval/git.html
           output: web
 
-        - title: GitHub
+        - title: Retrieving data from GitHub
           url: /perceval/github.html
           output: web
 

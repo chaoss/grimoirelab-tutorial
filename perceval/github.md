@@ -207,7 +207,10 @@ Of course, in this case, all items \(issues and ñpull requests\) will be writte
 
 ## Retrieving from a Python script
 
-As in the case of the git backend \(and any other backend, for that matter\) we can use a Python script to retrieve the data, instead of the `perceval` command. For example ([perceval_github_1.py](/perceval/scripts/perceval_github_1.py)):
+As in the case of the git backend
+(and any other backend, for that matter) we can use a Python script
+to retrieve the data, instead of the `perceval` command.
+For example ([perceval_github_1.py](scripts/perceval_github_1.py)):
 
 ```python
 #! /usr/bin/env python3

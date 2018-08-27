@@ -8,7 +8,10 @@ In this case, we will use just Perceval, as a Python module, to retrieve informa
 
 ![](figs/grimoirelab-fit-perceval-1.png)
 
-As shown in the figure above, data retrieved by Perceval is consumed by a Python script, which produces, for example, a summary of the data in the repository. In this simple scenario, most of the components in GrimoireLab are not needed, and the setup is rather simple: just the Perceval Python module needs to be installed. This is the case explained in sections [Retrieving git metadata](/training/perceval/git.md), [Retrieving data from GitHub repositories](/training/perceval/github.md) and [Mail archives](/training/perceval/mail.md).
+As shown in the figure above, data retrieved by Perceval is consumed by a Python script, which produces, for example, a summary of the data in the repository. In this simple scenario, most of the components in GrimoireLab are not needed, and the setup is rather simple: just the Perceval Python module needs to be installed.
+This is the case explained in sections
+[Retrieving git metadata](../perceval/git.html), [Retrieving data from GitHub repositories](../perceval/github.html) and
+[Mail archives](../perceval/mail.html).
 
 It is important to notice that each data source (for example, git, Bugzilla or Gerrit) we may be interested in getting information from several repositories. Usually Perceval will be run once for each of those repositories. But since the process is exactly the same, and the involved components too, in this section we won't show in charts the many repositories that may compose a given data source.
 
@@ -70,13 +73,18 @@ The component in GrimoireLab providing this functionality is Kibiter, a soft for
 
 ![](figs/grimoirelab-all-dashboard-noarthur-nomordred-nopanels-nosh.png)
 
-In this case, the enriched indexes are fed directly  to Kibiter. In it, they are available for building visualizations and dashboards on top of it. This scenario is considered in detail in [Creating a simple dashboard](/grimoireelk/a-simple-dashboard.md), which walks you through the specific steps needed to produce the dashboard from the datasources. The text describes how to use Kibana instead of Kibiter, but the process is basically the same.
+In this case, the enriched indexes are fed directly to Kibiter.
+In it, they are available for building visualizations and dashboards on top of it.
+This scenario is considered in detail in
+[Creating a simple dashboard](../gelk/simple.html),
+which walks you through the specific steps needed to produce the dashboard from the datasources. The text describes how to use Kibana instead of Kibiter, but the process is basically the same.
 
 Of course, this can be done, as shown above, not using SortingHat. But if SortingHat is used, unique identities, affiliations, etc. will also be available when designing visualizations and dashboards.
 
 ![](figs/grimoirelab-all-dashboard-noarthur-nomordred-nopanels.png)
 
-This scenario is covered in detail in [A dashboard with SortingHat](/grimoireelk/a-dashboard-with-sortinghat.html), using Kibana instead of Kibiter.
+This scenario is covered in detail in
+[A dashboard with SortingHat](../gelk/sortinghat.html), using Kibana instead of Kibiter.
 
 ### Panels: predefined dashboards
 
@@ -84,7 +92,8 @@ Writing visualizations and panels with Kibiter (or Kibana, for that matter) is n
 
 ![](figs/grimoirelab-all-dashboard-noarthur-nomordred.png)
 
-Panels provide a collection of JSON files which define visualizations and dashboards. In Kibiter, any visualization or dashboard can be exported and imported as a JSON file, and that's exactly what this collection allows. So, if you don't want to start your dashboard from scratch, you can set up a "standard GrimoireLab dashboard" by just uploading the files in Panels with `kidash`, as shown in [Managing dashboards with kidash](/grimoireelk/managing-dashboards-with-kidash.md).
+Panels provide a collection of JSON files which define visualizations and dashboards. In Kibiter, any visualization or dashboard can be exported and imported as a JSON file, and that's exactly what this collection allows. So, if you don't want to start your dashboard from scratch, you can set up a "standard GrimoireLab dashboard" by just uploading the files in Panels with `kidash`, as shown in
+[Managing dashboards with kidash](../gelk/kidash.html).
 
 These panels are already prepared to consider unique identities, affiliation data, and other goodies provided by SortingHat, so if you use them, be sure to have SortingHat in the toolchain.
 

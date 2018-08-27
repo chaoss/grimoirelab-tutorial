@@ -5,13 +5,19 @@ which will retrieve the corresponding packages from the [Python Package Index](h
 
 Although it is not needed, we recomend using [Python virtual environments](https://docs.python.org/3/tutorial/venv.html) for installing packages. Below, you can find a section on how to prepare vitual packages in Python3, and then how to install GrimoireLab modules in them. If you are not interested in virtual environments, and know what you are doing, you can skip that part. Only remember, in that case, that it is very likely that you will need to prefix with `sudo` any installation command, to install, as root, in the default location in your system, instead of in a virtual environment.
 
-Most of this section is about installing the packages that are available from [Pypi](http://pypi.python.org), which correspond to the period coordinated releases of GrimoireLab. If you want to install the latest version available in the development repositories, have a look at [Installing from development repositories](#install-devel-repos).
+Most of this section is about installing the packages that are available from
+[Pypi](http://pypi.python.org),
+which correspond to the period coordinated releases of GrimoireLab.
+If you want to install the latest version available in the development
+repositories, have a look at
+[Installing from development repositories](#repos).
 
 
-### Preparing a virtualenv
-<a name="venvs"></a>
+### Preparing a virtualenv {#venvs}
 
-I'm assuming you already have Python3 installed, as detailed in the [Supporting systems](/before-you-start/supporting-systems.md) section. Let's use it to create a Python virtual environment, so that we have a cozy place to work. For that we will use [Python3 venv module](https://docs.python.org/3/library/venv.html).
+I'm assuming you already have Python3 installed,
+as detailed in the
+[Supporting systems](supporting.html) section. Let's use it to create a Python virtual environment, so that we have a cozy place to work. For that we will use [Python3 venv module](https://docs.python.org/3/library/venv.html).
 
 > _Note:_ Instead of driving the `venv` module directly, you can also use [the pipenv module](http://docs.python-guide.org/en/latest/dev/virtualenvs/#installing-pipenv).
 
@@ -176,8 +182,7 @@ Once it is installed with its dependencies, try it with:
 ```
 
 
-### Installing from development repositories
-<a name="install-devel-repos"></a>
+### Installing from development repositories {#repos}
 
 Previous instructions are for installing the Python packages corresponding to the GrimoireLab coordinated releases. These packages are supposed to be stable and tested. But if you prefer to live in the edge, you can also install directly from development repositories. To easy this case, there is a little utility: [build_grimoirelab](https://github.com/chaoss/grimoirelab/blob/master/utils/build_grimoirelab).
 
@@ -189,7 +194,8 @@ It is designed to work standalone, with just a few dependencies. It is easy to p
 $ python3 build_grimoirelab --install --install_venv /tmp/ivenv
 ```
 
-This will create a virtual environment in `/tmp/ivenv`, which can be activated as follows (read above the [basics about virtual environmets](#venvs)).
+This will create a virtual environment in `/tmp/ivenv`, which can be activated as follows
+(read above the [basics about virtual environmets](#venvs)).
 
 ```bash
 $ source /tmp/ivenv/bin/activate
@@ -199,7 +205,8 @@ $ source /tmp/ivenv/bin/activate
 (ivenv) $ mordred --help
 ```
 
-`build_grimoirelab` can also be used to create a virtual enviroment with a specific release of GrimoireLab installed. For that, download the release file (which specifies the versions of each tool) from the[releases directory](https://github.com/chaoss/grimoirelab/tree/master/releases) and run (assuming you downloaded the release file `elasticgirl.21` to the current directory):
+`build_grimoirelab` can also be used to create a virtual enviroment with a specific release of GrimoireLab installed. For that, download the release file (which specifies the versions of each tool) from the
+[releases directory](https://github.com/chaoss/grimoirelab/tree/master/releases) and run (assuming you downloaded the release file `elasticgirl.21` to the current directory):
 
 ```bash
 $ python3 build_grimoirelab --install --install_venv /tmp/ivenv --relfile elasticgirl.21

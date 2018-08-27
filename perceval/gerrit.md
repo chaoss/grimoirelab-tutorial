@@ -70,7 +70,9 @@ If the ssh interface to Gerrit is not in the default port (29418), you can speci
 
 ## Retrieving with Python
 
-As expected, the Perceval backend for Gerrit can be used from Python. See the following example (also available as ([perceval_gerrit_1.py](/perceval/scripts/perceval_gerrit_1.py)):
+As expected, the Perceval backend for Gerrit can be used from Python.
+See the following example (also available as 
+[perceval_gerrit_1.py](scripts/perceval_gerrit_1.py)):
 
 ```python
 #! /usr/bin/env python3
@@ -96,7 +98,8 @@ This will retrieve all reviews that had any change during the last day, and prin
 
 ## A more complete example
 
-See below a more complete example of exploiting the data retrieved from Gerrit (also available as ([perceval_gerrit_2.py](/perceval/scripts/perceval_gerrit_2.py)):
+See below a more complete example of exploiting the data retrieved from Gerrit
+(also available as [perceval_gerrit_2.py](scripts/perceval_gerrit_2.py)):
 
 ```python
 #! /usr/bin/env python3

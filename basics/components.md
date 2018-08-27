@@ -13,7 +13,7 @@ Most of the components in GrimoireLab are written in Python, and provide Python 
 The main components of GrimoireLab are:
 
 * Perceval. Includes components for retrieving data from data sources. All components provide an uniform API for accessing their data sources, based on Python generators and data dictionaries (JSON documents).
-* Arthur. Organizes the data retrieval from large collections of repositories of different kinds, providing a uniform API to all of them, and to the different retrieval jobs running in any moment.
+* KingArthur. Organizes the data retrieval from large collections of repositories of different kinds, providing a uniform API to all of them, and to the different retrieval jobs running in any moment.
 * GrimoireELK. Collects data retrieved by Arthur, or directly by Perceval, and stores it in ElasticSearch indexes (raw indexes). It also organizes and transforms those raw indexes into other ElasticSearch indexes (enriched indexes), more suitable for visualization or reporting.
 * SortingHat. Manages identities for persons, including capabilities for merging the many identities corresponding to the same person, and other data related to them (such as affiliation to companies).
 * Kibiter. Visualization platform. It is a soft fork of Kibana, which allows for the construction of actionable dashboards to show the data in enriched indexes.
