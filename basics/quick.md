@@ -6,18 +6,18 @@ to other parts of this tutorial?
 
 * If you want to install GrimoireLab Python packages,
 and already know about Python virtual environments, `pip`,
-and that stuff, go ahead to "Install Python packages".
+and that stuff, go ahead to [Install Python packages](#python).
 
 * If you want to use the GrimoireLab Docker images,
 and you already have Docker installed, know about
-`docker run` and all that, go ahead to "Run in a Docker container".
+`docker run` and all that, go ahead to [Run in a Docker container](#docker).
 
 In any case, have a look at the introduction of this chapter,
 so that you can get a basic idea of the requirements to run GrimoireLab,
 and to the section on What is GrimoireLab, where you will get
 a glimpse of the different components in the toolset.
 
-### Install Python packages
+### Install Python packages {#python}
 
 All GrimoireLab packages are pulled by a single Python package,
 available from [Pypi](https://pypi.org). If you have a recent version
@@ -38,7 +38,7 @@ And that's it. You can now skip the rest of this chapter
 (although it would be a good idea if you at least browse it,
 there is useful inforation in it).
 
-### Run in a Docker container
+### Run in a Docker container {#docker}
 
 All GrimoireLab packages can also be used from a Docker image, 
 that can be pulled and run directly from [Docker Hub](https://hub.docker.com).
@@ -75,4 +75,5 @@ $ docker exec -it container_id env TERM=xterm /bin/bash
 
 That container can be used also, as such,
 to produce a complete dashboard: see
-[Mordred in a container](/mordred/mordred-in-a-container)
+[Mordred in a container](/mordred/mordred-in-a-container).
+

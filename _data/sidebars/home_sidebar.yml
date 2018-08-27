@@ -18,48 +18,32 @@ entries:
       output: web
       subfolders:
 
-      - title: Before you start
+      - title: The basics
         output: web
         subfolderitems:
-
-        - title: Installation for the impatient
-          url: /before-you-start/quick-install.html
-          output: web
-
-        - title: Introduction
-          url: /before-you-start/intro.html
-          output: web
-
-        - title: What is GrimoireLab
-          url: /before-you-start/what-is-grimoirelab.html
-          output: web
-
-        - title: Supporting systems
-          url: /before-you-start/supporting-systems.html
-          output: web
-
-        - title: Installing GrimoireLab
-          url: /before-you-start/installing-grimoirelab.html
-          output: web
-
-        - title: Deploying from DockerHub
-          url: /before-you-start/deploying-from-dockerhub.html
-          output: web
-
-      - title: GrimoireLab architecture
-        output: web
-        subfolderitems:
-
-        - title: Introduction
-          url: /grimoirelab/intro.html
-          output: web
 
         - title: Components
-          url: /grimoirelab/components.html
+          url: /basics/components.html
           output: web
 
         - title: Scenarios
-          url: /grimoirelab/scenarios.html
+          url: /basics/scenarios.html
+          output: web
+
+        - title: Installation for the impatient
+          url: /basics/quick.html
+          output: web
+
+        - title: Supporting systems
+          url: /basics/supporting.html
+          output: web
+
+        - title: Installing GrimoireLab
+          url: /basics/install.html
+          output: web
+
+        - title: Deploying from DockerHub
+          url: /basics/dockerhub.html
           output: web
 
       - title: Perceval

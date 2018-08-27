@@ -1,6 +1,7 @@
 ## Installing GrimoireLab Python modules
 
-Most of GrimoireLab are Python modules. The easiest way of installing them is using pip, which will retrieve the corresponding packages from the [Python Package Index](https://pypi.python.org/), and will automatically install them, including their dependecies (other Python packages that they need).
+Most of GrimoireLab are Python modules. The easiest way of installing them is using `pip3`,
+which will retrieve the corresponding packages from the [Python Package Index](https://pypi.python.org/), and will automatically install them, including their dependecies (other Python packages that they need).
 
 Although it is not needed, we recomend using [Python virtual environments](https://docs.python.org/3/tutorial/venv.html) for installing packages. Below, you can find a section on how to prepare vitual packages in Python3, and then how to install GrimoireLab modules in them. If you are not interested in virtual environments, and know what you are doing, you can skip that part. Only remember, in that case, that it is very likely that you will need to prefix with `sudo` any installation command, to install, as root, in the default location in your system, instead of in a virtual environment.
 
@@ -14,17 +15,17 @@ I'm assuming you already have Python3 installed, as detailed in the [Supporting 
 
 > _Note:_ Instead of driving the `venv` module directly, you can also use [the pipenv module](http://docs.python-guide.org/en/latest/dev/virtualenvs/#installing-pipenv).
 
-First, let's create our new environment. I like my Python virtual environments under the `venvs` subdirectory in my home directory, and in this case I will call it `grimoirelab` \(see how original I am!\):
+First, let's create our new environment. I like my Python virtual environments under the `venvs` subdirectory in my home directory, and in this case I will call it `gl` \(see how original I am!\):
 
 ```bash
-$ python3 -m venv ~/venvs/grimoirelab
+$ python3 -m venv ~/venvs/gl
 ```
 
 Once the virtual environment is created, you can  activate it:
 
 ```bash
-$ source ~/venvs/grimoirelab/bin/activate
-(grimoirelab) $
+$ source ~/venvs/gl/bin/activate
+(gl) $
 ```
 
 Now, any Python module you install in that shell will be installed under ~/venvs/grimoirelab, and it will be used by Python only in shells with the virtual environment activated. Since the virtual environment is under your home directory, you won't need to sudo to install: everything will be installed in your name, with your permissions.
@@ -32,7 +33,7 @@ Now, any Python module you install in that shell will be installed under ~/venvs
 When you are done with a virtual environment, you can deactivate it until you need to activate it again. Deactivating is easy:
 
 ```bash
-(grimoirelab) $ deactivate
+(gl) $ deactivate
 $
 ```
 
@@ -45,35 +46,42 @@ You can also have several different virtual environments, each with different se
 Depending on what you have installed in your system, it may be convenient to install some Python tools in it, and to upgrade some others. We recommend that you type, in your activated virtual ennvironment:
 
 ```bash
-(grimoirelab) $ pip3 install --upgrade pip
-(grimoirelab) $ pip3 install --upgrade setuptools
-(grimoirelab) $ pip3 install --upgrade wheel 
+(gl) $ pip3 install --upgrade pip
+(gl) $ pip3 install --upgrade setuptools
+(gl) $ pip3 install --upgrade wheel 
 ```
 
 This will increase the chances that you have no troubles later, when installing wheels (a kind of Python package, used for GrimoireLab modules and many of their dependencies).
 
-### Installing Mordred and all GrimoireLab modules
+### Installing all GrimoireLab modules at once
 
-For installing all GrimoireLab modules, we only need to install, using `pip3`, the packages that pull all the other GrimoireLab modules as dependencies. Currently, it is enough to install Mordred:
-
-```bash
-(grimoirelab) $ pip3 install grimoire-mordred
-```
-
-This should install it, and all its dependencies (which include all of the GrimoireLab modules). Once installed, check that everything is as it should:
+For installing all GrimoireLab modules, we only need to install, using `pip3`,
+the `grimoirelab` package, that pulls all the other GrimoireLab modules as dependencies:
 
 ```bash
-(grimoirelab) $ mordred --help
+(gl) $ pip3 install grimoirelab
 ```
 
-In the following sections, we will explain how to install, separately, some of the GrimoireLab modules. Of course, they can be installed in separate virtual environments.
+This should install it, and all its dependencies
+(which include all of the GrimoireLab modules).
+Once installed, check that everything is as it should:
+
+```bash
+(gl) $ grimoirelab -v
+```
+
+In the following sections, we will explain how to install,
+separately, some of the GrimoireLab modules.
+Of course, they can be installed in separate virtual environments.
+But this is needed only if the `grimoirelab` package was not installed,
+and you want to install only some of the modueles.
 
 ### Installing Perceval
 
-In an activated virtual environment we will use `pip` to install the module from the [Pypi archive](https://pypi.python.org/pypi).
+In an activated virtual environment we will use `pip3` to install the module from the [Pypi archive](https://pypi.python.org/pypi).
 
 ```bash
-(grimoirelab) $ pip3 install perceval
+(gl) $ pip3 install perceval
 ```
 
 This will install Perceval and its dependencies \(other Python modules that are needed by Perceval to work\). So, we're ready to see what it can do.
@@ -81,7 +89,7 @@ This will install Perceval and its dependencies \(other Python modules that are 
 Once Perceval is installed, we can check that the installation went well. For a starter, you can use the `perceval` script, which should have been installed, since it comes with the Perceval package. It is a simple front-end to the Perceval module, which gets data from a data source, and writes what it finds as JSON documents in stdout. To learn about its command line arguments, just use the `--help` flag:
 
 ```bash
-(grimoirelab) $ perceval --help
+(gl) $ perceval --help
 ```
 
 This should produce a banner with information about command line arguments, and a listing of Perceval backends. If that banner doesn't show up, it is likely that something wrong happened during the installation.
@@ -89,53 +97,69 @@ This should produce a banner with information about command line arguments, and 
 Assuming everything was fine, next thing is getting information about an specific backend. Let's start with the git backend, which will be a good starter for testing:
 
 ```
-(grimoirelab) $ perceval git --help
+(gl) $ perceval git --help
 ```
 
 If this shows a banner with information about how to use the Perceval git backend, we can assume that Perceval and all its dependencies were installed appropriately.
 
 ### Installing GrimoireELK
 
-GrimoireELK can also be installed with `pip`. Again, we will install it in a virtual environment:
+GrimoireELK can also be installed with `pip3`.
+Again, we will install it in a virtual environment:
 
 ```bash
-(grimoirelab) $ pip install grimoire-elk
+(gl) $ pip3 install grimoire-elk
 ```
 
 This will pull the `perceval` module, and other dependencies needed, and will install the `grimoire_elk` Python module. It includes the `p2o.py` script, as well, which manages `grimoire_elk` from the command line, and will be fundamental for producing raw and enriched indexes.
 
 ### Installing Kidash
 
-Kidash is other package that can be installed with `pip`:
+Kidash is other package that can be installed with `pip3`:
 
 ```bash
-(grimoirelab) $ pip install kidash
+(gl) $ pip3 install kidash
 ```
 
 This will install the `kidash` Python package, which includes the `kidash` Python script and all dependencies needed for it to work. This scripts will allow us to manage dashboards, visualizations, and other elements in Kibana. We will use it to upload dashboard definitions to produce our dashboard in Kibana.
 
 ### Installing SortingHat
 
-SortingHat can also be installed with `pip`:
+SortingHat can also be installed with `pip3`:
 
 ```bash
-(grimoirelab) $ pip install sortinghat
+(gl) $ pip3 install sortinghat
 ```
-
 
 ### Installing Manuscripts
 
-Installation of Manuscripts is easy as well: just pip install the `manuscripts` Python package. In your virtual environment of choice, run:
+Installation of Manuscripts is easy as well:
+just pip3 install the `manuscripts` Python package. In your virtual environment of choice, run:
 
 ```bash
-(grimoirelab) $ pip install manuscripts
+(gl) $ pip3 install manuscripts
 ```
 
 This should install it, and all its dependencies. Once installed, check that everything is as it should:
 
 ```bash
-(grimoirelab) $ manuscripts --help
+(gl) $ manuscripts --help
 ```
+
+### Installing SirMordred
+
+Installation of SirMordred is no surprise:
+
+```bash
+(gl) $ pip3 install sirmordred
+```
+
+Once it is installed with its dependencies, try it with:
+
+```bash
+(gl) $ sirmordred --help
+```
+
 
 ### Installing from development repositories
 <a name="install-devel-repos"></a>
