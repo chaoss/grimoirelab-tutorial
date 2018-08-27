@@ -75,5 +75,5 @@ $ docker exec -it container_id env TERM=xterm /bin/bash
 
 That container can be used also, as such,
 to produce a complete dashboard: see
-[Mordred in a container](/mordred/mordred-in-a-container).
+[Mordred in a container](../sirmordred/container.html).
 

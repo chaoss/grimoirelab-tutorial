@@ -202,4 +202,5 @@ You can get a listing of all the options of `build_grimoirelab' by using its `--
 $ python3 build_grimoirelab --help
 ```
 
-There is some explanation about some of them in the [README for the utils directory](https://github.com/chaoss/grimoirelab/blob/master/utils/README.md).
+There is some explanation about some of them in the
+[README for the utils directory](https://github.com/chaoss/grimoirelab/blob/master/utils/README.md).
