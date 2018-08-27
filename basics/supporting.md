@@ -1,14 +1,32 @@
-## Supporting systems
+## Installing supporting systems
 
-This section shows how to install the packages that support GrimoireLab. This has been tested in Debian GNU/Linux 9.0, for other systems your mileage may vary.
+GrimoireLab modules need some supporting components to work.
+This section shows in some detail how to install them.
+If you have those components already installed, or are using
+Docker images, very likely you can skip this section.
 
-The packages to install are:
+These supporting components are:
 
 * Python3: GrimoireLab is written in Python3, so you need to have it installed. At least Python 3.5 is recommended, but older versions could work.
 * Programas for retrieving data from data sources. In some cases, some programs will be needed when retrieving data, since GrimoireLab/Perceval will use them. The most common case is `git`, for the git GrimoireLab/Peerceval backend.
 * ElasticSearch: if you want to store raw or enriched GrimoireLab indexes (produced by GrimoireELK).
 * Kibiter: if you want to visualize enriched indexes (produced by GrimoireELK). For example, because you want to browse GrimoireLab dashboards. You can also install vanilla Kibana (Kibiter is a soft fork from Kibana), although in that case maybe some of the functionality will not be available.
 * MariaDB: if you want to use SortingHat for identity management.
+
+
+### Versions, arquitecture
+
+These installation instructions, and in general all stuff in this tutorial,
+are tested with:
+
+* Architecture. GrimoireLab is being developed mainly on GNU/Linux platforms, and in particular, in Debian 9 and derivatives.
+It is very likely it will work out of the box on any Linux-like (or Unix-like) platform,
+provided the right version of Python is available. In other platforms, your mileage will vary. We will appreciate experiences of use in any specific architecture (see chapter on Contributing).
+
+* Python version. GrimoireLab is built to run with Python3. Most reasonably recent Python3 versions will work. The examples have been tested with Python 3.5.
+
+* GrimoireLab version. In general, the examples shown in this tutorial should work with the latest version of the GrimoireLab packages in Pypi. See the next sections for how to install everything that is needed.
+
 
 ### Installing Python3
 
@@ -91,10 +109,6 @@ $ docker run -d -p 9200:9200 -p 5601:5601 nshou/elasticsearch-kibana
 
 Then you can connect to Elasticsearch by localhost:9200 and its Kibana front-end by localhost:5601. See [details about these Docker images in DockerHub](https://hub.docker.com/r/nshou/elasticsearch-kibana/)
 
-
-### Alternative: install Kibiter instead of Kibana
-
-Instead of Kibana, you can install [Kibiter](https://github.com/grimoirelab/kibiter), the soft fork of Kibana maintained as a part of GrimoireLab. It includes some goodies, such as customization of titles for visualizations in dashboards, or menus for showing direct access to several dashboards. But if you don't need those goodies you can work with a vanilla Kibana.
 
 ### Installing MariaDB
 
