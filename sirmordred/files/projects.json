@@ -1,0 +1,8 @@
+{
+    "Test Project": {
+        "git": [
+            "https://github.com/chaoss/grimoirelab-perceval",
+            "https://github.com/chaoss/grimoirelab-elk"
+        ]
+    }
+}
