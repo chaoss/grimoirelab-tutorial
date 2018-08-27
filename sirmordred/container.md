@@ -97,7 +97,8 @@ This will make the container launch all services, but not running `sirmordred`: 
 
 ### Running grimoirelab/installed
 
-For running the `grimoirelab/installed` docker image, first set up the supporting systems in your host, as detailed in the [Supporting systems](before-you-start/supporting-systems.md) section.  Finally, compose a SirMordred configuration file with credentials and references the supporting system. For example:
+For running the `grimoirelab/installed` docker image, first set up the supporting systems in your host,
+as detailed in the [Supporting systems](../basics/supporting.md) section.  Finally, compose a SirMordred configuration file with credentials and references the supporting system. For example:
 
 ```
 [es_collection]

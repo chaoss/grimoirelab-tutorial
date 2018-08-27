@@ -102,25 +102,17 @@ entries:
         output: web
         subfolderitems:
 
-        - title: Introduction
-          url: /sortinghat/intro.html
-          output: web
-
-        - title: Data structure
-          url: /sortinghat/data-structure.html
+        - title: SortingHat data structure
+          url: /sortinghat/data.html
           output: web
 
         - title: Basic use
-          url: /sortinghat/basic-use.html
+          url: /sortinghat/basic.html
           output: web
 
       - title: Reporting with Manuscripts
         output: web
         subfolderitems:
-
-        - title: Introduction
-          url: /manuscripts/intro.html
-          output: web
 
         - title: Get your first report
           url: /manuscripts/first-report.html
@@ -151,23 +143,23 @@ entries:
           output: web
 
         - title: Persistent storage in ElasticSearch
-          url: /python/elasticsearch.html
+          url: /python/es.html
           output: web
 
         - title: Querying ElasticSearch
-          url: /python/quering_elasticsearch.html
+          url: /python/querying.html
           output: web
 
         - title: ElasticSearch DSL
-          url: /python/elasticsearch-dsl.html
+          url: /python/es-dsl.html
           output: web
 
         - title: Querying GrimoireELK indexes
-          url: /python/querying-grimoireelk-indexes.html
+          url: /python/indexes.html
           output: web
 
         - title: Pandas for GrimoireLab indexes
-          url: /python/pandas-for-grimoirelab-indexes.html
+          url: /python/pandas.html
           output: web
 
       - title: "Cases: CHAOSS Metrics"

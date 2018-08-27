@@ -4,7 +4,7 @@
 
 ## Building a dataframe from an index
 
-To start exploring how to use Pandas with GrimoireLab, we will create a simple program that creates a couple of CSV files from information in an index ([`pandas_1_py`](https://github.com/jgbarah/GrimoireLab-training/blob/master/python/scripts/pandas_1.py)).
+To start exploring how to use Pandas with GrimoireLab, we will create a simple program that creates a couple of CSV files from information in an index ([`pandas_1_py`](scripts/pandas_1.py)).
 
 First things first: let's import the modules we're going to need: in addition to `datetime`, we will use  `elasticsearch` and `elasticsearch_dsl` for accesing the ElasticSearch instance where our index will live, and  `Pandas`.
 

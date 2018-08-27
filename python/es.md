@@ -16,7 +16,8 @@ So, let's start with the basics of using the `elasticsearch` module. To begin wi
 (perceval) $ pip install elasticsearch
 ```
 
-Now we can write some Python code to test it [perceval_elasticsearch_1.py](https://github.com/jgbarah/GrimoireLab-training/blob/master/python/scripts/perceval_elasticsearch_1.py):
+Now we can write some Python code to test it
+[perceval_elasticsearch_1.py](scripts/perceval_elasticsearch_1.py):
 
 ```python
 from perceval.backends.core.git import Git
@@ -130,7 +131,8 @@ which deletes a list of indices, and then checks that they were actually deleted
 
 ## A more complete index for git metadata
 
-Let's produce now a more complete ElasticSearch index for git metadata. For each commit, it will have fields for hash, author, committer, author date and committer date (see the complete example in [perceval_elasticsearch_3.py](https://github.com/jgbarah/GrimoireLab-training/blob/master/python/scripts/perceval_elasticsearch_3.py)):
+Let's produce now a more complete ElasticSearch index for git metadata. For each commit, it will have fields for hash, author, committer, author date and committer date (see the complete example in 
+[perceval_elasticsearch_3.py](scripts/perceval_elasticsearch_3.py)):
 
 ```python
 from perceval.backends.core.git import Git
@@ -243,7 +245,8 @@ Every index in ElasticSearch has a 'mapping'. Mappings specify how the index is,
 
 There is a mapping per document type in the index. In this case, we only have `summary` documents in the `commits` index (see the line `es.index()` in the script), so we only have one entry in the `mappings` object above. In it, we can see how each each field got a type: `string`for character strings, and `long` for numbers.
 
-But we know that `author_date` and `commit_date` are not really strings. Both should be recognized as dates. Let's improve our script so that both are dates (Python `datetime` objects) before they are uploaded to ElasticSearch (see all the details in  [perceval_elasticsearch_4.py](https://github.com/jgbarah/GrimoireLab-training/blob/master/python/scripts/perceval_elasticsearch_4.py))):
+But we know that `author_date` and `commit_date` are not really strings. Both should be recognized as dates. Let's improve our script so that both are dates (Python `datetime` objects) before they are uploaded to ElasticSearch (see all the details in 
+[perceval_elasticsearch_4.py](scripts/perceval_elasticsearch_4.py)):
 
 ```python
 import datetime

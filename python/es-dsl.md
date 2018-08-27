@@ -12,7 +12,8 @@ It needs the `elasticsearch` Python module to work, but you'll have it already i
 
 ### Get all contents in an index
 
-`elasticsearch_dsl` provides, among other goodies, a nice chainable API for building ElasticSearch requests (queries), and a convenient way to deal with responses. Let's start by showing a very simple example which works with the index we created for git commits in the chapter on Perceval (see the code as a file ready to run, [perceval_elasticsearch_git_dsl.py](https://github.com/jgbarah/grimoirelab-training/blob/master/python/scripts/perceval_elasticsearch_git_dsl.py)):
+`elasticsearch_dsl` provides, among other goodies, a nice chainable API for building ElasticSearch requests (queries), and a convenient way to deal with responses. Let's start by showing a very simple example which works with the index we created for git commits in the chapter on Perceval (see the code as a file ready to run,
+[perceval_elasticsearch_git_dsl.py](scripts/perceval_elasticsearch_git_dsl.py)):
 
 ```python
 import elasticsearch
@@ -37,7 +38,8 @@ Then, we obtain a reponse by calling the `scan()` method of the request. That ca
 
 ### Get only some fields
 
-This code can be made more efficient, by requesting only the fields we need, instead of getting all the data we have for documents in the `commits` index. For that, we can just chain a call to `source()` to the request we're using. The definition of the request is shown below (a complete script is available as [perceval_elasticsearch_git_dsl_2.py](https://github.com/jgbarah/grimoirelab-training/blob/master/python/scripts/perceval_elasticsearch_git_dsl_2.py)):
+This code can be made more efficient, by requesting only the fields we need, instead of getting all the data we have for documents in the `commits` index. For that, we can just chain a call to `source()` to the request we're using. The definition of the request is shown below (a complete script is available as
+[perceval_elasticsearch_git_dsl_2.py](scripts/perceval_elasticsearch_git_dsl_2.py)):
 
 ```python
 request = elasticsearch_dsl.Search(using=es, index='commits',
@@ -49,7 +51,9 @@ The result is the same, but the bandwith needed, and the stress caused on the El
 
 ### Get the last commits
 
-DSL allows for specifying filters, order, bucketing, aggregations, and much more. And all of that is available via `elasticsearch_dsl`. For example, let's get the last 20 commits, by date of commit (for each commit, only hash, author date and author, as above). The complete script is available as [perceval_elasticsearch_git_dsl_3.py](https://github.com/jgbarah/grimoirelab-training/blob/master/python/scripts/perceval_elasticsearch_git_dsl_3.py), and the relevant fragment is below:
+DSL allows for specifying filters, order, bucketing, aggregations, and much more. And all of that is available via `elasticsearch_dsl`. For example, let's get the last 20 commits, by date of commit (for each commit, only hash, author date and author, as above). The complete script is available as
+
+[perceval_elasticsearch_git_dsl_3.py](scripts/perceval_elasticsearch_git_dsl_3.py), and the relevant fragment is below:
 
 ```python
 request = request.sort('-commit_date')

@@ -1,6 +1,52 @@
-## Data structure
+## SortingHat data structure
 
-Before entering into how to use SortingHat, let's visit the data structure of the database it maintains. See [A dashboard with SortingHat](../grimoireelk/a-dashboard-with-sortinghat.md), and the introduction to this chapter, for details on how the database was produced; `user` and `XXX` are the credentials to access the `shdb` database. For finding out about its tables, just query MySQL.
+SortingHat uses a database to store data about indentities.
+We will add some more repostories to the index we had produced with
+GrimoireELK, and then experiment with the data structures
+that SortingHat manages.
+
+### Adding more data to the index
+
+We already [built an index with SortingHat support](../gelk/sortinghat.html),
+and produced a dashboard showing it.
+But there is still a lot of SortingHat to learn,
+if we want to use all of its capacities.
+In this chapter we will learn how to use SortingHat in combination to other GrimoireLab tools (mainly Perceval and `p2o.py`). For a more complete guide to SortingHat, read the [SortingHat README](https://github.com/grimoirelab/sortinghat/blob/master/README.md).
+
+We will start by adding some more repositories to the index, to have some more complete data. Then we will use it to explore the capabilities of SortingHat for merging identities, for adding affiliations and for adapting profiles.
+
+```bash
+(gl) $ p2o.py --enrich --index git_raw --index-enrich git \
+  -e http://localhost:9200 --no_inc --debug \
+  --db-host localhost --db-sortinghat shdb --db-user user --db-password XXX \
+  git https://github.com/grimoirelab/GrimoireELK.git
+(gl) $ p2o.py --enrich --index git_raw --index-enrich git \
+  -e http://localhost:9200 --no_inc --debug \
+  --db-host localhost --db-sortinghat shdb --db-user user --db-password XXX \
+  git https://github.com/grimoirelab/panels.git
+(gl) $ p2o.py --enrich --index git_raw --index-enrich git \
+  -e http://localhost:9200 --no_inc --debug \
+  --db-host localhost --db-sortinghat shdb --db-user user --db-password XXX \
+  git https://github.com/grimoirelab/mordred.git
+(gl) $ p2o.py --enrich --index git_raw --index-enrich git \
+  -e http://localhost:9200 --no_inc --debug \
+  --db-host localhost --db-sortinghat shdb --db-user user --db-password XXX \
+  git https://github.com/grimoirelab/arthur.git
+(gl) $ p2o.py --enrich --index git_raw --index-enrich git \
+  -e http://localhost:9200 --no_inc --debug \
+  --db-host localhost --db-sortinghat shdb --db-user user --db-password XXX \
+  git https://github.com/grimoirelab/training.git
+```
+
+When we run `p2o.py` in all these cases, it uses Perceval to retrieve data from the corresponding git repositories, producing a raw index (`git_raw`). Based on it, `p2o.py` later produces the enriched index (`git`). Here is where SortingHat enters the game. Each new identity that `p2o.py` finds while enriching the raw index (in the case of git repositories, usually email addresses and names) is added to SortingHat. When looking in the SortingHat database we will see all these identities. Additionally, with the information stored in SortingHat, `p2o.py` produces some fields in the enriched index, such as the organziation or the name to show in the dashboard for each developer.
+
+Therefore, SortingHat controls how identities are matched to people, and people to organizations. It also controls how people are shown in the indexes. Let's see how.
+
+### Data structure
+
+Before entering into how to use SortingHat,
+let's visit the data structure of the database it maintains.
+See [A dashboard with SortingHat](../gelk/sortinghat.md), and the introduction to this chapter, for details on how the database was produced; `user` and `XXX` are the credentials to access the `shdb` database. For finding out about its tables, just query MySQL.
 
 ```bash
 $ mysql -u user -pXXX -e 'SHOW TABLES;' shdb
@@ -160,6 +206,3 @@ $ mysql -u user -pXXX -e 'DESCRIBE enrollments;' shdb
 ```
 
 This table stores the "periods of enrollment": relationships between persons (unique identities) and organizations, which happen during a certain period of time (from `start` to `end`). You can read each row in this table as "the person with this `uuid` worked for the organization `organization_id` during this period.
-
-
-
