@@ -131,6 +131,21 @@ SortingHat can also be installed with `pip3`:
 (gl) $ pip3 install sortinghat
 ```
 
+For SortingHat to work, we will also need a MySQL-like database
+(we will say just "MySQL" from now on).
+In the following, let's assume we have one installed in our own machine (`localhost`).
+If your database is anywhere else (eg, in the cloud),
+just use its url instead of `localhost` in the examples below.
+
+To check that sortinghat was installed, just run:
+
+```bash
+(gl) $ sortinghat --help
+```
+
+You should get the banner showing a summary of how to use
+the `sortinghat` command.
+
 ### Installing Manuscripts
 
 Installation of Manuscripts is easy as well:

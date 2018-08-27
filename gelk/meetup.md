@@ -2,7 +2,7 @@
 
 [Meetup](http://meetup.com) is one of the platforms used by many communities to organize meetings. It is popular among some development communities, and can be a good example of how to build a dashboard from scratch. The result that you'll get after going through this section will be similar to this screenshot:
 
-![Basic Meetup metrics with Grimoire Lab](meetup-figs/meetup-stats-by-grimoirelab.jpg)
+![Basic Meetup metrics with Grimoire Lab](figs/meetup/meetup-stats-by-grimoirelab.jpg)
 
 As in the previous sections, we will assume that all the needed Python modules (in this case, grimoire-elk and dependencies), ElasticSearch, and Kibana are already installed.
 
@@ -16,7 +16,7 @@ To gather data about the Meetup group names to track, you need:
 For each of the group names, you only need to run the following command, assuming the grupo name is `group_name` and the Meetup API key is `meetup_key`:
 
 ```bash
-(grimoireelk) $ p2o.py --enrich --index meetup_raw --index-enrich meetup \
+(gl) $ p2o.py --enrich --index meetup_raw --index-enrich meetup \
 -e http://localhost:9200 --no_inc --debug meetup group_name -t meetup_key --tag group_name
 ```
 
@@ -29,7 +29,7 @@ If the group has a sizable activity, the command will be retrieving data for a w
 
 You need to start by loading your (running) Kibana instance in your browser, by pointing it to  [http://localhost:5601](http://localhost:5601). In the Kibana interface, click on `Management`, and then select `Index patterns` and `Add new`. Specify `meetup` as the `Index name of pattern`, and use `grimoire_creation_date` as `Time-field name` (this means to use that field for the time selector).
 
-![](/grimoireelk/meetup-figs/kibana_index_pattern.png)
+![](figs/meetup/kibana_index_pattern.png)
 
 Once the index pattern is built, proceed to the `Discovery` section in Kibana to see how data looks like. For example, to check for information related to RVSPs we can create a new search:
 
@@ -39,7 +39,7 @@ Once the index pattern is built, proceed to the `Discovery` section in Kibana to
 Let's create some visualizations in the `Visualize` section of our Kibana. All of them will be done from 
 the saved search `Meetup RVSPs`.
 
-![Visualize section in Kibana](meetup-figs/visualize-kibana.png)
+![Visualize section in Kibana](figs/meetup/visualize-kibana.png)
 
 ### Simple metrics
 
@@ -61,7 +61,7 @@ Custom Label: Meetings
 
 We save it as `Meetup metrics`.
 
-![Meetup basic metrics](meetup-figs/kibana-metrics-viz.png)
+![Meetup basic metrics](figs/meetup/kibana-metrics-viz.png)
 
 ### Some tables
 
@@ -95,7 +95,7 @@ Field: grimoire_creation_date
 Custom Label: Last RVSP
 ```
 
-![Table metrics](meetup-figs/kibana-table-viz-def-1.png)
+![Table metrics](figs/meetup/kibana-table-viz-def-1.png)
 
 Now, we need to split the table in rows. The first thing is to split by _members names_:
 
@@ -112,11 +112,11 @@ You could see that some people might have the same _name_, so they will be shown
 What about using that field to provide the link to user's profile?
 
 Save previous work as `Meetup Members`. Go to `Management / Index patterns` to see how the fields are defined:
-![Index patttern fields](meetup-figs/index-pattern-fields.png)
+![Index patttern fields](figs/meetup/index-pattern-fields.png)
 
 Look for `member_id` field an edit it (clicking in the pencil button) to use _url_ as format:
 
-![Editing field to be an URL](meetup-figs/url-field.png)
+![Editing field to be an URL](figs/meetup/url-field.png)
 
 Update the field and go back to your saved `Meetup Members`visualization, and split rows defining:
 
@@ -130,11 +130,11 @@ Custom Label: Profile
 
 Run it, and once you have it ready, save it.
 
-![Members table](meetup-figs/members-table.png)
+![Members table](figs/meetup/members-table.png)
 
 Using similar techniques, we might create a *meetings table*:
 
-![Meetings table](meetup-figs/meetings-table.jpg)
+![Meetings table](figs/meetup/meetings-table.jpg)
 
 ### RVSPs answers
 
@@ -155,11 +155,11 @@ Size: 5
 Custom Label: RVSP Answer
 ```
 
-![RVSPs answers pie chart](meetup-figs/pie-chart-definition.png)
+![RVSPs answers pie chart](figs/meetup/pie-chart-definition.png)
 
 If you are tracking more than one Meetup group, you might need a pie chart or a table to allow filtering. Something like:
 
-![Groups pie chart](meetup-figs/groups-pie-chart.jpg)
+![Groups pie chart](figs/meetup/groups-pie-chart.jpg)
 
 ### Evolutionary charts
 
@@ -181,11 +181,11 @@ Interval: Monthly
 Custom Label: Date (Month)
 ```
 
-![People RVSP'ing each month](meetup-figs/bar-chart.png)
+![People RVSP'ing each month](figs/meetup/bar-chart.png)
 
 You could create a similar chart for meetings evolution, showing the number of unique meetings that people is RSVP'ing in each month.
 
-![Meetings evolution each month](meetup-figs/meetings-evolution.png)
+![Meetings evolution each month](figs/meetup/meetings-evolution.png)
 
 ### Some *Painless*
 
@@ -252,13 +252,13 @@ Size: 500
 
 To get the bubbles alone, you need to go to chart options tab and _uncheck_ `Show Connecting Lines` option. You should see something like:
 
-![Bubbles chart](meetup-figs/bubbles-chart.png)
+![Bubbles chart](figs/meetup/bubbles-chart.png)
 
 ### Create the dashboard
 
 In Kibana `Dashboard` section, add the previous saved visualizations to get something similar to this:
 
-![Basic Meetup metrics with Grimoire Lab](meetup-figs/meetup-stats-by-grimoirelab.jpg)
+![Basic Meetup metrics with Grimoire Lab](figs/meetup/meetup-stats-by-grimoirelab.jpg)
 
 You can save it and play with it to drill down into details, like:
 
@@ -266,6 +266,3 @@ You can save it and play with it to drill down into details, like:
 - Which groups are more active?
 - Where are meetups happening?
 - Who is saying 'No' most of the times to meetup calls?
-
-
-

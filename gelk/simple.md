@@ -16,11 +16,11 @@ Let's run `p2o.py` to create the indexes in ElasticSearch. We will create both t
 As an example, we produce indexes for two git repositories: those of Perceval and GrimoireELK. We will use `git_raw` as the name for the raw index, and `git` for the enriched one. We will store indexes in our ElasticSearch instance listening at `http://localhost:9200`. Each of the following commands will retrieve and enrich data for one of the git repositories:
 
 ```bash
-(grimoireelk) $ p2o.py --enrich --index git_raw --index-enrich git \
+(gl) $ p2o.py --enrich --index git_raw --index-enrich git \
   -e http://localhost:9200 --no_inc --debug \
   git https://github.com/grimoirelab/perceval.git
 ...
-(grimoireelk) $ p2o.py --enrich --index git_raw --index-enrich git \
+(gl) $ p2o.py --enrich --index git_raw --index-enrich git \
   -e http://localhost:9200 --no_inc --debug \
   git https://github.com/grimoirelab/GrimoireELK.git
 ...
@@ -33,11 +33,15 @@ These commands should have produced our two new indexes in ElasticSearch: `git_r
 
 In both cases, you will see a JSON document with the description of the index.
 
-![](elasticsearch-index.png)
+![](figs/elasticsearch-index.png)
 
-### <a name="uploading-dashboard"></a>Uploading the dashboard configuration
+### Uploading the dashboard configuration {#uploading}
 
-Then, the only missing element is a Kibana dashboard with its visualizations. We can use `kidash` to upload to Kibiter/Kibana a dashboard definition that we have ready for you in the [git-dashboard.json JSON file](/grimoireelk/dashboards/git-dashboard.json). Download it to your `/tmp` directory (Note: Please use 'Save Link as' option for downloading), and run the command:
+Then, the only missing element is a Kibana dashboard with its visualizations.
+We can use `kidash` to upload to Kibiter/Kibana a dashboard definition
+that we have ready for you in the [git-dashboard.json JSON file](dashboards/git-dashboard.json).
+Download it to your `/tmp` directory
+(Note: Please use 'Save Link as' option for downloading), and run the command:
 
 ```bash
 (grimoireelk) $ kidash --elastic_url-enrich http://localhost:9200 \
@@ -46,7 +50,7 @@ Then, the only missing element is a Kibana dashboard with its visualizations. We
 
 This should produce the promised dashboard, in all its glory! Point your web browser to [your Kibiter/Kibana instance](http://localhost:5601/), click on `Dashboard` in the top menu, and use the floppy icon \(on the top right list of icons\) to select the `Git` dashboard. Get some popcorn, now you should be able to play with the dashboard.
 
-![](kibana-dashboard.png)
+![](figs/kibana-dashboard.png)
 
 ### Final remarks
 
@@ -70,7 +74,9 @@ $ (grimoireelk) p2o.py --enrich --index github_raw --index-enrich github \
   -t XXX --sleep-for-rate
 ```
 
-In  this  case, you  can  use the [github-dashboard.json JSON file](/grimoireelk/dashboards/github-dashboard.json). Download it to your `/tmp` directory (Note: Please use 'Save Link as' option for downloading), and run the command:
+In  this  case, you  can  use the
+[github-dashboard.json JSON file](dashboards/github-dashboard.json).
+Download it to your `/tmp` directory (Note: Please use 'Save Link as' option for downloading), and run the command:
 
 ```bash
 (grimoireelk) $ kidash --elastic_url-enrich http://localhost:9200 \
