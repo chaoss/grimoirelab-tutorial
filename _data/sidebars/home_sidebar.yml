@@ -79,26 +79,26 @@ entries:
         subfolderitems:
 
         - title: Introduction
-          url: /grimoireelk/intro.html
+          url: /gelk/intro.html
           output: web
 
         - title: A simple dashboard
-          url: /grimoireelk/a-simple-dashboard.html
+          url: /gelk/simple.html
           output: web
 
         - title: A dashboard with SortingHat
-          url: /grimoireelk/a-dashboard-with-sortinghat.html
+          url: /gelk/sortinghat.html
           output: web
 
         - title: Managing dashboards with Kidash
-          url: /grimoireelk/managing-dashboards-with-kidash.html
+          url: /gelk/kidash.html
           output: web
 
         - title: Complete dashboard for Meetup
-          url: /grimoireelk/meetup_complete.html
+          url: /gelk/meetup.html
           output: web
 
-      - title: SortingHat
+      - title: "SortingHat: managing identities"
         output: web
         subfolderitems:
 
