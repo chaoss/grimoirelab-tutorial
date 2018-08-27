@@ -28,7 +28,7 @@ It is obvious that there are some repo identities in it that correspond to the s
 For example, let's merge repo identity `4fcec5a` (dpose, dpose@sega.bitergia.net) with `5b358fc` (dpose, dpose@bitergia.com), which I know correspond to the same person:
 
  ```bash
- (sh) $ sortinghat -u user -p XXX -d shdb merge \
+ (gl) $ sortinghat -u user -p XXX -d shdb merge \
    4fcec5a968246d8342e4acfceb9174531c8545c1 5b358fc11019cf2c03ea4c162009e89715e590dd
  Unique identity 4fcec5a968246d8342e4acfceb9174531c8545c1 merged on 5b358fc11019cf2c03ea4c162009e89715e590dd
  ```
@@ -47,13 +47,13 @@ The query looked for all rows in the `identities` table whose `uuid` field start
 We can follow this procedure for other identities that correspond to the same person: (Quan Zhou, quan@bitergia.com) and (quan, zhquan7@gmail.com); (Alberto Martín, alberto.martin@bitergia.com) and (Alberto Martín, albertinisg@users.noreply.github.com); and (Alvaro del Castillo, acs@thelma.cloud) and (Alvaro del Castillo, acs@bitergia.com):
 
 ```bash
-(sh) $ sortinghat -u user -p XXX -d shdb merge \
+(gl) $ sortinghat -u user -p XXX -d shdb merge \
   0cac4ef12631d5b0ef2fa27ef09729b45d7a68c1 11cc0348b60711cdee515286e394c961388230ab
 Unique identity 0cac4ef12631d5b0ef2fa27ef09729b45d7a68c1 merged on 11cc0348b60711cdee515286e394c961388230ab
-(sh) $ sortinghat -u user -p XXX -d shdb merge \
+(gl) $ sortinghat -u user -p XXX -d shdb merge \
   35c0421704928bcbe3a0d9a4de1d79f9590ccaa9 37a8187909592a7b78559399105f6b5404af9e4e
 Unique identity 35c0421704928bcbe3a0d9a4de1d79f9590ccaa9 merged on 37a8187909592a7b78559399105f6b5404af9e4e
-(sh) $ sortinghat -u user -p XXX -d shdb merge \
+(gl) $ sortinghat -u user -p XXX -d shdb merge \
   7ad0031fa2db40a5149f54dfc2ec2a355e9443cd 9aed245d9df109f8d00ca0e656121c3bdde46a2a
 Unique identity 7ad0031fa2db40a5149f54dfc2ec2a355e9443cd merged on 9aed245d9df109f8d00ca0e656121c3bdde46a2a
 ```
@@ -63,7 +63,7 @@ Unique identity 7ad0031fa2db40a5149f54dfc2ec2a355e9443cd merged on 9aed245d9df10
 Now, we can check how SortingHat is storing information about these merged identities, but instead of querying directly the database, we can just use `sortinghat`:
 
 ```bash
-(sh) $ sortinghat -u user -p XXX -d shdb show \
+(gl) $ sortinghat -u user -p XXX -d shdb show \
   11cc0348b60711cdee515286e394c961388230ab
 unique identity 11cc0348b60711cdee515286e394c961388230ab
 
@@ -87,7 +87,7 @@ We merged the repo identity (Quan Zhou, quan@bitergia.com) on the unique identit
 Unfortunately, we cannot redo the merge with the most convenient order:
 
 ```bash
-(sh) $ sortinghat -u user -p XXX -d shdb merge \
+(gl) $ sortinghat -u user -p XXX -d shdb merge \
   11cc0348b60711cdee515286e394c961388230ab 0cac4ef12631d5b0ef2fa27ef09729b45d7a68c1
 Error: 0cac4ef12631d5b0ef2fa27ef09729b45d7a68c1 not found in the registry
 ```
@@ -101,7 +101,7 @@ Later on we will revisit this case, since there are stuff that can be done: brea
 We can just modify the profile for the unique identity, thus changing the profile for a person:
 
 ```bash
-(sh) $ sortinghat -u user -p XXX -d shdb profile \
+(gl) $ sortinghat -u user -p XXX -d shdb profile \
   --name "Quan Zhou" --email "quan@bitergia.com" \
   11cc0348b60711cdee515286e394c961388230ab
 unique identity 11cc0348b60711cdee515286e394c961388230ab
@@ -122,7 +122,7 @@ When we interact with SortingHat, it only changes the contents of the database i
 To make changes appear in the dashboard, we need to create new enriched indexes (re-ennrich the indexes). We can do that by removing raw and enriched indexes from ElasticsSearch, and then running the same `p2o.py` commands shown to produce new raw and enriched indexes. But in our case, this is a clear overkill: we don't need to retrieve new raw indexes from the repositories, since they are fine. We only need to produce new enriched indexes. For that, we can run `p2o.py` as follows:
 
 ```
-(sh) $ p2o.py --only-enrich --index git_raw --index-enrich git \
+(gl) $ p2o.py --only-enrich --index git_raw --index-enrich git \
   -e http://localhost:9200 --no_inc --debug \
   --db-host localhost --db-sortinghat shdb --db-user user --db-password XXX \
   git https://github.com/grimoirelab/GrimoireELK.git
@@ -137,7 +137,7 @@ In this case, the command will create a new `git` index (by modifying the curren
 The above method, even when it will work, is still an overkill. I really don't need to modify the whole enriched indexes, by updating all the fields in their items. We just need to update the fields related to identities, which are the only ones that we need to change. For that, we have an specific option to `p2o.py`:
 
 ```
-(sh) $ p2o.py --only-enrich --refresh-identities --index git_raw --index-enrich git \
+(gl) $ p2o.py --only-enrich --refresh-identities --index git_raw --index-enrich git \
   -e http://localhost:9200 --no_inc --debug \
   --db-host localhost --db-sortinghat shdb --db-user user --db-password XXX \
   git https://github.com/grimoirelab/GrimoireELK.git
@@ -152,7 +152,7 @@ In most cases, when the SortingHat database is modified, only a handful of ident
 In this case, the command to run is:
 
 ```
-(sh) $ p2o.py --only-enrich --refresh-identities --index git_raw --index-enrich git \
+(gl) $ p2o.py --only-enrich --refresh-identities --index git_raw --index-enrich git \
   --author_uuid 11cc0348b60711cdee515286e394c961388230ab \
     0cac4ef12631d5b0ef2fa27ef09729b45d7a68c1 \
   -e http://localhost:9200 --no_inc --debug \
