@@ -82,7 +82,10 @@ In this case, we can also see a small difference on the body of the messages. Fo
 
 ## Analyzing messages with Python
 
-As usual, we can use Perceval as a Python module for analyzing messages in mbox files. Using the same two archives we downloaded above, in the `archives` directory, we can for example show the subject for all messages \(code below is in [perceval\_mbox\_1.py](https://github.com/jgbarah/grimoirelab-training/blob/master/perceval/scripts/perceval_mbox_1.py)\):
+As usual, we can use Perceval as a Python module for analyzing messages in mbox files.
+Using the same two archives we downloaded above,
+in the `archives` directory, we can for example show the subject for all messages
+(code below is in [perceval_mbox_1.py](scripts/perceval_mbox_1.py)):
 
 ```python
 #! /usr/bin/env python3
