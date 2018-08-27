@@ -22,6 +22,10 @@ entries:
         output: web
         subfolderitems:
 
+        - title: Installation for the impatient
+          url: /before-you-start/quick-install.html
+          output: web
+
         - title: Introduction
           url: /before-you-start/intro.html
           output: web
