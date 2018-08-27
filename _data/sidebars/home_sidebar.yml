@@ -126,24 +126,20 @@ entries:
           url: /manuscripts/first-report.html
           output: web
 
-      - title: "Mordred: orchestrating everything"
+      - title: "SirMordred: orchestrating everything"
         output: web
         subfolderitems:
 
-        - title: Introduction
-          url: /mordred/intro.html
-          output: web
-
         - title: A GrimoireLab dashboard in one step
-          url: /mordred/a-grimoirelab-dashboard-in-one-step.html
+          url: /sirmordred/dashboard.html
           output: web
 
         - title: Mordred in a container
-          url: /mordred/mordred-in-a-container.html
+          url: /sirmordred/container.html
           output: web
 
         - title: The projects file
-          url: /mordred/the-projects-file.html
+          url: /sirmordred/projects.html
           output: web
 
       - title: Python scripting
