@@ -115,7 +115,7 @@ entries:
         subfolderitems:
 
         - title: Get your first report
-          url: /manuscripts/first-report.html
+          url: /manuscripts/first.html
           output: web
 
       - title: "SirMordred: orchestrating everything"
