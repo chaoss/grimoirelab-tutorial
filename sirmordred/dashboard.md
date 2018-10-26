@@ -88,6 +88,8 @@ bots_names = [Beloved Bot]
 autoprofile = [TestProject:manual,git,github]
 
 [panels]
+# Kibitter / kibana entry point
+kibiter_url = http://localhost:5601
 # Dashboard: default time frame
 kibiter_time_from= "now-1y"
 # Dashboard: default index pattern
