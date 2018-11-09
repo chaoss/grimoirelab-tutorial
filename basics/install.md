@@ -12,6 +12,8 @@ If you want to install the latest version available in the development
 repositories, have a look at
 [Installing from development repositories](#repos).
 
+You may need to have some other non-Python packages installed previously. Please check the [section on installing non-Python packages](#non-python-pkgs) if you have any trouble.
+
 
 ### Preparing a virtualenv {#venvs}
 
@@ -181,6 +183,23 @@ Once it is installed with its dependencies, try it with:
 (gl) $ sirmordred --help
 ```
 
+### Installation of non-Python packages {#non-python-pkgs}
+
+Some of GrimoireLab dependencies need non-Python packages as pre-requisites to be installed. Make sure that you have them installed in your system before running the Python installation commands above:
+
+* For `dulwich` to be installed, you need to have some Python libraries present. In Debian-derived systems (such as Ubuntu), that can be done by installing the `python3-dev` package:
+
+```
+$ sudo apt-get install python3-dev
+```
+
+Usually, you know you need this when you have a problem installing `dulwich`. For example, you check the output of `pip install` and you find:
+
+```
+dulwich/_objects.c:21:10: fatal error: Python.h: No such file or Directory
+```
+
+`Python.h` is one of the files provided by the `python3-dev` Debian package, which includes development libraries and files needed to compile Python-related code.
 
 ### Installing from development repositories {#repos}
 
