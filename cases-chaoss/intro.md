@@ -1,6 +1,6 @@
 # Cases: CHAOSS Health Model
 
-The [CHAOSS Metrics Technical Committee](https://wiki.linuxfoundation.org/oss-health-metrics) is working on defining metrics for assessing open source communities' health and sustainability. In this chapter we use some of their definitions, as of September 2017, to produce visualizations based on the GrimoireLab stack. They will be used to compose a "CHAOSS Metrics Dashboard" produced with GrimoireLab technology.
+The [CHAOSS Metrics Technical Committee](https://chaoss.community) is working on defining metrics for assessing open source communities' health and sustainability. In this chapter we use some of their definitions, as of September 2017, to produce visualizations based on the GrimoireLab stack. They will be used to compose a "CHAOSS Metrics Dashboard" produced with GrimoireLab technology.
 
 ## Data collection
 
