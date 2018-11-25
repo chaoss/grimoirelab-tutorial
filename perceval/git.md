@@ -1,6 +1,6 @@
-# Retriving git metadata
+# Retrieving git metadata
 
-Git is the most popular source code management system. Is is usually used to track versions of source code files. Transactions on a git repositories are called "commits". Each commit is an atomic change to the files in the repository. For each commit, git maintains data for tracking what changed, and some metadata about who committed the change, when, which files were affected, etc. Perceval retrieves this information, and produces a JSON document \(a dictionary when using it from Python\) for each commit.
+Git is the most popular source code management system. It is usually used to track versions of source code files. Transactions on a git repositories are called "commits". Each commit is an atomic change to the files in the repository. For each commit, git maintains data for tracking what changed, and some metadata about who committed the change, when, which files were affected, etc. Perceval retrieves this information, and produces a JSON document \(a dictionary when using it from Python\) for each commit.
 
 ## Using Perceval as a program
 
@@ -143,7 +143,7 @@ for commit in repo.fetch():
     print(commit['data']['commit'])
 ```
 
-This code imports the `perceval.backends` module, and then produces an object of the `perceval.backends.git.Git` class. All classes of this kind include a method for fetching the items retrieved by the Perceval backend, as an iterator: `fetch()`. In the last two lines of the script, we iterate through that iterator, printing the hash for all commmits fetched. The output of the script is like:
+This code imports the `perceval.backends` module, and then produces an object of the `perceval.backends.git.Git` class. All classes of this kind include a method for fetching the items retrieved by the Perceval backend, as an iterator: `fetch()`. In the last two lines of the script, we iterate through that iterator, printing the hash for all commmits fetched. The output of the script looks like:
 
 ```bash
 (perceval) $ python3 perceval_git_1.py 
