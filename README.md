@@ -22,7 +22,7 @@ GrimoireLab is a set of tools to retrieve, organize, analyze and visualize data 
 
 For GrimoireLab, any system that stores data relevant for analyzing software development is a software development repository. GrimoireLab supports many of them, from data retrieval to analytics and visualization: git, GitHub, Bugzilla, Gerrit, Launchpad, Jira, mailing lists, Confluence, Discourse, Slack, Jenkins, Meetup, Mediawiki, Phabricator, Redmine, StackOverflow, Telegram, and others.
 
-Let´s now visit the main functionalities provided by GrimoireLab. The chapter [GrimoireLab architecture](../grimoirelab/intro.md) shows how the different components in GrimoireLab are combined to provide these functionalities.
+Let´s now visit the main functionalities provided by GrimoireLab. The section [Components](basics/components.md) shows how the different components in GrimoireLab are combined to provide these functionalities.
 
 ### Data retrieval
 
