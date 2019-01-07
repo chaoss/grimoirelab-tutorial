@@ -97,7 +97,7 @@ Panels provide a collection of JSON files which define visualizations and dashbo
 
 These panels are already prepared to consider unique identities, affiliation data, and other goodies provided by SortingHat, so if you use them, be sure to have SortingHat in the toolchain.
 
-### Mordred: from a configuration to a dasshboard
+### Mordred: from a configuration to a dashboard
 
 As can be seen from the pictures in the previous scenarios, setting up a complete dashboard involves several components, each of them with their own configurations, and with their own processes for interacting with the others. The time needed to master all the components, and the effort spent to correctly run them, is not neglectable. Here is where Mordred comes to the rescue.
 
