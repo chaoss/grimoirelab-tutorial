@@ -205,7 +205,7 @@ dulwich/_objects.c:21:10: fatal error: Python.h: No such file or Directory
 
 Previous instructions are for installing the Python packages corresponding to the GrimoireLab coordinated releases. These packages are supposed to be stable and tested. But if you prefer to live in the edge, you can also install directly from development repositories. To easy this case, there is a little utility: [build_grimoirelab](https://github.com/chaoss/grimoirelab/blob/master/utils/build_grimoirelab).
 
-> **Warning:** latest versions in development repositories may be instable, not play well with each other, or even not work at all. Use at your own risk.
+> **Warning:** latest versions in development repositories may be unstable, not play well with each other, or even not work at all. Use at your own risk.
 
 It is designed to work standalone, with just a few dependencies. It is easy to produce a Python virtual environment with all GrimoireLab tools (and dependencies) installed, corresponding to the latest version in the master branch of each of the development repositories. Just the utility, and run:
 
