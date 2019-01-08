@@ -237,7 +237,7 @@ If you want, you can also produce the Python packages (wheels and dists) for any
 $ python3 build_grimoirelab --build --distdir /tmp/ivenv
 ```
 
-You can get a listing of all the options of `build_grimoirelab' by using its `--help` flag:
+You can get a listing of all the options of `build_grimoirelab` by using its `--help` flag:
 
 ```bash
 $ python3 build_grimoirelab --help
