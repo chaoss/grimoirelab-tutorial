@@ -90,7 +90,7 @@ Your output will vary depending on the exact version of Perceval you have, and w
 
 This will produce the file `/tmp/perceval.test` with all the retrieved commits.
 
-To produce this result, Perceval cloned the git repository to analyze, and got information for all its commits by using the `git log` command under the hoods. Therefore, you need to have git installed, but if you're are in the business of developing software, it would be weird you didn't have.
+To produce this result, Perceval cloned the git repository to analyze, and got information for all its commits by using the `git log` command under the hoods. Therefore, you need to have git installed, but if you're are in the business of developing software, it would be weird if you didn't have it.
 
 One interesting detail of this behavior is that Perceval is cloning the git repository once and again, to analyze it. You can tell Perceval where to store it, and reuse it the next time. You will probably notice the difference if you use the time command:
 
