@@ -11,7 +11,7 @@ We already [built an index with SortingHat support](../gelk/sortinghat.html),
 and produced a dashboard showing it.
 But there is still a lot of SortingHat to learn,
 if we want to use all of its capacities.
-In this chapter we will learn how to use SortingHat in combination to other GrimoireLab tools (mainly Perceval and `p2o.py`). For a more complete guide to SortingHat, read the [SortingHat README](https://github.com/grimoirelab/sortinghat/blob/master/README.md).
+In this chapter we will learn how to use SortingHat in combination to other GrimoireLab tools (mainly Perceval and `p2o.py`). For a more complete guide to SortingHat, read the [SortingHat README](https://github.com/chaoss/grimoirelab-sortinghat/blob/master/README.md).
 
 We will start by adding some more repositories to the index, to have some more complete data. Then we will use it to explore the capabilities of SortingHat for merging identities, for adding affiliations and for adapting profiles.
 
@@ -67,7 +67,7 @@ The aim of each table is as follows:
 * `identities`: identities found in repositories, and to which unique (merged) identity correspond each of them.
 * `uidentities`: unique (merged)) identities.
 * `profiles`: information to show in the dashboard for a unique identity.
-* `organizations`: organziations to which unique identities may be affiliated.
+* `organizations`: organizations to which unique identities may be affiliated.
 * `enrollments`: relationship between unique identities and organizations.
 * `countries`: countries which can be used in profiles.
 * `domains_organizations`: email domains for organizations, used to infer affiliation relationships.
@@ -188,7 +188,7 @@ $ mysql -u user -pXXX -e 'DESCRIBE organizations;' shdb
 
 ``` 
 
-In this format, each row corresponds to the description of a field in the `organizations` table. We can see how simple lit is: just an identifier (for linking with other tables) and a name for each organization.
+In this format, each row corresponds to the description of a field in the `organizations` table. We can see how simple it is: just an identifier (for linking with other tables) and a name for each organization.
 
 `enrollments` table is a bit more complex:
 
