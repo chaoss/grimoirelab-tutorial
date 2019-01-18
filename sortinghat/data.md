@@ -188,7 +188,7 @@ $ mysql -u user -pXXX -e 'DESCRIBE organizations;' shdb
 
 ``` 
 
-In this format, each row corresponds to the description of a field in the `organizations` table. We can see how simple lit is: just an identifier (for linking with other tables) and a name for each organization.
+In this format, each row corresponds to the description of a field in the `organizations` table. We can see how simple it is: just an identifier (for linking with other tables) and a name for each organization.
 
 `enrollments` table is a bit more complex:
 
