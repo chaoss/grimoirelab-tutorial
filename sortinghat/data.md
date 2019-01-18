@@ -67,7 +67,7 @@ The aim of each table is as follows:
 * `identities`: identities found in repositories, and to which unique (merged) identity correspond each of them.
 * `uidentities`: unique (merged)) identities.
 * `profiles`: information to show in the dashboard for a unique identity.
-* `organizations`: organziations to which unique identities may be affiliated.
+* `organizations`: organizations to which unique identities may be affiliated.
 * `enrollments`: relationship between unique identities and organizations.
 * `countries`: countries which can be used in profiles.
 * `domains_organizations`: email domains for organizations, used to infer affiliation relationships.
