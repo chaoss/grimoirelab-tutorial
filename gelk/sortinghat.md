@@ -82,7 +82,7 @@ includes visualizations for some fields generated from the SortingHat database: 
   --import /tmp/git-sortinghat.json
 ```
 
-(assuming you downloaed the file to `/tmp/git-sortinghat.json`)
+(assuming you downloaded the file to `/tmp/git-sortinghat.json`)
 
 And I get a dashboard in all its glory:
 
