@@ -23,7 +23,7 @@ The projects file is a JSON file with the following structure:
 
 That is, in Python terms it is a dictionary of projects, where the key for each project is the project name (as we want it to appear in the dashboard), and the value is a dictionary with the data sources for that project.
 
-In turn the dictionary with data sources has as keys the Perceval identifiers for the data sources of interest for the project (for example "git", "github", "jira", etc.). Values of that dictionary is a list of repositories, also in the format expected by Perceval. See `perceval --help`, or the [main Perceval README](https://github.com/grimoirelab/perceval/blob/master/README.md) for a complete list of data sources supported, and their identifiers. For convenience, this is a close-to-complete list:
+In turn the dictionary with data sources has as keys the Perceval identifiers for the data sources of interest for the project (for example "git", "github", "jira", etc.). Values of that dictionary is a list of repositories, also in the format expected by Perceval. See `perceval --help`, or the [main Perceval README](https://github.com/chaoss/grimoirelab-perceval/blob/master/README.md) for a complete list of data sources supported, and their identifiers. For convenience, this is a close-to-complete list:
 
 * askbot: Questions and answers from Askbot site
 * bugzilla: Bugzilla server
