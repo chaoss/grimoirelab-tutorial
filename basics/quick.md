@@ -36,7 +36,7 @@ If everything went well, you can just check the version that you installed:
 
 And that's it. You can now skip the rest of this chapter
 (although it would be a good idea if you at least browse it,
-there is useful inforation in it).
+there is useful information in it).
 
 ### Run in a Docker container {#docker}
 

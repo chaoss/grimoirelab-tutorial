@@ -18,7 +18,7 @@ The main components of GrimoireLab are:
 * SortingHat. Manages identities for persons, including capabilities for merging the many identities corresponding to the same person, and other data related to them (such as affiliation to companies).
 * Kibiter. Visualization platform. It is a soft fork of Kibana, which allows for the construction of actionable dashboards to show the data in enriched indexes.
 * Sigils. Definition of Kibiter dashboards. They encode the panels, visualizations and other details needed to produce dashboards in Kibiter or Kibana.
-* Manuscritps. Production of PDF documents reporting on the main characteristics of a project.
+* Manuscripts. Production of PDF documents reporting on the main characteristics of a project.
 * Mordred. Manages the configuration of all the components needed to produce a dashboard, automating its production.
 
 ![](figs/grimoirelab-all-complete.png)

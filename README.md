@@ -40,7 +40,7 @@ There are two GrimoireLab components involved in data retrieval:
 
 * Perceval provides the common API for the many different kinds of repositories. It is a Python library that can be used standalone, from your own code, or in combination with other GrimoireLab components, to store data so that it can be analyzed later. Perceval also knows how to negotiate with the repositories APIs to perform incremental retrieval. That allows for  continuous updates of recent data from the repository, retrieving only the increment, in a way that is transparent to the library user.
 
-* Arthur organizes the data retrieval from repositories. It uses a queing system to provide retrieval jobs as an abstraction. Each retrieval job, which corresponds to data retrieval from a specific repository, can run in a different node. Data queues provide an API very similar to Perceval, with the same data structures. Arthur is usually used as a library by code consuming the retrieved data. Arthur uses Perceval for access to the repositories. 
+* Arthur organizes the data retrieval from repositories. It uses a queuing system to provide retrieval jobs as an abstraction. Each retrieval job, which corresponds to data retrieval from a specific repository, can run in a different node. Data queues provide an API very similar to Perceval, with the same data structures. Arthur is usually used as a library by code consuming the retrieved data. Arthur uses Perceval for access to the repositories. 
 
 ### Data storage
 
