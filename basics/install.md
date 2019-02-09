@@ -1,9 +1,9 @@
 ## Installing GrimoireLab Python modules
 
 Most of GrimoireLab are Python modules. The easiest way of installing them is using `pip3`,
-which will retrieve the corresponding packages from the [Python Package Index](https://pypi.python.org/), and will automatically install them, including their dependecies (other Python packages that they need).
+which will retrieve the corresponding packages from the [Python Package Index](https://pypi.python.org/), and will automatically install them, including their dependencies (other Python packages that they need).
 
-Although it is not needed, we recomend using [Python virtual environments](https://docs.python.org/3/tutorial/venv.html) for installing packages. Below, you can find a section on how to prepare vitual packages in Python3, and then how to install GrimoireLab modules in them. If you are not interested in virtual environments, and know what you are doing, you can skip that part. Only remember, in that case, that it is very likely that you will need to prefix with `sudo` any installation command, to install, as root, in the default location in your system, instead of in a virtual environment.
+Although it is not needed, we recommend using [Python virtual environments](https://docs.python.org/3/tutorial/venv.html) for installing packages. Below, you can find a section on how to prepare virtual packages in Python3, and then how to install GrimoireLab modules in them. If you are not interested in virtual environments, and know what you are doing, you can skip that part. Only remember, in that case, that it is very likely that you will need to prefix with `sudo` any installation command, to install, as root, in the default location in your system, instead of in a virtual environment.
 
 Most of this section is about installing the packages that are available from
 [Pypi](http://pypi.python.org),
@@ -51,7 +51,7 @@ You can also have several different virtual environments, each with different se
 
 ### Installing tools in the virtual environment
 
-Depending on what you have installed in your system, it may be convenient to install some Python tools in it, and to upgrade some others. We recommend that you type, in your activated virtual ennvironment:
+Depending on what you have installed in your system, it may be convenient to install some Python tools in it, and to upgrade some others. We recommend that you type, in your activated virtual environment:
 
 ```bash
 (gl) $ pip3 install --upgrade pip
@@ -82,7 +82,7 @@ In the following sections, we will explain how to install,
 separately, some of the GrimoireLab modules.
 Of course, they can be installed in separate virtual environments.
 But this is needed only if the `grimoirelab` package was not installed,
-and you want to install only some of the modueles.
+and you want to install only some of the modules.
 
 ### Installing Perceval
 
@@ -205,7 +205,7 @@ dulwich/_objects.c:21:10: fatal error: Python.h: No such file or Directory
 
 Previous instructions are for installing the Python packages corresponding to the GrimoireLab coordinated releases. These packages are supposed to be stable and tested. But if you prefer to live in the edge, you can also install directly from development repositories. To easy this case, there is a little utility: [build_grimoirelab](https://github.com/chaoss/grimoirelab/blob/master/utils/build_grimoirelab).
 
-> **Warning:** latest versions in development repositories may be instable, not play well with each other, or even not work at all. Use at your own risk.
+> **Warning:** latest versions in development repositories may be unstable, not play well with each other, or even not work at all. Use at your own risk.
 
 It is designed to work standalone, with just a few dependencies. It is easy to produce a Python virtual environment with all GrimoireLab tools (and dependencies) installed, corresponding to the latest version in the master branch of each of the development repositories. Just the utility, and run:
 
@@ -224,7 +224,7 @@ $ source /tmp/ivenv/bin/activate
 (ivenv) $ mordred --help
 ```
 
-`build_grimoirelab` can also be used to create a virtual enviroment with a specific release of GrimoireLab installed. For that, download the release file (which specifies the versions of each tool) from the
+`build_grimoirelab` can also be used to create a virtual environment with a specific release of GrimoireLab installed. For that, download the release file (which specifies the versions of each tool) from the
 [releases directory](https://github.com/chaoss/grimoirelab/tree/master/releases) and run (assuming you downloaded the release file `elasticgirl.21` to the current directory):
 
 ```bash

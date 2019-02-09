@@ -14,7 +14,7 @@ These supporting components are:
 * MariaDB: if you want to use SortingHat for identity management.
 
 
-### Versions, arquitecture
+### Versions, architecture
 
 These installation instructions, and in general all stuff in this tutorial,
 are tested with:
