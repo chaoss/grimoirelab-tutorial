@@ -180,7 +180,7 @@ Instead of "XXXXX" use your own GitHub token. You can obtain tokens via the GitH
 * Once in "Personal access tokens", click on "Generate new token" \(top right\).
 * Once in "New personal access token", select a name for your token \("token desription"\), and select the scopes for it. If you're going to use it only with perceval, you don't really need permissions for any scope, so you don't need to select any.
 
-Whichever the authentication method, perceval produces, as it did for the git backend, a JSON document for each item in stdout, and some messages in stderr. You can see both differentiated, for example, by redirecting stdout to a file:
+Regardless of the method used, perceval produces (as it did for the git backend) a JSON document for each item in stdout, and some messages in stderr. You can see both differentiated, for example, by redirecting stdout to a file:
 
 ```
 (perceval) $ perceval github grimoirelab perceval --sleep-for-rate \
