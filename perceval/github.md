@@ -6,17 +6,17 @@
 
 To begin with, let's get some help from our friend:
 
-```bash
+```bash 
 (perceval) $ perceval github --help
 ...
 ```
 
-In that help banner, we see three different ways of using it:
+In that help banner, we see two different ways of using it:
 
 * with no credentials
-* with a user and password
 * with a user token
 
+## Retrieving from GitHub with no credentials
 If you use the GitHub Perceval backend with no credentials, you'll have basic access to the GitHub API. The main difference with using authenticated use is the rate limit: a much more stringent rate limit \(number of requests to the GitHub API\) will be applied by GitHub. In any case, this basic access is very simple, since it requires no user, password or token. For example, for accessing tickets and pull requests in the Perceval repository:
 
 ```bash
