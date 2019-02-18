@@ -166,16 +166,7 @@ As the message itself states, you can avoid this rate limit by using authenticat
 
 ## Retrieving from GitHub with authentication
 
-To avoid the problems with the unauthenticated access to the GitHub API, we can use the Perceval GitHub backend with authentication:
-
-```bash
-(perceval) $ perceval github grimoirelab perceval --sleep-for-rate \
-    -u jgbarah -p XXX
-```
-
-Instead of "jgbarah",use your own GitHub username, and instead of XXX your GitHub password. This will only work if you didn't set up [two factor authentication for GitHub](https://help.github.com/articles/about-two-factor-authentication/). If you did, you can still use the following method \(which you can use as well if you didn't set up it\).
-
-Alternatively, you can use GitHub user tokens as well:
+To avoid the problems due to unauthenticated access to the GitHub API, we can use the Perceval GitHub backend with authentication using Github tokens:
 
 ```bash
 (perceval) $ perceval github grimoirelab perceval --sleep-for-rate \
