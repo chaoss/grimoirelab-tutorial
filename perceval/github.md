@@ -234,8 +234,8 @@ args = parser.parse_args()
 
 # create a Git object, pointing to repo_url, using repo_dir for cloning
 repo = GitHub(owner=owner, repository=repo, api_token=args.token)
-# fetch all issues/pull requests as an iteratoir, and iterate it printing
-# their number, and whether they are issues or pull requessts
+# fetch all issues/pull requests as an iterator, and iterate it printing
+# their number, and whether they are issues or pull requests
 for item in repo.fetch():
     if 'pull_request' in item['data']:
         kind = 'Pull request'
