@@ -94,7 +94,7 @@ In an activated virtual environment we will use `pip3` to install the module fro
 
 This will install Perceval and its dependencies \(other Python modules that are needed by Perceval to work\). So, we're ready to see what it can do.
 
-Once Perceval is installed, we can check that the installation went well. For a starter, you can use the `perceval` script, which should have been installed, since it comes with the Perceval package. It is a simple front-end to the Perceval module, which gets data from a data source, and writes what it finds as JSON documents in stdout. To learn about its command line arguments, just use the `--help` flag:
+Once Perceval is installed, we can check that the installation went well. For starters, you can use the `perceval` script, which should have been installed, since it comes with the Perceval package. It is a simple front-end to the Perceval module, which gets data from a data source, and writes what it finds as JSON documents in stdout. To learn about its command line arguments, just use the `--help` flag:
 
 ```bash
 (gl) $ perceval --help
@@ -203,7 +203,7 @@ dulwich/_objects.c:21:10: fatal error: Python.h: No such file or Directory
 
 ### Installing from development repositories {#repos}
 
-Previous instructions are for installing the Python packages corresponding to the GrimoireLab coordinated releases. These packages are supposed to be stable and tested. But if you prefer to live in the edge, you can also install directly from development repositories. To easy this case, there is a little utility: [build_grimoirelab](https://github.com/chaoss/grimoirelab/blob/master/utils/build_grimoirelab).
+Previous instructions are for installing the Python packages corresponding to the GrimoireLab coordinated releases. These packages are supposed to be stable and tested. But if you prefer to live on the edge, you can also install directly from development repositories. To easy this case, there is a little utility: [build_grimoirelab](https://github.com/chaoss/grimoirelab/blob/master/utils/build_grimoirelab).
 
 > **Warning:** latest versions in development repositories may be unstable, not play well with each other, or even not work at all. Use at your own risk.
 
