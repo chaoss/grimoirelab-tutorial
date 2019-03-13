@@ -82,7 +82,7 @@ For installing Kibiter, grab the version you want from the [Kibiter releases at 
 
 Once you are done, point your browser to [http://localhost:5601](http://localhost:5601) (asuming Kibana was installed in your local machine, using the default port), and you'll get something like:
 
-![Kibiter Welcome Page](/assets/Screenshot-2017-11-4 Bitergia Analytics.png)
+![Kibiter Welcome Page](/assets/bit_anal.png)
 
 ### Installing Kibana
 
