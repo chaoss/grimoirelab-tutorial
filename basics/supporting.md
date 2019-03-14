@@ -11,7 +11,7 @@ These supporting components are:
 * Programas for retrieving data from data sources. In some cases, some programs will be needed when retrieving data, since GrimoireLab/Perceval will use them. The most common case is `git`, for the git GrimoireLab/Peerceval backend.
 * ElasticSearch: if you want to store raw or enriched GrimoireLab indexes (produced by GrimoireELK).
 * Kibiter: if you want to visualize enriched indexes (produced by GrimoireELK). For example, because you want to browse GrimoireLab dashboards. You can also install vanilla Kibana (Kibiter is a soft fork from Kibana), although in that case maybe some of the functionality will not be available.
-* MariaDB: if you want to use SortingHat for identity management.
+* MariaDB or MySQL: if you want to use SortingHat for identity management.
 
 
 ### Versions, architecture
@@ -111,7 +111,7 @@ $ docker run -d -p 9200:9200 -p 5601:5601 nshou/elasticsearch-kibana
 Then you can connect to Elasticsearch by localhost:9200 and its Kibana front-end by localhost:5601. See [details about these Docker images in DockerHub](https://hub.docker.com/r/nshou/elasticsearch-kibana/)
 
 
-### Installing MariaDB
+### Installing MariaDB / MySQL
 
 If you are going to use SortingHat, you will need a database. Currently, MySQL-like databases are supported. In our case, we will use MariaDB. Installing it in Debian is easy:
 
@@ -120,3 +120,13 @@ $ sudo apt-get install mariadb-server
 ```
 
 That's it, that's all.
+
+If you're not lucky enough to work on a Debian derivatave, check for installation instructions for MariaDB or MySQL in your system. Or give a try to a preinstalled Docker container. For example, you can run MySQL from a container as:
+
+```
+docker run --env MYSQL_ALLOW_EMPTY_PASSWORD=1 --env MYSQL_ROOT_PASSWORD="" -p 3306:3306 -d mysql/mysql-server:latest
+```
+
+In this case, once the container is running, you will also need to create a new root user with permissions to connect from other than localhost, othewise you'll get an error like "host is not allowed to connect to this mysql server".
+See details in 
+[Host 'xxx.xx.xxx.xxx' is not allowed to connect to this MySQL server](https://stackoverflow.com/questions/1559955/host-xxx-xx-xxx-xxx-is-not-allowed-to-connect-to-this-mysql-server).
