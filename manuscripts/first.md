@@ -17,4 +17,4 @@ For example, to produce a report about Git data in the standard GrimoireLab enri
 
 The report will be produced as `/tmp/reports/report.pdf`, using `GrimoireLab` as the name of the analyzed project, when presented in the report.
 
-> _Note:_ This requires pdflatex to be installed, the instructions for which can be found [here](https://gist.github.com/rain1024/98dd5e2c6c8c28f9ea9d). If you get an error about 'CJKutf8.sty' not being found, check [this](https://tex.stackexchange.com/questions/125843/how-to-install-cjk-font-to-ubuntu-latex) out.
+> _Note:_ This requires pdflatex to be installed.
