@@ -8,7 +8,7 @@ Docker images, very likely you can skip this section.
 These supporting components are:
 
 * Python3: GrimoireLab is written in Python3, so you need to have it installed. At least Python 3.5 is recommended, but older versions could work.
-* Programas for retrieving data from data sources. In some cases, some programs will be needed when retrieving data, since GrimoireLab/Perceval will use them. The most common case is `git`, for the git GrimoireLab/Peerceval backend.
+* Programs for retrieving data from data sources. In some cases, some programs will be needed when retrieving data, since GrimoireLab/Perceval will use them. The most common case is `git`, for the git GrimoireLab/Peerceval backend.
 * ElasticSearch: if you want to store raw or enriched GrimoireLab indexes (produced by GrimoireELK).
 * Kibiter: if you want to visualize enriched indexes (produced by GrimoireELK). For example, because you want to browse GrimoireLab dashboards. You can also install vanilla Kibana (Kibiter is a soft fork from Kibana), although in that case maybe some of the functionality will not be available.
 * MariaDB: if you want to use SortingHat for identity management.
@@ -66,7 +66,7 @@ More information about installing git in other platforms is available in
 
 In case you decide to install ElasticSearch and Kibiter or Kibana yourself, instead of using them as a service, the process is not difficult. Please ensure you're installing at least version 5.1 of both of them. As a rule, versions for Kibana and ElasticSearch should be the same if they are to work together. If you are installing Kibiter, you can find out the latest release of it (see below), and install the corresponding ElasticSearch version.
 
-For installing ElasticSearch you can follow its [installation instructions](https://www.elastic.co/guide/en/elasticsearch/reference/current/_installation.html). You will need to have a Java virtual machine installed \(Oracle JDK version 1.8.x is recommended\), The rest is simple: download the installation file from the [ElasticSearch downloads area](https://www.elastic.co/downloads/elasticsearch), and install it, for example by unzipping the zip installation file.
+For installing ElasticSearch you can follow its [installation instructions](https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html). You will need to have a Java virtual machine installed \(Oracle JDK version 1.8.x is recommended\), The rest is simple: download the installation file from the [ElasticSearch downloads area](https://www.elastic.co/downloads/elasticsearch), and install it, for example by unzipping the zip installation file.
 
 Assuming the installed ElasticSearch directory is `elasticsearch`, to launch it you will just run the appropriate command \(no need to run this from the virtual environment\):
 
@@ -82,7 +82,7 @@ For installing Kibiter, grab the version you want from the [Kibiter releases at 
 
 Once you are done, point your browser to [http://localhost:5601](http://localhost:5601) (asuming Kibana was installed in your local machine, using the default port), and you'll get something like:
 
-![](/assets/Screenshot-2017-11-4 Bitergia Analytics.png)
+![Kibiter welcome page](/assets/bitergia_analytics_screenshot.png)
 
 ### Installing Kibana
 
