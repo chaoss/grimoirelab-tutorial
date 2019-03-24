@@ -16,6 +16,17 @@ In that help banner, we see two different ways of using it:
 * with no credentials
 * with a user token
 
+## Retrieving from GitHub with category param
+
+```bash 
+(perceval) $ perceval github --category issue grimoirelab perceval
+...
+```
+
+You can pass category as parameter which take issue,pull_request,commit and repository when using Github Perceval backend.
+Note that in GitHub  every pull request is an issue, but not every issue is a pull request. Thus, the issues returned may contain pull request information (included in the field `pull_request` within the issue). 
+
+
 ## Retrieving from GitHub with no credentials
 If you use the GitHub Perceval backend with no credentials, you'll have basic access to the GitHub API. The main difference with using authenticated use is the rate limit: a much more stringent rate limit \(number of requests to the GitHub API\) will be applied by GitHub. In any case, this basic access is very simple, since it requires no user, password or token. For example, for accessing tickets and pull requests in the Perceval repository:
 
