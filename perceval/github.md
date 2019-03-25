@@ -23,7 +23,7 @@ In that help banner, we see two different ways of using it:
 ...
 ```
 
-You can pass category as parameter which take issue,pull_request,commit and repository when using Github Perceval backend.
+You can pass category as parameter which take either of issue, pull_request or repository when using Github Perceval backend.
 Note that in GitHub  every pull request is an issue, but not every issue is a pull request. Thus, the issues returned may contain pull request information (included in the field `pull_request` within the issue). 
 
 
