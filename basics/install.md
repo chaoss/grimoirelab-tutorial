@@ -110,6 +110,22 @@ Assuming everything was fine, next thing is getting information about an specifi
 
 If this shows a banner with information about how to use the Perceval git backend, we can assume that Perceval and all its dependencies were installed appropriately.
 
+### Installing Graal
+
+Graal can also be installed with `pip3`:
+
+```bash
+(gl) $ pip3 install graal
+```
+
+Once Graal is installed, you can move ahead to check whether it's installed correctly by simply invoking the module via command line.
+
+```bash
+(gl) $ graal --help
+```
+
+**Note:** CoLic backend requires executable path of tools which it leverages on ( [NOMOS](https://github.com/fossology/fossology/tree/master/src/nomos) & [SCANCODE](https://github.com/nexB/scancode-toolkit) ). You can install them by following the procedure mentioned [here](https://github.com/chaoss/grimoirelab-graal#how-to-installcreate-the-executables).
+
 ### Installing GrimoireELK
 
 GrimoireELK can also be installed with `pip3`.
