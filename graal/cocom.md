@@ -70,13 +70,13 @@ Once you've successfully installed Graal, you can get started real quick with th
 [2019-03-27 21:35:59,117] - Quest completed.
 ```
 
-- In the above graal output, you can read one commit item obtained which contains "analysis" attribute under "data".
+- In the above graal output, you can read one commit item obtained which contains `analysis` attribute under `data`.
 
 **Note:** Some of the intermediate output items are skipped for representational purposes.
 
 ## Using Graal as a Python script
 
-- We can also use the backend provided by Graal in python scripts via importing the appropriate modules. Show below is using `cocom` backend in a python script. [ Example: [graal_cocom_1.py](./scripts/graal_cocom_1.py) ]
+- We can also use the backend provided by Graal in python scripts via importing the appropriate modules. Shown below is using `cocom` backend in a python script. [ Example: [graal_cocom_1.py](./scripts/graal_cocom_1.py) ]
 
 ```python3
 #! /usr/bin/env python3
