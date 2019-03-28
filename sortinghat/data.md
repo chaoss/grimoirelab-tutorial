@@ -118,7 +118,7 @@ We can observe how all uuids are different, and for eachh row, equal to ids. Thi
 The `uidentities` table just lists the valid unique identities (in this case, I'm showing full hashes):
 
 ```bash
-mysql -u user -pXXX -e 'SELECT * FROM identities;' shdb
+mysql -u user -pXXX -e 'SELECT * FROM uidentities;' shdb
 | uuid                                     |
 | 0cac4ef12631d5b0ef2fa27ef09729b45d7a68c1 |
 | 0ef1c4a95006b07416b0a48ca66587ddfff184e4 |
