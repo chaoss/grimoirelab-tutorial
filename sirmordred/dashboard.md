@@ -134,7 +134,7 @@ See a more complete information about this file in the [section on the projects 
 installed: git, MariaDB (or MySQL), ElasticSearch, and Kibitter.
 
 ```
-mordred -c mordred-simple.cfg
+sirmordred -c mordred-simple.cfg
 ```
 
 And that's it.
