@@ -218,6 +218,10 @@ entries:
           url: /internals/perceval-backends.html
           output: web
 
+        - title: Testing with HTTPretty
+          url: /internals/testing-with-httpretty.html
+          output: web
+
     - title: Contributing
       url: /contributing.html
       output: web
