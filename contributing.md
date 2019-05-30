@@ -32,5 +32,5 @@ that will serve them in http://localhost:4000
   ([Bitergia](http://bitergia.com)) in March 2017.
 
 * The section on Perceval backend is based on a contribution by
-  [Valerio Cosentino[(https://github.com/valeriocos)([Bitergia](http://bitergia.com))
+  [Valerio Cosentino](https://github.com/valeriocos) ([Bitergia](http://bitergia.com))
   in October 2017.
