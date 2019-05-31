@@ -142,6 +142,10 @@ entries:
           url: /sirmordred/container.html
           output: web
 
+        - title: Executing Micro-Mordred via Docker-Compose
+          url: /sirmordred/micro-mordred.html
+          output: web
+
         - title: The projects file
           url: /sirmordred/projects.html
           output: web
