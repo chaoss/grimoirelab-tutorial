@@ -74,6 +74,18 @@ entries:
           url: /perceval/summarizing.html
           output: web
 
+      - title: Graal
+        output: web
+        subfolderitems:
+
+        - title: Introduction
+          url: /graal/intro.html
+          output: web
+
+        - title: Retrieving Code Complexity via CoCom Backend
+          url: /graal/cocom.html
+          output: web
+
       - title: Producing Kibana dashboards with GrimoireELK
         output: web
         subfolderitems:
