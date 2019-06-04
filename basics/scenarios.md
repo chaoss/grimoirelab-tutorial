@@ -69,7 +69,7 @@ As in the previous scenarios, data in enriched indexes can be consumed by script
 
 Actionable dashboards are very useful for understanding what is happening in software development projects. They allow for filtering the data by many criteria, selecting time periods of interest, drilling down, tracking evolution over time, and visualizing the data in many different ways. All of that with a simple and intuitive user interface.
 
-The component in GrimoireLab providing this functionality is Kibiter, a soft fork of Kibana. It shows complete dashboards in a browser, as an HTML5 application.
+The component in GrimoireLab providing this functionality is Kibiter, a soft fork of [Kibana](https://www.elastic.co/products/kibana). It shows complete dashboards in a browser, as an HTML5 application.
 
 ![](figs/grimoirelab-all-dashboard-noarthur-nomordred-nopanels-nosh.png)
 
