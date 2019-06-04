@@ -9,7 +9,7 @@ In summary, `p2o.py`:
 
 * drives Perceval to retrieve data from repositories,
 * uploads the resulting data as raw indexes (collections of JSON documents) to ElasticSearch
-* enrichs those raw indexes (produce new data with fields suitable to be used by Kibana dashboards)
+* enriches those raw indexes (produce new data with fields suitable to be used by Kibana dashboards)
 * uploads that resulting data as enriched indexes to ElasticSearch
 
 In addition, `kidash`,
