@@ -21,9 +21,46 @@ The main components of GrimoireLab are:
 * Manuscripts. Production of PDF documents reporting on the main characteristics of a project.
 * Mordred. Manages the configuration of all the components needed to produce a dashboard, automating its production.
 
-![](figs/grimoirelab-all-complete.png)
+{% mermaid %}
+graph LR
+    A((Perceval)) --> B((Arthur))
+    B --> C(Redis<br/>fa:fa-database Item batches)
+    C --> D((GrimoireELK))
+    D--> E((SortingHat))
+    D--> F(ElasticSearch<br/>fa:fa-database Raw indexes)
+    E --> D
+    F --> D
+    E --> G(MariaDB <br/>fa:fa-database Identities, affiliations)
+    G --> E
+    H[fa:fa-file-code Known Ids] --> E
+    D --> I(ElasticSearch<br/>fa:fa-database Enriched indexes)
+    I --> J((Reports))
+    I --> K((Kibiter))
+    L((Panels)) --> K
+    J--> M[Report]
+    J--> N[Report n]
+    K--> O[Browser]
+    K--> P[Browser n]
+    Q[fa:fa-file-code Project config] --> R((Mordred))
+    S[Datat source] -->A
+    T[Datat source n] -->A
 
-In the figure above, GrimoireLab components are represented in the pale green box. Bold arrows show the main data flow: from data sources to Perceval (which retrieves them), to Arthur (which schedules retrieval batches and stores results in Redis), to GrimoireELK (which stores retrieved items as raw indexes, and then uses them to produce enriched indexes, both in ElasticSearch), to Reports (to produce specialized reports) or Kibiter (to visualize in actionable dashboards).
+classDef grimoirelab fill:lightgreen,stroke:green,stroke-width:2px;
+classDef configfile fill:lightsalmon,stroke:coral,stroke-width:4px;
+classDef output fill:gold,stroke:goldenrod,stroke-width:2px;
+classDef database fill:orchid,stroke:darkmagenta,stroke-width:3px;
+classDef datasource fill:#ff6666,stroke:maroon,stroke-width:2px;
+
+class A,B,D,E,J,K,L,R grimoirelab
+class H,Q configfile
+class M,N,O,P output
+class C,I,F,G database
+class S,T datasource
+
+
+{% endmermaid %}
+
+In the figure above, GrimoireLab components are represented in green. Bold arrows show the main data flow: from data sources to Perceval (which retrieves them), to Arthur (which schedules retrieval batches and stores results in Redis), to GrimoireELK (which stores retrieved items as raw indexes, and then uses them to produce enriched indexes, both in ElasticSearch), to Reports (to produce specialized reports) or Kibiter (to visualize in actionable dashboards).
 
 GrimoireELK uses SortingHat to store all the identities it finds in a MariaDB database. SortingHat uses lists of known identifiers (usually maintained in configuration files) and heuristics to merge identities corresponding to the same person, and related information (such as affiliation).
 
