@@ -43,7 +43,7 @@ We can restore from any file created with kidash. Assuming we have that file as 
 
 ```bash
 (grimoireelk) $ kidash --elastic_url-enrich http://localhost:9200 \
-  --import /tmp/git-dashboard.json
+  --import /tmp/dashboard-git.json
 ```
 
 This will restore all elements in the file, overwritting, if needed, elements with the same name in the corresponding Kibana instance (in fact, in the corresponding ElasticSearch `.kibana` index). Therefore, beware: restoring a JSON file with kidash may destroy your elements, because they may be overwritten by others in the file. Remember to backup before running the command.
