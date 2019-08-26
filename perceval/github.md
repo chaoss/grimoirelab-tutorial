@@ -165,7 +165,7 @@ To avoid having perceval exiting when the rate limit is exceeded, we can use the
 [2016-10-11 00:35:31,066] - GitHub rate limit exhausted. Waiting 3066 secs for rate limit reset.
 ```
 
-In the following calls, we will always use this option, so that perceval insists until the rate limit is reset.
+In the following calls, we will always use this option, so that perceval will wait until the rate limit is reset.
 
 In the case you persevere and run perceval once and again, it is likely that you reach the rate limit for your IP address. In that case, the message you'll get will be similar to:
 
