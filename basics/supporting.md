@@ -62,11 +62,11 @@ $ sudo apt-get install git-all
 More information about installing git in other platforms is available in
 [Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
-### Installing ElasticSearch
+### Installing Elasticsearch
 
-If you do not already have an instance of ElasticSearch and Kibiter or Kibana that you will be using, you will need to manually install them.  They are not installed as part of the automated installation. The process is not difficult. Please ensure you're installing at least version 5.1 of both of them. As a rule, versions for Kibana and ElasticSearch should be the same if they are to work together. If you are installing Kibiter, you can find out the latest release of it (see below), and install the corresponding ElasticSearch version.
+If you do not already have an instance of Elasticsearch and Kibiter or Kibana that you will be using, you will need to manually install them.  They are not installed as part of the automated installation. The process is not difficult. Please ensure you're installing at least version 6.1 of both of them (currently, the most tested versions are 6.1.0 for Elasticsearch and 6.1.4 for Kibiter/Kibana). As a rule, versions for Kibana and ElasticSearch should be the same if they are to work together. If you are installing Kibiter, you can find out the latest release of it (see below), and install the corresponding ElasticSearch version.
 
-For installing ElasticSearch you can follow its [installation instructions](https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html). You will need to have a Java virtual machine installed \(Oracle JDK version 1.8.x is recommended\), The rest is simple: download the installation file from the [ElasticSearch downloads area](https://www.elastic.co/downloads/elasticsearch), and install it, for example by unzipping the zip installation file.
+For installing Elasticsearch you can follow its [installation instructions](https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html). You will need to have a Java virtual machine installed \(Oracle JDK version 1.8.x is recommended\), The rest is simple: download the installation file from the [ElasticSearch downloads area](https://www.elastic.co/downloads/elasticsearch), and install it, for example by unzipping the zip installation file.
 
 Assuming the installed ElasticSearch directory is `elasticsearch`, to launch it you will just run the appropriate command \(no need to run this from the virtual environment\):
 
@@ -74,7 +74,7 @@ Assuming the installed ElasticSearch directory is `elasticsearch`, to launch it 
 $ elasticsearch/bin/elasticsearch
 ```
 
-This will launch ElasticSearch that will listen via its HTTP REST API at `http://localhost:9200`. You can check that everything went well by pointing your web browser to that url, and watching the ElasticSearch welcome message.
+This will launch Elasticsearch that will listen via its HTTP REST API at `http://localhost:9200`. You can check that everything went well by pointing your web browser to that url, and watching the ElasticSearch welcome message.
 
 ### Installing Kibiter
 
