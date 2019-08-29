@@ -124,7 +124,10 @@ Once Graal is installed, you can move ahead to check whether it's installed corr
 (gl) $ graal --help
 ```
 
-**Note:** CoLic backend requires executable path of tools which it leverages on ( [NOMOS](https://github.com/fossology/fossology/tree/master/src/nomos) & [SCANCODE](https://github.com/nexB/scancode-toolkit) ). You can install them by following the procedure mentioned [here](https://github.com/chaoss/grimoirelab-graal#how-to-installcreate-the-executables).
+**Note:** 
+1. Graal requires installation of some executables for its execution. More information on installing the executables can be found [here](https://github.com/chaoss/grimoirelab-graal#how-to-installcreate-the-executables). (e.g., cloc)
+2. CoLic backend requires executable path of tools which it leverages on ( [NOMOS](https://github.com/fossology/fossology/tree/master/src/nomos) & [SCANCODE](https://github.com/nexB/scancode-toolkit) ). You can install them by following the procedure mentioned [here](https://github.com/chaoss/grimoirelab-graal#how-to-installcreate-the-executables).
+
 
 ### Installing GrimoireELK
 
