@@ -9,7 +9,7 @@ entries:
     output: web
     folderitems:
 
-    - title: Summary
+    - title: Overview
       url: /README.html
       output: web
       subfolders:
