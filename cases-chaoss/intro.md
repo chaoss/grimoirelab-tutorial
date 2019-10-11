@@ -8,7 +8,7 @@ Before producing the visualizations, we need to grab the data and produce the co
 
 As data sources, we will use the main repositories the [GitHub GrimoireLab organization](https://github.com/grimoirelab): Perceval, Arthur, GrimoireELK, SortingHat, Panels, Mordred, and Training. It would be easy to use any other collection of repositories, and the result will be illustrative enough.
 
-The process shown here is completely manual, to minimize configuration and understanding of GrimoireLab components. It could be further automated with the use of Mordred and Arthur, specially if the data is to be updated continuously, but for now we will skip that part. In a first try we won't use SortingHat for simplicity: we can do that later, making some of the metrics more accurate.
+The process shown here is completely manual, to minimize configuration and understanding of GrimoireLab components. It could be further automated with the use of Mordred and Arthur, especially if the data is to be updated continuously, but for now we will skip that part. In a first try we won't use SortingHat for simplicity: we can do that later, making some of the metrics more accurate.
 
 The process will include the installation of the GrimoireLab tools needed, and will assume that Python3, MySQL/MariaDB, ElasticSearch and Kibana are already installed (see [Installation section](/before-you-start/supporting-systems.md) for some hints on all of this.
 
