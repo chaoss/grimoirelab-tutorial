@@ -18,8 +18,8 @@ entries:
         output: web
         subfolderitems:
 
-        - title: Download
-          url: /basics/todo.html
+        - title: Installation
+          url: /installation/installation.html
           output: web
 
         - title: Define analysis scope
@@ -38,12 +38,12 @@ entries:
           url: /basics/todo.html
           output: web
 
-      - title: GrimoireLab Architecture and Data Workflow
+      - title: GrimoireLab Architecture
         output: web
         subfolderitems:
 
         - title: Architecture
-          url: /basics/todo.html
+          url: /architecture/architecture.html
           output: web
 
         - title: Perceval
