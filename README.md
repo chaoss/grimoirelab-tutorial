@@ -1,6 +1,6 @@
 # GrimoireLab
 
-![](grimoirelab_chaoss.png)
+![](./assets/grimoirelab_chaoss.png)
 
 [GrimoireLab](http://grimoirelab.github.io/) is free, open source software for software development analytics. It is part of [CHAOSS](http://chaoss.community),
 a project under the Linux Foundation umbrella which develops metrics, methodologies, and software for expressing open source project health and sustainability. 
@@ -46,4 +46,4 @@ The processes axis measures the agility of the project. Examples of processes ar
 The figure below shows one of the GrimoireLab dashboards of the CHAOSS project. As can be seen, the dashboard provides statistics about the time to first attention and time to close
 issues. Furthermore, it provides selectors to filter a sub-set of CHAOSS repositories.
  
-![](chaoss_dashboard.png)
+![](./assets/chaoss_dashboard.png)
