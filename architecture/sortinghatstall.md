@@ -1,4 +1,4 @@
-# SortingHat
+## SortingHat
 
 SortingHat maintains a relational database with identities and related information extracted from different tools used
 in software development (e.g., Git, GitHub, Slack). An identity is a tuple composed of a *name*, *email*, *username* and the name of the source
@@ -17,7 +17,7 @@ The overall view of SortingHat’s approach is summarized in the figure below. I
 
 *Overview of the approach underlying SortingHat*
 
-## Database
+### Database
 
 SortingHat relies on open source technologies to store and manipulate identity information. It uses MySQL for storage
 and SQLAlchemy to bridge database relations into objects. The conceptual schema of the SortingHat database is shown
@@ -40,7 +40,7 @@ and Mozilla, where several organizations contribute to.
 Finally, organization names or identities with specific email addresses, usernames or full names can be easily excluded from SortingHat by registering their values in a *Matching
 blacklist*. The filter associated to the blacklist is executed every time an identity is inserted to the database or modified.
 
-## Commands
+### Commands
 
 SortingHat provides more than 20 [commands](https://github.com/chaoss/grimoirelab-sortinghat) to manipulate identities data. The list below summarizes the common ones,
 which involve manual and heuristic-based operations.
@@ -60,7 +60,7 @@ which involve manual and heuristic-based operations.
     - Autoprofile: auto complete profiles with emails and names found on the tools used in the project.
     - Autogender: auto complete gender information using the [genderize.io](https://genderize.io/) API.
 
-## API
+### API
 
 The shell commands are processed by the SortingHat API, which is based on a three-layer architecture that promotes
 modularization and decoupling. The first layer consists of *basic methods* that interact with the database and implement
@@ -69,20 +69,20 @@ method*s, which leverage on the basic methods. This is the case of move identity
 update their information. Finally, the top layer includes *complex methods* that have a one-to-one correspondence with
 the shell commands. They rely on composed methods.
 
-# SortingHat in action
+## SortingHat in action
 
 This section describes how to install and use SortingHat, highlighting its main features.
 
-## Installation
+### Installation
 
 SortingHat has been developed in Python and tested mainly on GNU/Linux platforms. There are several ways for installing
 SortingHat on your system (from pip, Docker or source code) which are detailed in the SortingHat repository.
 
-## Use
+### Use
 
 Once installed, SortingHat can be used as a stand-alone program or a Python library
 
-### Stand alone program
+#### Stand alone program
 
 Using SortingHat as stand-alone program requires only some basic knowledge of GNU/Linux shell commands. The listing below shows how easy it is to add, list
 and merge identities. As can be seen, the command add accepts name, email, username and data source (e.g., git) of
@@ -118,7 +118,7 @@ $ sortinghat unify -- sources github slack -- matcher username
 Total unique identities processed 2
 ```
 
-### Python library
+#### Python library
 
 Including SortingHat functionalities to Python scripts and applications is easy, since the user only needs some basic knowledge of Python. Currently,
 SortingHat is integrated in ELK. The listing below shows how information related to identities is uploaded to SortingHat via ELK. The method
@@ -141,7 +141,10 @@ def add_identity (cls, db, identity, backend):
     return uuid
 ```
 
-# HatStall
+## Example
+TODO
+
+## HatStall
 
 SortingHat functionalities are also available via HatStall, a Web application written in Django, a popular framework for Web development in Python. HatStall
 provides an intuitive graphical interface to perform operations over a SortingHat database. It is fully open source, available as a [Docker image](https://hub.docker.com/r/grimoirelab/hatstall/), and 

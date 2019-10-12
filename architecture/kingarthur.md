@@ -1,4 +1,4 @@
-# King Arthur
+## King Arthur
 
 Originally, King Arthur (or just Arthur) was designed to allow to schedule and run Perceval executions at scale through distributed Redis queues, and store the obtained results in an ElasticSearch database, thus giving the possibility to
 connect the results with analysis and/or visualizations tools. The figure below highlights the overall view of Arthur. 
@@ -33,7 +33,7 @@ Workers grant Arthur with scalability support. They listen to the queues, pick u
 JSON documents to the server storage queue. Such documents are consumed by writers, which make possible to live-stream data or serialize it to database management systems. In the
 current implementation, Arthur can store the JSON documents to an ElasticSearch database.
 
-## Executing Graal through Arthur
+### Executing Graal through Arthur
 Arthur has been extended to allow handling Graal tasks, which inherit from Perceval Git tasks, thus Arthur periodically executes the method fetch of a given Graal backend. Optionally, the parameter latest items can be used to run the analysis
 only on the new commits available after the last execution.
 
@@ -95,3 +95,6 @@ cocom graal task requires less effort, it suffices to send a remove command to t
 }
 ```
 *Removing a Graal task*
+
+## Example
+TODO

@@ -1,4 +1,4 @@
-# Graal
+## Graal
 
 Graal complements the data extracted with Perceval by providing insights about the source code (e.g, code complexity, licenses).
 
@@ -36,7 +36,7 @@ analyze and (iii) post-process, which are described below.
     In the final step, the inflated JSON document can be optionally processed to alter (e.g., renaming, removing) its attributes, thus granting the user complete control 
     over the output of Graal executions. The built-in behavior of this step keeps all attributes as they are.
  
-## Backends
+### Backends
 Several backends have been developed to assess the genericity of Graal. Those backends leverage on source code analysis
 tools, where executions are triggered via system calls or their Python interfaces. In the current status, the backends
 mostly target Python code, however other backends can be easily developed to cover other programming languages. The
@@ -48,10 +48,10 @@ currently available backends are:
 - **CoLic** scans the code to extract license & copyright information. It currently supports [Nomos](https://github.com/fossology/fossology/tree/master/src/nomos) and [ScanCode](https://github.com/nexB/scancode-toolkit). They can be activated by passing the corresponding category: `code_license_nomos`, `code_license_scancode`, or `code_license_scancode_cli`.
 - **CoLang** gathers insights about code language distribution of a git repository. It relies on [Linguist](https://github.com/github/linguist) and [Cloc](http://cloc.sourceforge.net/) tools. They can be activated by passing the corresponding category: `code_language_linguist` or `code_language_cloc`.
 
-# Graal in action
+## Graal in action
 This section describes how to install and use Graal, highlighting its main features.
 
-## Installation
+### Installation
 
 Graal is being developed and tested mainly on GNU/Linux platforms. Thus it is very likely it will work out of the box
 on any Linux-like (or Unix-like) platform, upon providing the right version of Python. The listing below shows how to install and uninstall Graal on your system. Currently, the only way of installing Graal consists of cloning the GitHub repository
@@ -66,11 +66,11 @@ To uninstall, run:
 pip3 uninstall graal
 ```
 
-## Use
+### Use
 
 Once installed, Graal can be used as a stand-alone program or Python library. We showcase these two types of executions below.
 
-### Stand-alone program
+#### Stand-alone program
 Using Graal as stand-alone program does not require much effort, but only some basic knowledge of GNU/Linux shell commands. The listing below shows
 how easy it is to fetch code complexity information from a Git repository. As can be seen, the CoCom backend requires the URL where the repository is located (https://github.com/chaoss/grimoirelab-perceval) and the local path where to
 mirror the repository (/tmp/graal-cocom). Then, the JSON documents produced are redirected to the file graal-cocom.test. The remaining messages in the listing are prompted to the user
@@ -89,7 +89,7 @@ graal cocom https://github.com/chaoss/grimoirelab-perceval --git-path /tmp/graal
 [2018-05-31 04:51:56,112] - Quest completed.
 ```
 
-### Python Library
+#### Python Library
 Graal’s functionalities can be embedded in Python scripts. Again, the effort of using Graal is minimum. In this case the user only needs some knowledge of Python
 scripting. The listing below shows how to use Graal in a script. The graal.backends.core.cocom module is imported at the beginning of the file, then the repo uri and repo dir variables
 are set to the URI of the Git repository and the local path where to mirror it. These variables are used to initialize a CoCom class object. In the last line of the script, the commits
