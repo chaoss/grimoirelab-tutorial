@@ -38,11 +38,11 @@ entries:
           url: /basics/todo.html
           output: web
 
-      - title: GrimoireLab Architecture
+      - title: Architecture
         output: web
         subfolderitems:
 
-        - title: Architecture
+        - title: Overview
           url: /architecture/architecture.html
           output: web
 
