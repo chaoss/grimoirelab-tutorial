@@ -1,4 +1,4 @@
-# Perceval
+## Perceval
 
 Perceval was designed with a principle in mind: do one thing and do it well. Its goal is to fetch data from data source repositories efficiently. It does not store nor analyze data, leaving these tasks to other, specific tools. Though it was conceived as a command line tool, it may be used as a Python library as well.
 Perceval supports plenty of data sources, which are commonly used to support, coordinate and promote development activities, such as Git, GitHub, GitLab, Slack and so on.
@@ -13,23 +13,23 @@ The overall view of Perceval’s approach is summarized in the figure below. At 
 
 *Overview of the approach. The user interacts with the backend through the shell command line, which depending on the data source retrieves with a specific client the data; the output is provided in form of JSON documents.*
 
-## Backend
+### Backend
 
 The Backend orchestrates the gathering process for a specific data source and puts in place incremental and caching mechanisms. Backends share common features, such as incrementality and caching, and define also specific ones tailored to the data source they are targeting. For instance, the GitHub backend requires an API token and the names of the repository and owner; instead the StackExchange backend needs an API token plus the tag to filter questions.
 
-## Client
+### Client
 
 The backend delegates the complexities to query the data source to the Client. Similarly to backends, clients share common features such as handling possible connection problems with remote data sources, and define specific ones when needed. For instance, long lists of results fetched from GitHub and StackExchange APIs are delivered in pages (e.g., pagination), thus the corresponding clients have to take care of this technicality.
 
-## CommandLine
+### CommandLine
 
 The CommandLine allows to set up the parameters controlling the features of a given backend. Furthermore, it also provides optional arguments such as help and debug to list the backend features and enable debug mode execution, respectively.
 
-# Perceval in action
+## Perceval in action
 
 This section describes how to install and use Perceval, highlighting its main features.
 
-## Installation
+### Installation
 
 Perceval is being developed and tested mainly on GNU/Linux platforms. Thus, it is very likely it will work out of the box on
 any Linux-like (or Unix-like) platform, upon providing the right version of Python available.
@@ -47,7 +47,7 @@ $ pip3 install -r requirements . txt
 $ python3 setup . py install
 ```
 
-## Use
+### Use
 
 Once installed, a Perceval backend can be used as a stand-alone program or Python library. We showcase these two types of executions by fetching data from a Git repository.
 
@@ -106,7 +106,7 @@ it from Python) for each commit. The listing below shows an excerpt of a JSON do
 }
 ```
 
-### Stand-alone program
+#### Stand-alone program
 
 Using Perceval as stand-alone program does not require much effort, but only some basic knowledge of GNU/Linux shell commands. The listing below shows how easy it is to
 fetch commit information from a Git repository. As can be seen, the backend for Git requires the URL where the repository is located (https:// github.com/ grimoirelab/ perceval.git), then the JSON
@@ -123,7 +123,7 @@ $ perceval git https://github.com/grimoirelab/perceval > /perceval.test
 [2017-11-18 20:32:20 ,798] - Sir Perceval completed his quest.
 ```
 
-### Python library
+#### Python library
 
 Perceval’s functionalities can be embedded in Python scripts. Again, the effort of using Perceval is minimum. In this case the user only needs some knowledge of Python scripting.
 
