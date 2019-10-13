@@ -14,12 +14,16 @@ entries:
       output: web
       subfolders:
 
-      - title: Quick start
+      - title: Getting started
         output: web
         subfolderitems:
 
-        - title: Installation
-          url: /installation/installation.html
+        - title: GrimoireLab stack
+          url: /getting_started/stack.html
+          output: web
+
+        - title: Quick start
+          url: /getting_started/installation.html
           output: web
 
         - title: Define analysis scope
