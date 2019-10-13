@@ -1,6 +1,6 @@
 # GrimoireLab
 
-![](./assets/grimoirelab_chaoss.png)
+![](./assets/grimoirelab-logo.png)
 
 [GrimoireLab](http://grimoirelab.github.io/) is free, open source software for software development analytics. It is part of [CHAOSS](http://chaoss.community),
 a project under the Linux Foundation umbrella which develops metrics, methodologies, and software for expressing open source project health and sustainability. 
