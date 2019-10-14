@@ -210,6 +210,7 @@ Some of GrimoireLab dependencies need non-Python packages as pre-requisites to b
 
 ```
 $ sudo apt-get install python3-dev
+$ sudo apt-get install build-essential
 ```
 
 Usually, you know you need this when you have a problem installing `dulwich`. For example, you check the output of `pip install` and you find:
