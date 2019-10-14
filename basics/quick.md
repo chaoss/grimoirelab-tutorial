@@ -24,8 +24,12 @@ available from [Pypi](https://pypi.org). If you have a recent version
 of Python3, very likely the following will just work
 (it is recommended to run it in a virtual environment):
 
+You may need to have some other non-Python packages installed previously. 
+Please check the [section on installing non-Python 
+packages](install.md#non-python-pkgs) if you have any trouble.
+
 ```bash
-(gl) % pip install grimoirelab
+(gl) % pip3 install grimoirelab
 ```
 
 If everything went well, you can just check the version that you installed:
