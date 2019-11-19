@@ -7,7 +7,7 @@ SortingHat is the GrimoireLab component that manages identities, allowing for me
 
 SortingHat uses a MySQL-like database ([MySQL](https://www.mysql.com/) or [MariaDB](https://mariadb.org/), for example). Therefore, we will need to prepare the database we're going to use. Then, we will generate the indexes for the dashboard, but this time specifying the SortingHat database to use. That way, `p2o.py`, while generating the indexes, will inform SortingHat about new identities, and will get information about profiles, merged identities, etc, from it.
 
-Of course, when running `p2o.py` for the first time on an empty SortingHat database, no merged indentities or affiliations, and only default profiles will be avaiable. So, we will need to do some stuff after getting the first version of the indexes, until we have the full power of SortingHat shown in our doashboard.
+Of course, when running `p2o.py` for the first time on an empty SortingHat database, no merged indentities or affiliations, and only default profiles will be available. So, we will need to do some stuff after getting the first version of the indexes, until we have the full power of SortingHat shown in our doashboard.
 
 Let's go one step after the other...
 
