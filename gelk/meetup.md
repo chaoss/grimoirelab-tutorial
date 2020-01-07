@@ -13,7 +13,7 @@ To gather data about the Meetup group names to track, you need:
 * Meetup group(s) name(s) to track
 * Your [Meetup API key](https://secure.meetup.com/es-ES/meetup_api/key/)
 
-For each of the group names, you only need to run the following command, assuming the grupo name is `group_name` and the Meetup API key is `meetup_key`:
+For each of the group names, you only need to run the following command, assuming the group name is `group_name` and the Meetup API key is `meetup_key`:
 
 ```bash
 (gl) $ p2o.py --enrich --index meetup_raw --index-enrich meetup \
