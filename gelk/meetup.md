@@ -11,7 +11,18 @@ As in the previous sections, we will assume that all the needed Python modules (
 To gather data about the Meetup group names to track, you need:
 
 * Meetup group(s) name(s) to track
-* Your [Meetup API key](https://secure.meetup.com/es-ES/meetup_api/key/)
+* Your [Meetup API key](https://secure.meetup.com/es-ES/meetup_api/key/) - this requires a Pro account
+
+To get your key using the new Meetup OAuth Consumer, follow these steps:
+1. Save [this file](https://gist.github.com/valeriocos/e16424bc7dc0f2d6dd8bb9295c6f9a4b) to your local computer as meetup-oauth.py
+2. Execute the script using the command `python3 meetup-oauth.py` - you may need to install the requests module if you don't already have it enabled, using the command `pip3 install requests`
+3. When prompted, enter your consumer key from your Meetup OAuth Consumer (accessed [here](https://secure.meetup.com/meetup_api/oauth_consumers/))
+4. When prompted, enter the redirect URI from your Meetup Consumer, enclosed in quotes (e.g. "https://www.example.com")
+5. Copy the URL which is output by the script, and take note of the code that will be appended to the URL when you press the 'allow' button on the authorisation screen which is displayed (see below if you do not see a code in the final URL)
+6. Paste the code back into the terminal window when prompted 
+7. Copy the access token - this is what you need to use in the setup.cfg file for the API key
+
+Note: If your site redirects on page load, you may not see the code in the final URL string.  To address this, open your browser developer tools, and under the network tab, select the check box 'preserve log'. Click once again on Allow and you should see the URL with the code at the top of the list of network activity - select the code from here.
 
 For each of the group names, you only need to run the following command, assuming the group name is `group_name` and the Meetup API key is `meetup_key`:
 
