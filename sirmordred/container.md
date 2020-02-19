@@ -3,7 +3,7 @@
 To produce a dashboard with SirMordred, you can also use some containers, available from DockerHub, ready to work:
 
 * [grimoirelab/installed](https://hub.docker.com/r/grimoirelab/installed/): includes all GrimoireLab components, and after booting up,
-it runs SirMordred by default. This image does not include Elasticsearch, Kibiter or MariaDB: they shouldl be available in the host where it is run, in the standard ports.
+it runs SirMordred by default. This image does not include Elasticsearch, Kibiter or MariaDB: they should be available in the host where it is run, in the standard ports.
 
 * [grimoirelab/full](https://hub.docker.com/r/grimoirelab/full).
 Includes GrimoireLab and runs SirMordred, as `grimoirelab/installed` does, but also includes all services needed to produce a dashboard: Elasticsearch, MariaDB, and Kibiter.
@@ -77,9 +77,9 @@ You can also get a shell in the running container, and run arbitrary GrimoireLab
 $ docker exec -it container_id env TERM=xterm /bin/bash
 ```
 
-In the shell prompt, write any GrimoireLab command. And if you have mounted external files for the SirMordred configuration, you can modify them, and run SirMordred again, to change its behaviour.
+In the shell prompt, write any GrimoireLab command. And if you have mounted external files for the SirMordred configuration, you can modify them, and run SirMordred again, to change its behavior.
 
-If you want to connect to the dashboard to issue your own commands, but don't want it to run SirMordred by itsef, run the container setting `RUN_MORDRED` to `NO`:
+If you want to connect to the dashboard to issue your own commands, but don't want it to run SirMordred by itself, run the container setting `RUN_MORDRED` to `NO`:
 
 ```bash
 $ docker run -p 127.0.0.1:9200:9200 -p 127.0.0.1:5601:5601 \
@@ -92,7 +92,7 @@ $ docker run -p 127.0.0.1:9200:9200 -p 127.0.0.1:5601:5601 \
 
 This will make the container launch all services, but not running `sirmordred`: you can now use the container the way you may want, getting a shell with `docker exec`.
 
-**Warning** When SirMordred is done, the container stays forever (well, in fact for a long number of days), so that Kibana is still available to produce the dashboard for your browser. When you want to kill the container, it is not enough to just type `<CTRL> C`, sice that will only kill the shell, but the services on the background will stay. You will need to use `docker kill` to kill the container.
+**Warning** When SirMordred is done, the container stays forever (well, in fact for a long number of days), so that Kibana is still available to produce the dashboard for your browser. When you want to kill the container, it is not enough to just type `<CTRL> C`, since that will only kill the shell, but the services on the background will stay. You will need to use `docker kill` to kill the container.
 
 
 ### Running grimoirelab/installed
@@ -123,7 +123,7 @@ api-token = XXX
 
 The first lines specify how to access Elasticsearch (the link to its REST API, and credentials) for managing both raw (`es_collection`) and enriched (`es_enrichment`) indexes. The values in this example are the default ones if you just install Elasticsearch as explained in the Supporting Systems section.
 
-Then, there are some lines for the SortingHat database: they should be the location (`localhost` in this case) of MariaDB or MySQL, credentials for accesing it, and the name of the SortingHat database (schema) you want to use (if it does not exist, it will be created).
+Then, there are some lines for the SortingHat database: they should be the location (`localhost` in this case) of MariaDB or MySQL, credentials for accessing it, and the name of the SortingHat database (schema) you want to use (if it does not exist, it will be created).
 
 The last two lines specify your GitHub user token, which is needed to access the GitHub API. This is because the default behavior of the container is to visit GitHub as one of the data sources to collect.
  
@@ -137,7 +137,7 @@ $ docker run --net="host" \
 
 `credentials.cfg` is the name of the SirMordred configuration file mentioned above.
 
-This will pull the image from [DockerHub](http://dockerhub.com), and run it allowing it to "see" the network ports of the host. This way, GrimoireLab tools running in the contaniner will be able of connecting to Elasticsearch to produce and consume indexes, and MariaDB or MySQQL to manage the SortingHat database.
+This will pull the image from [DockerHub](http://dockerhub.com), and run it allowing it to "see" the network ports of the host. This way, GrimoireLab tools running in the container will be able to connect to Elasticsearch to produce and consume indexes, and MariaDB or MySQL to manage the SortingHat database.
 
 If run as above, the container will run SirMordred, which in turn will run the GrimoireLab tools needed to produce a standard dashboard for the GrimoireLab project.
 

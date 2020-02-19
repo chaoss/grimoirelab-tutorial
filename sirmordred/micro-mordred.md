@@ -91,7 +91,7 @@ kibiter_1        | {"type":"log","@timestamp":"2019-05-30T09:38:25Z","tags":["st
 
 
 <div align="center">
-    <img scr="https://i.imgur.com/Czunlpr.png">
+    <img src="https://i.imgur.com/Czunlpr.png">
     <br>
     <p><b>Browser: Kibiter Instance</b></p>
 </div>
@@ -125,7 +125,7 @@ $ python3 micro.py --panels --cfg setup.cfg
 On successful execution of the above command, we can manage to produce some dashboard similar to the one shown below.
 
 <div align="center">
-    <img scr="https://i.imgur.com/Of09Voi.png">
+    <img src="https://i.imgur.com/Of09Voi.png">
     <br>
     <p><b>Dashboard - Git: Areas of Code </b></p>
 </div>
