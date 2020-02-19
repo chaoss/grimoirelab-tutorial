@@ -13,7 +13,7 @@ SirMordred can produce a dashboard for a group of repositories in one step,
 for many different data sources, and can do that incrementally
 (that is, periodically visiting all repositories,
 and updating the dashboard with new data).
-But to start small and easy, in this first example we will produce a dashobard
+But to start small and easy, in this first example we will produce a dashboard
 for only two git repositories.
 
 The process is as follows:
@@ -130,7 +130,7 @@ See a more complete information about this file in the [section on the projects 
 
 * Prepare a [menu.yaml](files/menu.yaml), with the menu for Kibiter (not needed if the data will be visualized with Kibana).
 
-* Run SirMordred, in an enviroment with the appropriate programs
+* Run SirMordred, in an environment with the appropriate programs
 installed: git, MariaDB (or MySQL), ElasticSearch, and Kibitter.
 
 ```
