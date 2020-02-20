@@ -18,7 +18,7 @@ To get your key using the new Meetup OAuth Consumer, follow these steps:
 2. Execute the script using the command `python3 meetup-oauth.py` - you may need to install the requests module if you don't already have it enabled, using the command `pip3 install requests`
 3. When prompted, enter your consumer key from your Meetup OAuth Consumer (accessed [here](https://secure.meetup.com/meetup_api/oauth_consumers/))
 4. When prompted, enter the redirect URI from your Meetup Consumer, enclosed in quotes (e.g. "https://www.example.com")
-5. Copy the URL which is output by the script, and take note of the code that will be appended to the URL when you press the 'allow' button on the authorisation screen which is displayed (see below if you do not see a code in the final URL)
+5. Copy the URL which is output by the script, and take note of the code that will be appended to the URL when you press the 'allow' button on the authorization screen which is displayed (see below if you do not see a code in the final URL)
 6. Paste the code back into the terminal window when prompted 
 7. Copy the access token - this is what you need to use in the setup.cfg file for the API key
 
@@ -233,7 +233,7 @@ return meetup_day_date.getHour();
 Now we have the data. Let's create a bubbles chart visualization for it by using the `Line chart`. To do it, we will use the following metrics:
 * In the y-axis, we will show the hour of the day
 * We will add `Dot-size` to represent number unique people RVSP'ed for that hour and day
-* In the x-asis, we will show the day of the week
+* In the x-axis, we will show the day of the week
 
 Let's define the chart parameters:
 
