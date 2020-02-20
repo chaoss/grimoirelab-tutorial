@@ -3,7 +3,7 @@
 [GrimoireELK](http://github.com/chaoss/grimoirelab-elk)
 is an interim system oriented to produce Kibana-based dashboards with Perceval and friends.
 It provides a Python module (`grimoire_elk`) with facilities for driving
-Perceval, enriching data, and uploading / downloading it to / from ElasticSearch. It includes as well some scripts (mainly `p2o.py`) to retrieve data from repositories related to software development, and produce everything needed to have Elsticsearch indexes that provide the data for a nice Kibiter/Kibana dashboard.
+Perceval, enriching data, and uploading / downloading it to / from ElasticSearch. It includes as well some scripts (mainly `p2o.py`) to retrieve data from repositories related to software development, and produce everything needed to have Elasticsearch indexes that provide the data for a nice Kibiter/Kibana dashboard.
 
 In summary, `p2o.py`:
 

@@ -7,7 +7,7 @@ SortingHat is the GrimoireLab component that manages identities, allowing for me
 
 SortingHat uses a MySQL-like database ([MySQL](https://www.mysql.com/) or [MariaDB](https://mariadb.org/), for example). Therefore, we will need to prepare the database we're going to use. Then, we will generate the indexes for the dashboard, but this time specifying the SortingHat database to use. That way, `p2o.py`, while generating the indexes, will inform SortingHat about new identities, and will get information about profiles, merged identities, etc, from it.
 
-Of course, when running `p2o.py` for the first time on an empty SortingHat database, no merged indentities or affiliations, and only default profiles will be available. So, we will need to do some stuff after getting the first version of the indexes, until we have the full power of SortingHat shown in our doashboard.
+Of course, when running `p2o.py` for the first time on an empty SortingHat database, no merged identities or affiliations, and only default profiles will be available. So, we will need to do some stuff after getting the first version of the indexes, until we have the full power of SortingHat shown in our dashboard.
 
 Let's go one step after the other...
 
@@ -24,7 +24,7 @@ Usually, each dashboard will have its own SortingHat database, although several 
 
 In this case, `user` is a user of the MySQL instance with permissions to create a new MySQL schema (database), `XXX` is the password for that user, and `shdb` is the name of the database to be created.
 
-If the command didnt't throw any error message, you're done: a new `shdb` database was created. If you want, you can check it with a simple `mysql` command:
+If the command didn't throw any error message, you're done: a new `shdb` database was created. If you want, you can check it with a simple `mysql` command:
 
 ```bash
 $ mysql -u user -pXXX -e 'SHOW DATABASES;'

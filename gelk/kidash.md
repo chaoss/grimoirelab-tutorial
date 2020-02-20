@@ -1,6 +1,6 @@
 ## Managing dashboards with kidash
 
-Kibana (or Kibiter, for that matter) offer a nice user interface to create and edit visualizations and dashboards. It allows to save and restore them as well. But if you're interested in backing up all the elements needed to produce a dashboard, you need some tools. That's why we developed Kidash. Then, we added some other features to it. And now Kidash is our tool of choice to back and restore dashboards with all their elements (visualizations, searches, and index patterns), in the same or in a different Kibana instance.
+Kibana (or Kibiter, for that matter) offers a nice user interface to create and edit visualizations and dashboards. It allows to save and restore them as well. But if you're interested in backing up all the elements needed to produce a dashboard, you need some tools. That's why we developed Kidash. Then, we added some other features to it. And now Kidash is our tool of choice to back and restore dashboards with all their elements (visualizations, searches, and index patterns), in the same or in a different Kibana instance.
 
 Kidash works by managing the `.kibana` index in ElasticSearch, which is where Kibana stores its configuration. That index includes JSON documents corresponding to all elements in Kibana, from dashboards to index patterns. By retrieving documents from it, you can backup your elements. By creating or changing documents in it, you can create or change elements. kidash allows to save documents from that index in a file, in a comfortable way. That file is in JSON format, which allows for easy edition of it (if you know about how Kibana elements are stored in JSON documents). And kidash can upload the content of those files (be them edited or not) to the same or another Kibana instance.
 
@@ -46,7 +46,7 @@ We can restore from any file created with kidash. Assuming we have that file as 
   --import /tmp/dashboard-git.json
 ```
 
-This will restore all elements in the file, overwritting, if needed, elements with the same name in the corresponding Kibana instance (in fact, in the corresponding ElasticSearch `.kibana` index). Therefore, beware: restoring a JSON file with kidash may destroy your elements, because they may be overwritten by others in the file. Remember to backup before running the command.
+This will restore all elements in the file, overwriting, if needed, elements with the same name in the corresponding Kibana instance (in fact, in the corresponding ElasticSearch `.kibana` index). Therefore, beware: restoring a JSON file with kidash may destroy your elements, because they may be overwritten by others in the file. Remember to backup before running the command.
 
 ### Other options
 
