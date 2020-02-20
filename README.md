@@ -58,7 +58,7 @@ The GrimoireLab component producing these indexes is Elk, which can work on data
 
 When persons are relevant for the analysis to perform, it is important to merge the many different identities that the same person may use. It is also convenient to track identities for the same person in different kinds of repositories, and to annotate those merged identities with metadata. For example, metadata can be affiliation information (for which organization that person works), or whether it is a real person or a bot.
 
-**SortingHat** is the GrimoireLab component for managing identities and their metadata. It uses a relational database to track all identities found in the repositories, and can use several heuristics and data sources to merge identities and annotate them. For example, it can consume gitdm files with affiliation and merged identities, or its own format to export / import this kind of information. [Learn more about SortingHat](/grimoirelab-tutorial/sortinghat/data.md).
+**SortingHat** is the GrimoireLab component for managing identities and their metadata. It uses a relational database to track all identities found in the repositories, and can use several heuristics and data sources to merge identities and annotate them. For example, it can consume gitdm files with affiliation and merged identities, or its own format to export / import this kind of information. [Learn more about SortingHat](/sortinghat/data.md).
 
 In the usual pipeline, Elk interacts with SortingHat to feed it with all identities found in raw indexes. Later, when producing enriched indexes, it includes the merged identities, affiliation, bot status, etc. produced by SortingHat.
 
