@@ -1,7 +1,7 @@
 ## SortingHat data structure
 
-SortingHat uses a database to store data about indentities.
-We will add some more repostories to the index we had produced with
+SortingHat uses a database to store data about identities.
+We will add some more repositories to the index we had produced with
 GrimoireELK, and then experiment with the data structures
 that SortingHat manages.
 
@@ -87,9 +87,9 @@ Each identity in the `identity` table is a tuple composed of the following field
 * the source where the identity was found (`source`, with tags identifying the kind of repository where the identity was found, such as `git`, `bugzilla` or `github`)
 * the merged identity to which it corresponds (`uuid`)
 
-All fields in the tuple except for `uuid` a inmutable: they never change during the live of a SortingHat database. The `uuid` is used to merge identities that correspond to the same person: each person should have a single `uuid`, and that `uuid` will be in this table for all the identities corresponding to that person. In fact, the `uuid` is the `id` of one of those identities. The name, the email address and the username are the data composing the identity.
+All fields in the tuple except for `uuid` a immutable: they never change during the live of a SortingHat database. The `uuid` is used to merge identities that correspond to the same person: each person should have a single `uuid`, and that `uuid` will be in this table for all the identities corresponding to that person. In fact, the `uuid` is the `id` of one of those identities. The name, the email address and the username are the data composing the identity.
 
-For example, email addresses usually have `name` and `email` (such as "Jesus Gonzalez <jgb@bitergia.com>), while `username` is `NULL`. GitHub accounts usually have `name` and `username` (such as "Jesus Gonzalez, jgbarah"), with `email` as `NULL`. The `uuid` will change during the life of the database as new identities for the same person are found, or as wrong merged identities are identified (and broken). A large part of the maintenance of a SortingHat database consists of dealing with `uuid` in the `identies table, while merging and unmerging identities.
+For example, email addresses usually have `name` and `email` (such as "Jesus Gonzalez <jgb@bitergia.com>), while `username` is `NULL`. GitHub accounts usually have `name` and `username` (such as "Jesus Gonzalez, jgbarah"), with `email` as `NULL`. The `uuid` will change during the life of the database as new identities for the same person are found, or as wrong merged identities are identified (and broken). A large part of the maintenance of a SortingHat database consists of dealing with `uuid` in the `identities` table, while merging and unmerging identities.
 
 Let's see what do we have in our SortingHat database (in the output of `mysql` below, I have trimmed the hashes for `id` and `uuid` to 7 chars):
 
@@ -113,7 +113,7 @@ mysql -u user -pXXX -e 'SELECT * FROM identities;' shdb
 ...
 ```
 
-We can observe how all uuids are different, and for eachh row, equal to ids. This is because we have run no merging operation on SortingHat, and for now each unique identity correspond to one identity found in repositories (repo identity). We can see how the source for all the identities is `git` (we only analyzed git repositories). All identities have `name` and `email`, but don't have `username` (it is NULL), since it is not data found in the email addresses found in git repositories. All of these identities were found either as authors of committers of some commit in the analyzed git repositories.
+We can observe how all uuids are different, and for each row, equal to ids. This is because we have run no merging operation on SortingHat, and for now each unique identity corresponds to one identity found in repositories (repo identity). We can see how the source for all the identities is `git` (we only analyzed git repositories). All identities have `name` and `email`, but don't have `username` (it is NULL), since it is not data found in the email addresses found in git repositories. All of these identities were found either as authors of committers of some commit in the analyzed git repositories.
 
 The `uidentities` table just lists the valid unique identities (in this case, I'm showing full hashes):
 
@@ -169,9 +169,9 @@ mysql -u user -pXXX -e 'SELECT * FROM profiles;' shdb
 ...
 ```
 
-All `is_bot` are 0 because that's the default value (false), and we have not specifically labeled any unique identifier as bot. All `country_code` are `NULL` because we have not identified countries in any way. For the rest of the fields, you may notice how SortingHat just used the infromation it had from the repo identities.
+All `is_bot` are 0 because that's the default value (false), and we have not specifically labeled any unique identifier as bot. All `country_code` are `NULL` because we have not identified countries in any way. For the rest of the fields, you may notice how SortingHat just used the information it had from the repo identities.
 
-When we unify repo identities (merging several into a single unique identity), we usually need to check the correspoonding entry in this table, for ensuring the profile information is correct.
+When we unify repo identities (merging several into a single unique identity), we usually need to check the corresponding entry in this table, for ensuring the profile information is correct.
 
 ### Enrollments and organizations
 

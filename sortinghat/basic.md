@@ -80,9 +80,9 @@ Identities:
 No enrollments
 ```
 
-That is, we have two repo identities for this person, which we're identfying in the profile as `quan`, with email address `zhquan7@gmail.com`. Remember that the profile was already produced when each repo identity was added to the database, by creating a unique identity for it, and using the data in the repo identity for the profile.
+That is, we have two repo identities for this person, which we're identifying in the profile as `quan`, with email address `zhquan7@gmail.com`. Remember that the profile was already produced when each repo identity was added to the database, by creating a unique identity for it, and using the data in the repo identity for the profile.
 
-We merged the repo identity (Quan Zhou, quan@bitergia.com) on the unique identity that corresponded to (quan, zhquan7@gmail.com), which had as profile (quan, zhquan7@gmail.com) as well. Therefore, the unique identity after the merge conserves the old profile, in this case (quan, zhquan7@gmail.com). Should we have merged the other way around, we would have consderved (Quan Zhou, quan@bitergia.com) as the profile, which in this case seems more convenient. So, we have to be careful about how to merge, if we want to conserve the most interesting profiles.
+We merged the repo identity (Quan Zhou, quan@bitergia.com) on the unique identity that corresponded to (quan, zhquan7@gmail.com), which had as profile (quan, zhquan7@gmail.com) as well. Therefore, the unique identity after the merge conserves the old profile, in this case (quan, zhquan7@gmail.com). Should we have merged the other way around, we would have considered (Quan Zhou, quan@bitergia.com) as the profile, which in this case seems more convenient. So, we have to be careful about how to merge, if we want to conserve the most interesting profiles.
 
 Unfortunately, we cannot redo the merge with the most convenient order:
 
@@ -92,7 +92,7 @@ Unfortunately, we cannot redo the merge with the most convenient order:
 Error: 0cac4ef12631d5b0ef2fa27ef09729b45d7a68c1 not found in the registry
 ```
 
-Why? Becauuse `0cac4ef` is no longer a valir unique identifier: we lost it when we merged the repo identity `0cac4ef`, which was the only one pointing to it. So, we cannot merge any repo identifier on it, since it no longer exists.
+Why? Because `0cac4ef` is no longer a valid unique identifier: we lost it when we merged the repo identity `0cac4ef`, which was the only one pointing to it. So, we cannot merge any repo identifier on it, since it no longer exists.
 
 Later on we will revisit this case, since there are stuff that can be done: breaking the unique identifier into two. But for now, let's use another approach to solve this problem.
 
@@ -117,9 +117,9 @@ This way we have the name and email address we want. Using `--country` we can al
 
 ### Regenerating enriched indexes
 
-When we interact with SortingHat, it only changes the contents of the database it manages. Therefore, the changes are not refelected in the indexes we have in ElasticSearch, nor in the dashboard.
+When we interact with SortingHat, it only changes the contents of the database it manages. Therefore, the changes are not reflected in the indexes we have in ElasticSearch, nor in the dashboard.
 
-To make changes appear in the dashboard, we need to create new enriched indexes (re-ennrich the indexes). We can do that by removing raw and enriched indexes from ElasticsSearch, and then running the same `p2o.py` commands shown to produce new raw and enriched indexes. But in our case, this is a clear overkill: we don't need to retrieve new raw indexes from the repositories, since they are fine. We only need to produce new enriched indexes. For that, we can run `p2o.py` as follows:
+To make changes appear in the dashboard, we need to create new enriched indexes (re-enrich the indexes). We can do that by removing raw and enriched indexes from ElasticsSearch, and then running the same `p2o.py` commands shown to produce new raw and enriched indexes. But in our case, this is a clear overkill: we don't need to retrieve new raw indexes from the repositories, since they are fine. We only need to produce new enriched indexes. For that, we can run `p2o.py` as follows:
 
 ```
 (gl) $ p2o.py --only-enrich --index git_raw --index-enrich git \
@@ -134,7 +134,7 @@ In this case, the command will create a new `git` index (by modifying the curren
 
 ### Regenerating enriched indexes (take two)
 
-The above method, even when it will work, is still an overkill. I really don't need to modify the whole enriched indexes, by updating all the fields in their items. We just need to update the fields related to identities, which are the only ones that we need to change. For that, we have an specific option to `p2o.py`:
+The above method, even when it will work, is still an overkill. I really don't need to modify the whole enriched indexes, by updating all the fields in their items. We just need to update the fields related to identities, which are the only ones that we need to change. For that, we have a specific option to `p2o.py`:
 
 ```
 (gl) $ p2o.py --only-enrich --refresh-identities --index git_raw --index-enrich git \
@@ -160,6 +160,6 @@ In this case, the command to run is:
   git https://github.com/grimoirelab/GrimoireELK.git
 ```
 
-The magic is done by the `--author_uuid` option, which will ensure that only items with that `author_uuid` field are refreshed. In this case, we're refreshing them for unique identities `11cc034` and `0cac4ef`, whcih were changed in the SortingHat database in the process above. Again, this should be done for all the repositories affected.
+The magic is done by the `--author_uuid` option, which will ensure that only items with that `author_uuid` field are refreshed. In this case, we're refreshing them for unique identities `11cc034` and `0cac4ef`, which were changed in the SortingHat database in the process above. Again, this should be done for all the repositories affected.
 
 Something similar can be done with the `--author_id`, but in this case for repo identities of the author.
