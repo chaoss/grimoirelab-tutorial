@@ -250,7 +250,7 @@ for item in repo.fetch():
 This script accepts as arguments a token and a GitHub repository, in the format "owner/repo" \(for example, "grimoirelab/perceval"\). From the repository, it extracts the owner and the repository name to later instantiate an object of the `GitHub` class. As we did in the example for git, we get a `fetch` iterator for the object, and for each iterated item we print its kind \(issue or pull request\) and its number.
 
 To run this script, just run \(of course, substituting "XXXXX" for your token\):
-* Include the token in a list, api_token=["XXXXXX", "XXXXXX", .....] as it is possiblity to pass a list of tokens to get over rate limits.
+* Include the token in a list, api_token=["XXXXXX", "XXXXXX", ....] as it is possiblity to pass a list of tokens to get over rate limits.
 
 ```bash
 (perceval) $ python3 perceval_github_1.py --repo grimoirelab/perceval -t XXXXX XXXXX...
