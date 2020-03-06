@@ -265,8 +265,3 @@ To run this script, just run \(of course, substituting "XXXXX" for your token\):
 16 : Issue
 ...
 ```
-
-
-Signed-off-by: killerpanda101 <parijat.chatterjee13@gmail.com>
-
-
