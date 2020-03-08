@@ -1,6 +1,6 @@
 ## Elasticsearch
 
-Some tips to work with Elaticsearch using its REST interface.
+Some tips to work with Elasticsearch using its REST interface.
 
 In the examples below, let's assume that the url of the Elasticsearch instance is `https://elasticurl`. Remember that the full format for these urls, when they are protected by simple HTTP authentication (user and password), and are accessible through a non-root resource, is something like:
 

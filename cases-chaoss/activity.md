@@ -7,7 +7,7 @@ As usual with Kibana/Kibiter (from now own Kibiter) we will enter it in edit mod
 Alternatively, you can instead use the [chaoss_community_activity.json](/cases-chaoss/dashboards/chaoss_community_activity.json) file, which stores the configuration for all the index patterns, visualizations and dashboard. If you decide to shortcut this way, just install it with `kidash.py`:
 
 ```bash
-(gl) $ kidash.py --elastic_url-enrich http://localhost:9200 \
+(gl) $ kidash.py --elastic_url http://localhost:9200 \
   --import chaoss_community_activity.json --debug
 ```
 
