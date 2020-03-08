@@ -82,8 +82,6 @@ sleep_for = 10
 load_orgs = false
 # Name of group of identities with no affiliation
 unaffiliated_group = Unknown
-# Ids known to be bots
-bots_names = [Beloved Bot]
 # How to autoprofile
 autoprofile = [TestProject:manual,git,github]
 
