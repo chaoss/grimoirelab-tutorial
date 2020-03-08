@@ -78,7 +78,7 @@ Then, I use the JSON description of a dashboard for Git that
 includes visualizations for some fields generated from the SortingHat database: [git-sortinghat.json](dashboards/git-sortinghat.json).
 
 ```bash
-(sh) $ kidash --elastic_url-enrich http://localhost:9200 \
+(sh) $ kidash --elastic_url http://localhost:9200 \
   --import /tmp/git-sortinghat.json
 ```
 

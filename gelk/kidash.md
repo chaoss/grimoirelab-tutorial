@@ -42,7 +42,7 @@ We already restored a dashboard in the
 We can restore from any file created with kidash. Assuming we have that file as `/tmp/dashboard-git.json`, we need to know the link to the ElasticSearch REST interface (same as for backing up). The format is, for example, as follows:
 
 ```bash
-(grimoireelk) $ kidash --elastic_url-enrich http://localhost:9200 \
+(grimoireelk) $ kidash --elastic_url http://localhost:9200 \
   --import /tmp/dashboard-git.json
 ```
 

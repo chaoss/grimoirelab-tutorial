@@ -44,7 +44,7 @@ Download it to your `/tmp` directory
 (Note: Please use 'Save Link as' option for downloading), and run the command:
 
 ```bash
-(grimoireelk) $ kidash --elastic_url-enrich http://localhost:9200 \
+(grimoireelk) $ kidash --elastic_url http://localhost:9200 \
   --import /tmp/git-dashboard.json
 ```
 
@@ -79,7 +79,7 @@ In  this  case, you  can  use the
 Download it to your `/tmp` directory (Note: Please use 'Save Link as' option for downloading), and run the command:
 
 ```bash
-(grimoireelk) $ kidash --elastic_url-enrich http://localhost:9200 \
+(grimoireelk) $ kidash --elastic_url http://localhost:9200 \
   --import /tmp/github-dashboard.json
 ```
 
