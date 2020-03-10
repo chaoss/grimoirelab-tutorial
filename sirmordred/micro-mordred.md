@@ -28,11 +28,13 @@ elasticsearch:
 
 kibiter:
   restart: on-failure:5
-  image: bitergia/kibiter:secured-v6.1.4-2
+  image: bitergia/kibiter:secured-v6.1.4-5
   environment:
     - PROJECT_NAME=Development
     - NODE_OPTIONS=--max-old-space-size=1000
     - ELASTICSEARCH_URL=https://elasticsearch:9200
+    - ELASTICSEARCH_USER=kibanaserver
+    - ELASTICSEARCH_PASSWORD=kibanaserver
   links:
     - elasticsearch
   ports:
