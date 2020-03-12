@@ -243,7 +243,7 @@ Every index in ElasticSearch has a 'mapping'. Mappings specify how the index is,
 }
 ```
 
-There is a mapping per document type in the index. In this case, we only have `summary` documents in the `commits` index (see the line `es.index()` in the script), so we only have one entry in the `mappings` object above. In it, we can see how each each field got a type: `string`for character strings, and `long` for numbers.
+There is a mapping per document type in the index. In this case, we only have `summary` documents in the `commits` index (see the line `es.index()` in the script), so we only have one entry in the `mappings` object above. In it, we can see how each field got a type: `string`for character strings, and `long` for numbers.
 
 But we know that `author_date` and `commit_date` are not really strings. Both should be recognized as dates. Let's improve our script so that both are dates (Python `datetime` objects) before they are uploaded to ElasticSearch (see all the details in 
 [perceval_elasticsearch_4.py](scripts/perceval_elasticsearch_4.py)):
