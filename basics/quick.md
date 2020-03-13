@@ -26,7 +26,7 @@ of Python3, very likely the following will just work
 
 You may need to have some other non-Python packages installed previously. 
 Please check the [section on installing non-Python 
-packages](install.md#non-python-pkgs) if you have any trouble.
+packages](install.html#non-python-pkgs) if you have any trouble.
 
 ```bash
 (gl) % pip3 install grimoirelab
