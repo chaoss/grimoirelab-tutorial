@@ -2,7 +2,7 @@
 
 ### What is Mordred?
 
-- Mordred is the tool used to orchestrate the execution of the GrimoireLab platform, via a configuration file. We can find more details about the sections in the configuration file [here](https://github.com/chaoss/grimoirelab-sirmordred#setupcfg). 
+- Mordred is the tool used to orchestrate the execution of the GrimoireLab platform, via a configuration file. We can find more details about the sections in the configuration file [here](https://github.com/chaoss/grimoirelab-sirmordred#setupcfg-). 
 
 ### What is Micro-Mordred?
 
