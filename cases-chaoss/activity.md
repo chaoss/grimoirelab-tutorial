@@ -4,7 +4,7 @@ Once we have the indexes, let's create the first panel, for community activity.
 
 As usual with Kibana/Kibiter (from now own Kibiter) we will enter it in edit mode, import the produced indexes as index patterns, and proceed to create the visualizations and dashboards.
 
-Alternatively, you can instead use the [chaoss_community_activity.json](/cases-chaoss/dashboards/chaoss_community_activity.json) file, which stores the configuration for all the index patterns, visualizations and dashboard. If you decide to shortcut this way, just install it with `kidash.py`:
+Alternatively, you can instead use the [chaoss_community_activity.json](https://github.com/chaoss/grimoirelab-tutorial/blob/master/cases-chaoss/dashboards/chaoss_community_activity.json) file, which stores the configuration for all the index patterns, visualizations and dashboard. If you decide to shortcut this way, just install it with `kidash.py`:
 
 ```bash
 (gl) $ kidash.py --elastic_url http://localhost:9200 \
@@ -54,5 +54,3 @@ Or youn can filter for a single repository (or everything except for a repositor
 ![](/cases-chaoss/dashboard_chaoss_community_activity-2y-perceval.png)
 
 Enjoy!
-
-
