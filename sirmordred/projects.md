@@ -56,15 +56,15 @@ As an example, this is an excerpt of the projects file for the CHAOSS dashboard:
 {
     "GrimoireLab": {
         "git": [
-            "https://github.com/grimoirelab/arthur",
-            "https://github.com/grimoirelab/grimoireelk",
-            "https://github.com/grimoirelab/mordred",
+            "https://github.com/chaoss/grimoirelab-kingarthur",
+            "https://github.com/chaoss/grimoirelab-elk",
+            "https://github.com/chaoss/grimoirelab-sirmordred",
             ...
         ],
         "github": [
-            "https://github.com/grimoirelab/arthur",
-            "https://github.com/grimoirelab/grimoireelk",
-            "https://github.com/grimoirelab/mordred",
+            "https://github.com/chaoss/grimoirelab-kingarthur",
+            "https://github.com/chaoss/grimoirelab-elk",
+            "https://github.com/chaoss/grimoirelab/mordred",
             ...
         ],
         "pipermail": [
