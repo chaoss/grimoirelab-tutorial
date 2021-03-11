@@ -9,12 +9,8 @@ entries:
     output: web
     folderitems:
 
-    - title: Presentation
-      url: /
-      output: web
-
     - title: Introduction
-      url: /README.html
+      url: /
       output: web
       subfolders:
 
