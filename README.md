@@ -10,7 +10,11 @@ With the tools in the GrimoireLab toolset you can retrieve data, store it in dat
 
 ![](eclipse.png)
 
+<<<<<<< HEAD
 Example dashboard produced with GrimoireLab: the [OPNFV Development Dashboard](OPNFV Development Dashboard)
+=======
+Example dashboard produced with GrimoireLab: the [OPNFV Development Dashboard](https://chaoss.biterg.io)
+>>>>>>> ecf6b127b32d0d3570ae4efbaf8a06f66acf1399
 
 ## Quick overview
 
