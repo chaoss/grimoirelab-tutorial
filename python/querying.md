@@ -59,7 +59,7 @@ for message in es_result['hits']['hits']:
         (message['_source']['from'], message['_source']['subject']))
 ```
 
-The key is the line calling `es.search`, where we are querying EalisticSearch. Since we only specify the index, we will get the whole index as a result. In fact, we get a dictionary, whose `hits` field includes several interesting fields: `total` for the total number of documents retrieved, and `hits`, for a list of the documents retrieved.
+The key is the line calling `es.search`, where we are querying ElasticSearch. Since we only specify the index, we will get the whole index as a result. In fact, we get a dictionary, whose `hits` field includes several interesting fields: `total` for the total number of documents retrieved, and `hits`, for a list of the documents retrieved.
 
 For each of these documents, the data we uploaded is in the `_source` dictionary: we only need to retrieve the needed data from there \(in this case, `from` and `subject`\).
 
