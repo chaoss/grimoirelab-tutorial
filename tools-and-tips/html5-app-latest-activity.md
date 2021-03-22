@@ -9,7 +9,7 @@ Let's build a simple HTML5 app showing the latest activity of a project or a set
 
 ### Deploying everything
 
-For demoing the application, you can first install the files for the HTML application, export them via a web server (so that the application can be loaded in a browser), and produce a JSON file with the latest events of your dashboard of choice. Let's assume we already have a deployed dashboard. We will get our latest events from it. If you don't have access to one of them, just use the data in [Producing Kibana dashboards](../../grimoireelk/producing_kibana_dashboards_with_grimoireelk.md).
+For demoing the application, you can first install the files for the HTML application, export them via a web server (so that the application can be loaded in a browser), and produce a JSON file with the latest events of your dashboard of choice. Let's assume we already have a deployed dashboard. We will get our latest events from it. If you don't have access to one of them, just use the data in [Producing Kibana dashboards](https://chaoss.github.io/grimoirelab-tutorial/gelk/intro.html).
 
 For deploying the HTML5 app, just copy `index.html`, `events.js`, and `events.css`, all in the [`scripts`](https://github.com/jgbarah/GrimoireLab-training/blob/master/tools-and-tips/scripts/) directory, to your directory of choice. Then, ensure that some web server is serving that directory. For example, you can launch a simple Python server from it:
 
