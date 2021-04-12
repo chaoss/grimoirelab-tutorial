@@ -12,15 +12,15 @@ Most of the components in GrimoireLab are written in Python, and provide Python 
 
 The main components of GrimoireLab are:
 
-* **Perceval**. Includes components for retrieving data from data sources. All components provide an uniform API for accessing their data sources, based on Python generators and data dictionaries (JSON documents). [Learn more about Perceval](/grimoirelab-tutorial/perceval/intro.md).
-* **Graal**. leverages on the Git backend of Perceval and enhances it to set up ad-hoc source code analysis. It fetches the commits from a Git repository and provides a mechanism to plug third-party tools/libraries focused on source code analysis. [Learn more about Graal](/grimoirelab-tutorial/graal/intro.md).
-* **KingArthur**. Organizes the data retrieval from large collections of repositories of different kinds, providing a uniform API to all of them, and to the different retrieval jobs running in any moment. [Learn more about KingArthur](/grimoirelab-tutorial/basics/scenarios.md#arthur-orchestrating-data-retrieval).
-* **GrimoireELK**. Collects data retrieved by Arthur, or directly by Perceval, and stores it in ElasticSearch indexes (raw indexes). It also organizes and transforms those raw indexes into other ElasticSearch indexes (enriched indexes), more suitable for visualization or reporting. [Learn more about GrimoireELK](/grimoirelab-tutorial/gelk/intro.md).
-* **SortingHat**. Manages identities for persons, including capabilities for merging the many identities corresponding to the same person, and other data related to them (such as affiliation to companies). [Learn more about SortingHat](/grimoirelab-tutorial/sortinghat/data.md).
+* **Perceval**. Includes components for retrieving data from data sources. All components provide an uniform API for accessing their data sources, based on Python generators and data dictionaries (JSON documents). [Learn more about Perceval](/grimoirelab-tutorial/perceval/intro.html).
+* **Graal**. leverages on the Git backend of Perceval and enhances it to set up ad-hoc source code analysis. It fetches the commits from a Git repository and provides a mechanism to plug third-party tools/libraries focused on source code analysis. [Learn more about Graal](/grimoirelab-tutorial/graal/intro.html).
+* **KingArthur**. Organizes the data retrieval from large collections of repositories of different kinds, providing a uniform API to all of them, and to the different retrieval jobs running in any moment. [Learn more about KingArthur](/grimoirelab-tutorial/basics/scenarios.html#arthur-orchestrating-data-retrieval).
+* **GrimoireELK**. Collects data retrieved by Arthur, or directly by Perceval, and stores it in ElasticSearch indexes (raw indexes). It also organizes and transforms those raw indexes into other ElasticSearch indexes (enriched indexes), more suitable for visualization or reporting. [Learn more about GrimoireELK](/grimoirelab-tutorial/gelk/intro.html).
+* **SortingHat**. Manages identities for persons, including capabilities for merging the many identities corresponding to the same person, and other data related to them (such as affiliation to companies). [Learn more about SortingHat](/grimoirelab-tutorial/sortinghat/data.html).
 * **Kibiter**. Visualization platform. It is a soft fork of [Kibana](https://www.elastic.co/products/kibana), which allows for the construction of actionable dashboards to show the data in enriched indexes.
 * **Sigils**. Definition of Kibiter dashboards. They encode the panels, visualizations and other details needed to produce dashboards in Kibiter or Kibana.  [Learn more about Sigils](https://github.com/chaoss/grimoirelab-sigils).
-* **Manuscripts**. Production of PDF documents reporting on the main characteristics of a project. [Learn more about Manuscripts](/grimoirelab-tutorial/manuscripts/first.md).
-* **Mordred**. Manages the configuration of all the components needed to produce a dashboard, automating its production. [Learn more about Mordred](/grimoirelab-tutorial/basics/scenarios.md).
+* **Manuscripts**. Production of PDF documents reporting on the main characteristics of a project. [Learn more about Manuscripts](/grimoirelab-tutorial/manuscripts/first.html).
+* **Mordred**. Manages the configuration of all the components needed to produce a dashboard, automating its production. [Learn more about Mordred](/grimoirelab-tutorial/basics/scenarios.html).
 
 ![](figs/grimoirelab-all-complete.png)
 
