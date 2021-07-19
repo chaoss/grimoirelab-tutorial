@@ -42,6 +42,50 @@ entries:
           url: /basics/dockerhub.html
           output: web
 
+      - title: Architecture
+        output: web
+        subfolderitems:
+
+        - title: Overview
+          url: /architecture/architecture.html
+          output: web
+
+        - title: Components
+          url: /architecture/components.html
+          output: web
+
+        - title: Perceval
+          url: /architecture/perceval.html
+          output: web
+
+        - title: Graal
+          url: /architecture/graal.html
+          output: web
+
+        - title: King Arthur
+          url: /architecture/kingarthur.html
+          output: web
+
+        - title: SortingHat & HatStall
+          url: /architecture/sortinghatstall.html
+          output: web
+
+        - title: ELK & Cereslib
+          url: /architecture/elkceres.html
+          output: web
+
+        - title: Manuscripts
+          url: /architecture/manuscripts.html
+          output: web
+
+        - title: Sigils, Kidash & Kibiter
+          url: /architecture/dashboards.html
+          output: web
+
+        - title: Mordred
+          url: /architecture/mordred.html
+          output: web
+
       - title: Perceval
         output: web
         subfolderitems:
