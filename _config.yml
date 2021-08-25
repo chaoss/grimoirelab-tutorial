@@ -149,3 +149,8 @@ pages_dir: ""
 url: http://chaoss/github.io/grimoirelab-tutorial
 # Resource name in the url
 baseurl: '/grimoirelab-tutorial'
+
+# Location of the mermaid source Javascript file, as expected by
+# the jekyll-mermaid gem. It can also be a local file.
+mermaid:
+  src: 'https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.0.0/mermaid.min.js'
