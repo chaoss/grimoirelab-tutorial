@@ -1,6 +1,6 @@
-title: "GrimoireLab Guide"
+title: "GrimoireLab Tutorial"
 description: >-
-  GrimoireLab documentation
+  GrimoireLab Tutorial
 permalink: pretty
 markdown: kramdown
 
@@ -40,7 +40,7 @@ aux_links:
 heading_anchors: true
 
 # Footer content appears at the bottom of every page's main content
-footer_content: 'Copyright &copy; 2019-2020. Distributed by an <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.'
+footer_content: 'Copyright &copy CHAOSS; 2017-2021. Distributed by an <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.'
 
 plugins:
   - jekyll-redirect-from
