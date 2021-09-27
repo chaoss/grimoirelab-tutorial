@@ -30,8 +30,14 @@ search_tokenizer_separator: /[\s/]+/
 
 # Aux links for the upper right navigation
 aux_links:
-  "GrimoireLab on GitHub":
+  "Website":
+    - "//chaoss.github.io/grimoirelab"
+  "GitHub":
     - "//github.com/chaoss/grimoirelab"
+  "Mailing List":
+    - "//lists.linuxfoundation.org/mailman/listinfo/grimoirelab-discussions"
+  "Slack":
+    - "//chaoss-workspace.slack.com/archives/C022NPTPC8Z"
 
 # Heading anchor links appear on hover over h1-h6 tags in page content
 # allowing users to deep link to a particular heading on a page.
@@ -39,8 +45,20 @@ aux_links:
 # Supports true (default) or false/nil
 heading_anchors: true
 
+# Back to top link
+back_to_top: true
+back_to_top_text: "Back to top"
+
 # Footer content appears at the bottom of every page's main content
-footer_content: 'Copyright &copy CHAOSS; 2017-2021. Distributed by an <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.'
+footer_content: 'Copyright &copy CHAOSS; 2017-2021. <br>Distributed by an <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.'
+
+# Footer "Edit this page on GitHub" link text
+gh_edit_link: true # show or hide edit this page link
+gh_edit_link_text: "Edit this page on GitHub"
+gh_edit_repository: "https://github.com/chaoss/grimoirelab-tutorial" # the github URL for your repo
+gh_edit_branch: "tesseract" # the branch that your docs is served from
+# gh_edit_source: docs # the source that your files originate from
+gh_edit_view_mode: "tree" # "tree" or "edit" if you want the user to jump into the editor immediately
 
 plugins:
   - jekyll-redirect-from
