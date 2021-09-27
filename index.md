@@ -25,6 +25,8 @@ benefit of them when you use them together. Those tools also offer several APIs,
 data formats, and data collections that will help you to build different kinds
 of processing chains for data related to software development.
 
+![](./assets/grimoirelab-all.png)
+
 For GrimoireLab, any system that stores data relevant for analyzing software
 development is a software development repository. GrimoireLab supports many of
 them, from data retrieval to analytics and visualization: git, GitHub, Bugzilla,
@@ -32,8 +34,8 @@ Gerrit, Launchpad, Jira, mailing lists, Confluence, Discourse, Slack, Jenkins,
 Meetup, Mediawiki, Phabricator, Redmine, StackOverflow, Telegram, and others.
 
 Let´s now visit the main functionalities provided by GrimoireLab. The section
-[Components](basics/components.md) shows how the different components in
-GrimoireLab are combined to provide these functionalities.
+[Components](/components) shows how the different components in GrimoireLab are
+combined to provide these functionalities.
 
 ### Data retrieval
 
@@ -60,17 +62,7 @@ There are two GrimoireLab components involved in data retrieval:
   so that it can be analyzed later. Perceval also knows how to negotiate with
   the repositories APIs to perform incremental retrieval. That allows for
   continuous updates of recent data from the repository, retrieving only the
-  increment, in a way that is transparent to the library user. [Learn more about
-  Perceval](/perceval/intro.md).
-
-* **Arthur** organizes the data retrieval from repositories. It uses a queuing
-  system to provide retrieval jobs as an abstraction. Each retrieval job, which
-  corresponds to data retrieval from a specific repository, can run in a
-  different node. Data queues provide an API very similar to Perceval, with the
-  same data structures. Arthur is usually used as a library by code consuming
-  the retrieved data. Arthur uses Perceval for access to the repositories.
-  [Learn more about
-  Arthur](/basics/scenarios.md#arthur-orchestrating-data-retrieval).
+  increment, in a way that is transparent to the library user.
 
 ### Data storage
 
@@ -122,9 +114,9 @@ metadata. It uses a relational database to track all identities found in the
 repositories, and can use several heuristics and data sources to merge
 identities and annotate them. For example, it can consume gitdm files with
 affiliation and merged identities, or its own format to export / import this
-kind of information. [Learn more about SortingHat](/sortinghat/data.md).
+kind of information.
 
-In the usual pipeline, Elk interacts with SortingHat to feed it with all
+In the usual pipeline, ELK interacts with SortingHat to feed it with all
 identities found in raw indexes. Later, when producing enriched indexes, it
 includes the merged identities, affiliation, bot status, etc. produced by
 SortingHat.
@@ -145,18 +137,16 @@ already provides some components to simplify this task:
   Kibana is the standard dashboarding system for ElasticSearch, and Kibiter
   offers some small, but useful, added functionality for it. Both can be used
   directly with enriched indexes. Building visualizations and dashboards with
-  them is easy. [Learn more about Kibiter](/basics/scenarios.md)
+  them is easy.
 
 * **Sigils** is a set of visualizations and dashboards that can be used to
   produce default dashboards for the enriched indexes. They are loaded in
   Kibiter or Kibana with Kidash, also a GrimoireLab tool, and provide the means
   for actionable inspection, drill down, and filtering of many facets of the
-  data in the analyzed repositories. [Learn more about
-  Sigils](https://github.com/chaoss/grimoirelab-sigils).
+  data in the analyzed repositories.
 
 * **Manuscripts** is a tool to produce summary tables and documents with
   analytics about enriched indexes. The tables are available in CSV format so
   they can be imported into spreadsheets or other programs. Documents can be
   produced as PDF files, ready to be delivered to decision makers, showing
-  relevant aspects of the analyzed project. [Learn more about
-  Manuscripts](/manuscripts/first.md).
+  relevant aspects of the analyzed project.
