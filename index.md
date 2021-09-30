@@ -5,7 +5,7 @@ nav_order: 1
 permalink: /
 ---
 
-# About GrimoireLab
+![](./assets/grimoirelab-logo.png)
 
 GrimoireLab is a [CHAOSS](https://chaoss.community) toolset for software
 development analytics. It includes a coordinated set of tools to retrieve data
@@ -34,8 +34,9 @@ Gerrit, Launchpad, Jira, mailing lists, Confluence, Discourse, Slack, Jenkins,
 Meetup, Mediawiki, Phabricator, Redmine, StackOverflow, Telegram, and others.
 
 Let´s now visit the main functionalities provided by GrimoireLab. The section
-[Components](/components) shows how the different components in GrimoireLab are
-combined to provide these functionalities.
+[Components]({{ site.baseurl }}{% link docs/components/components.md %}) shows
+how the different components in GrimoireLab are combined to provide these
+functionalities.
 
 ### Data retrieval
 
