@@ -373,6 +373,8 @@ author_field = author_uuid
 
 Commits from Git
 
+**Note:** If you want to analyze private git repositories, make sure you pass the credentials directly in the URL.
+
 - projects.json
 
 ```
@@ -380,7 +382,7 @@ Commits from Git
     "Chaoss": {
         "git": [
             "https:/github.com/chaoss/grimoirelab-perceval",
-            "https:/github.com/chaoss/grimoirelab-sirmordred"
+            "https://<username>:<api-token>@github.com/chaoss/grimoirelab-sirmordred"
         ]
     }
 }
