@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Add data sources
+title: Add configurations
 nav_order: 3
-parent: Connecting to data sources
+parent: Data Sources
 ---
 
 # How to analyze data from software development repositories
@@ -10,20 +10,18 @@ parent: Connecting to data sources
 GrimoireLab supports a variety of software development platforms. In the case
 you want to analyze data from one of those platforms, first check whether the
 platform in question is supported by GrimoireLab. You can check the [supported
-data
-sources](docs/getting-started/supported/)
+data sources]({{ site.baseurl }}{% link docs/data-sources/supported.md %})
 section.
 
-Once you've confirmed your data source, you'll have to do some changes in both
+Once you've confirmed your data source, you will have to do some changes in both
 `project.json` and `setup.cfg`.
 
 For example, let's just say you want to analyze the commits of one particular
 project from your github repo.
 
-#### projects.json
+### projects.json
 
-Check out the snippet below and do the same with your `projects.json` file.
-**Replace the information below with your own**.
+Replace the below configurations in the `projects.json` file.
 
 ```
 {
@@ -35,9 +33,9 @@ Check out the snippet below and do the same with your `projects.json` file.
 }
 ```
 
-#### setup.cfg
+### setup.cfg
 
-Check out the snippet below and do the same with your `setup.cfg` file.
+Replace the below configurations in the `setup.cfg` file.
 
 ```
 [git]
@@ -65,7 +63,7 @@ out_index = git-onion_enriched
 out_index = git_study_forecast
 ```
 
-Once you have made the following changes, just re-run your containers with
+Once you have made the following changes, run your containers with
 docker-compose
 
 ```console
@@ -77,7 +75,8 @@ should be ready at `http://localhost:5601`.
 
 ![dashboard](./assets/dashboard.png)
 
-In the case you need to add another data source, refer to the
-[configuration](docs/getting-started/configure/)
-section to know the exact changes to be ported to you projects.json and
-setup.cfg files
+In the case you need to add another data source, please refer to [how to
+configure projects.json & setup.cfg]({{ site.baseurl }}{% link
+docs/getting-started/configure.md %}) files and also the
+[configurations]({{site.baseurl }}{% link docs/data-sources/configurations.md
+%}).
