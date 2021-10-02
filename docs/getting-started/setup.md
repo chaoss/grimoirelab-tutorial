@@ -2,7 +2,7 @@
 layout: default
 title: Setup GrimoireLab
 nav_order: 1
-parent: Getting-started
+parent: Getting Started
 ---
 
 # Setup GrimoireLab
@@ -12,7 +12,7 @@ There are currently two ways to setup GrimoireLab, either through **docker** or
 only** due to the fact that it's currently the easiest and simplest method to
 get started with.
 
-### Requirements
+## Requirements
 
 - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 - [Docker](https://docs.docker.com/engine/install/)
@@ -22,7 +22,7 @@ get started with.
 You can make sure that you have the above software and hardware requirements
 through the following means.
 
-#### Software
+### Software
 
 ```console
 $ git --version
@@ -33,7 +33,7 @@ $ docker-compose --version
 docker-compose version 1.28.5, build c4eb3a1f
 ```
 
-#### Hardware
+### Hardware
 
 ```console
 $ cat /proc/cpuinfo | grep processor | wc -l        #View number of processors
@@ -48,7 +48,7 @@ The reason for allocating `262144` for memory is the check that ElasticSearch
 performs on boot. It ensures that the kernel allows at least 261144 memory
 mapped areas.
 
-### Steps
+## Steps
 
 - Clone the GrimoireLab repo:
 
@@ -63,7 +63,11 @@ $ cd grimoirelab/docker-compose
 grimoirelab/docker-compose$ sudo docker-compose up -d
 ```
 
-Your dashboard will be ready after a while at `http://localhost:5601`. The
-waiting time depends on the amount of data to fetch from a repo.
+Your dashboard will be ready after a while at `http://localhost:5601`. Usually,
+it takes about 10-15 minutes to show the data in the dashboards. But, the
+waiting time depends on the size of the repositories.
 
 ![dashboard](./assets/dashboard.png)
+
+Please check the [Troubleshooting]({{ site.baseurl }}{% link
+docs/getting-started/troubleshooting.md %}) page if you face any issues.

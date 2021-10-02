@@ -1,14 +1,14 @@
 ---
 layout: default
-title: Projects.json
+title: projects.json
 nav_order: 1
 parent: Configure GrimoireLab
-grand_parent: Getting-started
+grand_parent: Getting Started
 ---
 
-# Projects.json
+# projects.json
 
-The projects.json aims at describing the repositories grouped by project that
+The `projects.json` aims at describing the repositories grouped by project that
 will be shown on the dashboards.
 
 The project file enables the users to list the instances of the software
@@ -66,7 +66,7 @@ There are some filters, labels, and a special section:
 }
 ```
 
-In the projects.json above:
+In the `projects.json` above:
 
 - The data included in the repo `gerrit.chaoss.org` will be collected entirely
   since the repo is listed in the `unknown` section. However only the project
