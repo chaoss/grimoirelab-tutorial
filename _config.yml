@@ -3,6 +3,7 @@ description: >-
   GrimoireLab Tutorial
 permalink: pretty
 markdown: kramdown
+baseurl: "/grimoirelab-tutorial"
 
 kramdown:
   toc_levels: 2..3
@@ -19,7 +20,10 @@ exclude:
 # JUST THE DOCS CONFIG
 theme: "just-the-docs"
 remote_theme: pmarsceill/just-the-docs
-#color_scheme: "dark"
+# color_scheme: "dark"
+
+# Set a path/url to a logo that will be displayed instead of the title
+logo: "assets/grimoirelab.png"
 
 # Enable or disable the site search
 # Supports true (default) or false
@@ -38,6 +42,9 @@ aux_links:
     - "//lists.linuxfoundation.org/mailman/listinfo/grimoirelab-discussions"
   "Slack":
     - "//chaoss-workspace.slack.com/archives/C022NPTPC8Z"
+
+# Makes Aux links open in a new tab. Default is false
+aux_links_new_tab: true
 
 # Heading anchor links appear on hover over h1-h6 tags in page content
 # allowing users to deep link to a particular heading on a page.
