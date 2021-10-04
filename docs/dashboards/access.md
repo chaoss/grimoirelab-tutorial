@@ -1,5 +1,4 @@
 ---
-layout: default
 title: Public and Private Access
 nav_order: 1
 parent: Dashboards
