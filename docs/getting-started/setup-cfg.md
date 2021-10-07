@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Setup.cfg
+title: setup.cfg
 nav_order: 1
 parent: Configure GrimoireLab
-grand_parent: Getting-started
+grand_parent: Getting Started
 ---
 
-# Setup.cfg
+# setup.cfg
 
 The setup file holds the configuration to arrange all process underlying
 GrimoireLab. It is composed of sections which allow to define the general

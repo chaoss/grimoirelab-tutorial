@@ -2,17 +2,36 @@
 layout: default
 title: Troubleshooting
 nav_order: 3
-parent: Getting-started
+parent: Getting Started
 ---
 
 # Troubleshooting
 
-If something goes wrong during the setup, run the docker-compose command without
-the `-d`. That will allow you to see all the logs in regards to the build.
+**Note:** Please check this page if you face any problem with setting up
+GrimoireLab. If you didn't find the solution for your proble, please open an
+[issue in the chaoss/grimoirelab
+repository](https://github.com/chaoss/grimoirelab/issues). If you found out the
+reason, and would like to add it to this section, please feel free to open a
+[pull request to the chaoss/grimoirelab-tutorial
+repository](https://github.com/chaoss/grimoirelab-tutorial/pulls).
+
+**Tip:** If something goes wrong during the docker-compose setup, run the
+docker-compose command without the `-d`. That will allow you to see all the logs
+in regards to the build.
 
 ```console
 grimoirelab/docker-compose$ docker-compose up
 ```
+
+---
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+---
 
 ### Port already in use
 
