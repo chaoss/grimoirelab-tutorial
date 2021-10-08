@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Supported Data Sources
+title: Supported
 nav_order: 1
-parent: Connecting to data sources
+parent: Data Sources
 ---
 
 # Supported Data Sources
@@ -11,58 +11,60 @@ For GrimoireLab, any system that stores data relevant for analyzing state of
 software development is a software development repository. GrimoireLab supports
 many of them, from simple chats to code review platforms and many more.
 
-- **Code**: [Git](https://github.com/chaoss/grimoirelab-sirmordred#git-)
+- **Code**: [Git]({{site.baseurl}}/docs/data-sources/configurations/#git)
 - **Ticket/Issues**:
-  [Bugzilla](https://github.com/chaoss/grimoirelab-sirmordred#bugzilla-),
-  [BugzillaREST](https://github.com/chaoss/grimoirelab-sirmordred#bugzillarest-),
-  [Github](https://github.com/chaoss/grimoirelab-sirmordred#github-),
-  [GitLab](https://github.com/chaoss/grimoirelab-sirmordred#gitlab-),
-  [Jira](https://github.com/chaoss/grimoirelab-sirmordred#jira-),
-  [Phabricator](https://github.com/chaoss/grimoirelab-sirmordred#phabricator-),
-  [Redmine](https://github.com/chaoss/grimoirelab-sirmordred#redmine-),
-  [Pagure](https://github.com/chaoss/grimoirelab-sirmordred#pagure-)
-- **Code Review**: [Gerrit](https://github.com/chaoss/grimoirelab-sirmordred#gerrit-)
+  [Bugzilla]({{site.baseurl}}/docs/data-sources/configurations/#bugzilla),
+  [BugzillaREST]({{site.baseurl}}/docs/data-sources/configurations/#bugzillarest),
+  [Github]({{site.baseurl}}/docs/data-sources/configurations/#github),
+  [GitLab]({{site.baseurl}}/docs/data-sources/configurations/#gitlab),
+  [Jira]({{site.baseurl}}/docs/data-sources/configurations/#jira),
+  [Phabricator]({{site.baseurl}}/docs/data-sources/configurations/#phabricator),
+  [Redmine]({{site.baseurl}}/docs/data-sources/configurations/#redmine),
+  [Pagure]({{site.baseurl}}/docs/data-sources/configurations/#pagure)
+- **Code Review**:
+  [Gerrit]({{site.baseurl}}/docs/data-sources/configurations/#gerrit)
 - **Containers/Packaging**:
-  [DockerHub](https://github.com/chaoss/grimoirelab-sirmordred#dockerhub-),
-  [crates](https://github.com/chaoss/grimoirelab-sirmordred#crates-)
+  [DockerHub]({{site.baseurl}}/docs/data-sources/configurations/#dockerhub),
+  [crates]({{site.baseurl}}/docs/data-sources/configurations/#crates)
 - **Continuous Integration**:
-  [Jenkins](https://github.com/chaoss/grimoirelab-sirmordred#jenkins-),
-  [Puppetforge](https://github.com/chaoss/grimoirelab-sirmordred#puppetforge-),
-  [functest](https://github.com/chaoss/grimoirelab-sirmordred#functest-)
+  [Jenkins]({{site.baseurl}}/docs/data-sources/configurations/#jenkins),
+  [Puppetforge]({{site.baseurl}}/docs/data-sources/configurations/#puppetforge),
+  [functest]({{site.baseurl}}/docs/data-sources/configurations/#functest)
 - **Wiki**:
-  [Confluence](https://github.com/chaoss/grimoirelab-sirmordred#confluence-),
-  [MediaWiki](https://github.com/chaoss/grimoirelab-sirmordred#mediawiki-)
+  [Confluence]({{site.baseurl}}/docs/data-sources/configurations/#confluence),
+  [MediaWiki]({{site.baseurl}}/docs/data-sources/configurations/#mediawiki)
 - **Questions and Answer Forums**:
-  [Askbot](https://github.com/chaoss/grimoirelab-sirmordred#askbot-),
-  [Discourse](https://github.com/chaoss/grimoirelab-sirmordred#discourse-),
+  [Askbot]({{site.baseurl}}/docs/data-sources/configurations/#askbot),
+  [Discourse]({{site.baseurl}}/docs/data-sources/configurations/#discourse),
   [Stack
-  Exchange](https://github.com/chaoss/grimoirelab-sirmordred#stackexchange-),
-  [KitSune](https://github.com/chaoss/grimoirelab-sirmordred#kitsune-)
+  Exchange]({{site.baseurl}}/docs/data-sources/configurations/#stackexchange),
+  [KitSune]({{site.baseurl}}/docs/data-sources/configurations/#kitsune)
 - **Mailing Lists**:
-  [Pipermail](https://github.com/chaoss/grimoirelab-sirmordred#pipermail-),
-  [NNTP](https://github.com/chaoss/grimoirelab-sirmordred#nntp-),
-  [HyperKitty](https://github.com/chaoss/grimoirelab-sirmordred#hyperkitty-),
-  [Groupsio](https://github.com/chaoss/grimoirelab-sirmordred#groupsio-),
-  [mbox](https://github.com/chaoss/grimoirelab-sirmordred#mbox-)
-- **Chats**: [Slack](https://github.com/chaoss/grimoirelab-sirmordred#slack-),
-  [Telegram](https://github.com/chaoss/grimoirelab-sirmordred#telegram-),
-  [Supybot](https://github.com/chaoss/grimoirelab-sirmordred#supybot-),
-  [RocketChat](https://github.com/chaoss/grimoirelab-sirmordred#rocketchat-),
-  [Mattermost](https://github.com/chaoss/grimoirelab-sirmordred#mattermost-),
-  [Gitter](https://github.com/chaoss/grimoirelab-sirmordred#gitter-)
+  [Pipermail]({{site.baseurl}}/docs/data-sources/configurations/#pipermail),
+  [NNTP]({{site.baseurl}}/docs/data-sources/configurations/#nntp),
+  [HyperKitty]({{site.baseurl}}/docs/data-sources/configurations/#hyperkitty),
+  [Groupsio]({{site.baseurl}}/docs/data-sources/configurations/#groupsio),
+  [mbox]({{site.baseurl}}/docs/data-sources/configurations/#mbox)
+- **Chats**: [Slack]({{site.baseurl}}/docs/data-sources/configurations/#slack),
+  [Telegram]({{site.baseurl}}/docs/data-sources/configurations/#telegram),
+  [Supybot]({{site.baseurl}}/docs/data-sources/configurations/#supybot),
+  [RocketChat]({{site.baseurl}}/docs/data-sources/configurations/#rocketchat),
+  [Mattermost]({{site.baseurl}}/docs/data-sources/configurations/#mattermost),
+  [Gitter]({{site.baseurl}}/docs/data-sources/configurations/#gitter)
 - **Meetings/Events**:
-  [Meetup](https://github.com/chaoss/grimoirelab-sirmordred#meetup-),
-  [Mozillaclub](https://github.com/chaoss/grimoirelab-sirmordred#mozillaclub-),
-  [remo](https://github.com/chaoss/grimoirelab-sirmordred#remo-)
+  [Meetup]({{site.baseurl}}/docs/data-sources/configurations/#meetup),
+  [Mozillaclub]({{site.baseurl}}/docs/data-sources/configurations/#mozillaclub),
+  [remo]({{site.baseurl}}/docs/data-sources/configurations/#remo)
 - **Social Networks**:
-  [Twitter](https://github.com/chaoss/grimoirelab-sirmordred#twitter-)
-- **Others**: [RSS](https://github.com/chaoss/grimoirelab-sirmordred#rss-),
-  [Cocom](https://github.com/chaoss/grimoirelab-sirmordred#cocom-),
-  [Colic](https://github.com/chaoss/grimoirelab-sirmordred#colic-),
-  [Weblate](https://github.com/chaoss/grimoirelab-sirmordred#weblate-),
-  [google_hits](https://github.com/chaoss/grimoirelab-sirmordred#google_hits-),
-  [Dockerdeps](https://github.com/chaoss/grimoirelab-sirmordred#dockerdeps-),
-  [dockersmells](https://github.com/chaoss/grimoirelab-sirmordred#dockersmells-)
+  [Twitter]({{site.baseurl}}/docs/data-sources/configurations/#twitter)
+- **Others**: [RSS]({{site.baseurl}}/docs/data-sources/configurations/#rss),
+  [Cocom]({{site.baseurl}}/docs/data-sources/configurations/#cocom),
+  [Colic]({{site.baseurl}}/docs/data-sources/configurations/#colic),
+  [Weblate]({{site.baseurl}}/docs/data-sources/configurations/#weblate),
+  [google_hits]({{site.baseurl}}/docs/data-sources/configurations/#google_hits),
+  [Dockerdeps]({{site.baseurl}}/docs/data-sources/configurations/#dockerdeps),
+  [dockersmells]({{site.baseurl}}/docs/data-sources/configurations/#dockersmells)
 
-We also support other data sources. You can check it out
-[here](https://github.com/chaoss/grimoirelab/blob/master/community_components.md#other-data-sources)
+We also support other data sources. You can check it out [chaoss/grimoirelab -
+community
+components](https://github.com/chaoss/grimoirelab/blob/master/community_components.md#other-data-sources).

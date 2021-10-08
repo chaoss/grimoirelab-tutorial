@@ -17,4 +17,4 @@ section.
 
 In case you want to configure grimoirelab to include your own data source, refer
 to [How to add a data source]({{ site.baseurl }}{% link
-docs/data-sources/add-sources.md %}).
+docs/data-sources/add-configurations.md %}).

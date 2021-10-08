@@ -1,8 +1,8 @@
 ---
 layout: default
 title: Components
-nav_order: 2
 permalink: /components
+nav_order: 2
 has_children: true
 has_toc: true
 ---

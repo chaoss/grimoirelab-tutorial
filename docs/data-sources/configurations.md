@@ -2,7 +2,7 @@
 layout: default
 title: Configurations
 nav_order: 2
-parent: Connecting to data sources
+parent: Data Sources
 ---
 
 # Configurations
@@ -11,7 +11,17 @@ GrimoireLab supports a lot of data sources and the configurations to be ported
 to `projects.json` and `setup.cfg` might differ per data source. You can find
 the list of configurations according to each data source supported down below.
 
-#### askbot
+---
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+---
+
+## askbot
 
 Questions and answers from Askbot site
 
@@ -35,7 +45,7 @@ raw_index = askbot_raw
 enriched_index = askbot_enriched
 ```
 
-#### bugzilla
+## bugzilla
 
 Bugs from Bugzilla
 
@@ -62,7 +72,7 @@ backend-password = xxxx (optional)
 no-archive = true (suggested)
 ```
 
-#### bugzillarest
+## bugzillarest
 
 Bugs from Bugzilla server (>=5.0) using its REST API
 
@@ -89,7 +99,7 @@ backend-password = xxxx (optional)
 no-archive = true (suggested)
 ```
 
-#### cocom
+## cocom
 
 Code complexity integration. Some graal dependencies like `cloc` might be
 required,
@@ -119,7 +129,7 @@ branches = master
 worktree-path = /tmp/cocom/
 ```
 
-#### colic
+## colic
 
 Code license backend.
 
@@ -148,7 +158,7 @@ branches = master
 worktree-path = /tmp/colic
 ```
 
-#### confluence
+## confluence
 
 contents from Confluence
 
@@ -173,7 +183,7 @@ enriched_index = confluence_enriched
 no-archive = true (suggested)
 ```
 
-#### crates
+## crates
 
 packages from Crates.io
 
@@ -197,7 +207,7 @@ raw_index = crates_raw
 enriched_index = crates_enriched
 ```
 
-#### discourse
+## discourse
 
 Topics from Discourse
 
@@ -222,7 +232,7 @@ enriched_index = discourse_enriched
 no-archive = true (suggested)
 ```
 
-#### dockerhub
+## dockerhub
 
 Repositories info from DockerHub
 
@@ -247,7 +257,7 @@ enriched_index = dockerhub_enriched
 no-archive = true (suggested)
 ```
 
-#### dockerdeps
+## dockerdeps
 
 Dependencies extracted from Docker files. Requires
 https://github.com/crossminer/crossJadolint
@@ -275,7 +285,7 @@ exec-path = <jadolint-local-path>/jadolint.jar
 in-paths = [Dockerfile, Dockerfile-full, Dockerfile-secured, Dockerfile-factory, Dockerfile-installed]
 ```
 
-#### dockersmells
+## dockersmells
 
 Smells extracted from Docker files. Requires
 https://github.com/crossminer/crossJadolint
@@ -303,7 +313,7 @@ exec-path = <jadolint-local-path>/jadolint.jar
 in-paths = [Dockerfile, Dockerfile-full, Dockerfile-secured, Dockerfile-factory, Dockerfile-installed]
 ```
 
-#### functest
+## functest
 
 Tests from functest
 
@@ -328,7 +338,7 @@ enriched_index = functest_enriched
 no-archive = true (suggested)
 ```
 
-#### gerrit
+## gerrit
 
 Reviews from Gerrit
 
@@ -369,7 +379,7 @@ date_field = grimoire_creation_date
 author_field = author_uuid
 ```
 
-#### git
+## git
 
 Commits from Git
 
@@ -417,11 +427,11 @@ json_url = https://gist.githubusercontent.com/zhquan/bb48654bed8a835ab2ba9a14923
 out_index = git_study_forecast
 ```
 
-#### github
+## github
 
 Issues and PRs from GitHub
 
-##### issue
+### issue
 
 - projects.json
 
@@ -479,7 +489,7 @@ map_label = [others, bugs, enhancements]
 [enrich_demography:github]
 ```
 
-##### pull request
+### pull request
 
 - projects.json
 
@@ -523,7 +533,7 @@ json_url = https://gist.githubusercontent.com/zhquan/bb48654bed8a835ab2ba9a14923
 [enrich_demography:github]
 ```
 
-##### repo
+### repo
 
 The number of forks, starts, and subscribers in the repository.
 
@@ -558,12 +568,12 @@ json_url = https://gist.githubusercontent.com/zhquan/bb48654bed8a835ab2ba9a14923
 [enrich_demography:github]
 ```
 
-#### githubql
+## githubql
 
 Events from GitHub
 
-The corresponding dashboards can be automatically uploaded by setting `github-events`
-to `true` in the `panels` section within the `setup.cfg`
+The corresponding dashboards can be automatically uploaded by setting
+`github-events` to `true` in the `panels` section within the `setup.cfg`
 
 - projects.json
 
@@ -607,14 +617,14 @@ fltr_event_types = [LabeledEvent]
 [enrich_reference_analysis] (optional)
 ```
 
-#### github2
+## github2
 
 Comments from GitHub
 
 The corresponding dashboards can be automatically uploaded by setting
 `github-comments` to `true` in the `panels` section within the `setup.cfg`
 
-##### issue
+### issue
 
 - projects.json
 
@@ -657,7 +667,7 @@ attributes = [title, body]
 nlp_rest_url = http://localhost:2901
 ```
 
-##### pull request
+### pull request
 
 - projects.json
 
@@ -700,7 +710,7 @@ attributes = [title, body]
 nlp_rest_url = http://localhost:2901
 ```
 
-#### gitlab
+## gitlab
 
 Issues and MRs from GitLab
 
@@ -714,7 +724,7 @@ starting from the second level have to be replaced by `%2F`. For instance, for a
 repository with a structure similar to this one
 `https://gitlab.com/Molly/lab/first`.
 
-##### issue
+### issue
 
 - projects.json
 
@@ -750,7 +760,7 @@ out_index = gitlab-issues-onion_enriched
 data_source = gitlab-issues
 ```
 
-##### merge request
+### merge request
 
 - projects.json
 
@@ -787,7 +797,7 @@ data_source = gitlab-merges
 
 ```
 
-#### gitter
+## gitter
 
 Messages from gitter rooms
 
@@ -815,7 +825,7 @@ sleep-time = "300" (optional)
 no-archive = true (suggested)
 ```
 
-#### google_hits
+## google_hits
 
 Number of hits for a set of keywords from Google
 
@@ -839,7 +849,7 @@ raw_index = google_hits_raw
 enriched_index =google_hits_enriched
 ```
 
-#### groupsio
+## groupsio
 
 Messages from Groupsio
 
@@ -869,7 +879,7 @@ email = yyyy
 password = xxxx
 ```
 
-#### hyperkitty
+## hyperkitty
 
 Messages from a HyperKitty
 
@@ -893,7 +903,7 @@ raw_index = hyperkitty_raw
 enriched_index = hyperkitty_enriched
 ```
 
-#### jenkins
+## jenkins
 
 Builds from a Jenkins
 
@@ -918,7 +928,7 @@ enriched_index = jenkins_enriched
 no-archive = true (suggested)
 ```
 
-#### jira
+## jira
 
 Issues data from JIRA issue trackers
 
@@ -945,7 +955,7 @@ backend-user = yyyy (optional)
 backend-password = xxxx (optional)
 ```
 
-#### kitsune
+## kitsune
 
 Questions and answers from KitSune
 
@@ -969,7 +979,7 @@ raw_index = kitsune_raw
 enriched_index = kitsune_enriched
 ```
 
-#### mattermost
+## mattermost
 
 Messages from Mattermost channels
 
@@ -994,7 +1004,7 @@ enriched_index = mattermost_enriched
 api-token = xxxx
 ```
 
-#### mbox
+## mbox
 
 Messages from MBox files
 
@@ -1022,7 +1032,7 @@ raw_index = mbox_raw
 enriched_index = mbox_enriched
 ```
 
-#### mediawiki
+## mediawiki
 
 Pages and revisions from MediaWiki
 
@@ -1047,7 +1057,7 @@ enriched_index = mediawiki_enriched
 no-archive = true (suggested)
 ```
 
-#### meetup
+## meetup
 
 Events from Meetup groups
 
@@ -1081,7 +1091,7 @@ no-archive = true (suggested)
 
 ```
 
-#### mozillaclub
+## mozillaclub
 
 Events from Mozillaclub
 
@@ -1105,7 +1115,7 @@ raw_index = mozillaclub_raw
 enriched_index = mozillaclub_enriched
 ```
 
-#### nntp
+## nntp
 
 Articles from NNTP newsgroups
 
@@ -1135,7 +1145,7 @@ raw_index = nntp_raw
 enriched_index =  nntp_enriched
 ```
 
-#### pagure
+## pagure
 
 Issues from Pagure repositories
 
@@ -1163,7 +1173,7 @@ sleep-time = "300" (optional)
 no-archive = true (suggested)
 ```
 
-#### phabricator
+## phabricator
 
 Tasks from Phabricator
 
@@ -1189,7 +1199,7 @@ api-token = xxxx
 no-archive = true (suggested)
 ```
 
-#### pipermail
+## pipermail
 
 Messages from Pipermail
 
@@ -1213,7 +1223,7 @@ raw_index = pipermail_raw
 enriched_index = pipermail_enriched
 ```
 
-#### puppetforge
+## puppetforge
 
 Modules and their releases from Puppet's forge
 
@@ -1237,7 +1247,7 @@ raw_index = puppetforge_raw
 enriched_index = puppetforge_enriched
 ```
 
-#### redmine
+## redmine
 
 Issues from Redmine
 
@@ -1262,7 +1272,7 @@ enriched_index = redmine_enriched
 api-token = XXXXX
 ```
 
-#### remo
+## remo
 
 Events, people and activities from ReMo
 
@@ -1286,7 +1296,7 @@ raw_index = remo_raw
 enriched_index = remo_enriched
 ```
 
-#### rocketchat
+## rocketchat
 
 Messages from Rocketchat channels
 
@@ -1314,7 +1324,7 @@ user-id = xxxx
 no-archive = true (suggested)
 ```
 
-#### rss
+## rss
 
 Entries from RSS feeds
 
@@ -1338,7 +1348,7 @@ raw_index = rss_raw
 enriched_index = rss_enriched
 ```
 
-#### slack
+## slack
 
 Messages from Slack channels
 
@@ -1367,7 +1377,7 @@ api-token = xxxx
 no-archive = true (suggested)
 ```
 
-#### stackexchange
+## stackexchange
 
 Questions, answers and comments from StackExchange
 
@@ -1397,7 +1407,7 @@ api-token = xxxx
 no-archive = true (suggested)
 ```
 
-#### supybot
+## supybot
 
 Messages from Supybot log files
 
@@ -1425,11 +1435,12 @@ raw_index = supybot_raw
 enriched_index = supybot_enriched
 ```
 
-#### telegram
+## telegram
 
 Messages from Telegram
 
-You need to have an API token: https://github.com/chaoss/grimoirelab-perceval#telegram
+You need to have an API token:
+https://github.com/chaoss/grimoirelab-perceval#telegram
 
 - projects.json
 
@@ -1452,7 +1463,7 @@ enriched_index = telegram_enriched
 api-token = XXXXX
 ```
 
-#### twitter
+## twitter
 
 Messages from Twitter
 
@@ -1484,7 +1495,7 @@ enriched_index = twitter_enriched
 api-token = XXXX
 ```
 
-#### weblate
+## weblate
 
 Changes from Weblate
 
