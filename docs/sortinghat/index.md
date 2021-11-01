@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Sortinghat
+title: SortingHat
 permalink: /sortinghat
 nav_order: 6
 has_children: true
