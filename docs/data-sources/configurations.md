@@ -950,6 +950,7 @@ Issues data from JIRA issue trackers
 [jira]
 raw_index = jira_raw
 enriched_index = jira_enriched
+project = JIRAPROJECT (optional)
 no-archive = true (suggested)
 backend-user = yyyy (optional)
 backend-password = xxxx (optional)
