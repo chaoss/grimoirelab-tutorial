@@ -391,7 +391,7 @@ Commits from Git
 {
     "Chaoss": {
         "git": [
-            "https:/github.com/chaoss/grimoirelab-perceval",
+            "https://github.com/chaoss/grimoirelab-perceval",
             "https://<username>:<api-token>@github.com/chaoss/grimoirelab-sirmordred"
         ]
     }
@@ -439,8 +439,8 @@ Issues and PRs from GitHub
 {
     "Chaoss": {
         "github:issue": [
-            "https:/github.com/chaoss/grimoirelab-perceval",
-            "https:/github.com/chaoss/grimoirelab-sirmordred"
+            "https://github.com/chaoss/grimoirelab-perceval",
+            "https://github.com/chaoss/grimoirelab-sirmordred"
         ]
     }
 }
@@ -497,8 +497,8 @@ map_label = [others, bugs, enhancements]
 {
     "Chaoss": {
         "github:pull": [
-            "https:/github.com/chaoss/grimoirelab-perceval",
-            "https:/github.com/chaoss/grimoirelab-sirmordred"
+            "https://github.com/chaoss/grimoirelab-perceval",
+            "https://github.com/chaoss/grimoirelab-sirmordred"
         ]
     }
 }
@@ -543,8 +543,8 @@ The number of forks, starts, and subscribers in the repository.
 {
     "Chaoss": {
         "github:repo": [
-            "https:/github.com/chaoss/grimoirelab-perceval",
-            "https:/github.com/chaoss/grimoirelab-sirmordred"
+            "https://github.com/chaoss/grimoirelab-perceval",
+            "https://github.com/chaoss/grimoirelab-sirmordred"
         ]
     }
 }
@@ -632,8 +632,8 @@ The corresponding dashboards can be automatically uploaded by setting
 {
     "Chaoss": {
         "github2:issue": [
-            "https:/github.com/chaoss/grimoirelab-perceval",
-            "https:/github.com/chaoss/grimoirelab-sirmordred"
+            "https://github.com/chaoss/grimoirelab-perceval",
+            "https://github.com/chaoss/grimoirelab-sirmordred"
         ]
     }
 }
@@ -675,8 +675,8 @@ nlp_rest_url = http://localhost:2901
 {
     "Chaoss": {
         "github2:pull": [
-            "https:/github.com/chaoss/grimoirelab-perceval",
-            "https:/github.com/chaoss/grimoirelab-sirmordred"
+            "https://github.com/chaoss/grimoirelab-perceval",
+            "https://github.com/chaoss/grimoirelab-sirmordred"
         ]
     }
 }
