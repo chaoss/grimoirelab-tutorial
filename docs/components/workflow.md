@@ -38,7 +38,7 @@ The main components of GrimoireLab are:
 * **KingArthur**. Organizes the data retrieval from large collections of
   repositories of different kinds, providing a uniform API to all of them, and
   to the different retrieval jobs running in any moment. [Learn more about
-  KingArthur](/grimoirelab-tutorial/basics/scenarios.html#arthur-orchestrating-data-retrieval).
+  KingArthur](https://github.com/chaoss/grimoirelab-kingarthur).
 * **GrimoireELK**. Collects data retrieved by Arthur, or directly by Perceval,
   and stores it in ElasticSearch indexes (raw indexes). It also organizes and
   transforms those raw indexes into other ElasticSearch indexes (enriched
@@ -53,16 +53,16 @@ The main components of GrimoireLab are:
   construction of actionable dashboards to show the data in enriched indexes.
 * **Sigils**. Definition of Kibiter dashboards. They encode the panels,
   visualizations and other details needed to produce dashboards in Kibiter or
-  Kibana.  [Learn more about
+  Kibana. [Learn more about
   Sigils](https://chaoss.github.io/grimoirelab-sigils/).
 * **Manuscripts**. Production of PDF documents reporting on the main
   characteristics of a project. [Learn more about
-  Manuscripts](/grimoirelab-tutorial/manuscripts/first.html).
+  Manuscripts](https://github.com/chaoss/grimoirelab-manuscripts).
 * **Mordred**. Manages the configuration of all the components needed to produce
   a dashboard, automating its production. [Learn more about
-  Mordred](/grimoirelab-tutorial/basics/scenarios.html).
+  Mordred](https://github.com/chaoss/grimoirelab-sirmordred).
 
-![](./assets/grimoirelab-all-complete.png)
+![grimoirelab-all-complete.png](./assets/grimoirelab-all-complete.png)
 
 In the figure above, GrimoireLab components are represented in the pale green
 box. Bold arrows show the main data flow: from data sources to Perceval (which
