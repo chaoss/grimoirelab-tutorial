@@ -58,7 +58,7 @@ required. You are also expected to update the configurations in the `setup.cfg`
 file. See [#defining-the-es-configurations](#defining-the-es-configurations).
 
 
-```
+```yml
 elasticsearch:
   image: bitergia/elasticsearch:6.8.6-secured
   command: elasticsearch -Enetwork.bind_host=0.0.0.0 -Ehttp.max_content_length=2000mb
@@ -98,7 +98,7 @@ configurations in the `setup.cfg` file need to be updated. See
 [#defining-the-es-configurations](#defining-the-es-configurations).
 
 
-```
+```yml
 elasticsearch:
   image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.6
   command: elasticsearch -Enetwork.bind_host=0.0.0.0 -Ehttp.max_content_length=2000mb
@@ -130,7 +130,7 @@ mariadb:
 ```
 
 Save the above into a docker-compose.yml file and run
-```
+```console
 $ docker-compose up -d
 ```
 to get Elasticsearch, Kibiter and MariaDB running on your system.
@@ -159,7 +159,7 @@ Each local repo should have two `remotes`: `origin` points to the forked repo,
 while `upstream` points to the original CHAOSS repo.
 
 An example is provided below.
-```
+```console
 $ git remote -v
 origin	https://github.com/valeriocos/perceval (fetch)
 origin	https://github.com/valeriocos/perceval (push)
@@ -168,7 +168,7 @@ upstream	https://github.com/chaoss/grimoirelab-perceval (push)
 ```
 
 In order to add a remote to a Git repository, you can use the following command:
-```
+```console
 $ git remote add upstream https://github.com/chaoss/grimoirelab-perceval
 ```
 
@@ -177,7 +177,7 @@ $ git remote add upstream https://github.com/chaoss/grimoirelab-perceval
 You can use this use this
 [script](https://gist.github.com/vchrombie/4403193198cd79e7ee0079259311f6e8) to
 automate this whole process.
-```
+```console
 $ python3 glab-dev-env-setup.py --create --token xxxx --source sources
 ```
 
@@ -231,7 +231,7 @@ and
   required. You are also expected to update the configurations in the
   `setup.cfg` file.
 
-```
+```cfg
 [es_collection]
 url = https://admin:admin@localhost:9200
 
@@ -242,7 +242,7 @@ url = https://admin:admin@localhost:9200
 - For accessing Elasticsearch/Kibiter, no login credentials is required. The
   configurations in the `setup.cfg` file can be updated as below.
 
-```
+```cfg
 [es_collection]
 url = http://localhost:9200
 
@@ -255,7 +255,7 @@ url = http://localhost:9200
 Run the following commands, which will collect and enrich the data coming from
 the git sections and upload the corresponding panels to Kibiter:
 
-```bash
+```console
 micro.py --raw --enrich --cfg ./setup.cfg --backends git cocom
 micro.py --panels --cfg ./setup.cfg
 ```

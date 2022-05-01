@@ -75,7 +75,7 @@ localhost:9200` messages.
 Diagnosis
 
 Check for the following log in the output of `docker-compose up`
-```
+```console
 elasticsearch_1  | ERROR: [1] bootstrap checks failed
 elasticsearch_1  | [1]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
 ```
@@ -83,15 +83,15 @@ elasticsearch_1  | [1]: max virtual memory areas vm.max_map_count [65530] is too
 Solution
 
 Increase the kernel `max_map_count` parameter of vm using the following command.
-```
-sudo sysctl -w vm.max_map_count=262144
+```console
+$ sudo sysctl -w vm.max_map_count=262144
 ```
 
 Now stop the container services and re-run `docker-compose up`. Note that this
 is valid only for current session. To set this value permanently, update the
 `vm.max_map_count` setting in `/etc/sysctl.conf` file. To verify after
 rebooting, run the below command.
-```
+```console
 $ sysctl vm.max_map_count
 ```
 
@@ -108,7 +108,7 @@ curl: (52) Empty reply from server
 Diagnosis
 
 Check for the following log in the output of `docker-compose up`
-```
+```console
 elasticsearch_1  | [2020-03-12T13:05:34,959][WARN ][c.f.s.h.SearchGuardHttpServerTransport] [Xrb6LcS] Someone (/172.18.0.1:59838) speaks http plaintext instead of ssl, will close the channel
 ```
 
@@ -121,11 +121,11 @@ $ sudo lsof -i:5888
 Solution
 
 1. Try to close the conflicting processes. You can do this easily with fuser
-```
+```console
 $ sudo apt-get install fuser
 ```
 Run the below command (assuming 5888 is the port number)
-```
+```console
 $ fuser -k 58888/tcp
 ```
 Re-run `docker-compose up` and check if `localhost:9200` shows up.'
@@ -145,7 +145,7 @@ Can't create indices in Kibana. Nothing happens after clicking create index.
 Diagnosis
 
 Check for the following log in the output of `docker-compose up`
-```
+```console
 elasticsearch_1 |[INFO ][c.f.s.c.PrivilegesEvaluator] No index-level perm match for User [name=readall, roles=[readall], requestedTenant=null] [IndexType [index=.kibana, type=doc]] [Action [[indices:data/write/index]]] [RolesChecked [sg_own_index, sg_readall]]
 elasticsearch_1 | [c.f.s.c.PrivilegesEvaluator] No permissions for {sg_own_index=[IndexType [index=.kibana, type=doc]], sg_readall=[IndexType [index=.kibana, type=doc]]}
 kibiter_1 | {"type":"response","@timestamp":CURRENT_TIME,"tags":[],"pid":1,"method":"post","statusCode":403,"req":{"url":"/api/saved_objects/index-pattern?overwrite=false","method":"post","headers":{"host":"localhost:5601","user-agent":YOUR_USER_AGENT,"accept":"application/json, text/plain, /","accept-language":"en-US,en;q=0.5","accept-encoding":"gzip, deflate","referer":"http://localhost:5601/app/kibana","content-type":"application/json;charset=utf-8","kbn-version":"6.1.4-1","content-length":"59","connection":"keep-alive"},"remoteAddress":YOUR_IP,"userAgent":YOUR_IP,"referer":"http://localhost:5601/app/kibana"},"res":{"statusCode":403,"responseTime":25,"contentLength":9},"message":"POST /api/saved_objects/index-pattern?overwrite=false 403 25ms - 9.0B"}
@@ -166,11 +166,11 @@ Indication and Diagnosis
 Check for the following error after executing [Micro
 Mordred](https://github.com/chaoss/grimoirelab-sirmordred/tree/master/sirmordred/utils/micro.py)
 using the below command (assuming `git` is the backend)
-```
+```console
 micro.py --raw --enrich --panels --cfg ./setup.cfg --backends git
 ```
 
-```
+```console
 [git] Problem executing study enrich_areas_of_code:git, RequestError(400, 'search_phase_execution_exception', 'No mapping found for [metadata__timestamp] in order to sort on')
 ```
 
@@ -185,7 +185,7 @@ There are 2 solutions to this problem:
 1. Disable the param
    [latest-items](https://github.com/chaoss/grimoirelab-sirmordred/blob/master/sirmordred/utils/setup.cfg#L78)
    by setting it to false.
-```
+```cfg
 latest-items = false
 ```
 2. Delete the local clone of the repo (which is stored in
@@ -215,7 +215,7 @@ again and extract all commits.
 Indication
 
 Cannot open `localhost:9200` in browser, shows `Secure connection Failed`
-```
+```console
 $ curl -XGET localhost:9200 -k
 curl: (7) Failed to connect to localhost port 9200: Connection refused
 ```
@@ -223,7 +223,7 @@ curl: (7) Failed to connect to localhost port 9200: Connection refused
 Diagnosis
 
 Check for the following log in the output of `docker-compose up`
-```
+```console
 elasticsearch_1  | ERROR: [1] bootstrap checks failed
 elasticsearch_1  | [1]: max file descriptors [4096] for elasticsearch process is too low, increase to at least [65536]
 ```
@@ -232,12 +232,12 @@ Solution
 
 1. Increase the maximum File Descriptors (FD) enforced. You can do this by
    running the below command.
-```
+```console
 $ sysctl -w fs.file-max=65536
 ```
 To set this value permanently, update `/etc/security/limits.conf` content to
 below. To verify after rebooting, run
-```
+```console
 $ sysctl fs.file-max
 ```
 ```
@@ -249,7 +249,7 @@ elasticsearch   memlock unlimited
 2. Override `ulimit` parameters in the Elasticsearch docker configuration. Add
    the below lines to Elasticsearch service in your compose file to override the
    default configurations of docker.
-```
+```yml
 ulimits:
 nofile:
   soft: 65536
@@ -267,7 +267,7 @@ Solution
 
 Enable the `sleep-for-rate` parameter. It increases rate by sleeping between API
 call retries.
-```
+```cfg
 sleep-for-rate = true
 sleep-time = 300
 ```
@@ -294,7 +294,7 @@ Indication
 
 Diagnosis
 
-```
+```console
 Retrying (Retry(total=10,connected=21,read=0,redirect=5,status=None)) after connection broken by 
 'SSLError(SSLError{1,'[SSL: WRONG_VERSION_NUMBER] wrong version number {_ssl.c:852}'},)': /
 ```
@@ -304,7 +304,7 @@ Solution
 Change `https` to `http` in the `setup.cfg` file if you are using the
 Elasticsearch without the SearchGuard. See
 [defining-the-es-configurations](/grimoirelab-tutorial/docs/getting-started/dev-setup/#defining-the-es-configurations).
-```
+```cfg
 [es_collection]
 url = http://localhost:9200
 
@@ -316,7 +316,7 @@ url = http://localhost:9200
 
 Diagnosis
 
-```
+```console
 : [Errno 2]No such file or directory : 'cloc': 'cloc'
 ```
 
@@ -326,7 +326,7 @@ Execute the following command to install `cloc` (more details are available in
 the
 [Graal](https://github.com/chaoss/grimoirelab-graal#how-to-installcreate-the-executables)
 repo).
-```
+```console
 $ sudo apt-get install cloc
 ```
 
