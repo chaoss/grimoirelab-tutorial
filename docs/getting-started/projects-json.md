@@ -41,7 +41,7 @@ There are some filters, labels, and a special section:
     "Chaoss": {
         "gerrit": [
             "gerrit.chaoss.org --filter-raw=data.projects:CHAOSS"
-        ]
+        ],
         "git": [
             "https:/github.com/chaoss/grimoirelab-perceval",
             "https:/github.com/chaoss/grimoirelab-sirmordred"
@@ -54,8 +54,8 @@ There are some filters, labels, and a special section:
     "GrimoireLab": {
         "gerrit": [
             "gerrit.chaoss.org --filter-raw=data.projects:GrimoireLab"
-        ],
-    }
+        ]
+    },
     "unknown": {
         "gerrit": [
             "gerrit.chaoss.org"
