@@ -38,31 +38,32 @@ There are some filters, labels, and a special section:
 
 ```
 {
-    "Chaoss": {
-        "gerrit": [
-            "gerrit.chaoss.org --filter-raw=data.projects:CHAOSS"
-        ],
-        "git": [
-            "https:/github.com/chaoss/grimoirelab-perceval",
-            "https:/github.com/chaoss/grimoirelab-sirmordred"
-        ],
-        "github": [
-            "https:/github.com/chaoss/grimoirelab-perceval --filter-no-collection=true",
-            "https:/github.com/chaoss/grimoirelab-sirmordred  --labels=[example]"
-        ]
-    },
-    "GrimoireLab": {
-        "gerrit": [
-            "gerrit.chaoss.org --filter-raw=data.projects:GrimoireLab"
-        ]
-    },
-    "unknown": {
-        "gerrit": [
-            "gerrit.chaoss.org"
-        ],
-        "confluence": [
-            "https://wiki.chaoss.org"
-        ]
+   "Chaoss":{
+      "gerrit":[
+         "gerrit.chaoss.org --filter-raw=data.projects:CHAOSS"
+      ],
+      "git":[
+         "https:/github.com/chaoss/grimoirelab-perceval",
+         "https:/github.com/chaoss/grimoirelab-sirmordred"
+      ],
+      "github":[
+         "https:/github.com/chaoss/grimoirelab-perceval --filter-no-collection=true",
+         "https:/github.com/chaoss/grimoirelab-sirmordred  --labels=[example]"
+      ]
+   },
+   "GrimoireLab":{
+      "gerrit":[
+         "gerrit.chaoss.org --filter-raw=data.projects:GrimoireLab"
+      ]
+   },
+   "unknown":{
+      "gerrit":[
+         "gerrit.chaoss.org"
+      ],
+      "confluence":[
+         "https://wiki.chaoss.org"
+      ]
+   }
 }
 ```
 
