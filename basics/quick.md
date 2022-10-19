@@ -29,13 +29,13 @@ Please check the [section on installing non-Python
 packages](install.html#non-python-pkgs) if you have any trouble.
 
 ```bash
-(gl) % pip3 install grimoirelab
+(gl) $ pip3 install grimoirelab
 ```
 
 If everything went well, you can just check the version that you installed:
 
 ```bash
-(gl) % grimoirelab -v
+(gl) $ grimoirelab -v
 ```
 
 And that's it. You can now skip the rest of this chapter
@@ -54,7 +54,7 @@ standard Debian distro, so you can run those directly.
 To run that image, just type:
 
 ```bash
-% docker run -p 127.0.0.1:9200:9200 \
+docker run -p 127.0.0.1:9200:9200 \
     -p 127.0.0.1:5601:5601 \
     -p 127.0.0.1:3306:3306 \
     -e RUN_MORDRED=NO \
@@ -74,7 +74,7 @@ Once the container is running, you can connect to it,
 and launch any GrimoireLab command or program in it:
 
 ```bash
-$ docker exec -it container_id env TERM=xterm /bin/bash
+docker exec -it container_id env TERM=xterm /bin/bash
 ```
 
 That container can be used also, as such,

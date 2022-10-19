@@ -12,7 +12,7 @@
 Once you've successfully installed Graal, you can get started real quick with the command line interface as easy as -
 
 ```sh
-(graal) $ graal cocom --help
+graal cocom --help
 ```
 
 **Note:** You can invoke other available backends in a similar way.
@@ -22,7 +22,7 @@ Once you've successfully installed Graal, you can get started real quick with th
 - Let's start our analysis with the host repository itself. As you can see the positional parameter is added with the repository url and `git-path` flag is used to define the path where the git repository will be cloned.
 
 ```sh
-(graal) $ graal cocom https://github.com/chaoss/grimoirelab-graal --git-path /tmp/graal-cocom
+graal cocom https://github.com/chaoss/grimoirelab-graal --git-path /tmp/graal-cocom
 [2019-03-27 21:32:03,719] - Starting the quest for the Graal.
 [2019-03-27 21:32:11,663] - Git worktree /tmp/worktrees/graal-cocom created!
 [2019-03-27 21:32:11,663] - Fetching commits: 'https://github.com/chaoss/grimoirelab-graal' git repository from 1970-01-01 00:00:00+00:00 to 2100-01-01 00:00:00+00:00; all branches

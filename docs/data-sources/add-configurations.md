@@ -66,8 +66,8 @@ out_index = git_study_forecast
 Once you have made the following changes, run your containers with
 docker-compose
 
-```console
-$ docker-compose up -d
+```bash
+docker-compose up -d
 ```
 
 Give it some time to gather the data and after a while your dashboard and data

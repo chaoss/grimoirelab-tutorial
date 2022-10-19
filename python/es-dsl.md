@@ -5,7 +5,7 @@ The `elasticsearch` Python module may seem good enough to query ElasticSearch vi
 To install it, just use pip:
 
 ```bash
-(perceval) $ pip install elasticsearch_dsl
+pip install elasticsearch_dsl
 ```
 
 It needs the `elasticsearch` Python module to work, but you'll have it already installed, or will be pulled in via dependencies, so don't worry about it.

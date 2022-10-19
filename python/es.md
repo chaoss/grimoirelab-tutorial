@@ -13,7 +13,7 @@ Instead of that, we will move one abstraction layer up, and will use the [elasti
 So, let's start with the basics of using the `elasticsearch` module. To begin with, we will add the module to our virtual environment, using pip:
 
 ```bash
-(perceval) $ pip install elasticsearch
+pip install elasticsearch
 ```
 
 Now we can write some Python code to test it
@@ -48,7 +48,7 @@ This little script assumes that we're running a local instance of ElasticSearch,
 When running it, you'll see the objects with the hashes being printed in the screen, right before they are uploaded to ElasticSearch:
 
 ```bash
-(perceval) $ python perceval_elasticsearch_1.py
+python perceval_elasticsearch_1.py
 {'hash': 'dc78c254e464ff334892e0448a23e4cfbfc637a3'}
 {'hash': '57bc204822832a6c23ac7883e5392f4da6f4ca37'}
 {'hash': '2355d18310d8e15c8e5d44f688d757df33b0e4be'}
@@ -57,8 +57,8 @@ When running it, you'll see the objects with the hashes being printed in the scr
 
 Once you run the script, the `commits` index is created in ElasticSearch. You can check its characteristics using `curl`. The `pretty` option is to obtain a human-readable JSON document as response. Notice that we don't need to run `curl` from the virtual environment:
 
-```
-$ curl -XGET http://localhost:9200/commits?pretty
+```bash
+curl -XGET http://localhost:9200/commits?pretty
 {
   "commits" : {
     "aliases" : { },
@@ -92,7 +92,7 @@ $ curl -XGET http://localhost:9200/commits?pretty
 If you want to delete the index (for example, to run the script once again) you can just run `DELETE` on its url. For example, with `curl`:
 
 ```bash
-$ curl -XDELETE http://localhost:9200/commits
+curl -XDELETE http://localhost:9200/commits
 {"acknowledged":true}
 ```
 
@@ -175,7 +175,7 @@ print('\nCreated new index with commits.')
 After running it (deleting any previous `commits` index if needed), we have a new index with the intended information for all commits. We can see one of them querying the index using directly the ElasticSearch REST API with `curl`:
 
 ```bash
-$ curl -XGET "http://localhost:9200/commits/_search/?size=1&pretty"
+curl -XGET "http://localhost:9200/commits/_search/?size=1&pretty"
 {
   "took" : 2,
   "timed_out" : false,
@@ -212,7 +212,7 @@ Since we specified in the query we only wanted one document (`size=1`), we get a
 Every index in ElasticSearch has a 'mapping'. Mappings specify how the index is, for example in terms of data types. If we don't specify a mapping before uploading data to an index, ElasticSearch will infere the mapping from the data. Therefore, even when we created no mapping for it, we can have a look at the mapping for the recently created index:
 
 ```bash
-(perceval) $ curl -XGET "http://localhost:9200/commits/_mapping?pretty"
+curl -XGET "http://localhost:9200/commits/_mapping?pretty"
 {
   "commits" : {
     "mappings" : {
@@ -261,8 +261,8 @@ import datetime
 
 Instead of using the character strings that we get from Perceval as values for those two fields, we first convert them to `datetime` objects. This is enough for the `elasticsearch` module to recognize as dates, and upload them as such. You can check the resulting mapping after running this new script:
 
-```
-$ curl -XGET "http://localhost:9200/commits/_mapping?pretty"
+```bash
+curl -XGET "http://localhost:9200/commits/_mapping?pretty"
 {
   "commits" : {
     "mappings" : {

@@ -16,23 +16,31 @@ In this chapter we will learn how to use SortingHat in combination to other Grim
 We will start by adding some more repositories to the index, to have some more complete data. Then we will use it to explore the capabilities of SortingHat for merging identities, for adding affiliations and for adapting profiles.
 
 ```bash
-(gl) $ p2o.py --enrich --index git_raw --index-enrich git \
+p2o.py --enrich --index git_raw --index-enrich git \
   -e http://localhost:9200 --no_inc --debug \
   --db-host localhost --db-sortinghat shdb --db-user user --db-password XXX \
   git https://github.com/grimoirelab/GrimoireELK.git
-(gl) $ p2o.py --enrich --index git_raw --index-enrich git \
+```
+```bash
+p2o.py --enrich --index git_raw --index-enrich git \
   -e http://localhost:9200 --no_inc --debug \
   --db-host localhost --db-sortinghat shdb --db-user user --db-password XXX \
   git https://github.com/grimoirelab/panels.git
-(gl) $ p2o.py --enrich --index git_raw --index-enrich git \
+```
+```bash
+p2o.py --enrich --index git_raw --index-enrich git \
   -e http://localhost:9200 --no_inc --debug \
   --db-host localhost --db-sortinghat shdb --db-user user --db-password XXX \
   git https://github.com/grimoirelab/mordred.git
-(gl) $ p2o.py --enrich --index git_raw --index-enrich git \
+```
+```bash
+p2o.py --enrich --index git_raw --index-enrich git \
   -e http://localhost:9200 --no_inc --debug \
   --db-host localhost --db-sortinghat shdb --db-user user --db-password XXX \
   git https://github.com/grimoirelab/arthur.git
-(gl) $ p2o.py --enrich --index git_raw --index-enrich git \
+```
+```bash
+p2o.py --enrich --index git_raw --index-enrich git \
   -e http://localhost:9200 --no_inc --debug \
   --db-host localhost --db-sortinghat shdb --db-user user --db-password XXX \
   git https://github.com/grimoirelab/training.git
@@ -49,7 +57,7 @@ let's visit the data structure of the database it maintains.
 See [A dashboard with SortingHat](../gelk/sortinghat.md), and the introduction to this chapter, for details on how the database was produced; `user` and `XXX` are the credentials to access the `shdb` database. For finding out about its tables, just query MySQL.
 
 ```bash
-$ mysql -u user -pXXX -e 'SHOW TABLES;' shdb
+mysql -u user -pXXX -e 'SHOW TABLES;' shdb
 ...
 | countries             |
 | domains_organizations |
@@ -177,8 +185,8 @@ When we unify repo identities (merging several into a single unique identity), w
 
 Up to now we have not used SortingHat to assign organizations to persons (unique identities). Therefore, `enrollments` and `organizations` tables are empty. But we can check their structure.
 
-```
-$ mysql -u user -pXXX -e 'DESCRIBE organizations;' shdb
+```bash
+mysql -u user -pXXX -e 'DESCRIBE organizations;' shdb
 +-------+--------------+------+-----+---------+----------------+
 | Field | Type         | Null | Key | Default | Extra          |
 +-------+--------------+------+-----+---------+----------------+
@@ -192,8 +200,8 @@ In this format, each row corresponds to the description of a field in the `organ
 
 `enrollments` table is a bit more complex:
 
-```
-$ mysql -u user -pXXX -e 'DESCRIBE enrollments;' shdb
+```bash
+mysql -u user -pXXX -e 'DESCRIBE enrollments;' shdb
 +-----------------+--------------+------+-----+---------+----------------+
 | Field           | Type         | Null | Key | Default | Extra          |
 +-----------------+--------------+------+-----+---------+----------------+

@@ -11,7 +11,7 @@ Reporting with GrimoireLab Manuscripts is easy. You need to have enriched Elasti
 For example, to produce a report about Git data in the standard GrimoireLab enriched index in my local ElasticSearch (accessible in the standard [http://localhost:9200](http://localhost:9200) location), you only need to run:
 
 ```bash
-(gl) $ manuscripts -d /tmp/reports -u http://localhost:9200 \
+manuscripts -d /tmp/reports -u http://localhost:9200 \
    -n GrimoireLab --data-sources git
 ```
 

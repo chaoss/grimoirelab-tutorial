@@ -17,7 +17,7 @@ For using these container images, ensure you have a recent version of `docker` i
 To try it this container image, just run it as follows:
 
 ```bash
-$ docker run -p 127.0.0.1:5601:5601 \
+docker run -p 127.0.0.1:5601:5601 \
     -v $(pwd)/credentials.cfg:/override.cfg \
     -t grimoirelab/full
 ```
@@ -25,7 +25,7 @@ $ docker run -p 127.0.0.1:5601:5601 \
 `credentials.cfg` should have a GitHub API token (see [Personal GitHub API tokens](https://github.com/blog/1509-personal-api-tokens)), in a `mordred.cfg`
 format:
 
-```
+```cfg
 [github]
 api-token = XXX
 ```
@@ -42,7 +42,7 @@ There are three configuration files read in before `/override.cfg`. The first on
 A slightly different command line is as follows:
 
 ```bash
-$ docker run -p 127.0.0.1:9200:9200 -p 127.0.0.1:5601:5601 \
+docker run -p 127.0.0.1:9200:9200 -p 127.0.0.1:5601:5601 \
     -v $(pwd)/logs:/logs \
     -v $(pwd)/credentials.cfg:/override.cfg \
     -t grimoirelab/full
@@ -53,7 +53,7 @@ This one will expose also port `9200`, which corresponds to Elasticsearch. This 
 By default, Elasticsearch will store indexes within the container image, which means they are not persistent if the image shuts down. But you can mount a local directory for Elasticsearch to write the indexes in it. this way they will be available from one run of the image to the next one. For example, to let Elasticsearch use directory `es-data` to write the indexes:
 
 ```bash
-$ docker run -p 127.0.0.1:9200:9200 -p 127.0.0.1:5601:5601 \
+docker run -p 127.0.0.1:9200:9200 -p 127.0.0.1:5601:5601 \
     -v $(pwd)/logs:/logs \
     -v $(pwd)/credentials.cfg:/override.cfg \
     -v $(pwd)/es-data:/var/lib/elasticsearch \
@@ -64,7 +64,7 @@ The `grimoirelab/full` container, by default, produces a dashboard showing an an
 The file to override is `/projects.json` in the container, so the command to run it could be (assuming the file was created as `projects.json` in the current directory):
 
 ```bash
-$ docker run -p 127.0.0.1:9200:9200 -p 127.0.0.1:5601:5601 \
+docker run -p 127.0.0.1:9200:9200 -p 127.0.0.1:5601:5601 \
     -v $(pwd)/logs:/logs \
     -v $(pwd)/credentials.cfg:/override.cfg \
     -v $(pwd)/projects.json:/projects.json \
@@ -74,7 +74,7 @@ $ docker run -p 127.0.0.1:9200:9200 -p 127.0.0.1:5601:5601 \
 You can also get a shell in the running container, and run arbitrary GrimoireLab commands (`container_id` is the identifier of the running container, that you can find out with `docker ps`, or by looking at the first line when running the container):
 
 ```bash
-$ docker exec -it container_id env TERM=xterm /bin/bash
+docker exec -it container_id env TERM=xterm /bin/bash
 ```
 
 In the shell prompt, write any GrimoireLab command. And if you have mounted external files for the SirMordred configuration, you can modify them, and run SirMordred again, to change its behavior.
@@ -82,7 +82,7 @@ In the shell prompt, write any GrimoireLab command. And if you have mounted exte
 If you want to connect to the dashboard to issue your own commands, but don't want it to run SirMordred by itself, run the container setting `RUN_MORDRED` to `NO`:
 
 ```bash
-$ docker run -p 127.0.0.1:9200:9200 -p 127.0.0.1:5601:5601 \
+docker run -p 127.0.0.1:9200:9200 -p 127.0.0.1:5601:5601 \
     -v $(pwd)/logs:/logs \
     -v $(pwd)/credentials.cfg:/override.cfg \
     -v $(pwd)/es-data:/var/lib/elasticsearch \
@@ -100,7 +100,7 @@ This will make the container launch all services, but not running `sirmordred`: 
 For running the `grimoirelab/installed` docker image, first set up the supporting systems in your host,
 as detailed in the [Supporting systems](../basics/supporting.md) section.  Finally, compose a SirMordred configuration file with credentials and references the supporting system. For example:
 
-```
+```cfg
 [es_collection]
 url = http://localhost:9200
 user =
@@ -130,7 +130,7 @@ The last two lines specify your GitHub user token, which is needed to access the
 Now, just run the container as:
 
 ```bash
-$ docker run --net="host" \
+docker run --net="host" \
   -v $(pwd)/credentials.cfg:/override.cfg \
   grimoirelab/installed
 ```

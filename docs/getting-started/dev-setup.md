@@ -130,8 +130,8 @@ mariadb:
 ```
 
 Save the above into a docker-compose.yml file and run
-```console
-$ docker-compose up -d
+```bash
+docker-compose up -d
 ```
 to get Elasticsearch, Kibiter and MariaDB running on your system.
 
@@ -159,8 +159,8 @@ Each local repo should have two `remotes`: `origin` points to the forked repo,
 while `upstream` points to the original CHAOSS repo.
 
 An example is provided below.
-```console
-$ git remote -v
+```bash
+git remote -v
 origin	https://github.com/valeriocos/perceval (fetch)
 origin	https://github.com/valeriocos/perceval (push)
 upstream	https://github.com/chaoss/grimoirelab-perceval (fetch)
@@ -168,8 +168,8 @@ upstream	https://github.com/chaoss/grimoirelab-perceval (push)
 ```
 
 In order to add a remote to a Git repository, you can use the following command:
-```console
-$ git remote add upstream https://github.com/chaoss/grimoirelab-perceval
+```bash
+git remote add upstream https://github.com/chaoss/grimoirelab-perceval
 ```
 
 #### ProTip
@@ -177,8 +177,8 @@ $ git remote add upstream https://github.com/chaoss/grimoirelab-perceval
 You can use this use this
 [script](https://gist.github.com/vchrombie/4403193198cd79e7ee0079259311f6e8) to
 automate this whole process.
-```console
-$ python3 glab-dev-env-setup.py --create --token xxxx --source sources
+```bash
+python3 glab-dev-env-setup.py --create --token xxxx --source sources
 ```
 
 ### Setting up PyCharm
@@ -255,7 +255,7 @@ url = http://localhost:9200
 Run the following commands, which will collect and enrich the data coming from
 the git sections and upload the corresponding panels to Kibiter:
 
-```console
+```bash
 micro.py --raw --enrich --cfg ./setup.cfg --backends git cocom
 micro.py --panels --cfg ./setup.cfg
 ```

@@ -24,23 +24,31 @@ through the following means.
 
 ### Software
 
-```console
-$ git --version
+```bash
+git --version
 git version 2.32.0
-$ docker --version
+```
+```bash
+docker --version
 Docker version 20.10.7, build f0df35096d
-$ docker-compose --version
+```
+```bash
+docker-compose --version
 docker-compose version 1.28.5, build c4eb3a1f
 ```
 
 ### Hardware
 
-```console
-$ cat /proc/cpuinfo | grep processor | wc -l        #View number of processors
+```bash
+cat /proc/cpuinfo | grep processor | wc -l        #View number of processors
 4
-$ grep MemTotal /proc/meminfo                       #View amount of RAM available
+```
+```bash
+grep MemTotal /proc/meminfo                       #View amount of RAM available
 MemTotal:        8029848 kB
-$ sudo sysctl -w vm.max_map_count=262144            #Set virtual memory
+```
+```bash
+sudo sysctl -w vm.max_map_count=262144            #Set virtual memory
 vm.max_map_count = 262144
 ```
 
@@ -52,15 +60,15 @@ mapped areas.
 
 - Clone the GrimoireLab repo:
 
-```console
-$ git clone https://github.com/chaoss/grimoirelab
+```bash
+git clone https://github.com/chaoss/grimoirelab
 ```
 
 - Go to `docker-compose` folder and run the following command:
 
-```console
-$ cd grimoirelab/docker-compose
-grimoirelab/docker-compose$ sudo docker-compose up -d
+```bash
+cd grimoirelab/docker-compose
+sudo docker-compose up -d
 ```
 
 Your dashboard will be ready after a while at `http://localhost:5601`. Usually,

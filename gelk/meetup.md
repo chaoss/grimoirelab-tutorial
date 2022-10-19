@@ -27,8 +27,8 @@ Note: If your site redirects on page load, you may not see the code in the final
 For each of the group names, you only need to run the following command, assuming the group name is `group_name` and the Meetup API key is `meetup_key`:
 
 ```bash
-(gl) $ p2o.py --enrich --index meetup_raw --index-enrich meetup \
--e http://localhost:9200 --no_inc --debug meetup group_name -t meetup_key --tag group_name
+p2o.py --enrich --index meetup_raw --index-enrich meetup \
+  -e http://localhost:9200 --no_inc --debug meetup group_name -t meetup_key --tag group_name
 ```
 
 If the group has a sizable activity, the command will be retrieving data for a while, and uploading it to ElasticSearch, producing:
