@@ -26,13 +26,13 @@ as detailed in the
 First, let's create our new environment. I like my Python virtual environments under the `venvs` subdirectory in my home directory, and in this case I will call it `gl` \(see how original I am!\):
 
 ```bash
-$ python3 -m venv ~/venvs/gl
+python3 -m venv ~/venvs/gl
 ```
 
 Once the virtual environment is created, you can  activate it:
 
 ```bash
-$ source ~/venvs/gl/bin/activate
+source ~/venvs/gl/bin/activate
 (gl) $
 ```
 
@@ -104,7 +104,7 @@ This should produce a banner with information about command line arguments, and 
 
 Assuming everything was fine, next thing is getting information about an specific backend. Let's start with the git backend, which will be a good starter for testing:
 
-```
+```bash
 (gl) $ perceval git --help
 ```
 
@@ -208,9 +208,9 @@ Some of GrimoireLab dependencies need non-Python packages as pre-requisites to b
 
 * For `dulwich` to be installed, you need to have some Python libraries present. In Debian-derived systems (such as Ubuntu), that can be done by installing the `python3-dev` package:
 
-```
-$ sudo apt-get install python3-dev
-$ sudo apt-get install build-essential
+```bash
+sudo apt-get install python3-dev
+sudo apt-get install build-essential
 ```
 
 Usually, you know you need this when you have a problem installing `dulwich`. For example, you check the output of `pip install` and you find:
@@ -230,7 +230,7 @@ Previous instructions are for installing the Python packages corresponding to th
 It is designed to work standalone, with just a few dependencies. It is easy to produce a Python virtual environment with all GrimoireLab tools (and dependencies) installed, corresponding to the latest version in the master branch of each of the development repositories. Just the utility, and run:
 
 ```bash
-$ python3 build_grimoirelab --install --install_venv /tmp/ivenv
+python3 build_grimoirelab --install --install_venv /tmp/ivenv
 ```
 
 This will create a virtual environment in `/tmp/ivenv`, which can be activated as follows
@@ -248,19 +248,19 @@ $ source /tmp/ivenv/bin/activate
 [releases directory](https://github.com/chaoss/grimoirelab/tree/master/releases) and run (assuming you downloaded the release file `elasticgirl.21` to the current directory):
 
 ```bash
-$ python3 build_grimoirelab --install --install_venv /tmp/ivenv --relfile elasticgirl.21
+python3 build_grimoirelab --install --install_venv /tmp/ivenv --relfile elasticgirl.21
 ```
 
 If you want, you can also produce the Python packages (wheels and dists) for any release, or the latest versions in development repositories. For example, for building packages for the latest versions in directory `/tmp/dists`:
 
 ```bash
-$ python3 build_grimoirelab --build --distdir /tmp/ivenv
+python3 build_grimoirelab --build --distdir /tmp/ivenv
 ```
 
 You can get a listing of all the options of `build_grimoirelab` by using its `--help` flag:
 
 ```bash
-$ python3 build_grimoirelab --help
+python3 build_grimoirelab --help
 ```
 
 There is some explanation about some of them in the

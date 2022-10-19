@@ -14,22 +14,22 @@ For demoing the application, you can first install the files for the HTML applic
 For deploying the HTML5 app, just copy `index.html`, `events.js`, and `events.css`, all in the [`scripts`](https://github.com/jgbarah/GrimoireLab-training/blob/master/tools-and-tips/scripts/) directory, to your directory of choice. Then, ensure that some web server is serving that directory. For example, you can launch a simple Python server from it:
 
 ```bash
-$ python3 -m http.server
-Serving HTTP on 0.0.0.0 port 8000 ...
+python3 -m http.server
+# Serving HTTP on 0.0.0.0 port 8000 ...
 ```
 
 Now, let's produce a JSON file with the events that the app will show. For that, we will install [`elastic_last.py`](https://github.com/jgbarah/GrimoireLab-training/blob/master/tools-and-tips/scripts/elastic_last.py) in a Python3 virtual environment with all the needed dependencies (in this case, it is enough to install, via `pip`, the `elasticsearch-dsl` module, and run it:
 
-```
-$ python3 elastic_last.py --loop 10 --total 10 http://localhost:9200/git
+```bash
+python3 elastic_last.py --loop 10 --total 10 http://localhost:9200/git
 ```
 
 (assuming ElasticSearch is running in the same host, in port 9200, as it runs by default, and that it has an index, named `git` with the standard git index, as produced by GrimoireELK)
 
 If we're using a `git` index in an ElasticSearch instance accessible at `https://grimoirelab.biterg.io/data`, using user `user` and password `XXX`:
 
-```
-$ python3 elastic_last.py --no_verify_certs --loop 10 --total 10 \
+```bash
+python3 elastic_last.py --no_verify_certs --loop 10 --total 10 \
 https://user:XXX@grimoirelab.biterg.io/data/git
 ```
 

@@ -18,8 +18,9 @@ parent: Getting Started
 > docker-compose command without the `-d` or `--detach` flag. That will allow
 > you to see all the logs while starting/(re)creating/building/attaching
 > containers for a service.
-  ```console
-  grimoirelab/docker-compose$ docker-compose up
+  ```bash
+  cd grimoirelab/docker-compose
+  docker-compose up
   ```
 ---
 
@@ -42,16 +43,16 @@ WARNING: Host is already in use by another container
 In order to fix it, you need to see which container is using that port and kill
 that container.
 
-```console
-$ docker container ls   # View all running containers
-CONTAINER ID   IMAGE                                                     COMMAND                  CREATED         STATUS                     PORTS                                                 NAMES
-01f0767adb47   grimoirelab/hatstall:latest                               "/bin/sh -c ${DEPLOY…"   2 minutes ago   Up 2 minutes               0.0.0.0:8000->80/tcp, :::8000->80/tcp                 docker-compose_hatstall_1
-9587614c7c4e   bitergia/mordred:latest                                   "/bin/sh -c ${DEPLOY…"   2 minutes ago   Up 2 minutes (unhealthy)                                                         docker-compose_mordred_1
-c3f3f118bead   bitergia/kibiter:community-v6.8.6-3                       "/docker_entrypoint.…"   2 minutes ago   Up 2 minutes               0.0.0.0:5601->5601/tcp, :::5601->5601/tcp             docker-compose_kibiter_1
-d3c691acaf7b   mariadb:10.0                                              "docker-entrypoint.s…"   2 minutes ago   Up 2 minutes               3306/tcp                                              docker-compose_mariadb_1
-f5f406146ee9   docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.6   "/usr/local/bin/dock…"   2 minutes ago   Up 2 minutes               0.0.0.0:9200->9200/tcp, :::9200->9200/tcp, 9300/tcp   docker-compose_elasticsearch_1
+```bash
+docker container ls   # View all running containers
+# CONTAINER ID   IMAGE                                                     COMMAND                  CREATED         STATUS                     PORTS                                                 NAMES
+# 01f0767adb47   grimoirelab/hatstall:latest                               "/bin/sh -c ${DEPLOY…"   2 minutes ago   Up 2 minutes               0.0.0.0:8000->80/tcp, :::8000->80/tcp                 docker-compose_hatstall_1
+# 9587614c7c4e   bitergia/mordred:latest                                   "/bin/sh -c ${DEPLOY…"   2 minutes ago   Up 2 minutes (unhealthy)                                                         docker-compose_mordred_1
+# c3f3f118bead   bitergia/kibiter:community-v6.8.6-3                       "/docker_entrypoint.…"   2 minutes ago   Up 2 minutes               0.0.0.0:5601->5601/tcp, :::5601->5601/tcp             docker-compose_kibiter_1
+# d3c691acaf7b   mariadb:10.0                                              "docker-entrypoint.s…"   2 minutes ago   Up 2 minutes               3306/tcp                                              docker-compose_mariadb_1
+# f5f406146ee9   docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.6   "/usr/local/bin/dock…"   2 minutes ago   Up 2 minutes               0.0.0.0:9200->9200/tcp, :::9200->9200/tcp, 9300/tcp   docker-compose_elasticsearch_1
 
-$ docker rm -f c3f3f118bead          #c3f3f118bead is the container that is using port 5601.
+docker rm -f c3f3f118bead          #c3f3f118bead is the container that is using port 5601.
 ```
 
 ### Empty dashboard or visualization
@@ -83,16 +84,16 @@ elasticsearch_1  | [1]: max virtual memory areas vm.max_map_count [65530] is too
 Solution
 
 Increase the kernel `max_map_count` parameter of vm using the following command.
-```console
-$ sudo sysctl -w vm.max_map_count=262144
+```bash
+sudo sysctl -w vm.max_map_count=262144
 ```
 
 Now stop the container services and re-run `docker-compose up`. Note that this
 is valid only for current session. To set this value permanently, update the
 `vm.max_map_count` setting in `/etc/sysctl.conf` file. To verify after
 rebooting, run the below command.
-```console
-$ sysctl vm.max_map_count
+```bash
+sysctl vm.max_map_count
 ```
 
 ### Processes have conflicts with SearchGuard
@@ -100,9 +101,9 @@ $ sysctl vm.max_map_count
 Indication
 
 Cannot open `localhost:9200` in browser, shows `Secure connection Failed`
-```console
-$ curl -XGET localhost:9200 -k
-curl: (52) Empty reply from server
+```bash
+curl -XGET localhost:9200 -k
+# curl: (52) Empty reply from server
 ```
 
 Diagnosis
@@ -114,19 +115,19 @@ elasticsearch_1  | [2020-03-12T13:05:34,959][WARN ][c.f.s.h.SearchGuardHttpServe
 
 Check for conflicting processes by running the below command (assuming 5888 is
 the port number)
-```console
-$ sudo lsof -i:5888
+```bash
+sudo lsof -i:5888
 ```
 
 Solution
 
 1. Try to close the conflicting processes. You can do this easily with fuser
-```console
-$ sudo apt-get install fuser
+```bash
+sudo apt-get install fuser
 ```
 Run the below command (assuming 5888 is the port number)
-```console
-$ fuser -k 58888/tcp
+```bash
+fuser -k 58888/tcp
 ```
 Re-run `docker-compose up` and check if `localhost:9200` shows up.'
 
@@ -215,9 +216,9 @@ again and extract all commits.
 Indication
 
 Cannot open `localhost:9200` in browser, shows `Secure connection Failed`
-```console
-$ curl -XGET localhost:9200 -k
-curl: (7) Failed to connect to localhost port 9200: Connection refused
+```bash
+curl -XGET localhost:9200 -k
+# curl: (7) Failed to connect to localhost port 9200: Connection refused
 ```
 
 Diagnosis
@@ -232,13 +233,13 @@ Solution
 
 1. Increase the maximum File Descriptors (FD) enforced. You can do this by
    running the below command.
-```console
-$ sysctl -w fs.file-max=65536
+```bash
+sysctl -w fs.file-max=65536
 ```
 To set this value permanently, update `/etc/security/limits.conf` content to
 below. To verify after rebooting, run
-```console
-$ sysctl fs.file-max
+```bash
+sysctl fs.file-max
 ```
 ```
 elasticsearch   soft    nofile          65536
@@ -326,8 +327,8 @@ Execute the following command to install `cloc` (more details are available in
 the
 [Graal](https://github.com/chaoss/grimoirelab-graal#how-to-installcreate-the-executables)
 repo).
-```console
-$ sudo apt-get install cloc
+```bash
+sudo apt-get install cloc
 ```
 
 ### Incomplete data

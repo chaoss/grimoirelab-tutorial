@@ -33,20 +33,20 @@ provided the right version of Python is available. In other platforms, your mile
 Python3 is a standard package in Debian, so it is easy to install:
 
 ```bash
-$ sudo apt-get install python3
+sudo apt-get install python3
 ```
 
 Once installed, you can check the installed version:
 
 ```bash
-$ python3 --version
+python3 --version
 ```
 
 For installing some other Python modules, including GrimoireLab modules, you will need `pip` for Python3. For using `venv` virtual environments, you will also need `ensurepip`. Both are available in Debian and derivatives as packages `python3-pip` and `python3-venv`:
 
 ```bash
-$ sudo apt-get install python3-pip
-$ sudo apt-get install python3-venv
+sudo apt-get install python3-pip
+sudo apt-get install python3-venv
 ```
 
 More information about installing Python3 in other platforms is available in [Properly installing Python](http://docs.python-guide.org/en/latest/starting/installation/). In addition, you can also check information on [how to install pip](https://pip.pypa.io/en/stable/installing/).
@@ -56,7 +56,7 @@ More information about installing Python3 in other platforms is available in [Pr
 If you are retrieving data from git repositories, you will need git installed. Pretty simple:
 
 ```bash
-$ sudo apt-get install git-all
+sudo apt-get install git-all
 ```
 
 More information about installing git in other platforms is available in
@@ -71,7 +71,7 @@ For installing Elasticsearch you can follow its [installation instructions](http
 Assuming the installed ElasticSearch directory is `elasticsearch`, to launch it you will just run the appropriate command \(no need to run this from the virtual environment\):
 
 ```bash
-$ elasticsearch/bin/elasticsearch
+elasticsearch/bin/elasticsearch
 ```
 
 This will launch Elasticsearch that will listen via its HTTP REST API at `http://localhost:9200`. You can check that everything went well by pointing your web browser to that url, and watching the ElasticSearch welcome message.
@@ -91,7 +91,7 @@ You can install Kibana instead of Kibiter. Maybe you will lose some functionalit
 Assuming the installed Kibana directory is `kibana`, to launch it, again just run the appropriate command:
 
 ```bash
-$ kibana/bin/kibana
+kibana/bin/kibana
 ```
 
 This should serve a Kibana instance in `http://localhost:5601`. Point your web browser to that url, and you´ll see the Kibana welcome page.
@@ -105,7 +105,7 @@ Now, we´re ready to go.
 Instead of following the installation instructions mentioned above, you can also install ElasticSearch and Kibana as a Docker container, by using pre-composed images. For example:
 
 ```bash
-$ docker run -d -p 9200:9200 -p 5601:5601 nshou/elasticsearch-kibana
+docker run -d -p 9200:9200 -p 5601:5601 nshou/elasticsearch-kibana
 ```
 
 Then you can connect to Elasticsearch by localhost:9200 and its Kibana front-end by localhost:5601. See [details about these Docker images in DockerHub](https://hub.docker.com/r/nshou/elasticsearch-kibana/)
@@ -116,7 +116,7 @@ Then you can connect to Elasticsearch by localhost:9200 and its Kibana front-end
 If you are going to use SortingHat, you will need a database. Currently, MySQL-like databases are supported. In our case, we will use MariaDB. Installing it in Debian is easy:
 
 ```bash
-$ sudo apt-get install mariadb-server
+sudo apt-get install mariadb-server
 ```
 
 That's it, that's all.

@@ -36,7 +36,7 @@ For example, let's merge repo identity `4fcec5a` (dpose, dpose@sega.bitergia.net
 Notice that we had to use the complete hashes (in the table above, and in the listing in the previous section, we shortened them just for readability). What we have done is to merge `4fcec5a` on `5b358fc`, and the result is:
 
 ```bash
-$ mysql -u user -pXXX -e 'SELECT * FROM identities WHERE uuid LIKE "5b358fc%";' shdb
+mysql -u user -pXXX -e 'SELECT * FROM identities WHERE uuid LIKE "5b358fc%";' shdb
 | id      | name  | email                   | username | source | uuid    |                                 
 | 4fcec5a | dpose | dpose@sega.bitergia.net | NULL     | git    | 5b358fc |
 | 5b358fc | dpose | dpose@bitergia.com      | NULL     | git    | 5b358fc |

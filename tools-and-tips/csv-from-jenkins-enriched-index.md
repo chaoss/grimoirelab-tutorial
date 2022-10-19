@@ -7,8 +7,8 @@ To illustrate how to get data from an enriched index (produced using `grimoire_e
 To use it, we can create a new virtual environment for Python, and install the needed modules (including the script) in it.
 
 ```bash
-$ pyvenv ~/venv
-$ source ~/venv/bin/activate
+pyvenv ~/venv
+source ~/venv/bin/activate
 (venv) $ pip install elasticsearch
 (venv) $ pip install elasticsearch-dsl
 (venv) $ wget https://raw.githubusercontent.com/jgbarah/GrimoireLab-training/master/tools-and-tips/scripts/enriched_elasticsearch_jenkins.py

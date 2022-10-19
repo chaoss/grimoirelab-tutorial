@@ -60,8 +60,8 @@ mariadb:
 
 You can now run the following command in order to start the execution of individual instances.
 
-```
-$ docker-compose -f docker-config.yml up
+```bash
+docker-compose -f docker-config.yml up
 ```
 
 Once you see something similar to the below `log` on your console, it means that you've successfully instantiated the containers corresponding to the required components.
@@ -100,8 +100,8 @@ kibiter_1        | {"type":"log","@timestamp":"2019-05-30T09:38:25Z","tags":["st
 
 3. As you can see on the `Kibiter Instance` above, it says `Couldn't find any Elasticsearch data. You'll need to index some data into Elasticsearch before you can create an index pattern`. Hence, in order to index some data, we'll now execute micro-mordred using the following command, which will call the `Raw` and `Enrich` tasks for the Git config section from the provided `setup.cfg` file.
 
-```
-$ python3 micro.py --raw --enrich --cfg setup.cfg --backends git
+```bash
+python3 micro.py --raw --enrich --cfg setup.cfg --backends git
 ```
 
 The above command requires two files:
@@ -114,14 +114,14 @@ We'll (for the purpose of this tutorial) use the files provided in the `/utils` 
 
 - **Note**: In case the process fails to index the data to the ElasticSearch, check the `.perceval` folder in the home directory; which in this case may contain the same repositories as mentioned in the `projects.json` file. We can proceed after removing the repositories using the following command.
 
-```
-$ rm -rf .perceval/repositories/...
+```bash
+rm -rf .perceval/repositories/...
 ```
 
 4. Now, we can create the index pattern and after its successful creation we can analyze the data as per fields. Then, we execute the `panels` task to load the corresponding `sigils panels` to Kibiter instance using the following command.
 
-```
-$ python3 micro.py --panels --cfg setup.cfg
+```bash
+python3 micro.py --panels --cfg setup.cfg
 ```
 
 On successful execution of the above command, we can manage to produce some dashboard similar to the one shown below.

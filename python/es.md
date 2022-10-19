@@ -57,34 +57,34 @@ When running it, you'll see the objects with the hashes being printed in the scr
 
 Once you run the script, the `commits` index is created in ElasticSearch. You can check its characteristics using `curl`. The `pretty` option is to obtain a human-readable JSON document as response. Notice that we don't need to run `curl` from the virtual environment:
 
-```
-$ curl -XGET http://localhost:9200/commits?pretty
-{
-  "commits" : {
-    "aliases" : { },
-    "mappings" : {
-      "summary" : {
-        "properties" : {
-          "hash" : {
-            "type" : "string"
-          }
-        }
-      }
-    },
-    "settings" : {
-      "index" : {
-        "creation_date" : "1476470820231",
-        "number_of_shards" : "5",
-        "number_of_replicas" : "1",
-        "uuid" : "7DSlRG8ZSTuE1pMboG07yg",
-        "version" : {
-          "created" : "2020099"
-        }
-      }
-    },
-    "warmers" : { }
-  }
-}
+```bash
+curl -XGET http://localhost:9200/commits?pretty
+# {
+#   "commits" : {
+#     "aliases" : { },
+#     "mappings" : {
+#       "summary" : {
+#         "properties" : {
+#           "hash" : {
+#             "type" : "string"
+#           }
+#         }
+#       }
+#     },
+#     "settings" : {
+#       "index" : {
+#         "creation_date" : "1476470820231",
+#         "number_of_shards" : "5",
+#         "number_of_replicas" : "1",
+#         "uuid" : "7DSlRG8ZSTuE1pMboG07yg",
+#         "version" : {
+#           "created" : "2020099"
+#         }
+#       }
+#     },
+#     "warmers" : { }
+#   }
+# }
 ```
 
 ## Deleting is important as well
@@ -92,8 +92,8 @@ $ curl -XGET http://localhost:9200/commits?pretty
 If you want to delete the index (for example, to run the script once again) you can just run `DELETE` on its url. For example, with `curl`:
 
 ```bash
-$ curl -XDELETE http://localhost:9200/commits
-{"acknowledged":true}
+curl -XDELETE http://localhost:9200/commits
+# {"acknowledged":true}
 ```
 
 If you don't do this, before running the previous script once again, you'll see an exception such as:
@@ -175,34 +175,34 @@ print('\nCreated new index with commits.')
 After running it (deleting any previous `commits` index if needed), we have a new index with the intended information for all commits. We can see one of them querying the index using directly the ElasticSearch REST API with `curl`:
 
 ```bash
-$ curl -XGET "http://localhost:9200/commits/_search/?size=1&pretty"
-{
-  "took" : 2,
-  "timed_out" : false,
-  "_shards" : {
-    "total" : 5,
-    "successful" : 5,
-    "failed" : 0
-  },
-  "hits" : {
-    "total" : 407,
-    "max_score" : 1.0,
-    "hits" : [ {
-      "_index" : "commits",
-      "_type" : "summary",
-      "_id" : "AVfPp9Po5xUyv5saVPKU",
-      "_score" : 1.0,
-      "_source" : {
-        "hash" : "d1253dd9876bb76e938a861acaceaae95241b46d",
-        "commit" : "Santiago Dueñas <sduenas@bitergia.com>",
-        "author" : "Santiago Dueñas <sduenas@bitergia.com>",
-        "author_date" : "Wed Nov 18 10:59:52 2015 +0100",
-        "files_no" : 3,
-        "commit_date" : "Wed Nov 18 14:41:21 2015 +0100"
-      }
-    } ]
-  }
-}
+curl -XGET "http://localhost:9200/commits/_search/?size=1&pretty"
+# {
+#   "took" : 2,
+#   "timed_out" : false,
+#   "_shards" : {
+#     "total" : 5,
+#     "successful" : 5,
+#     "failed" : 0
+#   },
+#   "hits" : {
+#     "total" : 407,
+#     "max_score" : 1.0,
+#     "hits" : [ {
+#       "_index" : "commits",
+#       "_type" : "summary",
+#       "_id" : "AVfPp9Po5xUyv5saVPKU",
+#       "_score" : 1.0,
+#       "_source" : {
+#         "hash" : "d1253dd9876bb76e938a861acaceaae95241b46d",
+#         "commit" : "Santiago Dueñas <sduenas@bitergia.com>",
+#         "author" : "Santiago Dueñas <sduenas@bitergia.com>",
+#         "author_date" : "Wed Nov 18 10:59:52 2015 +0100",
+#         "files_no" : 3,
+#         "commit_date" : "Wed Nov 18 14:41:21 2015 +0100"
+#       }
+#     } ]
+#   }
+# }
 ```
 
 Since we specified in the query we only wanted one document (`size=1`), we get a list of `hits` with a single document. But we can see also how there are a total of 407 documents (field `total` within field `hits`). For each document, we can see the information we have stored, which are the contents of `_source`.
@@ -261,38 +261,38 @@ import datetime
 
 Instead of using the character strings that we get from Perceval as values for those two fields, we first convert them to `datetime` objects. This is enough for the `elasticsearch` module to recognize as dates, and upload them as such. You can check the resulting mapping after running this new script:
 
-```
-$ curl -XGET "http://localhost:9200/commits/_mapping?pretty"
-{
-  "commits" : {
-    "mappings" : {
-      "summary" : {
-        "properties" : {
-          "author" : {
-            "type" : "string"
-          },
-          "author_date" : {
-            "type" : "date",
-            "format" : "strict_date_optional_time||epoch_millis"
-          },
-          "commit" : {
-            "type" : "string"
-          },
-          "commit_date" : {
-            "type" : "date",
-            "format" : "strict_date_optional_time||epoch_millis"
-          },
-          "files_no" : {
-            "type" : "long"
-          },
-          "hash" : {
-            "type" : "string"
-          }
-        }
-      }
-    }
-  }
-}
+```bash
+curl -XGET "http://localhost:9200/commits/_mapping?pretty"
+# {
+#   "commits" : {
+#     "mappings" : {
+#       "summary" : {
+#         "properties" : {
+#           "author" : {
+#             "type" : "string"
+#           },
+#           "author_date" : {
+#             "type" : "date",
+#             "format" : "strict_date_optional_time||epoch_millis"
+#           },
+#           "commit" : {
+#             "type" : "string"
+#           },
+#           "commit_date" : {
+#             "type" : "date",
+#             "format" : "strict_date_optional_time||epoch_millis"
+#           },
+#           "files_no" : {
+#             "type" : "long"
+#           },
+#           "hash" : {
+#             "type" : "string"
+#           }
+#         }
+#       }
+#     }
+#   }
+# }
 ```
 
 So, now we have a more complete index for commits, and each of the fields in it have reasonable types in the ElasticSearch mapping.

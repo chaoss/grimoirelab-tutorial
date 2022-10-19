@@ -27,7 +27,7 @@ In this case, `user` is a user of the MySQL instance with permissions to create 
 If the command didn't throw any error message, you're done: a new `shdb` database was created. If you want, you can check it with a simple `mysql` command:
 
 ```bash
-$ mysql -u user -pXXX -e 'SHOW DATABASES;'
+mysql -u user -pXXX -e 'SHOW DATABASES;'
 ```
 
 You should see `shdb` in the list of databases.
@@ -35,7 +35,7 @@ You should see `shdb` in the list of databases.
 If for any reason you want to delete the database at some point, just run the appropriate mysql command:
 
 ```bash
-$ mysql -u user -pXXX -e 'DROP DATABASE shdb;'
+mysql -u user -pXXX -e 'DROP DATABASE shdb;'
 ```
 
 Now, with our shiny new database ready, you can create indexes with SortingHat support.
@@ -61,7 +61,7 @@ For example, for producing the index for the git repository for Perceval, run:
 That means we have new `git_raw` and `git` indexes, but we also have a populated `shdb` database (assuming we have MySQL running in `localhost`, that is the machine where the script is run). If you want to check what's in it, you can again use `mysql`:
 
 ```bash
-$ mysql -u user -pXXX -e 'SELECT * FROM identities;' shdb
+mysql -u user -pXXX -e 'SELECT * FROM identities;' shdb
 ```
 
 This will show all the identities found in the Perceval git repository.

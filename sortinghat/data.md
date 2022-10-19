@@ -49,7 +49,7 @@ let's visit the data structure of the database it maintains.
 See [A dashboard with SortingHat](../gelk/sortinghat.md), and the introduction to this chapter, for details on how the database was produced; `user` and `XXX` are the credentials to access the `shdb` database. For finding out about its tables, just query MySQL.
 
 ```bash
-$ mysql -u user -pXXX -e 'SHOW TABLES;' shdb
+mysql -u user -pXXX -e 'SHOW TABLES;' shdb
 ...
 | countries             |
 | domains_organizations |
@@ -177,8 +177,8 @@ When we unify repo identities (merging several into a single unique identity), w
 
 Up to now we have not used SortingHat to assign organizations to persons (unique identities). Therefore, `enrollments` and `organizations` tables are empty. But we can check their structure.
 
-```
-$ mysql -u user -pXXX -e 'DESCRIBE organizations;' shdb
+```bash
+mysql -u user -pXXX -e 'DESCRIBE organizations;' shdb
 +-------+--------------+------+-----+---------+----------------+
 | Field | Type         | Null | Key | Default | Extra          |
 +-------+--------------+------+-----+---------+----------------+
@@ -192,8 +192,8 @@ In this format, each row corresponds to the description of a field in the `organ
 
 `enrollments` table is a bit more complex:
 
-```
-$ mysql -u user -pXXX -e 'DESCRIBE enrollments;' shdb
+```bash
+mysql -u user -pXXX -e 'DESCRIBE enrollments;' shdb
 +-----------------+--------------+------+-----+---------+----------------+
 | Field           | Type         | Null | Key | Default | Extra          |
 +-----------------+--------------+------+-----+---------+----------------+
