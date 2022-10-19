@@ -13,7 +13,7 @@ Instead of that, we will move one abstraction layer up, and will use the [elasti
 So, let's start with the basics of using the `elasticsearch` module. To begin with, we will add the module to our virtual environment, using pip:
 
 ```bash
-(perceval) $ pip install elasticsearch
+pip install elasticsearch
 ```
 
 Now we can write some Python code to test it
@@ -48,7 +48,7 @@ This little script assumes that we're running a local instance of ElasticSearch,
 When running it, you'll see the objects with the hashes being printed in the screen, right before they are uploaded to ElasticSearch:
 
 ```bash
-(perceval) $ python perceval_elasticsearch_1.py
+python perceval_elasticsearch_1.py
 {'hash': 'dc78c254e464ff334892e0448a23e4cfbfc637a3'}
 {'hash': '57bc204822832a6c23ac7883e5392f4da6f4ca37'}
 {'hash': '2355d18310d8e15c8e5d44f688d757df33b0e4be'}
@@ -59,32 +59,32 @@ Once you run the script, the `commits` index is created in ElasticSearch. You ca
 
 ```bash
 curl -XGET http://localhost:9200/commits?pretty
-# {
-#   "commits" : {
-#     "aliases" : { },
-#     "mappings" : {
-#       "summary" : {
-#         "properties" : {
-#           "hash" : {
-#             "type" : "string"
-#           }
-#         }
-#       }
-#     },
-#     "settings" : {
-#       "index" : {
-#         "creation_date" : "1476470820231",
-#         "number_of_shards" : "5",
-#         "number_of_replicas" : "1",
-#         "uuid" : "7DSlRG8ZSTuE1pMboG07yg",
-#         "version" : {
-#           "created" : "2020099"
-#         }
-#       }
-#     },
-#     "warmers" : { }
-#   }
-# }
+{
+  "commits" : {
+    "aliases" : { },
+    "mappings" : {
+      "summary" : {
+        "properties" : {
+          "hash" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "settings" : {
+      "index" : {
+        "creation_date" : "1476470820231",
+        "number_of_shards" : "5",
+        "number_of_replicas" : "1",
+        "uuid" : "7DSlRG8ZSTuE1pMboG07yg",
+        "version" : {
+          "created" : "2020099"
+        }
+      }
+    },
+    "warmers" : { }
+  }
+}
 ```
 
 ## Deleting is important as well
@@ -93,7 +93,7 @@ If you want to delete the index (for example, to run the script once again) you 
 
 ```bash
 curl -XDELETE http://localhost:9200/commits
-# {"acknowledged":true}
+{"acknowledged":true}
 ```
 
 If you don't do this, before running the previous script once again, you'll see an exception such as:
@@ -176,33 +176,33 @@ After running it (deleting any previous `commits` index if needed), we have a ne
 
 ```bash
 curl -XGET "http://localhost:9200/commits/_search/?size=1&pretty"
-# {
-#   "took" : 2,
-#   "timed_out" : false,
-#   "_shards" : {
-#     "total" : 5,
-#     "successful" : 5,
-#     "failed" : 0
-#   },
-#   "hits" : {
-#     "total" : 407,
-#     "max_score" : 1.0,
-#     "hits" : [ {
-#       "_index" : "commits",
-#       "_type" : "summary",
-#       "_id" : "AVfPp9Po5xUyv5saVPKU",
-#       "_score" : 1.0,
-#       "_source" : {
-#         "hash" : "d1253dd9876bb76e938a861acaceaae95241b46d",
-#         "commit" : "Santiago Dueñas <sduenas@bitergia.com>",
-#         "author" : "Santiago Dueñas <sduenas@bitergia.com>",
-#         "author_date" : "Wed Nov 18 10:59:52 2015 +0100",
-#         "files_no" : 3,
-#         "commit_date" : "Wed Nov 18 14:41:21 2015 +0100"
-#       }
-#     } ]
-#   }
-# }
+{
+  "took" : 2,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 5,
+    "successful" : 5,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 407,
+    "max_score" : 1.0,
+    "hits" : [ {
+      "_index" : "commits",
+      "_type" : "summary",
+      "_id" : "AVfPp9Po5xUyv5saVPKU",
+      "_score" : 1.0,
+      "_source" : {
+        "hash" : "d1253dd9876bb76e938a861acaceaae95241b46d",
+        "commit" : "Santiago Dueñas <sduenas@bitergia.com>",
+        "author" : "Santiago Dueñas <sduenas@bitergia.com>",
+        "author_date" : "Wed Nov 18 10:59:52 2015 +0100",
+        "files_no" : 3,
+        "commit_date" : "Wed Nov 18 14:41:21 2015 +0100"
+      }
+    } ]
+  }
+}
 ```
 
 Since we specified in the query we only wanted one document (`size=1`), we get a list of `hits` with a single document. But we can see also how there are a total of 407 documents (field `total` within field `hits`). For each document, we can see the information we have stored, which are the contents of `_source`.
@@ -212,7 +212,7 @@ Since we specified in the query we only wanted one document (`size=1`), we get a
 Every index in ElasticSearch has a 'mapping'. Mappings specify how the index is, for example in terms of data types. If we don't specify a mapping before uploading data to an index, ElasticSearch will infere the mapping from the data. Therefore, even when we created no mapping for it, we can have a look at the mapping for the recently created index:
 
 ```bash
-(perceval) $ curl -XGET "http://localhost:9200/commits/_mapping?pretty"
+curl -XGET "http://localhost:9200/commits/_mapping?pretty"
 {
   "commits" : {
     "mappings" : {
@@ -263,36 +263,36 @@ Instead of using the character strings that we get from Perceval as values for t
 
 ```bash
 curl -XGET "http://localhost:9200/commits/_mapping?pretty"
-# {
-#   "commits" : {
-#     "mappings" : {
-#       "summary" : {
-#         "properties" : {
-#           "author" : {
-#             "type" : "string"
-#           },
-#           "author_date" : {
-#             "type" : "date",
-#             "format" : "strict_date_optional_time||epoch_millis"
-#           },
-#           "commit" : {
-#             "type" : "string"
-#           },
-#           "commit_date" : {
-#             "type" : "date",
-#             "format" : "strict_date_optional_time||epoch_millis"
-#           },
-#           "files_no" : {
-#             "type" : "long"
-#           },
-#           "hash" : {
-#             "type" : "string"
-#           }
-#         }
-#       }
-#     }
-#   }
-# }
+{
+  "commits" : {
+    "mappings" : {
+      "summary" : {
+        "properties" : {
+          "author" : {
+            "type" : "string"
+          },
+          "author_date" : {
+            "type" : "date",
+            "format" : "strict_date_optional_time||epoch_millis"
+          },
+          "commit" : {
+            "type" : "string"
+          },
+          "commit_date" : {
+            "type" : "date",
+            "format" : "strict_date_optional_time||epoch_millis"
+          },
+          "files_no" : {
+            "type" : "long"
+          },
+          "hash" : {
+            "type" : "string"
+          }
+        }
+      }
+    }
+  }
+}
 ```
 
 So, now we have a more complete index for commits, and each of the fields in it have reasonable types in the ElasticSearch mapping.

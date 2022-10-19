@@ -26,13 +26,13 @@ as detailed in the
 First, let's create our new environment. I like my Python virtual environments under the `venvs` subdirectory in my home directory, and in this case I will call it `gl` \(see how original I am!\):
 
 ```bash
-python3 -m venv ~/venvs/gl
+$ python3 -m venv ~/venvs/gl
 ```
 
 Once the virtual environment is created, you can  activate it:
 
 ```bash
-source ~/venvs/gl/bin/activate
+$ source ~/venvs/gl/bin/activate
 (gl) $
 ```
 
@@ -215,7 +215,7 @@ sudo apt-get install build-essential
 
 Usually, you know you need this when you have a problem installing `dulwich`. For example, you check the output of `pip install` and you find:
 
-```
+```bash
 dulwich/_objects.c:21:10: fatal error: Python.h: No such file or Directory
 ```
 

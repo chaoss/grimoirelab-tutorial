@@ -18,10 +18,10 @@ or suggest something. Any feedback is appreciated!
 
 If you are willing to setup the tutorial locally
 ```bash
-$ git clone https://github.com/chaoss/grimoirelab-tutorial
-$ cd grimoirelab-tutorial
-$ bundle
-$ bundle exec jekyll serve
+git clone https://github.com/chaoss/grimoirelab-tutorial
+cd grimoirelab-tutorial
+bundle
+bundle exec jekyll serve
 ```
 
 **Note:** Make sure you have git and ruby (version 2.7.x) installed.
@@ -43,17 +43,17 @@ which is a fork (copy) of the GrimoireLab Tutorial.
 2. Clone the forked git repository, and create in a local branch for your 
 contribution.
 
-```
-$ git clone https://github.com/username/grimoirelab-tutorial/
-$ cd grimoirelab-tutorial/
-$ git checkout -b new-branch-name
+```bash
+git clone https://github.com/username/grimoirelab-tutorial/
+cd grimoirelab-tutorial/
+git checkout -b new-branch-name
 ```
 
 3. In this repository, set up a remote for the upstream (original grimoirelab-tutorial) 
 git repository.
 
-```
-$ git remote add upstream https://github.com/chaoss/grimoirelab-tutorial/
+```bash
+git remote add upstream https://github.com/chaoss/grimoirelab-tutorial/
 ```
 
 4. Now you can change the documentation and then commit it. Except that the 
@@ -61,19 +61,19 @@ contribution really needs it, use a single commit, and comment in detail in the
 corresponding commit message what it is intended to do. If it fixes some bug, 
 reference it (with the text "_Fixes #23_", for example, for issue number 23).
 
-```
-$ git add -A
-$ git commit -s
+```bash
+git add -A
+git commit -s
 ```
 
 5. Once your contribution is ready, rebase your local branch with `upstream/master`, 
 so that it merges clean with that branch, and push your local branch to a remote 
 branch to your GitHub repository.
 
-```
-$ git fetch upstream
-$ git rebase upstream/master
-$ git push origin new-branch-name
+```bash
+git fetch upstream
+git rebase upstream/master
+git push origin new-branch-name
 ```
 
 6. In the GitHub interface, produce a pull request from your branch (you will 
@@ -97,7 +97,7 @@ For ensuring it, a bot checks all incoming commits.
 For users of the git command line interface, a sign-off is accomplished with the 
 `-s` as part of the commit command:
 
-```
+```bash
 git commit -s -m 'This is a commit message'
 ```
 

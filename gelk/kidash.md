@@ -14,13 +14,13 @@ You can save a dashboard, with all its components, to a file, either for backup 
 
 
 ```bash
-(grimoireelk) kidash -e http://localhost:9200 --dashboard "Git" --export /tmp/dashboard-git.json
+kidash -e http://localhost:9200 --dashboard "Git" --export /tmp/dashboard-git.json
 ``` 
 
 You can learn the name of the dashboard by looking at its top left corner, or by noting the name you use when opening it in Kibana. If the name includes spaces, use "-" instead. For example, for a dashboard named "Git History", use the line:
 
 ```bash
-(grimoireelk) kidash -e http://localhost:9200 --dashboard "Git-History" \
+kidash -e http://localhost:9200 --dashboard "Git-History" \
   --export /tmp/dashboard-git.json
 ``` 
 
@@ -42,7 +42,7 @@ We already restored a dashboard in the
 We can restore from any file created with kidash. Assuming we have that file as `/tmp/dashboard-git.json`, we need to know the link to the ElasticSearch REST interface (same as for backing up). The format is, for example, as follows:
 
 ```bash
-(grimoireelk) $ kidash --elastic_url http://localhost:9200 \
+kidash --elastic_url http://localhost:9200 \
   --import /tmp/dashboard-git.json
 ```
 
@@ -53,5 +53,5 @@ This will restore all elements in the file, overwriting, if needed, elements wit
 Kidash has some more options. For a complete listing, use the `--help` argument:
 
 ```bash
-(grimoireelk) $ kidash --help
+kidash --help
 ```

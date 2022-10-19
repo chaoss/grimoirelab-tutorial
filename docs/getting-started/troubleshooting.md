@@ -36,7 +36,7 @@ parent: Getting Started
 It may also happen that the port, 5601, is already allocated to some other
 container. So running docker-compose will lead to the following error
 
-```console
+```
 WARNING: Host is already in use by another container
 ```
 
@@ -45,13 +45,14 @@ that container.
 
 ```bash
 docker container ls   # View all running containers
-# CONTAINER ID   IMAGE                                                     COMMAND                  CREATED         STATUS                     PORTS                                                 NAMES
-# 01f0767adb47   grimoirelab/hatstall:latest                               "/bin/sh -c ${DEPLOY…"   2 minutes ago   Up 2 minutes               0.0.0.0:8000->80/tcp, :::8000->80/tcp                 docker-compose_hatstall_1
-# 9587614c7c4e   bitergia/mordred:latest                                   "/bin/sh -c ${DEPLOY…"   2 minutes ago   Up 2 minutes (unhealthy)                                                         docker-compose_mordred_1
-# c3f3f118bead   bitergia/kibiter:community-v6.8.6-3                       "/docker_entrypoint.…"   2 minutes ago   Up 2 minutes               0.0.0.0:5601->5601/tcp, :::5601->5601/tcp             docker-compose_kibiter_1
-# d3c691acaf7b   mariadb:10.0                                              "docker-entrypoint.s…"   2 minutes ago   Up 2 minutes               3306/tcp                                              docker-compose_mariadb_1
-# f5f406146ee9   docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.6   "/usr/local/bin/dock…"   2 minutes ago   Up 2 minutes               0.0.0.0:9200->9200/tcp, :::9200->9200/tcp, 9300/tcp   docker-compose_elasticsearch_1
-
+CONTAINER ID   IMAGE                                                     COMMAND                  CREATED         STATUS                     PORTS                                                 NAMES
+01f0767adb47   grimoirelab/hatstall:latest                               "/bin/sh -c ${DEPLOY…"   2 minutes ago   Up 2 minutes               0.0.0.0:8000->80/tcp, :::8000->80/tcp                 docker-compose_hatstall_1
+9587614c7c4e   bitergia/mordred:latest                                   "/bin/sh -c ${DEPLOY…"   2 minutes ago   Up 2 minutes (unhealthy)                                                         docker-compose_mordred_1
+c3f3f118bead   bitergia/kibiter:community-v6.8.6-3                       "/docker_entrypoint.…"   2 minutes ago   Up 2 minutes               0.0.0.0:5601->5601/tcp, :::5601->5601/tcp             docker-compose_kibiter_1
+d3c691acaf7b   mariadb:10.0                                              "docker-entrypoint.s…"   2 minutes ago   Up 2 minutes               3306/tcp                                              docker-compose_mariadb_1
+f5f406146ee9   docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.6   "/usr/local/bin/dock…"   2 minutes ago   Up 2 minutes               0.0.0.0:9200->9200/tcp, :::9200->9200/tcp, 9300/tcp   docker-compose_elasticsearch_1
+```
+```bash
 docker rm -f c3f3f118bead          #c3f3f118bead is the container that is using port 5601.
 ```
 
@@ -76,7 +77,7 @@ localhost:9200` messages.
 Diagnosis
 
 Check for the following log in the output of `docker-compose up`
-```console
+```bash
 elasticsearch_1  | ERROR: [1] bootstrap checks failed
 elasticsearch_1  | [1]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
 ```
@@ -103,13 +104,13 @@ Indication
 Cannot open `localhost:9200` in browser, shows `Secure connection Failed`
 ```bash
 curl -XGET localhost:9200 -k
-# curl: (52) Empty reply from server
+curl: (52) Empty reply from server
 ```
 
 Diagnosis
 
 Check for the following log in the output of `docker-compose up`
-```console
+```bash
 elasticsearch_1  | [2020-03-12T13:05:34,959][WARN ][c.f.s.h.SearchGuardHttpServerTransport] [Xrb6LcS] Someone (/172.18.0.1:59838) speaks http plaintext instead of ssl, will close the channel
 ```
 
@@ -146,7 +147,7 @@ Can't create indices in Kibana. Nothing happens after clicking create index.
 Diagnosis
 
 Check for the following log in the output of `docker-compose up`
-```console
+```bash
 elasticsearch_1 |[INFO ][c.f.s.c.PrivilegesEvaluator] No index-level perm match for User [name=readall, roles=[readall], requestedTenant=null] [IndexType [index=.kibana, type=doc]] [Action [[indices:data/write/index]]] [RolesChecked [sg_own_index, sg_readall]]
 elasticsearch_1 | [c.f.s.c.PrivilegesEvaluator] No permissions for {sg_own_index=[IndexType [index=.kibana, type=doc]], sg_readall=[IndexType [index=.kibana, type=doc]]}
 kibiter_1 | {"type":"response","@timestamp":CURRENT_TIME,"tags":[],"pid":1,"method":"post","statusCode":403,"req":{"url":"/api/saved_objects/index-pattern?overwrite=false","method":"post","headers":{"host":"localhost:5601","user-agent":YOUR_USER_AGENT,"accept":"application/json, text/plain, /","accept-language":"en-US,en;q=0.5","accept-encoding":"gzip, deflate","referer":"http://localhost:5601/app/kibana","content-type":"application/json;charset=utf-8","kbn-version":"6.1.4-1","content-length":"59","connection":"keep-alive"},"remoteAddress":YOUR_IP,"userAgent":YOUR_IP,"referer":"http://localhost:5601/app/kibana"},"res":{"statusCode":403,"responseTime":25,"contentLength":9},"message":"POST /api/saved_objects/index-pattern?overwrite=false 403 25ms - 9.0B"}
@@ -167,11 +168,11 @@ Indication and Diagnosis
 Check for the following error after executing [Micro
 Mordred](https://github.com/chaoss/grimoirelab-sirmordred/tree/master/sirmordred/utils/micro.py)
 using the below command (assuming `git` is the backend)
-```console
+```bash
 micro.py --raw --enrich --panels --cfg ./setup.cfg --backends git
 ```
 
-```console
+```bash
 [git] Problem executing study enrich_areas_of_code:git, RequestError(400, 'search_phase_execution_exception', 'No mapping found for [metadata__timestamp] in order to sort on')
 ```
 
@@ -218,13 +219,13 @@ Indication
 Cannot open `localhost:9200` in browser, shows `Secure connection Failed`
 ```bash
 curl -XGET localhost:9200 -k
-# curl: (7) Failed to connect to localhost port 9200: Connection refused
+curl: (7) Failed to connect to localhost port 9200: Connection refused
 ```
 
 Diagnosis
 
 Check for the following log in the output of `docker-compose up`
-```console
+```bash
 elasticsearch_1  | ERROR: [1] bootstrap checks failed
 elasticsearch_1  | [1]: max file descriptors [4096] for elasticsearch process is too low, increase to at least [65536]
 ```
@@ -295,7 +296,7 @@ Indication
 
 Diagnosis
 
-```console
+```bash
 Retrying (Retry(total=10,connected=21,read=0,redirect=5,status=None)) after connection broken by 
 'SSLError(SSLError{1,'[SSL: WRONG_VERSION_NUMBER] wrong version number {_ssl.c:852}'},)': /
 ```
@@ -317,7 +318,7 @@ url = http://localhost:9200
 
 Diagnosis
 
-```console
+```bash
 : [Errno 2]No such file or directory : 'cloc': 'cloc'
 ```
 

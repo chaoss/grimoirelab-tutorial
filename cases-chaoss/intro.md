@@ -15,8 +15,8 @@ The process will include the installation of the GrimoireLab tools needed, and w
 Let's start by installing GrimoireLab components:
 
 ```bash
-python3 -m venv gl
-source gl/bin/activate
+$ python3 -m venv gl
+$ source gl/bin/activate
 (gl) $ pip install grimoire-elk grimoire-kidash
 ```
 

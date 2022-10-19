@@ -161,10 +161,10 @@ while `upstream` points to the original CHAOSS repo.
 An example is provided below.
 ```bash
 git remote -v
-# origin	https://github.com/valeriocos/perceval (fetch)
-# origin	https://github.com/valeriocos/perceval (push)
-# upstream	https://github.com/chaoss/grimoirelab-perceval (fetch)
-# upstream	https://github.com/chaoss/grimoirelab-perceval (push)
+origin	https://github.com/valeriocos/perceval (fetch)
+origin	https://github.com/valeriocos/perceval (push)
+upstream	https://github.com/chaoss/grimoirelab-perceval (fetch)
+upstream	https://github.com/chaoss/grimoirelab-perceval (push)
 ```
 
 In order to add a remote to a Git repository, you can use the following command:

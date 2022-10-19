@@ -16,23 +16,31 @@ In this chapter we will learn how to use SortingHat in combination to other Grim
 We will start by adding some more repositories to the index, to have some more complete data. Then we will use it to explore the capabilities of SortingHat for merging identities, for adding affiliations and for adapting profiles.
 
 ```bash
-(gl) $ p2o.py --enrich --index git_raw --index-enrich git \
+p2o.py --enrich --index git_raw --index-enrich git \
   -e http://localhost:9200 --no_inc --debug \
   --db-host localhost --db-sortinghat shdb --db-user user --db-password XXX \
   git https://github.com/grimoirelab/GrimoireELK.git
-(gl) $ p2o.py --enrich --index git_raw --index-enrich git \
+```
+```bash
+p2o.py --enrich --index git_raw --index-enrich git \
   -e http://localhost:9200 --no_inc --debug \
   --db-host localhost --db-sortinghat shdb --db-user user --db-password XXX \
   git https://github.com/grimoirelab/panels.git
-(gl) $ p2o.py --enrich --index git_raw --index-enrich git \
+```
+```bash
+p2o.py --enrich --index git_raw --index-enrich git \
   -e http://localhost:9200 --no_inc --debug \
   --db-host localhost --db-sortinghat shdb --db-user user --db-password XXX \
   git https://github.com/grimoirelab/mordred.git
-(gl) $ p2o.py --enrich --index git_raw --index-enrich git \
+```
+```bash
+p2o.py --enrich --index git_raw --index-enrich git \
   -e http://localhost:9200 --no_inc --debug \
   --db-host localhost --db-sortinghat shdb --db-user user --db-password XXX \
   git https://github.com/grimoirelab/arthur.git
-(gl) $ p2o.py --enrich --index git_raw --index-enrich git \
+```
+```bash
+p2o.py --enrich --index git_raw --index-enrich git \
   -e http://localhost:9200 --no_inc --debug \
   --db-host localhost --db-sortinghat shdb --db-user user --db-password XXX \
   git https://github.com/grimoirelab/training.git

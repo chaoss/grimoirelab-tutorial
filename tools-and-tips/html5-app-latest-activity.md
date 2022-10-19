@@ -15,7 +15,7 @@ For deploying the HTML5 app, just copy `index.html`, `events.js`, and `events.cs
 
 ```bash
 python3 -m http.server
-# Serving HTTP on 0.0.0.0 port 8000 ...
+Serving HTTP on 0.0.0.0 port 8000 ...
 ```
 
 Now, let's produce a JSON file with the events that the app will show. For that, we will install [`elastic_last.py`](https://github.com/jgbarah/GrimoireLab-training/blob/master/tools-and-tips/scripts/elastic_last.py) in a Python3 virtual environment with all the needed dependencies (in this case, it is enough to install, via `pip`, the `elasticsearch-dsl` module, and run it:
@@ -30,7 +30,7 @@ If we're using a `git` index in an ElasticSearch instance accessible at `https:/
 
 ```bash
 python3 elastic_last.py --no_verify_certs --loop 10 --total 10 \
-https://user:XXX@grimoirelab.biterg.io/data/git
+  https://user:XXX@grimoirelab.biterg.io/data/git
 ```
 
 In both cases `--loop 10` will cause the script to retrieve the index every 10 seconds, and produce a file `events.json` with the latest 10 events in the index (commits in this case), because of the option `--total 10`. If you want, instead of just one url, you can include as many as you may want, one after the other, to retrieve data from several indexes every 10 seconds. The option `--no_verify_certs` is needed only if your Python installation has trouble checking the validity of the SSL certificates (needed because the url is using HTTPS).

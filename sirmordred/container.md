@@ -25,7 +25,7 @@ docker run -p 127.0.0.1:5601:5601 \
 `credentials.cfg` should have a GitHub API token (see [Personal GitHub API tokens](https://github.com/blog/1509-personal-api-tokens)), in a `mordred.cfg`
 format:
 
-```
+```cfg
 [github]
 api-token = XXX
 ```
@@ -100,7 +100,7 @@ This will make the container launch all services, but not running `sirmordred`: 
 For running the `grimoirelab/installed` docker image, first set up the supporting systems in your host,
 as detailed in the [Supporting systems](../basics/supporting.md) section.  Finally, compose a SirMordred configuration file with credentials and references the supporting system. For example:
 
-```
+```cfg
 [es_collection]
 url = http://localhost:9200
 user =

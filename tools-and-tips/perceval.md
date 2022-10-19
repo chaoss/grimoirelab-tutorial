@@ -8,7 +8,7 @@ This section shows some scripts using Perceval.
 
 ```bash
 python perceval_git_counter.py https://github.com/grimoirelab/perceval.git /tmp/ppp 
-# Number of commmits: 579.
+Number of commmits: 579.
 ```
 
 You can get a help banner, including options, by running

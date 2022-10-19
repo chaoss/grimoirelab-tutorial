@@ -29,13 +29,13 @@ Please check the [section on installing non-Python
 packages](install.html#non-python-pkgs) if you have any trouble.
 
 ```bash
-(gl) % pip3 install grimoirelab
+(gl) $ pip3 install grimoirelab
 ```
 
 If everything went well, you can just check the version that you installed:
 
 ```bash
-(gl) % grimoirelab -v
+(gl) $ grimoirelab -v
 ```
 
 And that's it. You can now skip the rest of this chapter

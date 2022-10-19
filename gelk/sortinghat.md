@@ -19,7 +19,7 @@ you need to initialize a database for it.
 Usually, each dashboard will have its own SortingHat database, although several dashboards can share the same. Initializing the database means creating the SQL schema for it, initializing its tables, and not much more. But you don't need to know about the details: SortingHat will take care of that for you. Just run `sortinghat init` with the appropriate options:
 
 ```bash
-(gl) $ sortinghat -u user -p XXX  init shdb
+sortinghat -u user -p XXX  init shdb
 ```
 
 In this case, `user` is a user of the MySQL instance with permissions to create a new MySQL schema (database), `XXX` is the password for that user, and `shdb` is the name of the database to be created.
@@ -47,7 +47,7 @@ For creating the indexes, we run `p2o.py` the same way we have done before, but 
 For example, for producing the index for the git repository for Perceval, run:
 
 ```bash
-(gl) $ p2o.py --enrich --index git_raw --index-enrich git \
+p2o.py --enrich --index git_raw --index-enrich git \
   -e http://localhost:9200 --no_inc --debug \
   --db-host localhost --db-sortinghat shdb --db-user user --db-password XXX \
   git https://github.com/grimoirelab/perceval.git
@@ -71,14 +71,14 @@ This will show all the identities found in the Perceval git repository.
 Let's produce now a Kibana dashboard for our enriched index (`git` in our ElasticSearch instance). I will start by installing `kidash`, to upload a JSON description of the dashboard, its visualizations, and everything needed:
 
 ```bash
-(sh) $ pip install kidash
+pip install kidash
 ```
 
 Then, I use the JSON description of a dashboard for Git that
 includes visualizations for some fields generated from the SortingHat database: [git-sortinghat.json](dashboards/git-sortinghat.json).
 
 ```bash
-(sh) $ kidash --elastic_url http://localhost:9200 \
+kidash --elastic_url http://localhost:9200 \
   --import /tmp/git-sortinghat.json
 ```
 

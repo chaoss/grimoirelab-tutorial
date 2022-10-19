@@ -16,11 +16,13 @@ Let's run `p2o.py` to create the indexes in ElasticSearch. We will create both t
 As an example, we produce indexes for two git repositories: those of Perceval and GrimoireELK. We will use `git_raw` as the name for the raw index, and `git` for the enriched one. We will store indexes in our ElasticSearch instance listening at `http://localhost:9200`. Each of the following commands will retrieve and enrich data for one of the git repositories:
 
 ```bash
-(gl) $ p2o.py --enrich --index git_raw --index-enrich git \
+p2o.py --enrich --index git_raw --index-enrich git \
   -e http://localhost:9200 --no_inc --debug \
   git https://github.com/grimoirelab/perceval.git
 ...
-(gl) $ p2o.py --enrich --index git_raw --index-enrich git \
+```
+```bash
+p2o.py --enrich --index git_raw --index-enrich git \
   -e http://localhost:9200 --no_inc --debug \
   git https://github.com/grimoirelab/GrimoireELK.git
 ...
@@ -44,7 +46,7 @@ Download it to your `/tmp` directory
 (Note: Please use 'Save Link as' option for downloading), and run the command:
 
 ```bash
-(grimoireelk) $ kidash --elastic_url http://localhost:9200 \
+kidash --elastic_url http://localhost:9200 \
   --import /tmp/git-dashboard.json
 ```
 
@@ -68,7 +70,7 @@ Using the Kibiter/Kibana interface it is simple to modify the dashboard, its vis
 `p2o.py` can be used to produce indexes for many other data sources. For example for GitHub issues and pull requests, the magic line is like this \(of course, substitute XXX for your GitHub token\):
 
 ```bash
-(grimoireelk) $ p2o.py --enrich --index github_raw --index-enrich github \
+p2o.py --enrich --index github_raw --index-enrich github \
   -e http://localhost:9200 --no_inc --debug \
   github grimoirelab perceval \
   -t XXX --sleep-for-rate
@@ -79,7 +81,7 @@ In  this  case, you  can  use the
 Download it to your `/tmp` directory (Note: Please use 'Save Link as' option for downloading), and run the command:
 
 ```bash
-(grimoireelk) $ kidash --elastic_url http://localhost:9200 \
+kidash --elastic_url http://localhost:9200 \
   --import /tmp/github-dashboard.json
 ```
 

@@ -16,7 +16,7 @@
 
 1. We'll use the following docker-compose configuration to instantiate the required components i.e ElasticSearch, Kibiter and MariaDB. Note that we can omit the `mariadb` section in case you have MySQL/MariaDB already installed in our system. We'll name the following configuration as `docker-config.yml`.
 
-```
+```yml
 elasticsearch:
   restart: on-failure:5
   image: bitergia/elasticsearch:6.1.0-secured
