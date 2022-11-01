@@ -67,9 +67,9 @@ Bugs from Bugzilla
 [bugzilla]
 raw_index = bugzilla_raw
 enriched_index = bugzilla_enriched
-backend-user = yyyy (optional)
-backend-password = xxxx (optional)
-no-archive = true (suggested)
+backend-user = yyyy # (optional)
+backend-password = xxxx # (optional)
+no-archive = true # (suggested)
 ```
 
 ## bugzillarest
@@ -94,9 +94,9 @@ Bugs from Bugzilla server (>=5.0) using its REST API
 [bugzillarest]
 raw_index = bugzillarest_raw
 enriched_index = bugzillarest_enriched
-backend-user = yyyy (optional)
-backend-password = xxxx (optional)
-no-archive = true (suggested)
+backend-user = yyyy # (optional)
+backend-password = xxxx # (optional)
+no-archive = true # (suggested)
 ```
 
 ## cocom
@@ -180,7 +180,7 @@ contents from Confluence
 [confluence]
 raw_index = confluence_raw
 enriched_index = confluence_enriched
-no-archive = true (suggested)
+no-archive = true # (suggested)
 ```
 
 ## crates
@@ -229,7 +229,7 @@ Topics from Discourse
 [discourse]
 raw_index = discourse_raw
 enriched_index = discourse_enriched
-no-archive = true (suggested)
+no-archive = true # (suggested)
 ```
 
 ## dockerhub
@@ -254,7 +254,7 @@ Repositories info from DockerHub
 [dockerhub]
 raw_index = dockerhub_raw
 enriched_index = dockerhub_enriched
-no-archive = true (suggested)
+no-archive = true # (suggested)
 ```
 
 ## dockerdeps
@@ -335,7 +335,7 @@ Tests from functest
 [functest]
 raw_index = functest_raw
 enriched_index = functest_enriched
-no-archive = true (suggested)
+no-archive = true # (suggested)
 ```
 
 ## gerrit
@@ -363,18 +363,18 @@ You have to add your public key in the gerrit server.
 raw_index = gerrit_raw
 enriched_index = gerrit_enriched
 user = xxxx
-no-archive = true (suggested)
-blacklist-ids = [] (optional)
-max-reviews = 500 (optional)
-studies = [enrich_demography:gerrit, enrich_onion:gerrit, enrich_demography_contribution:gerrit] (optional)
+no-archive = true # (suggested)
+blacklist-ids = [] # (optional)
+max-reviews = 500 # (optional)
+studies = [enrich_demography:gerrit, enrich_onion:gerrit, enrich_demography_contribution:gerrit] # (optional)
 
-[enrich_demography:gerrit] (optional)
+[enrich_demography:gerrit] # (optional)
 
-[enrich_onion:gerrit] (optional)
+[enrich_onion:gerrit] # (optional)
 in_index = gerrit_enriched
 out_index = gerrit-onion_enriched
 
-[enrich_demography_contribution:gerrit] (optional)
+[enrich_demography_contribution:gerrit] # (optional)
 date_field = grimoire_creation_date
 author_field = author_uuid
 ```
@@ -404,19 +404,19 @@ Commits from Git
 [git]
 raw_index = git_raw
 enriched_index = git_enriched
-latest-items = true (suggested)
-studies = [enrich_demography:git, enrich_git_branches:git, enrich_areas_of_code:git, enrich_onion:git, enrich_extra_data:git] (optional)
+latest-items = true # (suggested)
+studies = [enrich_demography:git, enrich_git_branches:git, enrich_areas_of_code:git, enrich_onion:git, enrich_extra_data:git] # (optional)
 
-[enrich_demography:git] (optional)
+[enrich_demography:git] # (optional)
 
-[enrich_git_branches:git] (optional)
-run_month_days = [1, 23] (optional)
+[enrich_git_branches:git] # (optional)
+run_month_days = [1, 23] # (optional)
 
-[enrich_areas_of_code:git] (optional)
+[enrich_areas_of_code:git] # (optional)
 in_index = git_raw
 out_index = git-aoc_enriched
 
-[enrich_onion:git] (optional)
+[enrich_onion:git] # (optional)
 in_index = git_enriched
 out_index = git-onion_enriched
 
@@ -455,25 +455,25 @@ enriched_index = github_enriched
 api-token = xxxx
 category = issue
 sleep-for-rate = true
-no-archive = true (suggested)
+no-archive = true # (suggested)
 studies = [enrich_onion:github,
            enrich_geolocation:user,
            enrich_geolocation:assignee,
            enrich_extra_data:github,
            enrich_backlog_analysis,
-           enrich_demography:github] (optional)
+           enrich_demography:github] # (optional)
 
-[enrich_onion:github] (optional)
+[enrich_onion:github] # (optional)
 in_index_iss = github_issues_onion-src
 in_index_prs = github_prs_onion-src
 out_index_iss = github-issues-onion_enriched
 out_index_prs = github-prs-onion_enriched
 
-[enrich_geolocation:user] (optional)
+[enrich_geolocation:user] # (optional)
 location_field = user_location
 geolocation_field = user_geolocation
 
-[enrich_geolocation:assignee] (optional)
+[enrich_geolocation:assignee] # (optional)
 location_field = assignee_location
 geolocation_field = assignee_geolocation
 
@@ -513,11 +513,11 @@ enriched_index = github-pull_enriched
 api-token = xxxx
 category = pull_request
 sleep-for-rate = true
-no-archive = true (suggested)
+no-archive = true # (suggested)
 studies = [enrich_geolocation:user,
            enrich_geolocation:assignee,
            enrich_extra_data:github,
-           enrich_demography:github] (optional)
+           enrich_demography:github] # (optional)
 
 [enrich_geolocation:user]
 location_field = user_location
@@ -559,7 +559,7 @@ enriched_index = github-repo_enriched
 api-token = xxxx
 category = repository
 sleep-for-rate = true
-no-archive = true (suggested)
+no-archive = true # (suggested)
 studies = [enrich_extra_data:github, enrich_demography:github]
 
 [enrich_extra_data:github]
@@ -598,9 +598,9 @@ raw_index = github_event_raw
 enriched_index = github_event_enriched
 api-token = xxxxx
 sleep-for-rate = true
-sleep-time = "300" (optional)
-no-archive = true (suggested)
-studies = [enrich_duration_analysis:kanban, enrich_reference_analysis] (optional)
+sleep-time = "300" # (optional)
+no-archive = true # (suggested)
+studies = [enrich_duration_analysis:kanban, enrich_reference_analysis] # (optional)
 
 [enrich_duration_analysis:kanban]
 start_event_type = MovedColumnsInProjectEvent
@@ -614,7 +614,7 @@ target_attr = label
 fltr_attr = label
 fltr_event_types = [LabeledEvent]
 
-[enrich_reference_analysis] (optional)
+[enrich_reference_analysis] # (optional)
 ```
 
 ## github2
@@ -648,14 +648,14 @@ raw_index = github2-issues_raw
 enriched_index = github2-issues_enriched
 sleep-for-rate = true
 category = issue
-no-archive = true (suggested)
-studies = [enrich_geolocation:user, enrich_geolocation:assignee, enrich_extra_data:github2, enrich_feelings] (optional)
+no-archive = true # (suggested)
+studies = [enrich_geolocation:user, enrich_geolocation:assignee, enrich_extra_data:github2, enrich_feelings] # (optional)
 
-[enrich_geolocation:user] (optional)
+[enrich_geolocation:user] # (optional)
 location_field = user_location
 geolocation_field = user_geolocation
 
-[enrich_geolocation:assignee] (optional)
+[enrich_geolocation:assignee] # (optional)
 location_field = assignee_location
 geolocation_field = assignee_geolocation
 
@@ -691,14 +691,14 @@ raw_index = github2-pull_raw
 enriched_index = github2-pull_enriched
 sleep-for-rate = true
 category = pull_request
-no-archive = true (suggested)
-studies = [enrich_geolocation:user, enrich_geolocation:assignee, enrich_extra_data:git, enrich_feelings] (optional)
+no-archive = true # (suggested)
+studies = [enrich_geolocation:user, enrich_geolocation:assignee, enrich_extra_data:git, enrich_feelings] # (optional)
 
-[enrich_geolocation:user] (optional)
+[enrich_geolocation:user] # (optional)
 location_field = user_location
 geolocation_field = user_geolocation
 
-[enrich_geolocation:assignee] (optional)
+[enrich_geolocation:assignee] # (optional)
 location_field = assignee_location
 geolocation_field = assignee_geolocation
 
@@ -751,10 +751,10 @@ raw_index = gitlab-issues_raw
 enriched_index = gitlab-issues_enriched
 api-token = xxxx
 sleep-for-rate = true
-no-archive = true (suggested)
-studies = [enrich_onion:gitlab-issue] (optional)
+no-archive = true # (suggested)
+studies = [enrich_onion:gitlab-issue] # (optional)
 
-[enrich_onion:gitlab-issue] (optional)
+[enrich_onion:gitlab-issue] # (optional)
 in_index = gitlab-issues_enriched
 out_index = gitlab-issues-onion_enriched
 data_source = gitlab-issues
@@ -787,10 +787,10 @@ raw_index = gitlab-mrs_raw
 enriched_index = gitlab-mrs_enriched
 api-token = xxxx
 sleep-for-rate = true
-no-archive = true (suggested)
-studies = [enrich_onion:gitlab-merge] (optional)
+no-archive = true # (suggested)
+studies = [enrich_onion:gitlab-merge] # (optional)
 
-[enrich_onion:gitlab-merge] (optional)
+[enrich_onion:gitlab-merge] # (optional)
 in_index = gitlab-mrs_enriched
 out_index = gitlab-mrs-onion_enriched
 data_source = gitlab-merges
@@ -821,8 +821,8 @@ raw_index = gitter_raw
 enriched_index = gitter_enriched_raw
 api-token = xxxxx
 sleep-for-rate = true
-sleep-time = "300" (optional)
-no-archive = true (suggested)
+sleep-time = "300" # (optional)
+no-archive = true # (suggested)
 ```
 
 ## google_hits
@@ -925,7 +925,7 @@ Builds from a Jenkins
 [jenkins]
 raw_index = jenkins_raw
 enriched_index = jenkins_enriched
-no-archive = true (suggested)
+no-archive = true # (suggested)
 ```
 
 ## jira
@@ -950,10 +950,10 @@ Issues data from JIRA issue trackers
 [jira]
 raw_index = jira_raw
 enriched_index = jira_enriched
-project = JIRAPROJECT (optional)
-no-archive = true (suggested)
-backend-user = yyyy (optional)
-backend-password = xxxx (optional)
+project = JIRAPROJECT # (optional)
+no-archive = true # (suggested)
+backend-user = yyyy # (optional)
+backend-password = xxxx # (optional)
 ```
 
 ## kitsune
@@ -1055,7 +1055,7 @@ Pages and revisions from MediaWiki
 [mediawiki]
 raw_index = mediawiki_raw
 enriched_index = mediawiki_enriched
-no-archive = true (suggested)
+no-archive = true # (suggested)
 ```
 
 ## meetup
@@ -1087,8 +1087,8 @@ raw_index = meetup_raw
 enriched_index = meetup_enriched
 api-token = xxxx
 sleep-for-rate = true
-sleep-time = "300" (optional)
-no-archive = true (suggested)
+sleep-time = "300" # (optional)
+no-archive = true # (suggested)
 
 ```
 
@@ -1170,8 +1170,8 @@ raw_index = pagure_raw
 enriched_index = pagure_enriched
 api-token = xxxx
 sleep-for-rate = true
-sleep-time = "300" (optional)
-no-archive = true (suggested)
+sleep-time = "300" # (optional)
+no-archive = true # (suggested)
 ```
 
 ## phabricator
@@ -1197,7 +1197,7 @@ Tasks from Phabricator
 raw_index = phabricator_raw
 enriched_index = phabricator_enriched
 api-token = xxxx
-no-archive = true (suggested)
+no-archive = true # (suggested)
 ```
 
 ## pipermail
@@ -1322,7 +1322,7 @@ enriched_index = rocketchat_enriched
 api-token = xxxx
 sleep-for-rate = true
 user-id = xxxx
-no-archive = true (suggested)
+no-archive = true # (suggested)
 ```
 
 ## rss
@@ -1375,7 +1375,7 @@ The information needed to monitor slack channels is the channel id.
 raw_index = slack_raw
 enriched_index = slack_enriched
 api-token = xxxx
-no-archive = true (suggested)
+no-archive = true # (suggested)
 ```
 
 ## stackexchange
@@ -1405,7 +1405,7 @@ Questions, answers and comments from StackExchange
 raw_index = stackexchange_raw
 enriched_index = stackexchange_enriched
 api-token = xxxx
-no-archive = true (suggested)
+no-archive = true # (suggested)
 ```
 
 ## supybot
@@ -1523,9 +1523,9 @@ page <instance>/accounts/profile/#api
 raw_index = weblate_raw
 enriched_index = weblate_enriched
 api-token = XXXX
-no-archive = true (suggested)
-sleep-for-rate = true (suggested)
-studies = [enrich_demography:weblate] (optional)
+no-archive = true # (suggested)
+sleep-for-rate = true # (suggested)
+studies = [enrich_demography:weblate] # (optional)
 
-[enrich_demography:weblate] (optional)
+[enrich_demography:weblate] # (optional)
 ```

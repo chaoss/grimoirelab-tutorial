@@ -42,7 +42,7 @@ Replace the below configurations in the `setup.cfg` file.
 raw_index = git_raw
 enriched_index = git_enriched
 latest-items = true
-studies = [enrich_demography:git, enrich_git_branches:git, enrich_areas_of_code:git, enrich_onion:git, enrich_extra_data:git] (optional)
+studies = [enrich_demography:git, enrich_git_branches:git, enrich_areas_of_code:git, enrich_onion:git, enrich_extra_data:git] # (optional)
 
 <!-- THE LINES BELOW ARE OPTIONAL -->
 
