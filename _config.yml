@@ -57,7 +57,7 @@ back_to_top: true
 back_to_top_text: "Back to top"
 
 # Footer content appears at the bottom of every page's main content
-footer_content: 'Copyright &copy CHAOSS; 2017-2021. <br>Distributed by an <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.'
+footer_content: 'Copyright &copy CHAOSS; 2017-2022. <br>Distributed by an <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.'
 
 # Footer "Edit this page on GitHub" link text
 gh_edit_link: true # show or hide edit this page link
