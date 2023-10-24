@@ -2,7 +2,7 @@
 layout: default
 title: Workflow
 nav_order: 1
-parent: Components
+parent: Workflow
 ---
 
 # Workflow

@@ -2,7 +2,8 @@
 layout: default
 title: Sir Mordred rules them all
 permalink: /sirmordred
-nav_order: 11
+nav_order: 2
+parent: Components
 has_children: true
 has_toc: true
 ---

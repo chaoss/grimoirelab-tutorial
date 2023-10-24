@@ -34,7 +34,7 @@ Gerrit, Launchpad, Jira, mailing lists, Confluence, Discourse, Slack, Jenkins,
 Meetup, Mediawiki, Phabricator, Redmine, StackOverflow, Telegram, and others.
 
 Let´s now visit the main functionalities provided by GrimoireLab. The section
-[Components]({{ site.baseurl }}/components) shows how the different components
+[Workflow]({{ site.baseurl }}/workflow) shows how the different components
 in GrimoireLab are combined to provide these functionalities.
 
 ### Data retrieval

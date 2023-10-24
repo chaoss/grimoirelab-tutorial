@@ -2,7 +2,8 @@
 layout: default
 title: SortingHat (from the command line)
 permalink: /sortinghat-cli
-nav_order: 10
+nav_order: 3
+parent: Components
 has_children: true
 has_toc: true
 ---

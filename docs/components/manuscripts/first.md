@@ -1,3 +1,13 @@
+---
+layout: default
+title: Reporting with Manuscripts
+nav_order: 1
+parent: Manuscripts
+has_children: false
+has_toc: false
+---
+
+
 ## Reporting with Manuscripts
 
 [Manuscripts](https://github.com/chaoss/grimoirelab-manuscripts) is the GrimoireLab tool

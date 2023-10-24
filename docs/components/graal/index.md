@@ -1,13 +1,20 @@
 ---
 layout: default
-title: GrimoireELK
-permalink: /gelk
-nav_order: 12
+title: Graal
+permalink: /graal
+nav_order: 5
+parent: Components
 has_children: true
 has_toc: true
 ---
 
-# GrimoireELK (Gelk)
+# Graal: a Generic Reporitory AnALyzer
+
+Graal leverages on the Git backend of Perceval and enhances it to set
+up ad-hoc source code analysis. Thus, it fetches the commits from a
+Git repository and provides a mechanism to plug third party
+tools/libraries focused on source code analysis.
+
 
 GrimoireELK is the component of GrimoireLab that interacts with the
 underlying (OpenSearch) database. Its goal is two-fold, first it aims

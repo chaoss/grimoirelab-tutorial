@@ -2,7 +2,7 @@
 layout: default
 title: Scenarios
 nav_order: 2
-parent: Components
+parent: Workflow
 ---
 
 # GrimoireLab scenarios
