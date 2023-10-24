@@ -5,3 +5,5 @@ gem 'github-pages', group: :jekyll_plugins
 gem "just-the-docs"
 
 gem 'jekyll-redirect-from'
+
+gem "webrick", "~> 1.8"
