@@ -1,3 +1,13 @@
+---
+layout: default
+title: Cocom
+nav_order: 2
+parent: Graal
+has_children: false
+has_toc: false
+---
+
+
 # Retrieving Code Complexity via CoCom Backend
 
 - [CoCom](https://github.com/chaoss/grimoirelab-graal/blob/master/graal/backends/core/cocom.py) ( Code Complexity ) Backend based on supported languages and with the help of [Lizard](https://github.com/terryyin/lizard) retrieves various source code related analysis such as:
