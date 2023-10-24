@@ -1,3 +1,12 @@
+---
+layout: default
+title: A GrimoireLab dashboard in a single step
+nav_order: 1
+parent: Sir Mordred rules them all
+has_children: false
+has_toc: false
+---
+
 ## A GrimoireLab dashboard in one step
 
 [SirMordred](https://github.com/chaoss/grimoirelab-sirmordred)

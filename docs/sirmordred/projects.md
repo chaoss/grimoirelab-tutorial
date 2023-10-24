@@ -1,3 +1,13 @@
+---
+layout: default
+title: The projects file
+nav_order: 4
+parent: Sir Mordred rules them all
+has_children: false
+has_toc: false
+---
+
+
 ## The projects file
 
 An important part of the information provided to Mordred is the list of projects to analyze, and how they are structured in repositories. This is done in the projects file.

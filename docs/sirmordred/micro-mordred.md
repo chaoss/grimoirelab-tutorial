@@ -1,3 +1,13 @@
+---
+layout: default
+title: Micro-mordred via Docker-Compose
+nav_order: 2
+parent: Sir Mordred rules them all
+has_children: false
+has_toc: false
+---
+
+
 ### Micro-mordred via Docker-Compose
 
 ### What is Mordred?

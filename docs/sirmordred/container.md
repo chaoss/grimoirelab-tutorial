@@ -1,4 +1,13 @@
-## SirMordred in a container
+---
+layout: default
+title: Mordred in a container
+nav_order: 3
+parent: Sir Mordred rules them all
+has_children: false
+has_toc: false
+---
+
+## Mordred in a container
 
 To produce a dashboard with SirMordred, you can also use some containers, available from DockerHub, ready to work:
 
