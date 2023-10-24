@@ -1,3 +1,12 @@
+---
+layout: default
+title: Installing python modules
+nav_order: 4
+parent: Installation alternatives
+has_children: false
+has_toc: false
+---
+
 ## Installing GrimoireLab Python modules
 
 Most of GrimoireLab are Python modules. The easiest way of installing them is using `pip3`,

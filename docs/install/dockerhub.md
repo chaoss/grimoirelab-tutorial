@@ -1,3 +1,12 @@
+---
+layout: default
+title: Deploying from DockerHub
+nav_order: 2
+parent: Installation alternatives
+has_children: false
+has_toc: false
+---
+
 ## Deploying from DockerHub
 
 GrimoireLab can be found, already installed and ready to use, as Docker container images. The image which is likely most useful for a start is [grimoirelab/full](https://hub.docker.com/r/grimoirelab/full), available from DockerHub. It includes all GrimoireLab components, along with the services needed to produce a fully functional GrimoireLab dashboard: Elasticsearch, MariaDB, and Kibiter. By default, the container produces a dashboard for the GrimoireLab project.

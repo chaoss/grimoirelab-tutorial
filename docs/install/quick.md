@@ -1,3 +1,12 @@
+---
+layout: default
+title: Installation for the impatient
+nav_order: 1
+parent: Installation alternatives
+has_children: false
+has_toc: false
+---
+
 ## Installation for the impatient
 
 So you don't want to read all the details,

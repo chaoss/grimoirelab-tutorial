@@ -1,3 +1,12 @@
+---
+layout: default
+title: Installing supporting systems
+nav_order: 3
+parent: Installation alternatives
+has_children: false
+has_toc: false
+---
+
 ## Installing supporting systems
 
 GrimoireLab modules need some supporting components to work.
