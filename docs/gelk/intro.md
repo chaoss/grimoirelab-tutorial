@@ -1,4 +1,13 @@
-# Producing Kibana dashboards with GrimoireELK
+---
+layout: default
+title: Producing dashboards with GrimoireELK
+nav_order: 1
+parent: GrimoireELK
+has_children: false
+has_toc: false
+---
+
+# Producing dashboards with GrimoireELK
 
 [GrimoireELK](http://github.com/chaoss/grimoirelab-elk)
 is an interim system oriented to produce Kibana-based dashboards with Perceval and friends.

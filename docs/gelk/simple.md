@@ -1,3 +1,13 @@
+---
+layout: default
+title: Creating a simple dashboard
+nav_order: 2
+parent: GrimoireELK
+has_children: false
+has_toc: false
+---
+
+
 ## Creating a simple dashboard
 
 Creating a dashboard using the tools we just installed is not difficult:

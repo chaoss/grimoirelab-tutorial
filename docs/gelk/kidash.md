@@ -1,3 +1,13 @@
+---
+layout: default
+title: Managing dashboards with kidash
+nav_order: 4
+parent: GrimoireELK
+has_children: false
+has_toc: false
+---
+
+
 ## Managing dashboards with kidash
 
 Kibana (or Kibiter, for that matter) offers a nice user interface to create and edit visualizations and dashboards. It allows to save and restore them as well. But if you're interested in backing up all the elements needed to produce a dashboard, you need some tools. That's why we developed Kidash. Then, we added some other features to it. And now Kidash is our tool of choice to back and restore dashboards with all their elements (visualizations, searches, and index patterns), in the same or in a different Kibana instance.

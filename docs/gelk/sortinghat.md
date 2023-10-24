@@ -1,3 +1,12 @@
+---
+layout: default
+title: A dashboard with SortingHat
+nav_order: 3
+parent: GrimoireELK
+has_children: false
+has_toc: false
+---
+
 ## A dashboard with SortingHat
 
 The simple dashboard we just produced uses indexes which
