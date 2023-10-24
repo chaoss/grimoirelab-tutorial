@@ -1,3 +1,11 @@
+---
+layout: default
+title: Basic use of SortingHat from the command line
+nav_order: 1
+parent: SortingHat from the command line
+has_children: false
+has_toc: false
+---
 
 
 ## Basic use

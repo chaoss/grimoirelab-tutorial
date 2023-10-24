@@ -1,3 +1,13 @@
+---
+layout: default
+title: SortingHat Data
+nav_order: 2
+parent: SortingHat from the command line
+has_children: false
+has_toc: false
+---
+
+
 ## SortingHat data structure
 
 SortingHat uses a database to store data about identities.
