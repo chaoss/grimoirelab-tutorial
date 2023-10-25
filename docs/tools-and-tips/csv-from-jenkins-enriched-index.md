@@ -1,3 +1,13 @@
+---
+layout: default
+title: Obtain CSV from Jenkins enriched indexes in ElasticSearch
+nav_order: 4
+parent: Tools and Tips
+has_children: false
+has_toc: false
+---
+
+
 ## Obtain CSV from Jenkins enriched indexes in ElasticSearch
 
 To illustrate how to get data from an enriched index (produced using `grimoire_elk`), let's review the script [`enriched_elasticsearch_jenkins.py`](https://github.com/jgbarah/GrimoireLab-training/blob/master/tools-and-tips/scripts/enriched_elasticsearch_jenkins.py). This script will query a Jenkins enriched index, producing a CSV file with some of the fields in it, since a certain number of days.

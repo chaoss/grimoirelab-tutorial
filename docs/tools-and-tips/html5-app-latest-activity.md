@@ -1,3 +1,13 @@
+---
+layout: default
+title: HTML5 app for latest activity
+nav_order: 3
+parent: Tools and Tips
+has_children: false
+has_toc: false
+---
+
+
 ## HTML5 app: latest activity
 
 Let's build a simple HTML5 app showing the latest activity of a project or a set of projects. For that, we will create in fact two applications:

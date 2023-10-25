@@ -1,4 +1,14 @@
-## Perceval
+---
+layout: default
+title: Perceval Git Counter
+nav_order: 5
+parent: Tools and Tips
+has_children: false
+has_toc: false
+---
+
+
+## Perceval Git Counter
 
 This section shows some scripts using Perceval.
 

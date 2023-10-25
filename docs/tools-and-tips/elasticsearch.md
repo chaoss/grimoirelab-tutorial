@@ -1,4 +1,14 @@
-## Elasticsearch
+---
+layout: default
+title: ElasticSearch REST API
+nav_order: 1
+parent: Tools and Tips
+has_children: false
+has_toc: false
+---
+
+
+## Elasticsearch REST API
 
 Some tips to work with Elasticsearch using its REST interface.
 

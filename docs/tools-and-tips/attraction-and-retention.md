@@ -1,3 +1,13 @@
+---
+layout: default
+title: Attraction & retention
+nav_order: 2
+parent: Tools and Tips
+has_children: false
+has_toc: false
+---
+
+
 # Attraction & retention
 
 [ Warning: this is work in progress, use at your own risk! ]
