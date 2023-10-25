@@ -1,3 +1,13 @@
+---
+layout: default
+title: Meetup dashboard
+nav_order: 2
+parent: Use Cases
+has_children: false
+has_toc: false
+---
+
+
 ## Create a complete dashboard for Meetup
 
 [Meetup](http://meetup.com) is one of the platforms used by many communities to organize meetings. It is popular among some development communities, and can be a good example of how to build a dashboard from scratch. The result that you'll get after going through this section will be similar to this screenshot:

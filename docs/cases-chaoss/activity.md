@@ -1,3 +1,13 @@
+---
+layout: default
+title: Community Activity
+nav_order: 1
+parent: Use Cases
+has_children: false
+has_toc: false
+---
+
+
 ## Community Activity
 
 Once we have the indexes, let's create the first panel, for community activity.
