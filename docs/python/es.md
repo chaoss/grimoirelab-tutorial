@@ -1,3 +1,13 @@
+---
+layout: default
+title: Persistent storage in ElasticSearch
+nav_order: 3
+parent: Python scripting
+has_children: false
+has_toc: false
+---
+
+
 # Persistent storage in ElasticSearch
 
 The data produced by Perceval can be stored in persistent storage. For example, it can be uploaded to (and later retrieved from) a database. In this section we'll learn to do it with ElasticSearch.

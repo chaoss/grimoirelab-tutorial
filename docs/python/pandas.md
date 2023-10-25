@@ -1,3 +1,13 @@
+---
+layout: default
+title: Pandas for GrimoireLab indexes
+nav_order: 7
+parent: Python scripting
+has_children: false
+has_toc: false
+---
+
+
 ## Pandas for GrimoireLab indexes
 
 [Pandas](http://pandas.pydata.org/) is one of the most common libraries used in data analytics with Python. It can be very useful when dealing with GrimoireLab indexes. In this section, we will explore how to create dataframes (one of the most interesting data structures provided by Pandas) from GrimoireLab indexes, and how to work with them.

@@ -1,3 +1,13 @@
+---
+layout: default
+title: Querying grimoire-elk indexes
+nav_order: 6
+parent: Python scripting
+has_children: false
+has_toc: false
+---
+
+
 ## Querying grimoire-elk indexes
 
 As we discussed in section

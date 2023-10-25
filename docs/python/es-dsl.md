@@ -1,3 +1,13 @@
+---
+layout: default
+title: ElasticSearch DSL
+nav_order: 2
+parent: Python scripting
+has_children: false
+has_toc: false
+---
+
+
 ## ElasticSearch DSL
 
 The `elasticsearch` Python module may seem good enough to query ElasticSearch via its REST API. But for using it, we need to write full JSON documents with the intended queries. And these documents may become large, complex, and a burden to maintain and understand. Here is where the [`elasticsearch_dsl` Python module](http://elasticsearch-dsl.readthedocs.io) comes to the rescue.
