@@ -8,7 +8,7 @@ parent: Getting Started
 # Troubleshooting
 
 > Please check this page if you face any problem with setting up GrimoireLab. If
-> you didn't find the solution for your proble, please open an [issue in the
+> you didn't find the solution for your problem, please open an [issue in the
 > chaoss/grimoirelab repository](https://github.com/chaoss/grimoirelab/issues).
 > If you found out the reason, and would like to add it to this section, please
 > feel free to open a [pull request to the chaoss/grimoirelab-tutorial
