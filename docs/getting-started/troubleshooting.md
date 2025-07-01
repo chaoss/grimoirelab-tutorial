@@ -364,7 +364,7 @@ method](/grimoirelab-tutorial/docs/getting-started/dev-setup/#source-code-and-do
 
 Diagnosis
 
-The `cocom` backend would require worktrees. The micro-modred by default will
+The `cocom` backend would require worktrees. The micro-mordred by default will
 attend to reach a location at `<worktrees-path>/grimoirelab-toolkit-git`.
 
 Solution

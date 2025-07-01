@@ -12,7 +12,7 @@ platform, via two main configuration files, the [setup.cfg](./setup-cfg.md) and
 [projects.json](./projects-json.md), which are summarized in their corresponding
 sections.
 
-SirModred relies on Elasticsearch, Kibiter and MySQL/MariaDB. The current
+SirMordred relies on Elasticsearch, Kibiter and MySQL/MariaDB. The current
 versions used are:
 
 - Elasticsearch 6.8.6
@@ -140,7 +140,7 @@ to get Elasticsearch, Kibiter and MariaDB running on your system.
 In the next step, you will need to fork all the GitHub repos below and clone
 them to a target local folder (e.g., `sources`).
 
-- [SirModred](https://github.com/chaoss/grimoirelab-sirmordred)
+- [SirMordred](https://github.com/chaoss/grimoirelab-sirmordred)
 - [ELK](https://github.com/chaoss/grimoirelab-elk)
 - [Graal](https://github.com/chaoss/grimoirelab-graal)
 - [Perceval](https://github.com/chaoss/grimoirelab-perceval)
