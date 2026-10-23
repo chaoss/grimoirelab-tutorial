@@ -27,7 +27,8 @@ parent: Getting Started
 ## Table of Contents
 {: .no_toc .text-delta }
 
-1. TOC {:toc}
+1. TOC
+{:toc}
 
 ---
 
